@@ -35,3 +35,6 @@
 - Ruby 2.7.2
 - Rails 6.0.3.4
 - Vue 2.6.11
+
+# 画面遷移図
+https://xd.adobe.com/view/8b1a99cc-ba49-49b1-8ec4-1746bbd25ad7-de49/
