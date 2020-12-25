@@ -38,3 +38,6 @@
 
 # 画面遷移図
 https://xd.adobe.com/view/8b1a99cc-ba49-49b1-8ec4-1746bbd25ad7-de49/
+
+# ER図
+https://drive.google.com/file/d/1bTgWxJMa-G4l0CTDUi7WEk5j1Xw1iQYf/view?usp=sharing
