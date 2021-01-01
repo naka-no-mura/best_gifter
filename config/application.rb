@@ -23,6 +23,12 @@ module BestGifter
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.0
+    config.generators do |g|
+      g.assets false
+      g.test_framework false
+      g.skip_routes true
+      g.helper false
+    end
 
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration can go into files in config/initializers
