@@ -471,9 +471,9 @@ checked program was:
 /* end */
 
 "clang -o conftest -I/Users/nakamura/.rbenv/versions/2.7.2/include/ruby-2.7.0/x86_64-darwin20 -I/Users/nakamura/.rbenv/versions/2.7.2/include/ruby-2.7.0/ruby/backward -I/Users/nakamura/.rbenv/versions/2.7.2/include/ruby-2.7.0 -I. -I/usr/local/opt/mysql@5.7/include/mysql -I/Users/nakamura/.rbenv/versions/2.7.2/include  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT   -O3 -ggdb3 -Wall -Wextra -Wdeprecated-declarations -Wdivision-by-zero -Wimplicit-function-declaration -Wimplicit-int -Wmisleading-indentation -Wpointer-arith -Wshorten-64-to-32 -Wwrite-strings -Wmissing-noreturn -Wno-constant-logical-operand -Wno-long-long -Wno-missing-field-initializers -Wno-overlength-strings -Wno-parentheses-equality -Wno-self-assign -Wno-tautological-compare -Wno-unused-parameter -Wno-unused-value -Wunused-variable -Wextra-tokens  -fno-common -pipe -DFULL_SSL_MODE_SUPPORT conftest.c  -L. -L/Users/nakamura/.rbenv/versions/2.7.2/lib -L/usr/local/opt/openssl/lib    -L/usr/local/opt/mysql@5.7/lib -lmysqlclient -lssl -lcrypto  -lruby.2.7 -Werror -Wno-bad-function-cast  "
-ld: warning: dylib (/usr/local/opt/openssl/lib/libssl.dylib) was built for newer macOS version (11.0) than being linked (10.16)
 ld: warning: dylib (/usr/local/opt/openssl/lib/libcrypto.dylib) was built for newer macOS version (11.0) than being linked (10.16)
 ld: warning: dylib (/usr/local/opt/mysql@5.7/lib/libmysqlclient.dylib) was built for newer macOS version (11.0) than being linked (10.16)
+ld: warning: dylib (/usr/local/opt/openssl/lib/libssl.dylib) was built for newer macOS version (11.0) than being linked (10.16)
 checked program was:
 /* begin */
 1: #include "ruby.h"
@@ -505,8 +505,8 @@ checked program was:
 
 "clang -o conftest -I/Users/nakamura/.rbenv/versions/2.7.2/include/ruby-2.7.0/x86_64-darwin20 -I/Users/nakamura/.rbenv/versions/2.7.2/include/ruby-2.7.0/ruby/backward -I/Users/nakamura/.rbenv/versions/2.7.2/include/ruby-2.7.0 -I. -I/usr/local/opt/mysql@5.7/include/mysql -I/Users/nakamura/.rbenv/versions/2.7.2/include  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT   -O3 -ggdb3 -Wall -Wextra -Wdeprecated-declarations -Wdivision-by-zero -Wimplicit-function-declaration -Wimplicit-int -Wmisleading-indentation -Wpointer-arith -Wshorten-64-to-32 -Wwrite-strings -Wmissing-noreturn -Wno-constant-logical-operand -Wno-long-long -Wno-missing-field-initializers -Wno-overlength-strings -Wno-parentheses-equality -Wno-self-assign -Wno-tautological-compare -Wno-unused-parameter -Wno-unused-value -Wunused-variable -Wextra-tokens  -fno-common -pipe -DFULL_SSL_MODE_SUPPORT conftest.c  -L. -L/Users/nakamura/.rbenv/versions/2.7.2/lib -L/usr/local/opt/openssl/lib    -L/usr/local/opt/mysql@5.7/lib -lmysqlclient -lssl -lcrypto  -lruby.2.7 -Werror -Wno-declaration-after-statement  "
 ld: warning: dylib (/usr/local/opt/mysql@5.7/lib/libmysqlclient.dylib) was built for newer macOS version (11.0) than being linked (10.16)
-ld: warning: dylib (/usr/local/opt/openssl/lib/libssl.dylib) was built for newer macOS version (11.0) than being linked (10.16)
-ld: warning: dylib (/usr/local/opt/openssl/lib/libcrypto.dylib) was built for newer macOS version (11.0) than being linked (10.16)
+ld: warning: dylib (/usr/local/opt/openssl/lib/libssl.dylib) was built for newer macOS version (11.0) than being linked (10.16)ld: warning: dylib (/usr/local/opt/openssl/lib/libcrypto.dylib) was built for newer macOS version (11.0) than being linked (10.16)
+
 checked program was:
 /* begin */
 1: #include "ruby.h"
@@ -593,8 +593,8 @@ checked program was:
 
 "clang -o conftest -I/Users/nakamura/.rbenv/versions/2.7.2/include/ruby-2.7.0/x86_64-darwin20 -I/Users/nakamura/.rbenv/versions/2.7.2/include/ruby-2.7.0/ruby/backward -I/Users/nakamura/.rbenv/versions/2.7.2/include/ruby-2.7.0 -I. -I/usr/local/opt/mysql@5.7/include/mysql -I/Users/nakamura/.rbenv/versions/2.7.2/include  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT   -O3 -ggdb3 -Wall -Wextra -Wdeprecated-declarations -Wdivision-by-zero -Wimplicit-function-declaration -Wimplicit-int -Wmisleading-indentation -Wpointer-arith -Wshorten-64-to-32 -Wwrite-strings -Wmissing-noreturn -Wno-constant-logical-operand -Wno-long-long -Wno-missing-field-initializers -Wno-overlength-strings -Wno-parentheses-equality -Wno-self-assign -Wno-tautological-compare -Wno-unused-parameter -Wno-unused-value -Wunused-variable -Wextra-tokens  -fno-common -pipe -DFULL_SSL_MODE_SUPPORT conftest.c  -L. -L/Users/nakamura/.rbenv/versions/2.7.2/lib -L/usr/local/opt/openssl/lib    -L/usr/local/opt/mysql@5.7/lib -lmysqlclient -lssl -lcrypto  -lruby.2.7 -Werror -Wno-static-in-inline  "
 ld: warning: dylib (/usr/local/opt/mysql@5.7/lib/libmysqlclient.dylib) was built for newer macOS version (11.0) than being linked (10.16)
-ld: warning: dylib (/usr/local/opt/openssl/lib/libcrypto.dylib) was built for newer macOS version (11.0) than being linked (10.16)
 ld: warning: dylib (/usr/local/opt/openssl/lib/libssl.dylib) was built for newer macOS version (11.0) than being linked (10.16)
+ld: warning: dylib (/usr/local/opt/openssl/lib/libcrypto.dylib) was built for newer macOS version (11.0) than being linked (10.16)
 checked program was:
 /* begin */
 1: #include "ruby.h"
