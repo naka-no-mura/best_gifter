@@ -8,6 +8,7 @@
 import Vue from 'vue'
 import App from '../app.vue'
 import router from '../router/index'
+import 'bootstrap/dist/css/bootstrap.css'
 
 document.addEventListener('DOMContentLoaded', () => {
   const app = new Vue({
