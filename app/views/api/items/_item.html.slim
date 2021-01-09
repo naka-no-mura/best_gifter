@@ -1,0 +1,10 @@
+- @items.each do |item|
+  .ui.card
+    .image
+      = image_tag item["mediumImageUrls"][0]
+    .content
+      .header
+        = item['catchcopy']
+      .description
+        = item['itemPrice']
+      / = render 'favorites/favorite_area', item: item
