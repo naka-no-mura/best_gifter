@@ -1,0 +1,16 @@
+current directory: /Users/nakamura/workspace/best_gifter/vendor/bundle/ruby/2.7.0/gems/binding_of_caller-0.8.0/ext/binding_of_caller
+/Users/nakamura/.rbenv/versions/2.7.2/bin/ruby -I /Users/nakamura/.rbenv/versions/2.7.2/lib/ruby/2.7.0 -r ./siteconf20210103-14149-1p8yr8w.rb extconf.rb
+
+current directory: /Users/nakamura/workspace/best_gifter/vendor/bundle/ruby/2.7.0/gems/binding_of_caller-0.8.0/ext/binding_of_caller
+make "DESTDIR=" clean
+make: *** No rule to make target `clean'.  Stop.
+
+current directory: /Users/nakamura/workspace/best_gifter/vendor/bundle/ruby/2.7.0/gems/binding_of_caller-0.8.0/ext/binding_of_caller
+make "DESTDIR="
+echo "Nada."
+Nada.
+
+current directory: /Users/nakamura/workspace/best_gifter/vendor/bundle/ruby/2.7.0/gems/binding_of_caller-0.8.0/ext/binding_of_caller
+make "DESTDIR=" install
+echo "Nada."
+Nada.

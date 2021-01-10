@@ -1,7 +1,9 @@
 <template>
-  <div class="root">
+  <div class="container is-fluid">
+  <div class="notification is-primary">
     <RakutenApiCall></RakutenApiCall>
-    <RakutenApiResult v-for="item in items" :item="item"></RakutenApiResult>
+    <RakutenApiResult :items="items"></RakutenApiResult>
+  </div>
   </div>
 </template>
 

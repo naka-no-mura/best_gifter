@@ -22,14 +22,14 @@ const mutations = {
     state.keyword = keyword
   },
   [SEARCH] (state, items) {
-    state.items = items.data
+    state.items = items.data.Items
   }
 }
 
 function searchItem(keyword) {
   return axios.get('https://app.rakuten.co.jp/services/api/IchibaItem/Search/20170706', {
     params: {
-      applicationId: process.env.VUE_APP_RAKUTEN_API_APPLICATION_ID,
+      applicationId: gon.rakuten_api_application_id,
       keyword: keyword,
       giftFlag: 1,
     }

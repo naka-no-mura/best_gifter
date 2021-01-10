@@ -1,5 +1,5 @@
 <template>
-  <div class="text-center">
+  <div class="container is-fluid">
     <h1>Best Gifter</h1>
     <h2>Wedding</h2>
     <div class="mt-4">

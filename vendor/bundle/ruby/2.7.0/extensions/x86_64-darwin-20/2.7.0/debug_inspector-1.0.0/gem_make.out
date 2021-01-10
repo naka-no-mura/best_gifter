@@ -1,0 +1,15 @@
+current directory: /Users/nakamura/workspace/best_gifter/vendor/bundle/ruby/2.7.0/gems/debug_inspector-1.0.0/ext/debug_inspector
+/Users/nakamura/.rbenv/versions/2.7.2/bin/ruby -I /Users/nakamura/.rbenv/versions/2.7.2/lib/ruby/2.7.0 -r ./siteconf20210103-14149-11xd3qd.rb extconf.rb
+creating Makefile
+
+current directory: /Users/nakamura/workspace/best_gifter/vendor/bundle/ruby/2.7.0/gems/debug_inspector-1.0.0/ext/debug_inspector
+make "DESTDIR=" clean
+
+current directory: /Users/nakamura/workspace/best_gifter/vendor/bundle/ruby/2.7.0/gems/debug_inspector-1.0.0/ext/debug_inspector
+make "DESTDIR="
+compiling debug_inspector.c
+linking shared-object debug_inspector.bundle
+
+current directory: /Users/nakamura/workspace/best_gifter/vendor/bundle/ruby/2.7.0/gems/debug_inspector-1.0.0/ext/debug_inspector
+make "DESTDIR=" install
+/usr/bin/install -c -m 0755 debug_inspector.bundle ./.gem.20210103-14149-11o0u0t

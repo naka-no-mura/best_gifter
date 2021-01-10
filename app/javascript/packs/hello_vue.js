@@ -7,12 +7,15 @@
 
 import Vue from 'vue'
 import App from '../app.vue'
+import Buefy from 'buefy'
+import 'buefy/dist/buefy.css'
+import "@mdi/font/css/materialdesignicons.css";
 import router from '../router/index'
 import axios from '../plugins/axios'
 import store from '../store/index'
-import 'bootstrap/dist/css/bootstrap.css'
 
 Vue.prototype.$axios = axios
+Vue.use(Buefy)
 
 document.addEventListener('DOMContentLoaded', () => {
   const app = new Vue({

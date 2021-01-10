@@ -1,19 +1,20 @@
 <template>
   <div>
-    <div class="item-inner">
-      <div class="content">
-        <p>{{ item.Item.itemName }}</p>
-      </div>
-      <span>{{ item.Item.itemPrice }}</span>
-    </div>
+    <template v-for="item in items">
+      <RakutenApiResultItem :key="item.id" :item="item" />
+    </template>
   </div>
 </template>
 
 <script>
+import RakutenApiResultItem from './RakutenApiResultItem'
 export default {
   name: "RakutenApiResult",
+  components: {
+    RakutenApiResultItem
+  },
   props: {
-    item: Array,
+    items: Array,
     required: true
   }
 }

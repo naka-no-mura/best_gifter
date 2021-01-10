@@ -35,6 +35,5 @@
 yarn-debug.log*
 .yarn-integrity
 
-vendor/bundle
-.env
-.env.local
+vendor/bundler
+/app/controllers/gon_controller.rb
