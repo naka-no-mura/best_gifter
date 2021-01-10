@@ -1,7 +1,9 @@
 <template>
   <div>
     <template v-for="item in items">
-      <RakutenApiResultItem :key="item.id" :item="item" />
+      <div class="columns">
+        <RakutenApiResultItem :key="item.id" :item="item" />
+      </div>
     </template>
   </div>
 </template>
@@ -19,3 +21,6 @@ export default {
   }
 }
 </script>
+
+<style scope>
+</style>

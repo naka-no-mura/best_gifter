@@ -1,7 +1,19 @@
 <template>
   <div>
-    <input class="text" type="text" @change="CHANGE_KEYWORD($event.target.value)" />
-    <input class="submit" type="submit" value="検索" @click="SEARCH" />
+    <b-field>
+      <input class="text" type="text" placeholder="キーワードを入力する" @change="CHANGE_KEYWORD($event.target.value)" />
+      <input class="submit" type="submit" value="検索" @click="SEARCH" />
+    </b-field>
+    <b-field label="Simple">
+      <b-select placeholder="Select a name">
+        <option
+          v-for="option in genre"
+          :value="option.id"
+          :key="option.id">
+          {{ option.user.first_name }}
+        </option>
+      </b-select>
+    </b-field>
   </div>
 </template>
 
@@ -16,34 +28,6 @@ export default {
     ])
   }
 }
-// import axios from "axios"
-
-// export default {
-//   name: "RakutenApiCall",
-//   data() {
-//     return {
-//       items:[]
-//     }
-//   },
-
-  // methods:{
-  //   async searchItem() {
-  //     const response = this.$axios.get('https://app.rakuten.co.jp/services/api/IchibaItem/Search/20170706', {
-  //       params: {
-  //         applicationId: "1092280411653960373",
-  //         keyword: '筋トレ',
-  //         giftFlag: 1,
-  //       }
-  //     })
-  //     .then(response => {
-  //       this.items = response.data;
-  //     })
-  //     .catch(error => {
-  //       console.log(error)
-  //     });
-  //   },
-  // },
-// };
 </script>
 
 <style scope>
