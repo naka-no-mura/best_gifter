@@ -79,5 +79,8 @@ gem 'html2slim'
 # 楽天商品検索API
 gem 'rakuten_web_service'
 
-# Railsで定義した変数をVue側で使用できるようにする
-gem 'gon'
+# 環境変数
+gem 'dotenv-rails'
+
+# Webpackerとrailsの起動
+gem 'foreman'

@@ -30,7 +30,7 @@ function searchItem(keyword) {
   return axios.get('https://app.rakuten.co.jp/services/api/IchibaItem/Search/20170706', {
     params: {
       applicationId: gon.rakuten_api_application_id,
-      keyword: keyword,
+      keyword: '結婚'+ keyword,
       giftFlag: 1,
     }
   })

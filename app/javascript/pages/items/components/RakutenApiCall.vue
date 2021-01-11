@@ -4,6 +4,12 @@
       <input class="text" type="text" placeholder="キーワードを入力する" @change="CHANGE_KEYWORD($event.target.value)" />
       <input class="submit" type="submit" value="検索" @click="SEARCH" />
     </b-field>
+        <select v-model="selected">
+            <option disabled value="">選択して下さい</option>
+            <option v-for="genre in genres" :value="genre.genreId" :key="genre.id">
+                {{ genre.genreName }}
+            </option>
+        </select>
   </div>
 </template>
 
