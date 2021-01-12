@@ -1,27 +1,27 @@
 <template>
-  <div class="container is-fluid">
-  <div class="notification is-primary">
-    <RakutenApiCall></RakutenApiCall>
-    <RakutenApiResult :items="items"></RakutenApiResult>
-  </div>
+  <div>
+    <div>
+      <RakutenApiCall></RakutenApiCall>
+      <RakutenApiResultList :items="items"></RakutenApiResultList>
+    </div>
   </div>
 </template>
 
 <script>
-import RakutenApiCall from "./components/RakutenApiCall.vue";
-import RakutenApiResult from "./components/RakutenApiResult.vue";
+import RakutenApiCall from './components/RakutenApiCall.vue';
+import RakutenApiResultList from './components/RakutenApiResultList.vue';
 import { mapGetters } from 'vuex';
 
-export default {
+  export default {
   name: "ItemIndex",
   components: {
     RakutenApiCall,
-    RakutenApiResult,
+    RakutenApiResultList
   },
   computed: {
     ...mapGetters(['items'])
-  }
-}
+  },
+  };
 </script>
 
 <style scoped>

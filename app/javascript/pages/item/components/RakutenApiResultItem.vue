@@ -3,12 +3,12 @@
   <div class="card">
     <div class="card-image">
       <figure class="image">
-        <img :src="item.Item.mediumImageUrls[0].imageUrl"/>
+        <img :src="item.params.mediumImageUrls[0]" />
       </figure>
     </div>
     <div class="content">
-      <p>{{ item.Item.itemName }}</p>
-      <span>{{ item.Item.itemPrice }}</span>
+      <p>{{ item.params.itemName }}</p>
+      <span>{{ item.params.itemPrice }}</span>
     </div>
   </div>
   </div>

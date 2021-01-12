@@ -22,16 +22,14 @@ const mutations = {
     state.keyword = keyword
   },
   [SEARCH] (state, items) {
-    state.items = items.data.Items
+    state.items = items.data
   }
 }
 
 function searchItem(keyword) {
-  return axios.get('https://app.rakuten.co.jp/services/api/IchibaItem/Search/20170706', {
+  return axios.get('/v1/rakuten_searches/search', {
     params: {
-      applicationId: gon.rakuten_api_application_id,
       keyword: '結婚'+ keyword,
-      giftFlag: 1,
     }
   })
 }
@@ -45,7 +43,7 @@ const actions = {
     searchItem(state.keyword)
       .then(data => {
         commit(SEARCH, data)
-      })
+    })
   }
 }
 
