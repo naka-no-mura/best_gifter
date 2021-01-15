@@ -5,7 +5,7 @@ class Api::V1::RakutenSearchesController < ApplicationController
   end
 
   def search
-    @items = RakutenWebService::Ichiba::Item.search(keyword: '結婚' + params[:keyword], giftFlag: 1)
+    @items = RakutenWebService::Ichiba::Item.search(keyword: params[:keyword], genreId: params[:genreId], giftFlag: 1)
 
     render json: @items
   end

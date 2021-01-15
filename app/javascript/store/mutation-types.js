@@ -1,2 +1,3 @@
 export const CHANGE_KEYWORD = 'CHANGE_KEYWORD'
+export const CHANGE_GENRE_ID = 'CHANGE_GENRE_ID'
 export const SEARCH = 'SEARCH'

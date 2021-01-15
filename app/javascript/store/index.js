@@ -3,13 +3,15 @@ import Vuex from 'vuex'
 import axios from '../plugins/axios'
 import {
   CHANGE_KEYWORD,
-  SEARCH
+  SEARCH,
+  CHANGE_GENRE_ID,
 } from './mutation-types'
 
 Vue.use(Vuex)
 
 const state = {
   keyword: '',
+  genreId: '',
   items: []
 }
 
@@ -21,15 +23,19 @@ const mutations = {
   [CHANGE_KEYWORD] (state, keyword) {
     state.keyword = keyword
   },
+  [CHANGE_GENRE_ID] (state, genreId) {
+    state.genreId = genreId
+  },
   [SEARCH] (state, items) {
     state.items = items.data
   }
 }
 
-function searchItem(keyword) {
+function searchItem(keyword, genreId) {
   return axios.get('/v1/rakuten_searches/search', {
     params: {
-      keyword: '結婚'+ keyword,
+      keyword: '結婚' + keyword,
+      genreId: genreId,
     }
   })
 }
@@ -39,8 +45,12 @@ const actions = {
     commit(CHANGE_KEYWORD, keyword)
   },
 
+  [CHANGE_GENRE_ID] ({ commit }, genreId) {
+    commit(CHANGE_GENRE_ID, genreId)
+  },
+
   [SEARCH] ({ commit, state }) {
-    searchItem(state.keyword)
+    searchItem(state.keyword, state.genreId)
       .then(data => {
         commit(SEARCH, data)
     })

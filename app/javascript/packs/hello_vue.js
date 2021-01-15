@@ -10,12 +10,15 @@ import App from '../app.vue'
 import Buefy from 'buefy'
 import 'buefy/dist/buefy.css'
 import "@mdi/font/css/materialdesignicons.css";
+import vSelect from "vue-select";
+import "vue-select/dist/vue-select.css";
 import router from '../router/index'
 import axios from '../plugins/axios'
 import store from '../store/index'
 
 Vue.prototype.$axios = axios
-Vue.use(Buefy)
+Vue.use(Buefy);
+Vue.component("v-select", vSelect);
 
 document.addEventListener('DOMContentLoaded', () => {
   const app = new Vue({
