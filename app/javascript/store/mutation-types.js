@@ -1,3 +1,5 @@
 export const CHANGE_KEYWORD = 'CHANGE_KEYWORD'
 export const CHANGE_GENRE_ID = 'CHANGE_GENRE_ID'
+export const CHANGE_MIN_PRICE = 'CHANGE_MIN_PRICE'
+export const CHANGE_MAX_PRICE = 'CHANGE_MAX_PRICE'
 export const SEARCH = 'SEARCH'

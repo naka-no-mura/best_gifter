@@ -8,6 +8,8 @@
           {{ genreId.name }}
         </option>
       </select>
+      <input class="text" type="text" placeholder="最小価格を入力する" @change="CHANGE_MIN_PRICE($event.target.value)" />
+      <input class="text" type="text" placeholder="最大価格を入力する" @change="CHANGE_MAX_PRICE($event.target.value)" />
       <input class="submit" type="submit" value="検索" @click="SEARCH" />
     </b-field>
   </div>
@@ -15,7 +17,7 @@
 
 <script>
 import { mapActions } from 'vuex'
-import { CHANGE_KEYWORD, CHANGE_GENRE_ID, SEARCH } from '../../../store/mutation-types'
+import { CHANGE_KEYWORD, CHANGE_GENRE_ID, CHANGE_MIN_PRICE, CHANGE_MAX_PRICE, SEARCH } from '../../../store/mutation-types'
 export default {
   name: 'RakutenApiCall',
   data() {
@@ -36,7 +38,7 @@ export default {
   },
   methods: {
     ...mapActions([
-      CHANGE_KEYWORD, SEARCH, CHANGE_GENRE_ID
+      CHANGE_KEYWORD, CHANGE_GENRE_ID, CHANGE_MIN_PRICE, CHANGE_MAX_PRICE, SEARCH
     ])
   }
 }

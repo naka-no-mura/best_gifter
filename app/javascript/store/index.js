@@ -3,8 +3,10 @@ import Vuex from 'vuex'
 import axios from '../plugins/axios'
 import {
   CHANGE_KEYWORD,
-  SEARCH,
   CHANGE_GENRE_ID,
+  CHANGE_MIN_PRICE,
+  CHANGE_MAX_PRICE,
+  SEARCH,
 } from './mutation-types'
 
 Vue.use(Vuex)
@@ -12,6 +14,8 @@ Vue.use(Vuex)
 const state = {
   keyword: '',
   genreId: '',
+  minPrice:'',
+  maxPrice: '',
   items: []
 }
 
@@ -26,16 +30,24 @@ const mutations = {
   [CHANGE_GENRE_ID] (state, genreId) {
     state.genreId = genreId
   },
+  [CHANGE_MIN_PRICE] (state, minPrice) {
+    state.minPrice = minPrice
+  },
+  [CHANGE_MAX_PRICE] (state, maxPrice) {
+    state.maxPrice = maxPrice
+  },
   [SEARCH] (state, items) {
     state.items = items.data
   }
 }
 
-function searchItem(keyword, genreId) {
+function searchItem(keyword, genreId, minPrice, maxPrice) {
   return axios.get('/v1/rakuten_searches/search', {
     params: {
       keyword: '結婚' + keyword,
       genreId: genreId,
+      minPrice: minPrice,
+      maxPrice: maxPrice,
     }
   })
 }
@@ -49,8 +61,16 @@ const actions = {
     commit(CHANGE_GENRE_ID, genreId)
   },
 
+  [CHANGE_MIN_PRICE] ({ commit }, minPrice) {
+    commit(CHANGE_MIN_PRICE, minPrice)
+  },
+
+  [CHANGE_MAX_PRICE] ({ commit }, maxPrice) {
+    commit(CHANGE_MAX_PRICE, maxPrice)
+  },
+
   [SEARCH] ({ commit, state }) {
-    searchItem(state.keyword, state.genreId)
+    searchItem(state.keyword, state.genreId, state.minPrice, state.maxPrice)
       .then(data => {
         commit(SEARCH, data)
     })
