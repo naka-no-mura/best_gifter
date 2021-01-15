@@ -10,7 +10,7 @@ class Api::V1::RakutenSearchesController < ApplicationController
       genreId: params[:genreId],
       minPrice: params[:minPrice],
       maxPrice: params[:maxPrice],
-      sort: '+reviewCount',
+      sort: params[:sort],
       giftFlag: 1
     )
 

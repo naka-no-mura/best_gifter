@@ -6,6 +6,7 @@ import {
   CHANGE_GENRE_ID,
   CHANGE_MIN_PRICE,
   CHANGE_MAX_PRICE,
+  CHANGE_SORT,
   SEARCH,
 } from './mutation-types'
 
@@ -16,6 +17,7 @@ const state = {
   genreId: '',
   minPrice:'',
   maxPrice: '',
+  sort: '',
   items: []
 }
 
@@ -36,18 +38,22 @@ const mutations = {
   [CHANGE_MAX_PRICE] (state, maxPrice) {
     state.maxPrice = maxPrice
   },
+  [CHANGE_SORT] (state, sort) {
+    state.sort = sort
+  },
   [SEARCH] (state, items) {
     state.items = items.data
   }
 }
 
-function searchItem(keyword, genreId, minPrice, maxPrice) {
+function searchItem(keyword, genreId, minPrice, maxPrice, sort) {
   return axios.get('/v1/rakuten_searches/search', {
     params: {
       keyword: '結婚' + keyword,
       genreId: genreId,
       minPrice: minPrice,
       maxPrice: maxPrice,
+      sort: sort || 'standard',
     }
   })
 }
@@ -69,12 +75,16 @@ const actions = {
     commit(CHANGE_MAX_PRICE, maxPrice)
   },
 
+  [CHANGE_SORT] ({ commit }, sort) {
+    commit(CHANGE_SORT, sort)
+  },
+
   [SEARCH] ({ commit, state }) {
-    searchItem(state.keyword, state.genreId, state.minPrice, state.maxPrice)
+    searchItem(state.keyword, state.genreId, state.minPrice, state.maxPrice, state.sort)
       .then(data => {
         commit(SEARCH, data)
     })
-  }
+  },
 }
 
 export default new Vuex.Store({
