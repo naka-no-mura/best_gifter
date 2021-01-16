@@ -19,22 +19,10 @@ const state = {
   maxPrice: '',
   sort: '',
   items: [],
-  // genreIds: [
-  //   { genreId: 100433, name: 'ルームウェア' },
-  //   { genreId: 562637, name: '家電' },
-  //   { genreId: 510915, name: '洋酒' },
-  //   { genreId: 100804, name: 'インテリア' },
-  //   { genreId: 215783, name: '日用品雑貨' },
-  //   { genreId: 558944, name: 'キッチン用品・食器' },
-  //   { genreId: 100005, name: '花' },
-  //   { genreId: 566732, name: 'カタログ' },
-  //   { genreId: 553283, name: 'ギフト券・商品券' },
-  // ],
 }
 
 const getters = {
   items: state => state.items,
-  // genreIds: state => state.genreIds,
 }
 
 const mutations = {

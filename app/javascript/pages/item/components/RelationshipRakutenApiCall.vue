@@ -1,5 +1,6 @@
 <template>
 <div>
+  <!-- ご親族 -->
   <div class="card">
     <p>{{ relationship_relative.relationship }}</p>
     <p>{{ relationship_relative.description }}</p>
@@ -7,7 +8,7 @@
   </div>
   <div class="columns">
     <div v-for="relative_search_card in relative_search_cards">
-      <div class="card" @click="search()" :value="relative_search_card.genreId">
+      <div class="card" @click="changeGenreId(relative_search_card.genreId); search()" :value="relative_search_card.genreId">
         <div class="card-image">
           <figure class="image">
             <img :src="relative_search_card.image" alt = "ロゴ" />
@@ -17,20 +18,59 @@
       </div>
     </div>
   </div>
+  <!-- ご友人 -->
   <div class="card">
     <p>{{ relationship_friend.relationship }}</p>
     <p>{{ relationship_friend.description }}</p>
     <p>{{ relationship_friend.market_price }}</p>
   </div>
+  <div class="columns">
+    <div v-for="friend_search_card in friend_search_cards">
+      <div class="card" @click="changeGenreId(friend_search_card.genreId); search()" :value="friend_search_card.genreId">
+        <div class="card-image">
+          <figure class="image">
+            <img :src="friend_search_card.image" alt = "ロゴ" />
+          </figure>
+          <p>{{ friend_search_card.name }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- 職場の同僚 -->
   <div class="card">
     <p>{{ relationship_colleague.relationship }}</p>
     <p>{{ relationship_colleague.description }}</p>
     <p>{{ relationship_colleague.market_price }}</p>
   </div>
+  <div class="columns">
+    <div v-for="colleague_search_card in colleague_search_cards">
+      <div class="card" @click="changeGenreId(colleague_search_card.genreId); search()" :value="colleague_search_card.genreId">
+        <div class="card-image">
+          <figure class="image">
+            <img :src="colleague_search_card.image" alt = "ロゴ" />
+          </figure>
+          <p>{{ colleague_search_card.name }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- 職場の上司 -->
   <div class="card">
     <p>{{ relationship_boss.relationship }}</p>
     <p>{{ relationship_boss.description }}</p>
     <p>{{ relationship_boss.market_price }}</p>
+  </div>
+  <div class="columns">
+    <div v-for="boss_search_card in boss_search_cards">
+      <div class="card" @click="changeGenreId(boss_search_card.genreId); search()" :value="boss_search_card.genreId">
+        <div class="card-image">
+          <figure class="image">
+            <img :src="boss_search_card.image" alt = "ロゴ" />
+          </figure>
+          <p>{{ boss_search_card.name }}</p>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 </template>
@@ -66,12 +106,32 @@ export default {
           market_price: '相場：個人からでも、連盟の場合でも5,000円程度'
         },
       relative_search_cards: [
-        { image: require("../../../../assets/images/kitchen_goods.jpg"), name: 'キッチン用品・食器', genreId: 558944 },
-        { image: require("../../../../assets/images/home_electriv_appliances.jpg"), name: '家電', genreId: 562637 },
-        { image: require("../../../../assets/images/catalog.jpg"), name: 'カタログ', genreId: 566732 },
-        { image: require("../../../../assets/images/gift_certificate.jpg"), name: '商品券', genreId: 553283 },
+        { name: 'キッチン用品・食器', genreId: 558944, image: require("../../../../assets/images/kitchen_goods.jpg") },
+        { name: '家電', genreId: 562637, image: require("../../../../assets/images/home_electriv_appliances.jpg") },
+        { name: 'カタログ', genreId: 566732, image: require("../../../../assets/images/catalog.jpg") },
+        { name: '商品券', genreId: 553283, image: require("../../../../assets/images/gift_certificate.jpg") },
       ],
-      kitchen_goods_img: require("../../../../assets/images/kitchen_goods.jpg"),
+      friend_search_cards: [
+        { name: 'インテリア・雑貨', genreId: 100804, image: require("../../../../assets/images/interior.jpg") },
+        { name: '日用品雑貨', genreId: 215783, image: require("../../../../assets/images/daily_necessaries.jpg") },
+        { name: 'ルームウエア', genreId: 100433, image: require("../../../../assets/images/loungwear.jpg") },
+        { name: 'キッチン用品・食器', genreId: 558944, image: require("../../../../assets/images/kitchen_goods.jpg") },
+        { name: '家電', genreId: 562637, image: require("../../../../assets/images/home_electriv_appliances.jpg") },
+        { name: 'カタログ', genreId: 566732, image: require("../../../../assets/images/catalog.jpg") },
+        { name: '商品券', genreId: 553283, image: require("../../../../assets/images/gift_certificate.jpg") },
+      ],
+      colleague_search_cards: [
+        { name: '花', genreId: 100005, image: require("../../../../assets/images/flower.jpg") },
+        { name: '日用品雑貨', genreId: 215783, image: require("../../../../assets/images/daily_necessaries.jpg") },
+        { name: 'カタログ', genreId: 566732, image: require("../../../../assets/images/catalog.jpg") },
+        { name: '商品券', genreId: 553283, image: require("../../../../assets/images/gift_certificate.jpg") },
+      ],
+      boss_search_cards: [
+        { name: '洋酒', genreId: 510915, image: require("../../../../assets/images/wine.jpg") },
+        { name: 'キッチン用品・食器', genreId: 558944, image: require("../../../../assets/images/kitchen_goods.jpg") },
+        { name: 'カタログ', genreId: 566732, image: require("../../../../assets/images/catalog.jpg") },
+        { name: '商品券', genreId: 553283, image: require("../../../../assets/images/gift_certificate.jpg") },
+      ]
     }
   },
 
@@ -79,10 +139,6 @@ export default {
     ...mapActions([
       "changeGenreId", "search"
     ]),
-    // changeGenreIdSearch() {
-    //   this.CHANGE_GENRE_ID()
-    //   this.SEARCH()
-    // }
   }
 }
 </script>

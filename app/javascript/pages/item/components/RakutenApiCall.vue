@@ -53,9 +53,6 @@ export default {
       sort_selected: { sort: 'standard', name: '標準' },
     }
   },
-  // computed: {
-  //   ...mapGetters("genreIds", ["genreIds"])
-  // },
 
   methods: {
     ...mapActions([
