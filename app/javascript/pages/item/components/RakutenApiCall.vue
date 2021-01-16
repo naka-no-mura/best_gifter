@@ -13,12 +13,11 @@
       <input class="submit" type="submit" value="検索" @click="search()" />
     </b-field>
     <b-field>
-      <select class="select_box" v-model="sort_selected.sort" @change="changeSort($event.target.value)">
+      <select class="select_box" v-model="sort_selected.sort" @change="changeSort($event.target.value); search()">
         <option v-for="sort in sorts" :value="sort.sort" :key="sort.id">
           {{ sort.name }}
         </option>
       </select>
-      <input class="submit" type="submit" value="並び替える" @click="search()" />
     </b-field>
   </div>
 </template>

@@ -11,7 +11,8 @@ class Api::V1::RakutenSearchesController < ApplicationController
       minPrice: params[:minPrice],
       maxPrice: params[:maxPrice],
       sort: params[:sort],
-      giftFlag: 1
+      giftFlag: 1,
+      imageFlag: 1
     )
 
     render json: @items
