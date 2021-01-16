@@ -1,31 +1,31 @@
 <template>
   <div>
     <b-field>
-      <input class="text" type="text" placeholder="キーワードを入力する" @change="CHANGE_KEYWORD($event.target.value)" />
-      <select class="select_box" v-model="genreId_selected" @change="CHANGE_GENRE_ID($event.target.value)">
+      <input class="text" type="text" placeholder="キーワードを入力する" @change="changeKeyword($event.target.value)" />
+      <select class="select_box" v-model="genreId_selected" @change="changeGenreId($event.target.value)">
         <option disabled value="" >ジャンルで選ぶ</option>
         <option v-for="genreId in genreIds" :value="genreId.genreId" :key="genreId.id">
           {{ genreId.name }}
         </option>
       </select>
-      <input class="text" type="text" placeholder="最小価格を入力する" @change="CHANGE_MIN_PRICE($event.target.value)" />
-      <input class="text" type="text" placeholder="最大価格を入力する" @change="CHANGE_MAX_PRICE($event.target.value)" />
-      <input class="submit" type="submit" value="検索" @click="SEARCH" />
+      <input class="text" type="text" placeholder="最小価格を入力する" @change="changeMinPrice($event.target.value)" />
+      <input class="text" type="text" placeholder="最大価格を入力する" @change="changeMamPrice($event.target.value)" />
+      <input class="submit" type="submit" value="検索" @click="search()" />
     </b-field>
     <b-field>
-      <select class="select_box" v-model="sort_selected.sort" @change="CHANGE_SORT($event.target.value)">
+      <select class="select_box" v-model="sort_selected.sort" @change="changeSort($event.target.value)">
         <option v-for="sort in sorts" :value="sort.sort" :key="sort.id">
           {{ sort.name }}
         </option>
       </select>
-      <input class="submit" type="submit" value="並び替える" @click="SEARCH" />
+      <input class="submit" type="submit" value="並び替える" @click="search()" />
     </b-field>
   </div>
 </template>
 
 <script>
-import { mapActions } from 'vuex'
-import { CHANGE_KEYWORD, CHANGE_GENRE_ID, CHANGE_MIN_PRICE, CHANGE_MAX_PRICE, CHANGE_SORT, SEARCH } from '../../../store/mutation-types'
+import { mapGetters, mapActions } from 'vuex'
+import { changeKeyword, changeGenreId, changeMinPrice, changeMamPrice, changeSort, search } from '../../../store/mutation-types'
 export default {
   name: 'RakutenApiCall',
   data() {
@@ -53,9 +53,13 @@ export default {
       sort_selected: { sort: 'standard', name: '標準' },
     }
   },
+  // computed: {
+  //   ...mapGetters("genreIds", ["genreIds"])
+  // },
+
   methods: {
     ...mapActions([
-      CHANGE_KEYWORD, CHANGE_GENRE_ID, CHANGE_MIN_PRICE, CHANGE_MAX_PRICE, CHANGE_SORT, SEARCH
+      "changeKeyword", "changeGenreId", "changeMinPrice", "changeMamPrice", "changeSort", "search"
     ])
   }
 }

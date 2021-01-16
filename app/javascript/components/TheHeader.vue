@@ -2,7 +2,7 @@
   <b-navbar>
     <template #brand>
       <b-navbar-item>
-        <img v-bind:src="logo_img" alt = "ロゴ" />
+        <img :src="logo_img" alt = "ロゴ" />
       </b-navbar-item>
     </template>
     <template #end>
