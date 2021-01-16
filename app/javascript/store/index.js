@@ -2,17 +2,11 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import axios from '../plugins/axios'
 import {
-  // CHANGE_KEYWORD,
   changeKeyword,
-  // CHANGE_GENRE_ID,
   changeGenreId,
-  // CHANGE_MIN_PRICE,
   changeMinPrice,
-  // CHANGE_MAX_PRICE,
   changeMamPrice,
-  // CHANGE_SORT,
   changeSort,
-  // SEARCH,
   search,
 } from './mutation-types'
 
@@ -44,15 +38,9 @@ const getters = {
 }
 
 const mutations = {
-  // [CHANGE_KEYWORD] (state, keyword) {
-  //   state.keyword = keyword
-  // },
   changeKeyword(state, keyword) {
     state.keyword = keyword
   },
-  // [CHANGE_GENRE_ID] (state, genreId) {
-  //   state.genreId = genreId
-  // },
   changeGenreId(state, genreId) {
     state.genreId = genreId
   },
@@ -62,15 +50,9 @@ const mutations = {
   changeMamPrice(state, maxPrice) {
     state.maxPrice = maxPrice
   },
-  // [CHANGE_SORT] (state, sort) {
-  //   state.sort = sort
-  // },
   changeSort(state, sort) {
     state.sort = sort
   },
-  // [SEARCH] (state, items) {
-  //   state.items = items.data
-  // },
   search(state, items) {
     state.items = items.data
   },
@@ -89,9 +71,6 @@ function searchItem(keyword, genreId, minPrice, maxPrice, sort) {
 }
 
 const actions = {
-  // [CHANGE_KEYWORD] ({ commit }, keyword) {
-  //   commit(CHANGE_KEYWORD, keyword)
-  // },
   changeKeyword({ commit }, keyword) {
     commit('changeKeyword', keyword)
   },
@@ -99,37 +78,19 @@ const actions = {
   changeGenreId({ commit }, genreId) {
     commit('changeGenreId', genreId)
   },
-  // [CHANGE_GENRE_ID] ({ commit }, genreId) {
-  //   commit(CHANGE_GENRE_ID, genreId)
-  // },
 
-  // [CHANGE_MIN_PRICE] ({ commit }, minPrice) {
-  //   commit(CHANGE_MIN_PRICE, minPrice)
-  // },
   changeMinPrice({ commit }, minPrice) {
     commit('changeMinPrice', minPrice)
   },
 
-  // [CHANGE_MAX_PRICE] ({ commit }, maxPrice) {
-  //   commit(CHANGE_MAX_PRICE, maxPrice)
-  // },
   changeMamPrice({ commit }, maxPrice) {
     commit('changeMamPrice', maxPrice)
   },
 
-  // [CHANGE_SORT] ({ commit }, sort) {
-  //   commit(CHANGE_SORT, sort)
-  // },
   changeSort({ commit }, sort) {
     commit('changeSort', sort)
   },
 
-  // [SEARCH] ({ commit, state }) {
-  //   searchItem(state.keyword, state.genreId, state.minPrice, state.maxPrice, state.sort)
-  //     .then(data => {
-  //       commit(SEARCH, data)
-  //   })
-  // },
   search({ commit, state }) {
     searchItem(state.keyword, state.genreId, state.minPrice, state.maxPrice, state.sort)
       .then(data => {
