@@ -1,15 +1,17 @@
 <template>
-  <div class="column is-3">
+  <div>
     <div class="card">
+      <a target="_blank" :href="item.Item.itemUrl">
       <div class="card-image">
         <figure class="image">
-          <img :src="item.params.mediumImageUrls[0]" />
+          <img :src="item.Item.mediumImageUrls[0].imageUrl" />
         </figure>
       </div>
       <div class="content">
-        <p>{{ item.params.itemName }}</p>
-        <span>{{ item.params.itemPrice }}</span>
+        <p>{{ item.Item.itemName }}</p>
+        <span>{{ item.Item.itemPrice }}円</span>
       </div>
+    </a>
     </div>
   </div>
 </template>

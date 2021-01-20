@@ -33,7 +33,7 @@
         placeholder="最大価格を入力する"
         @change="changeMamPrice($event.target.value)"
       />
-      <input class="submit" type="submit" value="検索" @click="search()" />
+      <input class="submit button" type="submit" value="検索" @click="search()" />
     </b-field>
     <b-field>
       <select

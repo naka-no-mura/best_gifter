@@ -13,6 +13,7 @@ import {
 Vue.use(Vuex);
 
 const state = {
+  count: "",
   keyword: "",
   genreId: "",
   minPrice: "",
@@ -41,19 +42,22 @@ const mutations = {
   changeSort(state, sort) {
     state.sort = sort;
   },
-  search(state, items) {
-    state.items = items.data;
+  search(state, data) {
+    state.items = data.Items;
   },
 };
 
 function searchItem(keyword, genreId, minPrice, maxPrice, sort) {
-  return axios.get("/v1/rakuten_searches/search", {
+  return axios.get("https://app.rakuten.co.jp/services/api/IchibaItem/Search/20170706", {
     params: {
+      applicationId: gon.rakuten_api_application_id,
       keyword: "結婚" + keyword,
       genreId: genreId,
       minPrice: minPrice,
       maxPrice: maxPrice,
       sort: sort || "standard",
+      giftFlag: 1,
+      imageFlag: 1
     },
   });
 }
@@ -86,8 +90,8 @@ const actions = {
       state.minPrice,
       state.maxPrice,
       state.sort
-    ).then((data) => {
-      commit("search", data);
+    ).then((res) => {
+      commit("search", res.data);
     });
   },
 };

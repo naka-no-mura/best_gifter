@@ -13,14 +13,14 @@
     </div>
     <div v-show="show">
       <!-- ご親族 -->
-      <div>
-        <div class="card">
-          <p>{{ relationship_relative.relationship }}</p>
+      <div class="section">
+        <div class="block">
+          <p class="title">{{ relationship_relative.relationship }}</p>
           <p>{{ relationship_relative.description }}</p>
           <p>{{ relationship_relative.market_price }}</p>
         </div>
-        <div class="columns">
-          <div
+        <div class="columns is-multiline">
+          <div class="column is-2"
             v-for="relative_search_card in relative_search_cards"
             :key="relative_search_card.id"
           >
@@ -45,14 +45,14 @@
         </div>
       </div>
       <!-- ご友人 -->
-      <div>
-        <div class="card">
-          <p>{{ relationship_friend.relationship }}</p>
+      <div class="section">
+        <div class="block">
+          <p class="title">{{ relationship_friend.relationship }}</p>
           <p>{{ relationship_friend.description }}</p>
           <p>{{ relationship_friend.market_price }}</p>
         </div>
-        <div class="columns">
-          <div
+        <div class="columns is-multiline">
+          <div class="column is-2"
             v-for="friend_search_card in friend_search_cards"
             :key="friend_search_card.id"
           >
@@ -77,14 +77,14 @@
         </div>
       </div>
       <!-- 職場の同僚 -->
-      <div>
-        <div class="card">
-          <p>{{ relationship_colleague.relationship }}</p>
+      <div class="section">
+        <div class="block">
+          <p class="title">{{ relationship_colleague.relationship }}</p>
           <p>{{ relationship_colleague.description }}</p>
           <p>{{ relationship_colleague.market_price }}</p>
         </div>
-        <div class="columns">
-          <div
+        <div class="columns is-multiline">
+          <div class="column is-2"
             v-for="colleague_search_card in colleague_search_cards"
             :key="colleague_search_card.id"
           >
@@ -93,6 +93,8 @@
               @click="
                 changeGenreId(colleague_search_card.genreId);
                 search();
+                show = !show;
+                relationship_genre_show = !relationship_genre_show;
               "
               :value="colleague_search_card.genreId"
             >
@@ -107,14 +109,14 @@
         </div>
       </div>
       <!-- 職場の上司 -->
-      <div>
-        <div class="card">
-          <p>{{ relationship_boss.relationship }}</p>
+      <div class="section">
+        <div class="block">
+          <p class="title">{{ relationship_boss.relationship }}</p>
           <p>{{ relationship_boss.description }}</p>
           <p>{{ relationship_boss.market_price }}</p>
         </div>
-        <div class="columns">
-          <div
+        <div class="columns is-multiline">
+          <div class="column is-2"
             v-for="boss_search_card in boss_search_cards"
             :key="boss_search_card.id"
           >
@@ -123,6 +125,8 @@
               @click="
                 changeGenreId(boss_search_card.genreId);
                 search();
+                show = !show;
+                relationship_genre_show = !relationship_genre_show;
               "
               :value="boss_search_card.genreId"
             >
@@ -144,6 +148,10 @@ import { mapActions } from "vuex";
 import { changeGenreId, search } from "../../../store/mutation-types";
 export default {
   name: "RelationshipRakutenApiCall",
+    props: {
+    items: Array,
+    required: true
+  },
   data() {
     return {
       show: true,

@@ -84,3 +84,9 @@ gem 'dotenv-rails'
 
 # Webpackerとrailsの起動
 gem 'foreman'
+
+# 外部APIを叩く
+gem 'httpclient'
+
+# Railsで設定した環境変数をVueで使えるように
+gem 'gon'
