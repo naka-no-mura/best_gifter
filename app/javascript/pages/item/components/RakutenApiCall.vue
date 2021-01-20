@@ -31,7 +31,7 @@
         class="text"
         type="text"
         placeholder="最大価格を入力する"
-        @change="changeMamPrice($event.target.value)"
+        @change="changeMaxPrice($event.target.value)"
       />
       <input class="submit button" type="submit" value="検索" @click="search()" />
     </b-field>
@@ -58,7 +58,7 @@ import {
   changeKeyword,
   changeGenreId,
   changeMinPrice,
-  changeMamPrice,
+  changeMaxPrice,
   changeSort,
   search,
 } from "../../../store/mutation-types";
@@ -95,7 +95,7 @@ export default {
       "changeKeyword",
       "changeGenreId",
       "changeMinPrice",
-      "changeMamPrice",
+      "changeMaxPrice",
       "changeSort",
       "search",
     ]),

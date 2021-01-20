@@ -1,6 +1,6 @@
 export const changeKeyword = 'changeKeyword'
 export const changeGenreId = 'changeGenreId'
 export const changeMinPrice = 'changeMinPrice'
-export const changeMamPrice = 'changeMamPrice'
+export const changeMaxPrice = 'changeMaxPrice'
 export const changeSort = 'changeSort'
 export const search = 'search'

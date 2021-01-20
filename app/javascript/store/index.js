@@ -5,7 +5,7 @@ import {
   changeKeyword,
   changeGenreId,
   changeMinPrice,
-  changeMamPrice,
+  changeMaxPrice,
   changeSort,
   search,
 } from "./mutation-types";
@@ -13,17 +13,22 @@ import {
 Vue.use(Vuex);
 
 const state = {
-  count: "",
   keyword: "",
   genreId: "",
   minPrice: "",
   maxPrice: "",
   sort: "",
   items: [],
+  count: "",
+  first: "",
+  last: "",
 };
 
 const getters = {
   items: (state) => state.items,
+  count: (state) => state.count,
+  first: (state) => state.first,
+  last: (state) => state.last,
 };
 
 const mutations = {
@@ -36,7 +41,7 @@ const mutations = {
   changeMinPrice(state, minPrice) {
     state.minPrice = minPrice;
   },
-  changeMamPrice(state, maxPrice) {
+  changeMaxPrice(state, maxPrice) {
     state.maxPrice = maxPrice;
   },
   changeSort(state, sort) {
@@ -44,22 +49,28 @@ const mutations = {
   },
   search(state, data) {
     state.items = data.Items;
+    state.count = data.count;
+    state.first = data.first;
+    state.last = data.last;
   },
 };
 
 function searchItem(keyword, genreId, minPrice, maxPrice, sort) {
-  return axios.get("https://app.rakuten.co.jp/services/api/IchibaItem/Search/20170706", {
-    params: {
-      applicationId: gon.rakuten_api_application_id,
-      keyword: "結婚" + keyword,
-      genreId: genreId,
-      minPrice: minPrice,
-      maxPrice: maxPrice,
-      sort: sort || "standard",
-      giftFlag: 1,
-      imageFlag: 1
-    },
-  });
+  return axios.get(
+    "https://app.rakuten.co.jp/services/api/IchibaItem/Search/20170706",
+    {
+      params: {
+        applicationId: gon.rakuten_api_application_id,
+        keyword: "結婚" + keyword,
+        genreId: genreId,
+        minPrice: 1000 || minPrice,
+        maxPrice: 150000 || maxPrice,
+        sort: sort || "standard",
+        giftFlag: 1,
+        imageFlag: 1,
+      },
+    }
+  );
 }
 
 const actions = {
@@ -75,8 +86,8 @@ const actions = {
     commit("changeMinPrice", minPrice);
   },
 
-  changeMamPrice({ commit }, maxPrice) {
-    commit("changeMamPrice", maxPrice);
+  changeMaxPrice({ commit }, maxPrice) {
+    commit("changeMaxPrice", maxPrice);
   },
 
   changeSort({ commit }, sort) {
