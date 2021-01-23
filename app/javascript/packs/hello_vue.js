@@ -15,10 +15,12 @@ import "vue-select/dist/vue-select.css";
 import router from '../router/index'
 import axios from '../plugins/axios'
 import store from '../store/index'
+import VuePaginate from "vue-paginate";
 
 Vue.prototype.$axios = axios
 Vue.use(Buefy);
 Vue.component("v-select", vSelect);
+Vue.use(VuePaginate);
 
 document.addEventListener('DOMContentLoaded', () => {
   const app = new Vue({

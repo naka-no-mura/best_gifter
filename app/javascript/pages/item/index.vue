@@ -4,7 +4,8 @@
       <RakutenApiCall></RakutenApiCall>
       <RakutenApiResultHit></RakutenApiResultHit>
       <RelationshipRakutenApiCall></RelationshipRakutenApiCall>
-      <RakutenApiResultList :items="items"></RakutenApiResultList>
+      <RakutenApiResultList></RakutenApiResultList>
+      <RakutenApiPagenation></RakutenApiPagenation>
     </div>
   </div>
 </template>
@@ -14,7 +15,7 @@ import RakutenApiCall from "./components/RakutenApiCall.vue";
 import RelationshipRakutenApiCall from "./components/RelationshipRakutenApiCall.vue";
 import RakutenApiResultList from "./components/RakutenApiResultList.vue";
 import RakutenApiResultHit from "./components/RakutenApiResultHit.vue";
-import { mapGetters } from "vuex";
+import RakutenApiPagenation from "./components/RakutenApiPagenation.vue";
 
 export default {
   name: "ItemIndex",
@@ -23,9 +24,7 @@ export default {
     RelationshipRakutenApiCall,
     RakutenApiResultList,
     RakutenApiResultHit,
-  },
-  computed: {
-    ...mapGetters(["items"]),
+    RakutenApiPagenation,
   },
 };
 </script>

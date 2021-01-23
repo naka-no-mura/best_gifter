@@ -7,6 +7,7 @@ import {
   changeMinPrice,
   changeMaxPrice,
   changeSort,
+  changePage,
   search,
 } from "./mutation-types";
 
@@ -22,6 +23,8 @@ const state = {
   count: "",
   first: "",
   last: "",
+  currentPage: "",
+  pageCount: "",
 };
 
 const getters = {
@@ -29,6 +32,8 @@ const getters = {
   count: (state) => state.count,
   first: (state) => state.first,
   last: (state) => state.last,
+  currentPage: (state) => state.currentPage,
+  pageCount: (state) => state.pageCount,
 };
 
 const mutations = {
@@ -47,15 +52,20 @@ const mutations = {
   changeSort(state, sort) {
     state.sort = sort;
   },
+  changePage(state, page) {
+    state.page = page;
+  },
   search(state, data) {
     state.items = data.Items;
     state.count = data.count;
     state.first = data.first;
     state.last = data.last;
+    state.currentPage = data.page;
+    state.pageCount = data.pageCount;
   },
 };
 
-function searchItem(keyword, genreId, minPrice, maxPrice, sort) {
+function searchItem(keyword, genreId, minPrice, maxPrice, sort, changePage) {
   return axios.get(
     "https://app.rakuten.co.jp/services/api/IchibaItem/Search/20170706",
     {
@@ -68,6 +78,7 @@ function searchItem(keyword, genreId, minPrice, maxPrice, sort) {
         sort: sort || "standard",
         giftFlag: 1,
         imageFlag: 1,
+        page: changePage || 1,
       },
     }
   );
@@ -94,13 +105,18 @@ const actions = {
     commit("changeSort", sort);
   },
 
+  changePage({ commit }, page) {
+    commit("changePage", page);
+  },
+
   search({ commit, state }) {
     searchItem(
       state.keyword,
       state.genreId,
       state.minPrice,
       state.maxPrice,
-      state.sort
+      state.sort,
+      state.page
     ).then((res) => {
       commit("search", res.data);
     });
