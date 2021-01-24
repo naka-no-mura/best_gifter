@@ -1,6 +1,7 @@
 <template>
   <div>
   <div>{{ first }}〜{{ last }}件（{{ count }}件）</div>
+  <div>「{{ keyword }}」の検索結果</div>
   </div>
 </template>
 
@@ -14,7 +15,7 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(["count", "first", "last", "page"]),
+    ...mapGetters(["keyword", "count", "first", "last", "page"]),
   },
 };
 </script>

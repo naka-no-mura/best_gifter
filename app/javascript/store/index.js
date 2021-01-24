@@ -28,6 +28,7 @@ const state = {
 };
 
 const getters = {
+  keyword: (state) => state.keyword,
   items: (state) => state.items,
   count: (state) => state.count,
   first: (state) => state.first,
