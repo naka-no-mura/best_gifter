@@ -25,16 +25,21 @@ const state = {
   last: "",
   currentPage: "",
   pageCount: "",
+  reviewCount: "",
+  reviewAverage: "",
 };
 
 const getters = {
   keyword: (state) => state.keyword,
+  genreId: (state) => state.genreId,
   items: (state) => state.items,
   count: (state) => state.count,
   first: (state) => state.first,
   last: (state) => state.last,
   currentPage: (state) => state.currentPage,
   pageCount: (state) => state.pageCount,
+  reviewCount: (state) => state.reviewCount,
+  reviewAverage: (state) => state.reviewAverage,
 };
 
 const mutations = {
@@ -63,6 +68,8 @@ const mutations = {
     state.last = data.last;
     state.currentPage = data.page;
     state.pageCount = data.pageCount;
+    state.reviewCount = data.reviewCount;
+    state.reviewAverage = data.reviewAverage;
   },
 };
 

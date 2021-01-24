@@ -98,7 +98,7 @@ export default {
       // フォーム部分(プルダウン)の並び替え用
       sorts: [
         { sort: "standard", name: "標準" },
-        { sort: "+reviewCount", name: "レビュー件数順" },
+        { sort: "-reviewCount", name: "レビュー件数順" },
         { sort: "+reviewAverage", name: "レビュー評価順" },
         { sort: "-itemPrice", name: "価格が高い順" },
         { sort: "+itemPrice", name: "価格が安い順" },

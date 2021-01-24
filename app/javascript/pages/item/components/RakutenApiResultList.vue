@@ -23,7 +23,7 @@ export default {
     return {};
   },
   computed: {
-    ...mapGetters(["items", "currentPage", "pageCount"]),
+    ...mapGetters(["items", "currentPage", "pageCount", "reviewCount", "reviewAverage"]),
   },
   methods: {
     ...mapActions(["changePage", "search"]),

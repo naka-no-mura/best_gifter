@@ -16,11 +16,13 @@ import router from '../router/index'
 import axios from '../plugins/axios'
 import store from '../store/index'
 import VuePaginate from "vue-paginate";
+import StarRating from "vue-star-rating";
 
 Vue.prototype.$axios = axios
 Vue.use(Buefy);
 Vue.component("v-select", vSelect);
 Vue.use(VuePaginate);
+Vue.component("star-rating", StarRating);
 
 document.addEventListener('DOMContentLoaded', () => {
   const app = new Vue({
