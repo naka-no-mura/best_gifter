@@ -9,83 +9,68 @@
         type="is-light"
         open
       >
-        <b-menu-list label="Menu">
-          <!-- ご親族 -->
-          <b-menu-item expanded label="ご親族">
-            <b-menu-item
-              v-for="relative_search_card in relative_search_cards"
-              :key="relative_search_card.id"
-              @click="
-                changeGenreId(relative_search_card.genreId);
-                search();
-                show = !show;
-              "
-              :label="relative_search_card.name"
-              :value="relative_search_card.genreId"
-            >
+      <div class="p-1">
+        <b-menu class="is-custom-mobile">
+          <b-menu-list label="間柄別ジャンル">
+            <!-- ご親族 -->
+            <b-menu-item expanded label="ご親族">
+              <b-menu-item
+                v-for="relative_search_card in relative_search_cards"
+                :key="relative_search_card.id"
+                @click="
+                  changeGenreId(relative_search_card.genreId);
+                  search();
+                "
+                :label="relative_search_card.name"
+                :value="relative_search_card.genreId"
+              >
+              </b-menu-item>
             </b-menu-item>
-          </b-menu-item>
-          <!-- ご友人 -->
-          <p class="menu-label">ご友人</p>
-          <ul
-            class="menu-list"
-            v-for="friend_search_card in friend_search_cards"
-            :key="friend_search_card.id"
-          >
-            <li>
-              <a
+            <!-- ご友人 -->
+            <b-menu-item expanded label="ご友人">
+              <b-menu-item
+                v-for="friend_search_card in friend_search_cards"
+                :key="friend_search_card.id"
                 @click="
                   changeGenreId(friend_search_card.genreId);
                   search();
-                  show = !show;
                 "
+                :label="friend_search_card.name"
                 :value="friend_search_card.genreId"
               >
-                <p>{{ friend_search_card.name }}</p>
-              </a>
-            </li>
-          </ul>
-          <!-- 職場の同僚 -->
-          <p class="menu-label">職場の同僚</p>
-          <ul
-            class="menu-list"
-            v-for="colleague_search_card in colleague_search_cards"
-            :key="colleague_search_card.id"
-          >
-            <li>
-              <a
+              </b-menu-item>
+            </b-menu-item>
+            <!-- 職場の同僚 -->
+            <b-menu-item expanded label="職場の同僚">
+              <b-menu-item
+                v-for="colleague_search_card in colleague_search_cards"
+                :key="colleague_search_card.id"
                 @click="
                   changeGenreId(colleague_search_card.genreId);
                   search();
-                  show = !show;
                 "
+                :label="colleague_search_card.name"
                 :value="colleague_search_card.genreId"
               >
-                <p>{{ colleague_search_card.name }}</p>
-              </a>
-            </li>
-          </ul>
-          <!-- 職場の上司 -->
-          <p class="menu-label">職場の上司</p>
-          <ul
-            class="menu-list"
-            v-for="boss_search_card in boss_search_cards"
-            :key="boss_search_card.id"
-          >
-            <li>
-              <a
+              </b-menu-item>
+            </b-menu-item>
+            <!-- 職場の上司 -->
+            <b-menu-item expanded label="職場の上司">
+              <b-menu-item
+                v-for="boss_search_card in boss_search_cards"
+                :key="boss_search_card.id"
                 @click="
                   changeGenreId(boss_search_card.genreId);
                   search();
-                  show = !show;
                 "
+                :label="boss_search_card.name"
                 :value="boss_search_card.genreId"
               >
-                <p>{{ boss_search_card.name }}</p>
-              </a>
-            </li>
-          </ul>
-        </b-menu-list>
+              </b-menu-item>
+            </b-menu-item>
+          </b-menu-list>
+        </b-menu>
+        </div>
       </b-sidebar>
     </section>
   </div>
@@ -108,8 +93,9 @@ export default {
   },
   data() {
     return {
-      show: true,
-      relationship_genre_show: true,
+      expandOnHover: false,
+      mobile: "reduce",
+      reduce: false,
       // フォーム部分(プルダウン)のジャンル検索用
       genreIds: [
         { genreId: 100433, name: "ルームウェア" },
@@ -261,8 +247,93 @@ export default {
   },
 };
 </script>
-<style scoped>
+<style  lang="scss">
 .select_box {
   width: 10rem;
+}
+.p-1 {
+  padding: 1em;
+}
+.sidebar-page {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    min-height: 100%;
+    // min-height: 100vh;
+    .sidebar-layout {
+        display: flex;
+        flex-direction: row;
+        min-height: 100%;
+        // min-height: 100vh;
+    }
+}
+@media screen and (max-width: 1023px) {
+    .b-sidebar {
+        .sidebar-content {
+            &.is-mini-mobile {
+                &:not(.is-mini-expand),
+                &.is-mini-expand:not(:hover) {
+                    .menu-list {
+                        li {
+                            a {
+                                span:nth-child(2) {
+                                    display: none;
+                                }
+                            }
+                            ul {
+                                padding-left: 0;
+                                li {
+                                    a {
+                                        display: inline-block;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    .menu-label:not(:last-child) {
+                        margin-bottom: 0;
+                    }
+                }
+            }
+        }
+    }
+}
+@media screen and (min-width: 1024px) {
+    .b-sidebar {
+        .sidebar-content {
+            &.is-mini {
+                &:not(.is-mini-expand),
+                &.is-mini-expand:not(:hover) {
+                    .menu-list {
+                        li {
+                            a {
+                                span:nth-child(2) {
+                                    display: none;
+                                }
+                            }
+                            ul {
+                                padding-left: 0;
+                                li {
+                                    a {
+                                        display: inline-block;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    .menu-label:not(:last-child) {
+                        margin-bottom: 0;
+                    }
+                }
+            }
+        }
+    }
+}
+.is-mini-expand {
+    .menu-list a {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
 }
 </style>

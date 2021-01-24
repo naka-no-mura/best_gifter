@@ -1,12 +1,16 @@
 <template>
-    <main>
-      <RakutenApiSideMenu></RakutenApiSideMenu>
-      <RakutenApiCall></RakutenApiCall>
-      <RelationshipRakutenApiCall></RelationshipRakutenApiCall>
-      <RakutenApiResultHit></RakutenApiResultHit>
-      <RakutenApiResultList></RakutenApiResultList>
-      <RakutenApiPagenation></RakutenApiPagenation>
-    </main>
+  <main class="columns">
+    <div class="column is-3">
+    <RakutenApiSideMenu></RakutenApiSideMenu>
+    </div>
+    <div class="column">
+    <RakutenApiCall></RakutenApiCall>
+    <RelationshipRakutenApiCall></RelationshipRakutenApiCall>
+    <RakutenApiResultHit></RakutenApiResultHit>
+    <RakutenApiResultList></RakutenApiResultList>
+    <RakutenApiPagenation></RakutenApiPagenation>
+    </div>
+  </main>
 </template>
 
 <script>
