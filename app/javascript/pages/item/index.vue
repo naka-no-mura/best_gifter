@@ -6,6 +6,7 @@
     <div class="column">
     <RakutenApiCall></RakutenApiCall>
     <RakutenApiResultHit></RakutenApiResultHit>
+    <RakutenApiPagenation></RakutenApiPagenation>
     <RakutenApiResultList></RakutenApiResultList>
     <RakutenApiPagenation></RakutenApiPagenation>
     </div>
