@@ -1,14 +1,12 @@
 <template>
-  <div>
-    <div>
+    <main>
       <RakutenApiSideMenu></RakutenApiSideMenu>
       <RakutenApiCall></RakutenApiCall>
       <RelationshipRakutenApiCall></RelationshipRakutenApiCall>
       <RakutenApiResultHit></RakutenApiResultHit>
       <RakutenApiResultList></RakutenApiResultList>
       <RakutenApiPagenation></RakutenApiPagenation>
-    </div>
-  </div>
+    </main>
 </template>
 
 <script>
