@@ -39,7 +39,7 @@
           type="submit"
           value="検索"
           @click="
-            search();
+            setPage(1);
             show = !show;
           "
         />
@@ -51,7 +51,7 @@
           v-model="sort_selected.sort"
           @change="
             changeSort($event.target.value);
-            search();
+            setPage(1);
           "
         >
           <option v-for="sort in sorts" :value="sort.sort" :key="sort.id">
@@ -70,6 +70,7 @@ import {
   changeMinPrice,
   changeMaxPrice,
   changeSort,
+  changePage,
   search,
 } from "../../../store/mutation-types";
 export default {
@@ -115,8 +116,14 @@ export default {
       "changeMinPrice",
       "changeMaxPrice",
       "changeSort",
+      "changePage",
       "search",
     ]),
+    //再検索とソート変更の時は毎回1ページ目を表示させる
+    setPage(page) {
+      var vm = this;
+      vm.search(vm.changePage(page));
+    },
   },
 };
 </script>

@@ -19,7 +19,7 @@
                   :key="relative_search_card.id"
                   @click="
                     changeGenreId(relative_search_card.genreId);
-                    search();
+                    setPage(1);
                   "
                   :label="relative_search_card.name"
                   :value="relative_search_card.genreId"
@@ -33,7 +33,7 @@
                   :key="friend_search_card.id"
                   @click="
                     changeGenreId(friend_search_card.genreId);
-                    search();
+                    setPage(1);
                   "
                   :label="friend_search_card.name"
                   :value="friend_search_card.genreId"
@@ -47,7 +47,7 @@
                   :key="colleague_search_card.id"
                   @click="
                     changeGenreId(colleague_search_card.genreId);
-                    search();
+                    setPage(1);
                   "
                   :label="colleague_search_card.name"
                   :value="colleague_search_card.genreId"
@@ -61,7 +61,7 @@
                   :key="boss_search_card.id"
                   @click="
                     changeGenreId(boss_search_card.genreId);
-                    search();
+                    setPage(1);
                   "
                   :label="boss_search_card.name"
                   :value="boss_search_card.genreId"
@@ -83,6 +83,7 @@ import {
   changeMinPrice,
   changeMaxPrice,
   changeSort,
+  changePage,
   search,
 } from "../../../store/mutation-types";
 export default {
@@ -243,7 +244,14 @@ export default {
       "changeMaxPrice",
       "changeSort",
       "search",
+      "changePage",
+      "setPage"
     ]),
+    //サイドバーで検索の時は毎回1ページ目を表示させる
+    setPage(page) {
+      var vm = this;
+      vm.search(vm.changePage(page));
+    },
   },
 };
 </script>
