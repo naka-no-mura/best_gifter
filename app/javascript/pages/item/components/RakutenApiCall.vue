@@ -100,7 +100,7 @@ export default {
       sorts: [
         { sort: "standard", name: "標準" },
         { sort: "-reviewCount", name: "レビュー件数順" },
-        { sort: "+reviewAverage", name: "レビュー評価順" },
+        { sort: "-reviewAverage", name: "レビュー評価順" },
         { sort: "-itemPrice", name: "価格が高い順" },
         { sort: "+itemPrice", name: "価格が安い順" },
         { sort: "+updateTimestamp", name: "新着順" },
