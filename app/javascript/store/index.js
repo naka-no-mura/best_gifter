@@ -107,9 +107,9 @@ function genreSearchItem(genreId, minPrice, maxPrice, changePage, sort) {
         minPrice: minPrice || 1000,
         maxPrice: maxPrice || 150000,
         sort: sort || "standard",
+        page: changePage || 1,
         giftFlag: 1,
         imageFlag: 1,
-        page: changePage || 1,
       },
     }
   );
@@ -120,21 +120,13 @@ function resetKeywordState() {
   state.keyword= ""
 }
 
-// 別ジャンルで検索する時はキーワードをnullにする
+// 検索条件をリセットする
 function resetAllState() {
   state.keyword= ""
   state.genreId= ""
   state.minPrice= ""
   state.maxPrice= ""
   state.sort= ""
-  state.items= []
-  state.count= ""
-  state.first= ""
-  state.last= ""
-  state.currentPage= ""
-  state.pageCount= ""
-  state.reviewCount= ""
-  state.reviewAverage= ""
 }
 
 const actions = {
@@ -162,6 +154,7 @@ const actions = {
     commit("changePage", page);
   },
 
+  // フォーム検索用
   search({ commit, state }) {
     searchItem(
       state.keyword,
@@ -175,6 +168,7 @@ const actions = {
     });
   },
 
+  // サイドバーのジャンル検索用
   genreSearch({ commit, state }) {
     resetKeywordState();
     genreSearchItem(
@@ -183,6 +177,21 @@ const actions = {
       state.maxPrice,
       state.page,
       state.sort,
+    ).then((res) => {
+      commit("search", res.data);
+    });
+  },
+
+  // 検索条件をリセットしてジェンルで検索する用
+  resetSearch({ commit, state }) {
+    resetAllState();
+    searchItem(
+      state.keyword,
+      state.genreId,
+      state.minPrice,
+      state.maxPrice,
+      state.sort,
+      state.page,
     ).then((res) => {
       commit("search", res.data);
     });

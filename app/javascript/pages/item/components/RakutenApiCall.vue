@@ -48,8 +48,6 @@
         <b-button @click="formClear()">クリア</b-button>
       </b-field>
     <!-- 並び替え ここから -->
-
-        <b-button @click="Clear()">リセット</b-button>
       <b-field>
         <select
           class="select_box"
@@ -126,7 +124,6 @@ export default {
       "changeSort",
       "changePage",
       "search",
-      "clear",
     ]),
     //再検索とソート変更の時は毎回1ページ目を表示させる
     setPage(page) {
