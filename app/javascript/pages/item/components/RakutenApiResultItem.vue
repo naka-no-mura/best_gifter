@@ -17,9 +17,9 @@
               :star-size="15"
               class="column"
             ></star-rating>
-            <div class="column">({{ item.Item.reviewCount }}件)</div>
+            <span class="column">({{ item.Item.reviewCount.toLocaleString() }}件)</span>
           </div>
-          <p>{{ item.Item.itemPrice }}円</p>
+          <p>{{ item.Item.itemPrice.toLocaleString() }}円</p>
         </div>
       </a>
     </div>

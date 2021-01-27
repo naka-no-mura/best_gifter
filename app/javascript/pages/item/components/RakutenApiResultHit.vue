@@ -1,15 +1,15 @@
 <template>
   <div v-if="count">
-    <div>{{ first }}〜{{ last }}件（{{ count }}件）</div>
+    <div>{{ first.toLocaleString() }}〜{{ last.toLocaleString() }}件（{{ count.toLocaleString() }}件）</div>
     <div class="block">
       <b-taglist>
         <b-tag type="is-warning" rounded v-if="keyword">{{ keyword }}</b-tag>
         <b-tag type="is-warning" rounded v-if="genreId">{{ genreId }}</b-tag>
         <b-tag type="is-warning" rounded v-if="minPrice"
-          >{{ minPrice }}円〜</b-tag
+          >{{ minPrice.toLocaleString() }}円〜</b-tag
         >
         <b-tag type="is-warning" rounded v-if="maxPrice"
-          >〜{{ maxPrice }}円</b-tag
+          >〜{{ maxPrice.toLocaleString() }}円</b-tag
         >
         <b-tag
           type="is-warning"

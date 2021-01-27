@@ -26,6 +26,10 @@ Vue.use(VuePaginate);
 Vue.component("star-rating", StarRating);
 Vue.use(VueLoading);
 
+Vue.filter("priceLocaleString", function(value) {
+  return value.toLocaleString();
+});
+
 document.addEventListener('DOMContentLoaded', () => {
   const app = new Vue({
     router,
