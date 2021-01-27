@@ -6,14 +6,15 @@
         :mobile="mobile"
         :expand-on-hover="expandOnHover"
         :reduce="reduce"
-        type="is-light"
+        type="is-white"
         open
       >
         <div class="p-1">
           <b-menu class="is-custom-mobile">
-            <b-menu-list label="間柄別ジャンル">
-              <!-- ご親族 -->
-              <b-menu-item expanded label="ご親族">
+            <b-menu-list label="間柄別ジャンルで選ぶ">
+            <!-- ご親族 -->
+            <b-menu-list>
+              <b-menu-item label="ご親族">
                 <b-menu-item
                   v-for="relative_search_card in relative_search_cards"
                   :key="relative_search_card.id"
@@ -26,8 +27,10 @@
                 >
                 </b-menu-item>
               </b-menu-item>
-              <!-- ご友人 -->
-              <b-menu-item expanded label="ご友人">
+            </b-menu-list>
+            <!-- ご友人 -->
+            <b-menu-list>
+              <b-menu-item label="ご友人">
                 <b-menu-item
                   v-for="friend_search_card in friend_search_cards"
                   :key="friend_search_card.id"
@@ -40,8 +43,10 @@
                 >
                 </b-menu-item>
               </b-menu-item>
-              <!-- 職場の同僚 -->
-              <b-menu-item expanded label="職場の同僚">
+            </b-menu-list>
+            <!-- 職場の同僚 -->
+            <b-menu-list>
+              <b-menu-item label="職場の同僚">
                 <b-menu-item
                   v-for="colleague_search_card in colleague_search_cards"
                   :key="colleague_search_card.id"
@@ -54,8 +59,10 @@
                 >
                 </b-menu-item>
               </b-menu-item>
-              <!-- 職場の上司 -->
-              <b-menu-item expanded label="職場の上司">
+            </b-menu-list>
+            <!-- 職場の上司 -->
+            <b-menu-list>
+              <b-menu-item label="職場の上司">
                 <b-menu-item
                   v-for="boss_search_card in boss_search_cards"
                   :key="boss_search_card.id"
@@ -68,6 +75,7 @@
                 >
                 </b-menu-item>
               </b-menu-item>
+            </b-menu-list>
             </b-menu-list>
           </b-menu>
         </div>
@@ -85,6 +93,7 @@ import {
   changeSort,
   changePage,
   search,
+  genreSearch,
 } from "../../../store/mutation-types";
 export default {
   name: "RakutenApiSideMenu",
@@ -244,104 +253,16 @@ export default {
       "changeMaxPrice",
       "changeSort",
       "search",
+      "genreSearch",
       "changePage",
-      "setPage"
+      "setPage",
     ]),
-    //サイドバーで検索の時は毎回1ページ目を表示させる
+    //サイドバーでジャンルで検索の時は毎回1ページ目を表示させる
     setPage(page) {
       var vm = this;
-      vm.search(vm.changePage(page));
+      vm.genreSearch(vm.changePage(page));
     },
   },
 };
 </script>
-<style lang="scss">
-.select_box {
-  width: 10rem;
-}
-.p-1 {
-  padding: 1em;
-}
-.sidebar-page {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  min-height: 100%;
-  // min-height: 100vh;
-  .sidebar-layout {
-    display: flex;
-    flex-direction: row;
-    min-height: 100%;
-    // min-height: 100vh;
-  }
-}
-@media screen and (max-width: 1023px) {
-  .b-sidebar {
-    .sidebar-content {
-      &.is-mini-mobile {
-        &:not(.is-mini-expand),
-        &.is-mini-expand:not(:hover) {
-          .menu-list {
-            li {
-              a {
-                span:nth-child(2) {
-                  display: none;
-                }
-              }
-              ul {
-                padding-left: 0;
-                li {
-                  a {
-                    display: inline-block;
-                  }
-                }
-              }
-            }
-          }
-          .menu-label:not(:last-child) {
-            margin-bottom: 0;
-          }
-        }
-      }
-    }
-  }
-}
-@media screen and (min-width: 1024px) {
-  .b-sidebar {
-    .sidebar-content {
-      &.is-mini {
-        &:not(.is-mini-expand),
-        &.is-mini-expand:not(:hover) {
-          .menu-list {
-            li {
-              a {
-                span:nth-child(2) {
-                  display: none;
-                }
-              }
-              ul {
-                padding-left: 0;
-                li {
-                  a {
-                    display: inline-block;
-                  }
-                }
-              }
-            }
-          }
-          .menu-label:not(:last-child) {
-            margin-bottom: 0;
-          }
-        }
-      }
-    }
-  }
-}
-.is-mini-expand {
-  .menu-list a {
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-}
-</style>
+<style lang="scss"></style>

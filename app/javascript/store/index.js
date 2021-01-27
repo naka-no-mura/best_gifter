@@ -73,13 +73,14 @@ const mutations = {
   },
 };
 
+// フォームから検索する用
 function searchItem(keyword, genreId, minPrice, maxPrice, sort, changePage) {
   return axios.get(
     "https://app.rakuten.co.jp/services/api/IchibaItem/Search/20170706",
     {
       params: {
         applicationId: gon.rakuten_api_application_id,
-        keyword: "結婚" + keyword,
+        keyword: "結婚" + " " + keyword,
         genreId: genreId,
         minPrice: minPrice || 1000,
         maxPrice: maxPrice || 150000,
@@ -90,6 +91,31 @@ function searchItem(keyword, genreId, minPrice, maxPrice, sort, changePage) {
       },
     }
   );
+}
+
+// サイドバーからジャンル検索するとき用
+function genreSearchItem(genreId, changePage, sort) {
+  return axios.get(
+    "https://app.rakuten.co.jp/services/api/IchibaItem/Search/20170706",
+    {
+      params: {
+        applicationId: gon.rakuten_api_application_id,
+        keyword: "結婚",
+        genreId: genreId,
+        minPrice: 1000,
+        maxPrice: 150000,
+        sort: sort || "standard",
+        giftFlag: 1,
+        imageFlag: 1,
+        page: changePage || 1,
+      },
+    }
+  );
+}
+
+// stateをnullにする
+function resetState() {
+  state.keyword = ""
 }
 
 const actions = {
@@ -124,6 +150,16 @@ const actions = {
       state.minPrice,
       state.maxPrice,
       state.sort,
+      state.page,
+    ).then((res) => {
+      commit("search", res.data);
+    });
+  },
+
+  genreSearch({ commit, state }) {
+    resetState();
+    genreSearchItem(
+      state.genreId,
       state.page
     ).then((res) => {
       commit("search", res.data);
