@@ -8,7 +8,7 @@
           placeholder="キーワードを入力する"
           @change="changeKeyword($event.target.value)"
         />
-        <select
+        <!-- <select
           class="select_box"
           v-model="genreId_selected"
           @change="changeGenreId($event.target.value)"
@@ -21,7 +21,7 @@
           >
             {{ genreId.name }}
           </option>
-        </select>
+        </select> -->
         <input
           class="text"
           type="text"
@@ -43,6 +43,7 @@
             show = !show;
           "
         />
+        <b-button @click="clear">クリア</b-button>
       </b-field>
     <!-- 並び替え ここから -->
       <b-field>
@@ -84,18 +85,18 @@ export default {
       show: true,
       relationship_genre_show: true,
       // フォーム部分(プルダウン)のジャンル検索用
-      genreIds: [
-        { genreId: 100433, name: "ルームウェア" },
-        { genreId: 562637, name: "家電" },
-        { genreId: 510915, name: "洋酒" },
-        { genreId: 100804, name: "インテリア" },
-        { genreId: 215783, name: "日用品雑貨" },
-        { genreId: 558944, name: "キッチン用品・食器" },
-        { genreId: 100005, name: "花" },
-        { genreId: 566732, name: "カタログ" },
-        { genreId: 553283, name: "ギフト券・商品券" },
-      ],
-      genreId_selected: "",
+      // genreIds: [
+      //   { genreId: 100433, name: "ルームウェア" },
+      //   { genreId: 562637, name: "家電" },
+      //   { genreId: 510915, name: "洋酒" },
+      //   { genreId: 100804, name: "インテリア" },
+      //   { genreId: 215783, name: "日用品雑貨" },
+      //   { genreId: 558944, name: "キッチン用品・食器" },
+      //   { genreId: 100005, name: "花" },
+      //   { genreId: 566732, name: "カタログ" },
+      //   { genreId: 553283, name: "ギフト券・商品券" },
+      // ],
+      // genreId_selected: "",
       // フォーム部分(プルダウン)の並び替え用
       sorts: [
         { sort: "standard", name: "標準" },
@@ -118,6 +119,7 @@ export default {
       "changeSort",
       "changePage",
       "search",
+      "clear",
     ]),
     //再検索とソート変更の時は毎回1ページ目を表示させる
     setPage(page) {

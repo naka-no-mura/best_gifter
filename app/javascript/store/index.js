@@ -32,6 +32,8 @@ const state = {
 const getters = {
   keyword: (state) => state.keyword,
   genreId: (state) => state.genreId,
+  minPrice: (state) => state.minPrice,
+  maxPrice: (state) => state.maxPrice,
   items: (state) => state.items,
   count: (state) => state.count,
   first: (state) => state.first,
@@ -94,7 +96,7 @@ function searchItem(keyword, genreId, minPrice, maxPrice, sort, changePage) {
 }
 
 // サイドバーからジャンル検索するとき用
-function genreSearchItem(genreId, changePage, sort) {
+function genreSearchItem(genreId, minPrice, maxPrice, changePage, sort) {
   return axios.get(
     "https://app.rakuten.co.jp/services/api/IchibaItem/Search/20170706",
     {
@@ -102,8 +104,8 @@ function genreSearchItem(genreId, changePage, sort) {
         applicationId: gon.rakuten_api_application_id,
         keyword: "結婚",
         genreId: genreId,
-        minPrice: 1000,
-        maxPrice: 150000,
+        minPrice: minPrice || 1000,
+        maxPrice: maxPrice || 150000,
         sort: sort || "standard",
         giftFlag: 1,
         imageFlag: 1,
@@ -115,7 +117,7 @@ function genreSearchItem(genreId, changePage, sort) {
 
 // stateをnullにする
 function resetState() {
-  state.keyword = ""
+  state.keyword= ""
 }
 
 const actions = {
@@ -160,11 +162,16 @@ const actions = {
     resetState();
     genreSearchItem(
       state.genreId,
-      state.page
+      state.minPrice,
+      state.maxPrice,
+      state.page,
     ).then((res) => {
       commit("search", res.data);
     });
   },
+  clear() {
+    resetState();
+  }
 };
 
 export default new Vuex.Store({
