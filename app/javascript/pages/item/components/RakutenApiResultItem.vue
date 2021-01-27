@@ -8,7 +8,7 @@
           </figure>
         </div>
         <div class="content">
-          <p>{{ sliceItemName() }}</p>
+          <p>{{ sliceItemName(item.Item.itemName) }}</p>
           <div class="columns">
             <star-rating
               v-model="item.Item.reviewAverage"
@@ -33,17 +33,12 @@ export default {
     item: Object,
     required: true,
   },
-  data() {
-    return {
-      itemName: item.Item.itemName,
-    };
-  },
-  computed: {
-    sliceItemName() {
-      if (this.item.Item.itemName.length > 27) {
-        return this.itemName.slice(0, 27) + "...";
+  methods: {
+    sliceItemName(itemName) {
+      if (itemName.length > 40) {
+        return itemName.slice(0, 40) + "...";
       } else {
-        return this.itemName;
+        return itemName;
       }
     },
   },

@@ -12,21 +12,14 @@
 
 <script>
 import RakutenApiResultItem from "./RakutenApiResultItem";
-import { mapGetters, mapActions } from "vuex";
-import { changePage } from "../../../store/mutation-types";
+import { mapGetters } from "vuex";
 export default {
   name: "RakutenApiResultList",
   components: {
     RakutenApiResultItem,
   },
-  data() {
-    return {};
-  },
   computed: {
     ...mapGetters(["items", "currentPage", "pageCount", "reviewCount", "reviewAverage"]),
-  },
-  methods: {
-    ...mapActions(["changePage", "search"]),
   },
 };
 </script>
