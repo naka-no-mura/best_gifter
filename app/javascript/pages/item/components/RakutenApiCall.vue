@@ -5,6 +5,7 @@
         <input
           class="text"
           type="text"
+          v-model="keywordBox"
           placeholder="キーワードを入力する"
           @change="changeKeyword($event.target.value)"
         />
@@ -25,12 +26,14 @@
         <input
           class="text"
           type="text"
+          v-model="minPriceBox"
           placeholder="最小価格を入力する"
           @change="changeMinPrice($event.target.value)"
         />
         <input
           class="text"
           type="text"
+          v-model="maxPriceBox"
           placeholder="最大価格を入力する"
           @change="changeMaxPrice($event.target.value)"
         />
@@ -40,12 +43,13 @@
           value="検索"
           @click="
             setPage(1);
-            show = !show;
           "
         />
-        <b-button @click="clear">クリア</b-button>
+        <b-button @click="formClear()">クリア</b-button>
       </b-field>
     <!-- 並び替え ここから -->
+
+        <b-button @click="Clear()">リセット</b-button>
       <b-field>
         <select
           class="select_box"
@@ -82,6 +86,9 @@ export default {
   },
   data() {
     return {
+      keywordBox: '',
+      minPriceBox: '',
+      maxPriceBox: '',
       show: true,
       relationship_genre_show: true,
       // フォーム部分(プルダウン)のジャンル検索用
@@ -126,6 +133,11 @@ export default {
       var vm = this;
       vm.search(vm.changePage(page));
     },
+    formClear() {
+      this.keywordBox = "";
+      this.minPriceBox = "";
+      this.maxPriceBox = "";
+    }
   },
 };
 </script>
