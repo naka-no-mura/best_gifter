@@ -27,6 +27,7 @@ const state = {
   pageCount: "",
   reviewCount: "",
   reviewAverage: "",
+  hits: "",
 };
 
 const getters = {
@@ -42,6 +43,7 @@ const getters = {
   pageCount: (state) => state.pageCount,
   reviewCount: (state) => state.reviewCount,
   reviewAverage: (state) => state.reviewAverage,
+  hits: (state) => state.hits,
 };
 
 const mutations = {
@@ -72,6 +74,7 @@ const mutations = {
     state.pageCount = data.pageCount;
     state.reviewCount = data.reviewCount;
     state.reviewAverage = data.reviewAverage;
+    state.hits = data.hits;
   },
 };
 
@@ -165,7 +168,8 @@ const actions = {
       state.page,
     ).then((res) => {
       commit("search", res.data);
-    });
+    })
+    .catch(err => console.log(err.response));
   },
 
   // サイドバーのジャンル検索用

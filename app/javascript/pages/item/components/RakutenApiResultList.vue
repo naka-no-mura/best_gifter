@@ -7,6 +7,14 @@
         </div>
       </template>
     </div>
+    <div v-if="hits === 0">
+      <section>
+        <div class="block">
+          ご指定の検索条件に該当する商品はみつかりませんでした
+        </div>
+        <img src="../../../../assets/images/empty.jpg" />
+      </section>
+    </div>
   </div>
 </template>
 
@@ -19,7 +27,14 @@ export default {
     RakutenApiResultItem,
   },
   computed: {
-    ...mapGetters(["items", "currentPage", "pageCount", "reviewCount", "reviewAverage"]),
+    ...mapGetters([
+      "items",
+      "currentPage",
+      "pageCount",
+      "reviewCount",
+      "reviewAverage",
+      "hits",
+    ]),
   },
 };
 </script>
