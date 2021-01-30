@@ -1,73 +1,84 @@
 <template>
-    <!-- 検索フォーム ここから -->
-    <div>
-      <b-field>
-        <input
-          class="text"
-          type="text"
-          v-model="keywordBox"
-          placeholder="キーワードを入力する"
-          @input="changeKeyword($event.target.value)"
-        />
-        <!-- <select
-          class="select_box"
-          v-model="genreId_selected"
-          @change="changeGenreId($event.target.value)"
-        >
-          <option disabled value="">ジャンルで選ぶ</option>
-          <option
-            v-for="genreId in genreIds"
-            :value="genreId.genreId"
-            :key="genreId.id"
-          >
-            {{ genreId.name }}
-          </option>
-        </select> -->
-        <input
-          class="text"
-          type="number"
-          v-model="minPriceBox"
-          placeholder="最小価格を入力する"
-          @input="changeMinPrice($event.target.value)"
-        />
-        <input
-          class="text"
-          type="number > 0"
-          v-model="maxPriceBox"
-          placeholder="最大価格を入力する"
-          @input="changeMaxPrice($event.target.value)"
-        />
-        <input
-          class="submit button"
-          type="submit"
-          value="検索"
-          @click="
-            setPage(1);
-          "
-        />
-        <!-- フォーム内クリア -->
-        <b-button @click="formClear()">クリア</b-button>
+  <!-- 検索フォーム ここから -->
+  <div class="section">
+    <ValidationProvider rules="minKeyword:1" v-slot="{ errors }">
+      <b-field class="b-field">
+        <span>キーワードで絞る　：</span>
+        <div>
+          <input
+            class="input"
+            type="text"
+            v-model="keywordBox"
+            name="キーワード"
+            placeholder="複数入力可能（任意）"
+            @input="changeKeyword($event.target.value)"
+          />
+        </div>
+        <span class="flash-message">{{ errors[0] }}</span>
       </b-field>
+    </ValidationProvider>
+    <ValidationProvider rules="min:0" v-slot="{ errors }">
+      <b-field class="b-field">
+        <span>価格下限を設定する：</span>
+        <div>
+          <input
+            class="input"
+            type="number"
+            v-model="minPriceBox"
+            name="価格下限"
+            placeholder="0以上の数値（任意）"
+            @input="changeMinPrice($event.target.value)"
+          />
+        </div>
+        <span class="flash-message">{{ errors[0] }}</span>
+      </b-field>
+    </ValidationProvider>
+    <ValidationProvider rules="min:0" v-slot="{ errors }">
+      <b-field class="b-field">
+        <span>価格上限を設定する：</span>
+        <div>
+          <input
+            class="input"
+            type="number"
+            v-model="maxPriceBox"
+            name="価格上限"
+            placeholder="0以上の数値（任意）"
+            @input="changeMaxPrice($event.target.value)"
+          />
+        </div>
+        <span class="flash-message">{{ errors[0] }}</span>
+      </b-field>
+    </ValidationProvider>
+    <b-field>
+      <div>
+        <button class="button is-warning" @click="setPage(1)">検索</button>
+      </div>
+      <!-- フォーム内クリア -->
+      <button @click="formClear()" class="button is-warning is-light">
+        クリア
+      </button>
+    </b-field>
     <!-- 並び替え ここから -->
-      <b-field>
-        <select
-          class="select_box"
-          v-model="sort_selected.sort"
-          @change="
-            changeSort($event.target.value);
-            setPage(1);
-          "
-        >
-          <option v-for="sort in sorts" :value="sort.sort" :key="sort.id">
-            {{ sort.name }}
-          </option>
-        </select>
-      </b-field>
+    <b-field>
+      <select
+        class="select"
+        v-model="sort_selected.sort"
+        v-if="count"
+        @change="
+          changeSort($event.target.value);
+          setPage(1);
+        "
+      >
+        <option v-for="sort in sorts" :value="sort.sort" :key="sort.id">
+          {{ sort.name }}
+        </option>
+      </select>
+    </b-field>
     <!-- 検索フォーム ここまで -->
   </div>
 </template>
 <script>
-import { mapActions } from "vuex";
+import { mapActions, mapGetters } from "vuex";
 import {
   changeKeyword,
   changeGenreId,
@@ -85,24 +96,11 @@ export default {
   },
   data() {
     return {
-      keywordBox: '',
-      minPriceBox: '',
-      maxPriceBox: '',
+      keywordBox: "",
+      minPriceBox: "",
+      maxPriceBox: "",
       show: true,
       relationship_genre_show: true,
-      // フォーム部分(プルダウン)のジャンル検索用
-      // genreIds: [
-      //   { genreId: 100433, name: "ルームウェア" },
-      //   { genreId: 562637, name: "家電" },
-      //   { genreId: 510915, name: "洋酒" },
-      //   { genreId: 100804, name: "インテリア" },
-      //   { genreId: 215783, name: "日用品雑貨" },
-      //   { genreId: 558944, name: "キッチン用品・食器" },
-      //   { genreId: 100005, name: "花" },
-      //   { genreId: 566732, name: "カタログ" },
-      //   { genreId: 553283, name: "ギフト券・商品券" },
-      // ],
-      // genreId_selected: "",
       // フォーム部分(プルダウン)の並び替え用
       sorts: [
         { sort: "standard", name: "標準" },
@@ -115,11 +113,13 @@ export default {
       sort_selected: { sort: "standard", name: "標準" },
     };
   },
+  computed: {
+    ...mapGetters(["count"]),
+  },
 
   methods: {
     ...mapActions([
       "changeKeyword",
-      "changeGenreId",
       "changeMinPrice",
       "changeMaxPrice",
       "changeSort",
@@ -135,12 +135,20 @@ export default {
       this.keywordBox = "";
       this.minPriceBox = "";
       this.maxPriceBox = "";
-    }
+    },
   },
 };
 </script>
 <style scoped>
-.select_box {
-  width: 10rem;
+.b-field {
+  margin: 0.5rem;
+}
+.flash-message {
+  color: red;
+  margin: 0.5rem;
+}
+.button {
+  margin: 0.5rem;
+  width: 15rem;
 }
 </style>

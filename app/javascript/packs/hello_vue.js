@@ -18,6 +18,7 @@ import store from '../store/index'
 import VuePaginate from "vue-paginate";
 import StarRating from "vue-star-rating";
 import VueLoading from "vue-loading-template";
+import "../plugins/veevalidate";
 
 Vue.prototype.$axios = axios
 Vue.use(Buefy);

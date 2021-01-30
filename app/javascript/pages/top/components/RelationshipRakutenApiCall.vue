@@ -214,7 +214,7 @@ export default {
           image: require("../../../../assets/images/catalog.jpg"),
         },
         {
-          name: "商品券",
+          name: "ギフト券・商品券",
           genreId: 553283,
           image: require("../../../../assets/images/gift_certificate.jpg"),
         },
@@ -252,7 +252,7 @@ export default {
           image: require("../../../../assets/images/catalog.jpg"),
         },
         {
-          name: "商品券",
+          name: "ギフト券・商品券",
           genreId: 553283,
           image: require("../../../../assets/images/gift_certificate.jpg"),
         },
@@ -275,7 +275,7 @@ export default {
           image: require("../../../../assets/images/catalog.jpg"),
         },
         {
-          name: "商品券",
+          name: "ギフト券・商品券",
           genreId: 553283,
           image: require("../../../../assets/images/gift_certificate.jpg"),
         },
@@ -298,7 +298,7 @@ export default {
           image: require("../../../../assets/images/catalog.jpg"),
         },
         {
-          name: "商品券",
+          name: "ギフト券・商品券",
           genreId: 553283,
           image: require("../../../../assets/images/gift_certificate.jpg"),
         },

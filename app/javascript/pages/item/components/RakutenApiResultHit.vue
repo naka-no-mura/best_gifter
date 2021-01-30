@@ -7,6 +7,7 @@
     </div>
     <div class="block">
       <b-taglist>
+        検索条件：
         <b-tag type="is-warning" rounded v-if="keyword">{{ keyword }}</b-tag>
         <b-tag type="is-warning" rounded v-if="genreId">{{
           genreIdToName(genreId)
@@ -23,7 +24,6 @@
           v-if="!(keyword || maxPrice || minPrice || maxPrice || genreId)"
           >結婚（デフォルト検索）</b-tag
         >
-        の検索結果
         <b-button
           type="is-text"
           v-if="keyword || maxPrice || minPrice || maxPrice || genreId"
@@ -71,6 +71,8 @@ export default {
         return "カタログ";
       } else if (genreId === 553283) {
         return "ギフト券・商品券";
+      } else if (genreId === 558944) {
+        return "キッチン用品・食器";
       }
     },
   },
