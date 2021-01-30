@@ -7,12 +7,7 @@
     <div class="message-body">
       {{ errorMessage(error) }}
       <div>
-        <b-button
-          type="is-text"
-          @click="
-            reset();
-            serach();
-          "
+        <b-button type="is-text" @click="reset()"
           >検索条件をリセットする</b-button
         >
       </div>

@@ -194,9 +194,14 @@ const actions = {
       state.maxPrice,
       state.page,
       state.sort
-    ).then((res) => {
-      commit("search", res.data);
-    });
+    )
+      .then((res) => {
+        commit("search", res.data);
+      })
+      .catch((error) => {
+        console.log(error.response.data);
+        commit("search", error.response.data);
+      });
   },
 
   // 検索条件をリセットしてジェンルで検索する用
@@ -209,9 +214,14 @@ const actions = {
       state.maxPrice,
       state.sort,
       state.page
-    ).then((res) => {
-      commit("search", res.data);
-    });
+    )
+      .then((res) => {
+        commit("search", res.data);
+      })
+      .catch((error) => {
+        console.log(error.response.data);
+        commit("search", error.response.data);
+      });
   },
 };
 
