@@ -28,6 +28,7 @@ const state = {
   reviewCount: "",
   reviewAverage: "",
   hits: "",
+  error: "",
 };
 
 const getters = {
@@ -44,6 +45,7 @@ const getters = {
   reviewCount: (state) => state.reviewCount,
   reviewAverage: (state) => state.reviewAverage,
   hits: (state) => state.hits,
+  error: (state) => state.error,
 };
 
 const mutations = {
@@ -75,6 +77,7 @@ const mutations = {
     state.reviewCount = data.reviewCount;
     state.reviewAverage = data.reviewAverage;
     state.hits = data.hits;
+    state.error = data.error_description;
   },
 };
 
@@ -120,16 +123,17 @@ function genreSearchItem(genreId, minPrice, maxPrice, changePage, sort) {
 
 // 別ジャンルで検索する時はキーワードをnullにする
 function resetKeywordState() {
-  state.keyword= ""
+  state.keyword = "";
 }
 
 // 検索条件をリセットする
 function resetAllState() {
-  state.keyword= ""
-  state.genreId= ""
-  state.minPrice= ""
-  state.maxPrice= ""
-  state.sort= ""
+  state.keyword = "";
+  state.genreId = "";
+  state.minPrice = "";
+  state.maxPrice = "";
+  state.sort = "";
+  state.page = "";
 }
 
 const actions = {
@@ -165,11 +169,20 @@ const actions = {
       state.minPrice,
       state.maxPrice,
       state.sort,
-      state.page,
-    ).then((res) => {
-      commit("search", res.data);
-    })
-    .catch(err => console.log(err.response));
+      state.page
+    )
+      .then((res) => {
+        commit("search", res.data);
+      })
+      .catch((error) => {
+        // これでcatchしたerrorがどんな情報が入っているか調べる
+        // for (let key of Object.keys(error)) {
+        //   console.log(key);
+        //   console.log(error[key]);
+        // },
+        console.log(error.response.data);
+        commit("search", error.response.data);
+      });
   },
 
   // サイドバーのジャンル検索用
@@ -180,7 +193,7 @@ const actions = {
       state.minPrice,
       state.maxPrice,
       state.page,
-      state.sort,
+      state.sort
     ).then((res) => {
       commit("search", res.data);
     });
@@ -195,14 +208,11 @@ const actions = {
       state.minPrice,
       state.maxPrice,
       state.sort,
-      state.page,
+      state.page
     ).then((res) => {
       commit("search", res.data);
     });
   },
-  clear() {
-    resetAllState();
-  }
 };
 
 export default new Vuex.Store({

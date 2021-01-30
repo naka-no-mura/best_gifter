@@ -5,6 +5,7 @@
     </div>
     <div class="column">
     <RakutenApiCall v-show="!loading"></RakutenApiCall>
+    <RakutenApiError v-show="!loading"></RakutenApiError>
     <RakutenApiResultHit v-show="!loading"></RakutenApiResultHit>
     <Loading v-show="loading"></Loading>
     <RakutenApiPagenation v-show="!loading"></RakutenApiPagenation>
@@ -18,6 +19,7 @@
 import RakutenApiSideMenu from "./components/RakutenApiSideMenu.vue";
 import RakutenApiCall from "./components/RakutenApiCall.vue";
 import RakutenApiResultList from "./components/RakutenApiResultList.vue";
+import RakutenApiError from "./components/RakutenApiError.vue";
 import RakutenApiResultHit from "./components/RakutenApiResultHit.vue";
 import RakutenApiPagenation from "./components/RakutenApiPagenation.vue";
 import Loading from "./components/Loading.vue";
@@ -28,6 +30,7 @@ export default {
     RakutenApiSideMenu,
     RakutenApiCall,
     RakutenApiResultList,
+    RakutenApiError,
     RakutenApiResultHit,
     RakutenApiPagenation,
     Loading

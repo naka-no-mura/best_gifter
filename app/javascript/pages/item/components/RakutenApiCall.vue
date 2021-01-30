@@ -7,7 +7,7 @@
           type="text"
           v-model="keywordBox"
           placeholder="キーワードを入力する"
-          @change="changeKeyword($event.target.value)"
+          @input="changeKeyword($event.target.value)"
         />
         <!-- <select
           class="select_box"
@@ -25,17 +25,17 @@
         </select> -->
         <input
           class="text"
-          type="text"
+          type="number"
           v-model="minPriceBox"
           placeholder="最小価格を入力する"
-          @change="changeMinPrice($event.target.value)"
+          @input="changeMinPrice($event.target.value)"
         />
         <input
           class="text"
-          type="text"
+          type="number > 0"
           v-model="maxPriceBox"
           placeholder="最大価格を入力する"
-          @change="changeMaxPrice($event.target.value)"
+          @input="changeMaxPrice($event.target.value)"
         />
         <input
           class="submit button"
@@ -45,6 +45,7 @@
             setPage(1);
           "
         />
+        <!-- フォーム内クリア -->
         <b-button @click="formClear()">クリア</b-button>
       </b-field>
     <!-- 並び替え ここから -->

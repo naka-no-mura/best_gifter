@@ -15,7 +15,7 @@
           type="is-warning"
           rounded
           v-if="!(keyword || maxPrice || minPrice || maxPrice || genreId)"
-          >結婚</b-tag
+          >結婚（デフォルト検索）</b-tag
         >
         の検索結果
         <b-button
