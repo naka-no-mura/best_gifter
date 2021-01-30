@@ -1,10 +1,16 @@
 <template>
   <div v-if="count">
-    <div>{{ first.toLocaleString() }}〜{{ last.toLocaleString() }}件（{{ count.toLocaleString() }}件）</div>
+    <div>
+      {{ first.toLocaleString() }}〜{{ last.toLocaleString() }}件（{{
+        count.toLocaleString()
+      }}件）
+    </div>
     <div class="block">
       <b-taglist>
         <b-tag type="is-warning" rounded v-if="keyword">{{ keyword }}</b-tag>
-        <b-tag type="is-warning" rounded v-if="genreId">{{ genreId }}</b-tag>
+        <b-tag type="is-warning" rounded v-if="genreId">{{
+          genreIdToName(genreId)
+        }}</b-tag>
         <b-tag type="is-warning" rounded v-if="minPrice"
           >{{ minPrice.toLocaleString() }}円〜</b-tag
         >
@@ -48,6 +54,25 @@ export default {
   },
   methods: {
     ...mapActions(["resetSearch"]),
+    genreIdToName(genreId) {
+      if (genreId === 100433) {
+        return "ルームウェア";
+      } else if (genreId === 562637) {
+        return "家電";
+      } else if (genreId === 510915) {
+        return "洋酒";
+      } else if (genreId === 100804) {
+        return "インテリア";
+      } else if (genreId === 215783) {
+        return "日用品雑貨";
+      } else if (genreId === 100005) {
+        return "花";
+      } else if (genreId === 566732) {
+        return "カタログ";
+      } else if (genreId === 553283) {
+        return "ギフト券・商品券";
+      }
+    },
   },
 };
 </script>
