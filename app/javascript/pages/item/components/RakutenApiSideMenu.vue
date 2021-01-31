@@ -233,7 +233,7 @@ export default {
   },
 
   methods: {
-    ...mapActions([
+    ...mapActions("rakuten_api", [
       "changeKeyword",
       "changeGenreId",
       "changeMinPrice",

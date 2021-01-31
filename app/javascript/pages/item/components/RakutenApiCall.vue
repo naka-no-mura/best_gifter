@@ -112,11 +112,11 @@ export default {
     };
   },
   computed: {
-    ...mapGetters(["count"]),
+    ...mapGetters("rakuten_api", ["count"]),
   },
 
   methods: {
-    ...mapActions([
+    ...mapActions("rakuten_api", [
       "changeKeyword",
       "changeMinPrice",
       "changeMaxPrice",

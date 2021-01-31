@@ -52,7 +52,7 @@ export default {
     };
   },
   computed: {
-    ...mapGetters(["currentPage", "pageCount", "count"]),
+    ...mapGetters("rakuten_api", ["currentPage", "pageCount", "count"]),
     //ページ番号を計算する
     numFix() {
       var vm = this;
@@ -88,7 +88,7 @@ export default {
     vm.$set(vm, "currentPageEdited", vm.currentPage);
   },
   methods: {
-    ...mapActions(["changePage", "search"]),
+    ...mapActions("rakuten_api", ["changePage", "search"]),
     //何ページ目を表示するか
     setPage(page) {
       var vm = this;

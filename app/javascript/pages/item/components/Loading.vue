@@ -22,7 +22,7 @@ export default {
     VueLoading,
   },
   computed: {
-    ...mapGetters(["count"]),
+    ...mapGetters("rakuten_api", ["count"]),
   },
 };
 </script>

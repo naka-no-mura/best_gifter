@@ -41,7 +41,7 @@ import { mapGetters, mapActions } from "vuex";
 export default {
   name: "RakutenApiResultHit",
   computed: {
-    ...mapGetters([
+    ...mapGetters("rakuten_api", [
       "keyword",
       "genreId",
       "count",
@@ -53,7 +53,7 @@ export default {
     ]),
   },
   methods: {
-    ...mapActions(["resetSearch"]),
+    ...mapActions("rakuten_api", ["resetSearch"]),
     genreIdToName(genreId) {
       if (genreId === 100433) {
         return "ルームウェア";

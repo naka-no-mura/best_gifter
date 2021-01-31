@@ -27,7 +27,7 @@ export default {
     RakutenApiResultItem,
   },
   computed: {
-    ...mapGetters([
+    ...mapGetters("rakuten_api", [
       "items",
       "currentPage",
       "pageCount",

@@ -21,7 +21,7 @@ import { mapGetters } from "vuex";
 export default {
   name: "RakutenApiError",
   computed: {
-    ...mapGetters(["error"]),
+    ...mapGetters("rakuten_api", ["error"]),
   },
   methods: {
     reset() {

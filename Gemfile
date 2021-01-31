@@ -90,3 +90,6 @@ gem 'httpclient'
 
 # Railsで設定した環境変数をVueで使えるように
 gem 'gon'
+
+# Twitter
+gem 'twitter'
