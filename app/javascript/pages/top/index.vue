@@ -5,7 +5,7 @@
     <div class="mt-4">
       新郎新婦へ、最高のギフトを贈りたい。
     </div>
-    <RakutenApiCallTopVer></RakutenApiCallTopVer>
+        <RakutenApiCallTopVer></RakutenApiCallTopVer>
     <RelationshipRakutenApiCall></RelationshipRakutenApiCall>
   </div>
 </template>

@@ -2,7 +2,7 @@
   <div>
     <div class="columns is-multiline">
       <template v-for="item in items">
-        <div class="column is-3">
+        <div class="column is-2">
           <RakutenApiResultItem :key="item.id" :item="item" />
         </div>
       </template>

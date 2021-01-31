@@ -1,86 +1,73 @@
 <template>
-  <div class="sidebar-page">
-    <section class="sidebar-layout">
-      <b-sidebar
-        position="static"
-        :mobile="mobile"
-        :expand-on-hover="expandOnHover"
-        :reduce="reduce"
-        type="is-white"
-        open
-      >
-        <div class="p-1">
-          <b-menu class="is-custom-mobile">
-            <b-menu-list label="間柄別ジャンルで選ぶ">
-            <!-- ご親族 -->
-            <b-menu-list>
-              <b-menu-item label="ご親族">
-                <b-menu-item
-                  v-for="relative_search_card in relative_search_cards"
-                  :key="relative_search_card.id"
-                  @click="
-                    changeGenreId(relative_search_card.genreId);
-                    setPage(1);
-                  "
-                  :label="relative_search_card.name"
-                  :value="relative_search_card.genreId"
-                >
-                </b-menu-item>
-              </b-menu-item>
-            </b-menu-list>
-            <!-- ご友人 -->
-            <b-menu-list>
-              <b-menu-item label="ご友人">
-                <b-menu-item
-                  v-for="friend_search_card in friend_search_cards"
-                  :key="friend_search_card.id"
-                  @click="
-                    changeGenreId(friend_search_card.genreId);
-                    setPage(1);
-                  "
-                  :label="friend_search_card.name"
-                  :value="friend_search_card.genreId"
-                >
-                </b-menu-item>
-              </b-menu-item>
-            </b-menu-list>
-            <!-- 職場の同僚 -->
-            <b-menu-list>
-              <b-menu-item label="職場の同僚">
-                <b-menu-item
-                  v-for="colleague_search_card in colleague_search_cards"
-                  :key="colleague_search_card.id"
-                  @click="
-                    changeGenreId(colleague_search_card.genreId);
-                    setPage(1);
-                  "
-                  :label="colleague_search_card.name"
-                  :value="colleague_search_card.genreId"
-                >
-                </b-menu-item>
-              </b-menu-item>
-            </b-menu-list>
-            <!-- 職場の上司 -->
-            <b-menu-list>
-              <b-menu-item label="職場の上司">
-                <b-menu-item
-                  v-for="boss_search_card in boss_search_cards"
-                  :key="boss_search_card.id"
-                  @click="
-                    changeGenreId(boss_search_card.genreId);
-                    setPage(1);
-                  "
-                  :label="boss_search_card.name"
-                  :value="boss_search_card.genreId"
-                >
-                </b-menu-item>
-              </b-menu-item>
-            </b-menu-list>
-            </b-menu-list>
-          </b-menu>
-        </div>
-      </b-sidebar>
-    </section>
+  <div class="p-1">
+    <b-menu class="is-custom-mobile">
+      <b-menu-list label="間柄別ジャンルで選ぶ">
+        <!-- ご親族 -->
+        <b-menu-list>
+          <b-menu-item label="ご親族">
+            <b-menu-item
+              v-for="relative_search_card in relative_search_cards"
+              :key="relative_search_card.id"
+              @click="
+                changeGenreId(relative_search_card.genreId);
+                setPage(1);
+              "
+              :label="relative_search_card.name"
+              :value="relative_search_card.genreId"
+            >
+            </b-menu-item>
+          </b-menu-item>
+        </b-menu-list>
+        <!-- ご友人 -->
+        <b-menu-list>
+          <b-menu-item label="ご友人">
+            <b-menu-item
+              v-for="friend_search_card in friend_search_cards"
+              :key="friend_search_card.id"
+              @click="
+                changeGenreId(friend_search_card.genreId);
+                setPage(1);
+              "
+              :label="friend_search_card.name"
+              :value="friend_search_card.genreId"
+            >
+            </b-menu-item>
+          </b-menu-item>
+        </b-menu-list>
+        <!-- 職場の同僚 -->
+        <b-menu-list>
+          <b-menu-item label="職場の同僚">
+            <b-menu-item
+              v-for="colleague_search_card in colleague_search_cards"
+              :key="colleague_search_card.id"
+              @click="
+                changeGenreId(colleague_search_card.genreId);
+                setPage(1);
+              "
+              :label="colleague_search_card.name"
+              :value="colleague_search_card.genreId"
+            >
+            </b-menu-item>
+          </b-menu-item>
+        </b-menu-list>
+        <!-- 職場の上司 -->
+        <b-menu-list>
+          <b-menu-item label="職場の上司">
+            <b-menu-item
+              v-for="boss_search_card in boss_search_cards"
+              :key="boss_search_card.id"
+              @click="
+                changeGenreId(boss_search_card.genreId);
+                setPage(1);
+              "
+              :label="boss_search_card.name"
+              :value="boss_search_card.genreId"
+            >
+            </b-menu-item>
+          </b-menu-item>
+        </b-menu-list>
+      </b-menu-list>
+    </b-menu>
   </div>
 </template>
 <script>
@@ -265,4 +252,8 @@ export default {
   },
 };
 </script>
-<style lang="scss"></style>
+<style lang="scss">
+.p-1 {
+  padding: 1em;
+}
+</style>

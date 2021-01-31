@@ -99,8 +99,6 @@ export default {
       keywordBox: "",
       minPriceBox: "",
       maxPriceBox: "",
-      show: true,
-      relationship_genre_show: true,
       // フォーム部分(プルダウン)の並び替え用
       sorts: [
         { sort: "standard", name: "標準" },

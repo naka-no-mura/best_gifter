@@ -108,4 +108,6 @@ export default {
 };
 </script>
 
-<style scope></style>
+<style scope>
+
+</style>

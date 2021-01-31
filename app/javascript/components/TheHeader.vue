@@ -8,12 +8,12 @@
     <template #end>
       <b-navbar-item tag="div">
         <div class="buttons">
-          <a class="button is-primary" href="#">検索</a>
-          <a class="button is-primary" href="#">相場とおすすめ</a>
-          <a class="button is-primary" href="#">新規登録</a>
-          <a class="button is-primary" href="#">ログイン</a>
-          <a class="button is-primary">
-          <b-icon icon="account" size="is-medium"></b-icon>
+          <a class="button is-warning" href="#">検索</a>
+          <a class="button is-warning" href="#">相場とおすすめ</a>
+          <a class="button is-warning" href="#">新規登録</a>
+          <a class="button is-warning" href="#">ログイン</a>
+          <a class="button is-warning">
+          <b-icon icon="account-outline" size="is-medium"></b-icon>
           </a>
         </div>
       </b-navbar-item>
