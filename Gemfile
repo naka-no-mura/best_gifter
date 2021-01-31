@@ -75,3 +75,21 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 # slim
 gem 'slim-rails'
 gem 'html2slim'
+
+# 楽天商品検索API
+gem 'rakuten_web_service'
+
+# 環境変数
+gem 'dotenv-rails'
+
+# Webpackerとrailsの起動
+gem 'foreman'
+
+# 外部APIを叩く
+gem 'httpclient'
+
+# Railsで設定した環境変数をVueで使えるように
+gem 'gon'
+
+# Twitter
+gem 'twitter'

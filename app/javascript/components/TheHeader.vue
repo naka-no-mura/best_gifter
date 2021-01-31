@@ -1,26 +1,24 @@
 <template>
-  <header class="mb-auto">
-    <nav class="navbar fixed-top navbar-expand navbar-light bg-light justify-content-between">
-      <img v-bind:src="logo_img" width="8%" alt = "ロゴ" />
-    <ul class="navbar-nav">
-      <li class="nav-item active">
-        <a class="nav-link" href="#">検索</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">相場とおすすめ</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">新規登録</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">ログイン</a>
-      </li>
-      <li class="nav-item">
-        <img v-bind:src="icon_img" width="" alt = "アイコン" width="200%" />
-      </li>
-    </ul>
-    </nav>
-  </header>
+  <b-navbar>
+    <template #brand>
+      <b-navbar-item>
+        <img :src="logo_img" alt = "ロゴ" />
+      </b-navbar-item>
+    </template>
+    <template #end>
+      <b-navbar-item tag="div">
+        <div class="buttons">
+          <a class="button is-warning" href="#">検索</a>
+          <a class="button is-warning" href="#">相場とおすすめ</a>
+          <a class="button is-warning" href="#">新規登録</a>
+          <a class="button is-warning" href="#">ログイン</a>
+          <a class="button is-warning">
+          <b-icon icon="account-outline" size="is-medium"></b-icon>
+          </a>
+        </div>
+      </b-navbar-item>
+    </template>
+  </b-navbar>
 </template>
 
 <script>

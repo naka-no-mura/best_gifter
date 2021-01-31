@@ -1,8 +1,8 @@
 <template>
-  <div class="d-flex flex-column min-vh-100">
-    <TheHeader class="mb-auto" />
+  <div>
+    <TheHeader />
     <router-view />
-    <TheFooter class="mt-auto" />
+    <TheFooter />
   </div>
 </template>
 

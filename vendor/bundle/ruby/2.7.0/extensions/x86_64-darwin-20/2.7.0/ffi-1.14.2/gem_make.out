@@ -1,5 +1,5 @@
 current directory: /Users/nakamura/workspace/best_gifter/vendor/bundle/ruby/2.7.0/gems/ffi-1.14.2/ext/ffi_c
-/Users/nakamura/.rbenv/versions/2.7.2/bin/ruby -I /Users/nakamura/.rbenv/versions/2.7.2/lib/ruby/2.7.0 -r ./siteconf20210101-27388-1lrvkc5.rb extconf.rb
+/Users/nakamura/.rbenv/versions/2.7.2/bin/ruby -I /Users/nakamura/.rbenv/versions/2.7.2/lib/ruby/2.7.0 -r ./siteconf20210103-14149-1xuub1l.rb extconf.rb
 checking for ffi_prep_closure_loc() in -lffi... yes
 checking for ffi_prep_cif_var()... yes
 checking for ffi_raw_call()... yes
@@ -39,4 +39,4 @@ linking shared-object ffi_c.bundle
 
 current directory: /Users/nakamura/workspace/best_gifter/vendor/bundle/ruby/2.7.0/gems/ffi-1.14.2/ext/ffi_c
 make "DESTDIR=" install
-/usr/bin/install -c -m 0755 ffi_c.bundle ./.gem.20210101-27388-1pkvuk9
+/usr/bin/install -c -m 0755 ffi_c.bundle ./.gem.20210103-14149-e3kxo4

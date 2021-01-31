@@ -7,12 +7,34 @@
 
 import Vue from 'vue'
 import App from '../app.vue'
+import Buefy from 'buefy'
+import 'buefy/dist/buefy.css'
+import "@mdi/font/css/materialdesignicons.css";
+import vSelect from "vue-select";
+import "vue-select/dist/vue-select.css";
 import router from '../router/index'
-import 'bootstrap/dist/css/bootstrap.css'
+import axios from '../plugins/axios'
+import store from '../store/index'
+import VuePaginate from "vue-paginate";
+import StarRating from "vue-star-rating";
+import VueLoading from "vue-loading-template";
+import "../plugins/veevalidate";
+
+Vue.prototype.$axios = axios
+Vue.use(Buefy);
+Vue.component("v-select", vSelect);
+Vue.use(VuePaginate);
+Vue.component("star-rating", StarRating);
+Vue.use(VueLoading);
+
+Vue.filter("priceLocaleString", function(value) {
+  return value.toLocaleString();
+});
 
 document.addEventListener('DOMContentLoaded', () => {
   const app = new Vue({
     router,
+    store,
     render: h => h(App)
   }).$mount()
   document.body.appendChild(app.$el)

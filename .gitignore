@@ -35,4 +35,5 @@
 yarn-debug.log*
 .yarn-integrity
 
-vendor/bundle
+/vendor/bundle
+/app/controllers/home_controller.rb

@@ -1,10 +1,10 @@
 current directory: /Users/nakamura/workspace/best_gifter/vendor/bundle/ruby/2.7.0/gems/mysql2-0.5.3/ext/mysql2
-/Users/nakamura/.rbenv/versions/2.7.2/bin/ruby -I /Users/nakamura/.rbenv/versions/2.7.2/lib/ruby/2.7.0 -r ./siteconf20210101-27388-2dfl8m.rb extconf.rb --with-ldflags\=-L/usr/local/opt/openssl/lib
+/Users/nakamura/.rbenv/versions/2.7.2/bin/ruby -I /Users/nakamura/.rbenv/versions/2.7.2/lib/ruby/2.7.0 -r ./siteconf20210103-14149-2o2psv.rb extconf.rb
 checking for rb_absint_size()... yes
 checking for rb_absint_singlebit_p()... yes
 checking for rb_wait_for_single_fd()... yes
 -----
-Using mysql_config at /usr/local/opt/mysql@5.7/bin/mysql_config
+Using mysql_config at /usr/local/opt/mysql-client/bin/mysql_config
 -----
 checking for mysql.h... yes
 checking for errmsg.h... yes
@@ -21,9 +21,9 @@ checking for SERVER_QUERY_NO_INDEX_USED in mysql.h... yes
 checking for SERVER_QUERY_WAS_SLOW in mysql.h... yes
 checking for MYSQL_OPTION_MULTI_STATEMENTS_ON in mysql.h... yes
 checking for MYSQL_OPTION_MULTI_STATEMENTS_OFF in mysql.h... yes
-checking for my_bool in mysql.h... yes
+checking for my_bool in mysql.h... no
 -----
-Setting rpath to /usr/local/opt/mysql@5.7/lib
+Setting rpath to /usr/local/opt/mysql-client/lib
 -----
 creating Makefile
 
@@ -51,10 +51,8 @@ compiling mysql2_ext.c
 compiling result.c
 compiling statement.c
 linking shared-object mysql2/mysql2.bundle
-ld: warning: dylib (/usr/local/opt/mysql@5.7/lib/libmysqlclient.dylib) was built for newer macOS version (11.0) than being linked (10.16)
-ld: warning: dylib (/usr/local/opt/openssl/lib/libssl.dylib) was built for newer macOS version (11.0) than being linked (10.16)
-ld: warning: dylib (/usr/local/opt/openssl/lib/libcrypto.dylib) was built for newer macOS version (11.0) than being linked (10.16)
+ld: warning: dylib (/usr/local/opt/mysql-client/lib/libmysqlclient.dylib) was built for newer macOS version (11.0) than being linked (10.16)
 
 current directory: /Users/nakamura/workspace/best_gifter/vendor/bundle/ruby/2.7.0/gems/mysql2-0.5.3/ext/mysql2
 make "DESTDIR=" install
-/usr/bin/install -c -m 0755 mysql2.bundle ./.gem.20210101-27388-1yod1k3/mysql2
+/usr/bin/install -c -m 0755 mysql2.bundle ./.gem.20210103-14149-1h7yqjl/mysql2
