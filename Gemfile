@@ -93,3 +93,10 @@ gem 'gon'
 
 # Twitter
 gem 'twitter'
+
+# TwitterADS
+gem 'twitter-ads'
+
+# ログイン・新規登録機能
+gem 'sorcery'
+gem 'jwt'

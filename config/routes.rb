@@ -2,9 +2,10 @@ Rails.application.routes.draw do
   root 'home#index'
   namespace :api, {format: 'json'} do
     namespace :v1 do
-      resources :rakuten_searches, only: [:search, :index] do
+      resources :sessions
+      resources :users do
         collection do
-          get 'search'
+          get 'me'
         end
       end
     end
