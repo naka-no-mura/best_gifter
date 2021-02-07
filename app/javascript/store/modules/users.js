@@ -1,16 +1,16 @@
 import axios from '../../plugins/axios'
 
 const state = {
-  authUser: null
+  authUser: null,
 }
 
 const getters =  {
-  authUser: state => state.authUser
+  authUser: state => state.authUser,
 }
 
 const mutations = {
   setUser: (state, user) => {
-    state.authUser = user
+    state.authUser = user;
   }
 }
 
@@ -34,7 +34,7 @@ const actions = {
     if (!localStorage.auth_token) return null
     if (state.authUser) return state.authUser
 
-    const userResponse = await axios.get('users/me')
+    const userResponse = await axios.get('/v1/users/me')
       .catch((err) => {
         return null
       })

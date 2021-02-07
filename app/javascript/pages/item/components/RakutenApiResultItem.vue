@@ -7,6 +7,7 @@
             <img :src="item.Item.mediumImageUrls[0].imageUrl" />
           </figure>
         </div>
+      </a>
         <div class="content">
           <p>
             <small>{{ sliceItemName(item.Item.itemName) }}</small>
@@ -33,17 +34,21 @@
             <small>{{ item.Item.shopName }}</small>
           </p>
         </div>
-      </a>
+        <p @click="favorite()"><b-icon icon="heart-outline" size="is-medium"></b-icon></p>
     </div>
   </div>
 </template>
 
 <script>
+import { mapGetters } from "vuex"
 export default {
   name: "RakutenApiResultItem",
   props: {
     item: Object,
     required: true,
+  },
+  computed: {
+    ...mapGetters("users", ["authUser"])
   },
   methods: {
     sliceItemName(itemName) {
@@ -53,6 +58,26 @@ export default {
         return itemName;
       }
     },
+    favorite() {
+      this.$axios.post('/v1/items',
+      {
+        name: this.item.Item.itemName,
+        price: this.item.Item.itemPrice,
+        url: this.item.Item.itemUrl,
+        image: this.item.Item.mediumImageUrls[0].imageUrl,
+        review_count: this.item.Item.reviewCount,
+        review_average: this.item.Item.reviewAverage,
+        shop_name: this.item.Item.shopName,
+        genre_id: this.item.Item.genreId,
+        user_id: this.authUser.id
+      })
+        .then(res => {
+          console.log(res)
+        })
+        .catch(err => {
+          console.log(err)
+        })
+    }
   },
 };
 </script>
