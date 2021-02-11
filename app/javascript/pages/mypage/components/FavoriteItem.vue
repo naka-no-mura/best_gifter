@@ -54,7 +54,7 @@ export default {
     }
   },
   computed: {
-    ...mapGetters("users", ["authUser"])
+    ...mapGetters("users", ["authUser"]),
   },
   methods: {
     sliceItemName(itemName) {

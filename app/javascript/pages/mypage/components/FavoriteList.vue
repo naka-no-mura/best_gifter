@@ -1,7 +1,6 @@
 <template>
   <div class="section">
     <h2 class="title">お気に入り</h2>
-    <button @click="favoriteItem()">お気に入りとってくる</button>
     <div class="columns is-multiline">
       <template v-for="item in items">
         <div class="column is-2">
@@ -28,6 +27,9 @@ export default {
   },
   computed: {
     ...mapGetters("users", ["authUser"])
+  },
+  created() {
+    this.favoriteItem();
   },
   methods: {
     favoriteItem() {
