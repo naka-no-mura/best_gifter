@@ -7594,6 +7594,11 @@ vue-star-rating@^1.7.0:
   dependencies:
     vue "^2.3.3"
 
+vue-star@^0.0.4:
+  version "0.0.4"
+  resolved "https://registry.yarnpkg.com/vue-star/-/vue-star-0.0.4.tgz#8471e22eac46cb96b5e49d2cdcd0951b3472a8ab"
+  integrity sha1-hHHiLqxGy5a15J0s3NCVGzRyqKs=
+
 vue-style-loader@^4.1.0:
   version "4.1.2"
   resolved "https://registry.yarnpkg.com/vue-style-loader/-/vue-style-loader-4.1.2.tgz#dedf349806f25ceb4e64f3ad7c0a44fba735fcf8"

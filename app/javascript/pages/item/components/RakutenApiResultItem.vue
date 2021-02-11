@@ -1,13 +1,16 @@
 <template>
   <div>
     <div class="card">
-      <a target="_blank" :href="item.Item.itemUrl">
         <div class="card-image">
           <figure class="image">
             <img :src="item.Item.mediumImageUrls[0].imageUrl" />
           </figure>
+            <div class="favorite-mark">
+              <span v-if="isLiked" @click="favorite()"><b-icon icon="heart" size="is-midium" class="heart"></b-icon></span>
+              <span v-else @click="favorite()"><b-icon icon="heart-outline" size="is-midium" class="heart-outline"></b-icon></span>
+            </div>
         </div>
-      </a>
+      <a target="_blank" :href="item.Item.itemUrl">
         <div class="content">
           <p>
             <small>{{ sliceItemName(item.Item.itemName) }}</small>
@@ -34,7 +37,7 @@
             <small>{{ item.Item.shopName }}</small>
           </p>
         </div>
-        <p @click="favorite()"><b-icon icon="heart-outline" size="is-medium"></b-icon></p>
+      </a>
     </div>
   </div>
 </template>
@@ -46,6 +49,11 @@ export default {
   props: {
     item: Object,
     required: true,
+  },
+  data() {
+    return {
+      isLiked: false,
+    }
   },
   computed: {
     ...mapGetters("users", ["authUser"])
@@ -73,12 +81,13 @@ export default {
         item_code: this.item.Item.itemCode
       })
         .then(res => {
-          console.log(res)
+          console.log(res);
         })
         .catch(error => {
           this.errors = error.response.data.message
           this.$toasted.show(this.errors);
         });
+          this.isLiked = true
     },
   },
 };
@@ -89,11 +98,22 @@ export default {
     color: #4a4a4a;
   }
 }
-.card:hover {
-  opacity: 0.5;
+.card-image {
+  position: relative;
+}
+.favorite-mark {
+  position: absolute;
+  right: 0.5rem;
+  top: 0.5rem;
+  background-color: white;
+  border: #999;
+  border-radius: 3px;
 }
 .content {
   margin: 0.5rem;
+}
+.content:hover {
+  opacity: 0.5;
 }
 .item-price {
   color: red;
@@ -103,5 +123,11 @@ export default {
 }
 .review-count {
   color: #999;
+}
+.heart {
+  color: #ffd3d4;
+}
+.heart-outline {
+  color: #ffd3d4;
 }
 </style>

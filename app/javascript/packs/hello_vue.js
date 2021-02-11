@@ -20,6 +20,7 @@ import StarRating from "vue-star-rating";
 import VueLoading from "vue-loading-template";
 import "../plugins/veevalidate";
 import Toasted from 'vue-toasted';
+import VueStar from 'vue-star'
 
 var options = {
   position: 'top-center',
@@ -34,6 +35,7 @@ Vue.use(VuePaginate);
 Vue.component("star-rating", StarRating);
 Vue.use(VueLoading);
 Vue.use(Toasted, options);
+Vue.component('VueStar', VueStar)
 
 Vue.filter("priceLocaleString", function(value) {
   return value.toLocaleString();

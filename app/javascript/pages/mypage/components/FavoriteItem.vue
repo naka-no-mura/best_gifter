@@ -1,12 +1,15 @@
 <template>
   <div class="card">
-      <a target="_blank" :href="item.url">
         <div class="card-image">
           <figure class="image">
             <img :src="item.image" />
           </figure>
+            <div class="favorite-mark">
+              <span v-if="isLiked" @click="unFavorite()"><b-icon icon="heart" size="is-midium" class="heart"></b-icon></span>
+              <span v-else @click="favorite()"><b-icon icon="heart-outline" size="is-midium" class="heart-outline"></b-icon></span>
+            </div>
         </div>
-      </a>
+      <a target="_blank" :href="item.url">
         <div class="content">
           <p>
             <small>{{ sliceItemName(item.name) }}</small>
@@ -33,7 +36,7 @@
             <small>{{ item.shop_name }}</small>
           </p>
         </div>
-        <p @click="unFavorite()"><b-icon icon="heart-outline" size="is-medium"></b-icon></p>
+      </a>
   </div>
 </template>
 
@@ -44,6 +47,11 @@ export default {
   props: {
     item: Object,
     required: true,
+  },
+  data() {
+    return {
+      isLiked: true,
+    }
   },
   computed: {
     ...mapGetters("users", ["authUser"])
@@ -69,10 +77,70 @@ export default {
         .catch(err => {
           console.log(err)
         });
+        this.isLiked = false
+    },
+    favorite() {
+      this.$axios.post('/v1/items',
+      {
+        name: this.item.name,
+        price: this.item.price,
+        url: this.item.url,
+        image: this.item.image,
+        review_count: this.item.review_count,
+        review_average: this.item.review_average,
+        shop_name: this.item.shop_name,
+        genre_id: this.item.genre_id,
+        user_id: this.authUser.id,
+        item_code: this.item.item_code,
+      })
+        .then(res => {
+          console.log(res);
+        })
+        .catch(error => {
+          this.errors = error.response.data.message
+        });
+          this.isLiked = true
     },
   }
 }
 </script>
 
 <style lang="scss">
+.card {
+  a {
+    color: #4a4a4a;
+  }
+}
+.card-image {
+  position: relative;
+}
+.favorite-mark {
+  position: absolute;
+  right: 0.5rem;
+  top: 0.5rem;
+  background-color: white;
+  border: #999;
+  border-radius: 3px;
+}
+.content {
+  margin: 0.5rem;
+}
+.content:hover {
+  opacity: 0.5;
+}
+.item-price {
+  color: red;
+}
+.review-average {
+  color: orange;
+}
+.review-count {
+  color: #999;
+}
+.heart {
+  color: #ffd3d4;
+}
+.heart-outline {
+  color: #ffd3d4;
+}
 </style>
