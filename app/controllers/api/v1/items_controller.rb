@@ -1,6 +1,8 @@
 class Api::V1::ItemsController < ApplicationController
   def index
-    @items = Items.all.include(:user).order(created_at: :desc)
+    @items = Item.all.includes(:user).order(created_at: :desc)
+
+    render json: @items
   end
 
   def create
@@ -14,7 +16,12 @@ class Api::V1::ItemsController < ApplicationController
   end
 
   def favorites
-    @favorite_items = current_user.favorite_items.include(:user).order(created_at: :desc)
+    @favorite_items = Item.where(user_id: params[:user_id])
+
+    render json: @favorite_items
+    # @favorite_items = current_user.favorite_items.includes(:user).order(created_at: :desc)
+
+    # render json: @favorite_items
   end
 
   private

@@ -40,7 +40,7 @@
 </template>
 
 <script>
-import { mapGetters } from "vuex"
+import { mapGetters } from "vuex";
 export default {
   name: "RakutenApiResultItem",
   props: {
@@ -76,8 +76,12 @@ export default {
         })
         .catch(err => {
           console.log(err)
-        })
-    }
+        });
+        // this.$axios.post('/v1/favorites',
+        // {
+        //   item_id: this.item.id
+        // })
+    },
   },
 };
 </script>

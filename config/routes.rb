@@ -13,12 +13,12 @@ Rails.application.routes.draw do
           get :favorites
         end
       end
-      resources :rakuten_apis, only: %[search] do
+      resources :rakuten_apis, only: %i[search] do
         collection do
           get 'search'
         end
       end
-      resource :favorites, only: %[create destroy]
+      resource :favorites, only: %i[create destroy]
     end
   end
   get '*path', to: 'home#index'

@@ -18,7 +18,7 @@
           <template v-else>
           <router-link to="/logout" class="button is-warning" @click.native="handleLogout">ログアウト</router-link>
           </template>
-          <router-link to="/" class="button is-warning">
+          <router-link to="/mypage" class="button is-warning">
           <b-icon icon="account-outline" size="is-medium"></b-icon></router-link>
           
         </div>

@@ -7,6 +7,7 @@ import ItemIndex from '../pages/item/index';
 import QuestionnarieIndex from "../pages/questionnarie/index";
 import RegisterIndex from "../pages/register/index";
 import LoginIndex from "../pages/login/index";
+import MypageIndex from "../pages/mypage/index";
 
 Vue.use(Router);
 
@@ -37,6 +38,11 @@ const router = new Router({
       path: "/login",
       component: LoginIndex,
       name: "LoginIndex",
+    },
+    {
+      path: "/mypage",
+      component: MypageIndex,
+      name: "MypageIndex",
     },
   ],
 });
