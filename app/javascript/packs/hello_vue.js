@@ -25,7 +25,8 @@ import VueStar from 'vue-star'
 var options = {
   position: 'top-center',
   duration: 3000,
-  theme: 'bubble'
+  theme: 'bubble',
+  singleton: true,
 }
 
 Vue.prototype.$axios = axios

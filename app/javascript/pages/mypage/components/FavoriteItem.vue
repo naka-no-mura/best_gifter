@@ -5,8 +5,8 @@
             <img :src="item.image" />
           </figure>
             <div class="favorite-mark">
-              <span v-if="isLiked" @click="unFavorite()"><b-icon icon="heart" size="is-midium" class="heart"></b-icon></span>
-              <span v-else @click="favorite()"><b-icon icon="heart-outline" size="is-midium" class="heart-outline"></b-icon></span>
+              <span v-if="isLiked" @click="unFavorite()"><b-icon icon="star" size="is-midium" class="star"></b-icon></span>
+              <span v-else @click="favorite()"><b-icon icon="star-outline" size="is-midium" class="star-outline"></b-icon></span>
             </div>
         </div>
       <a target="_blank" :href="item.url">
@@ -137,10 +137,10 @@ export default {
 .review-count {
   color: #999;
 }
-.heart {
-  color: #ffd3d4;
+.star {
+  color: #ff694b;
 }
-.heart-outline {
-  color: #ffd3d4;
+.star-outline {
+  color: #ff694b;
 }
 </style>
