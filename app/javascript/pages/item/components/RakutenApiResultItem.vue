@@ -69,18 +69,16 @@ export default {
         review_average: this.item.Item.reviewAverage,
         shop_name: this.item.Item.shopName,
         genre_id: this.item.Item.genreId,
-        user_id: this.authUser.id
+        user_id: this.authUser.id,
+        item_code: this.item.Item.itemCode
       })
         .then(res => {
           console.log(res)
         })
-        .catch(err => {
-          console.log(err)
+        .catch(error => {
+          this.errors = error.response.data.message
+          this.$toasted.show(this.errors);
         });
-        // this.$axios.post('/v1/favorites',
-        // {
-        //   item_id: this.item.id
-        // })
     },
   },
 };

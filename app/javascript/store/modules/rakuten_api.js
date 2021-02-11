@@ -29,6 +29,7 @@ const state = {
   reviewAverage: "",
   hits: "",
   shopName: "",
+  itemCode: "",
   error: "",
 };
 
@@ -47,6 +48,7 @@ const getters = {
   reviewAverage: (state) => state.reviewAverage,
   hits: (state) => state.hits,
   shopName: (state) => state.shopName,
+  itemCode: (state) => state.itemCode,
   error: (state) => state.error,
 };
 
@@ -80,6 +82,7 @@ const mutations = {
     state.reviewAverage = data.reviewAverage;
     state.hits = data.hits;
     state.shopName = data.shopName;
+    state.itemCode = data.itemCode;
     state.error = data.error_description;
   },
 };

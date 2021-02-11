@@ -1,6 +1,14 @@
 class Api::V1::ItemsController < ApplicationController
+
   def index
     @items = Item.all.includes(:user).order(created_at: :desc)
+
+    render json: @items
+  end
+
+  def destroy
+    @item = Item.find(params[:item_id])
+    @item.destroy!
 
     render json: @items
   end
@@ -11,7 +19,7 @@ class Api::V1::ItemsController < ApplicationController
     if item.save
       render json: item
     else
-      render json: item.errors, status: :bad_request
+      render status: 400, json: { status: 400, message: 'この商品はすでにお気に入り登録済みです' }
     end
   end
 
@@ -27,6 +35,6 @@ class Api::V1::ItemsController < ApplicationController
   private
 
   def item_params
-    params.require(:item).permit(:name, :price, :url, :image, :review_count, :review_average, :shop_name, :genre_id, :user_id)
+    params.require(:item).permit(:name, :price, :url, :image, :review_count, :review_average, :shop_name, :genre_id, :user_id, :item_code)
   end
 end

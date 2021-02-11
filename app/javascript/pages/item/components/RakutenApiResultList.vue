@@ -34,6 +34,7 @@ export default {
       "reviewCount",
       "reviewAverage",
       "hits",
+      "itemCode",
     ]),
   },
 };

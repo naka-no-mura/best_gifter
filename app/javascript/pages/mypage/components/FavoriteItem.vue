@@ -33,16 +33,20 @@
             <small>{{ item.shop_name }}</small>
           </p>
         </div>
-        <p @click="favorite()"><b-icon icon="heart-outline" size="is-medium"></b-icon></p>
+        <p @click="unFavorite()"><b-icon icon="heart-outline" size="is-medium"></b-icon></p>
   </div>
 </template>
 
 <script>
+import { mapGetters } from "vuex";
 export default {
   name: "FavoriteItem",
   props: {
     item: Object,
     required: true,
+  },
+  computed: {
+    ...mapGetters("users", ["authUser"])
   },
   methods: {
     sliceItemName(itemName) {
@@ -51,6 +55,20 @@ export default {
       } else {
         return itemName;
       }
+    },
+    unFavorite() {
+      this.$axios.delete('/v1/items/:item_id',
+      {
+        params: {
+         item_id: this.item.id
+      }
+      })
+        .then(res => {
+          console.log(res)
+        })
+        .catch(err => {
+          console.log(err)
+        });
     },
   }
 }
