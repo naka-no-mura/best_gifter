@@ -114,7 +114,9 @@ export default {
   computed: {
     ...mapGetters("rakuten_api", ["count"]),
   },
-
+  created() {
+    this.search();
+  },
   methods: {
     ...mapActions("rakuten_api", [
       "changeKeyword",

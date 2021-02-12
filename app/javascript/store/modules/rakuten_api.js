@@ -29,6 +29,7 @@ const state = {
   reviewAverage: "",
   hits: "",
   shopName: "",
+  itemCode: "",
   error: "",
 };
 
@@ -47,6 +48,7 @@ const getters = {
   reviewAverage: (state) => state.reviewAverage,
   hits: (state) => state.hits,
   shopName: (state) => state.shopName,
+  itemCode: (state) => state.itemCode,
   error: (state) => state.error,
 };
 
@@ -80,6 +82,7 @@ const mutations = {
     state.reviewAverage = data.reviewAverage;
     state.hits = data.hits;
     state.shopName = data.shopName;
+    state.itemCode = data.itemCode;
     state.error = data.error_description;
   },
 };
@@ -87,10 +90,9 @@ const mutations = {
 // フォームから検索する用
 function searchItem(keyword, genreId, minPrice, maxPrice, sort, changePage) {
   return axios.get(
-    "https://app.rakuten.co.jp/services/api/IchibaItem/Search/20170706",
+    "/v1/rakuten_apis/search",
     {
       params: {
-        applicationId: gon.rakuten_api_application_id,
         keyword: "結婚" + " " + keyword,
         genreId: genreId,
         minPrice: minPrice || 1000,
@@ -107,10 +109,9 @@ function searchItem(keyword, genreId, minPrice, maxPrice, sort, changePage) {
 // サイドバーからジャンル検索するとき用
 function genreSearchItem(genreId, minPrice, maxPrice, changePage, sort) {
   return axios.get(
-    "https://app.rakuten.co.jp/services/api/IchibaItem/Search/20170706",
+    "/v1/rakuten_apis/search",
     {
       params: {
-        applicationId: gon.rakuten_api_application_id,
         keyword: "結婚",
         genreId: genreId,
         minPrice: minPrice || 1000,

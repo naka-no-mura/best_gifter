@@ -1,62 +1,60 @@
 <template>
-  <div>
-    <div class="card">
+  <div class="card">
         <div class="card-image">
           <figure class="image">
-            <img :src="item.Item.mediumImageUrls[0].imageUrl" />
+            <img :src="item.image" />
           </figure>
             <div class="favorite-mark">
-              <span v-if="isLiked" @click="favorite()"><b-icon icon="star" size="is-midium" class="star"></b-icon></span>
+              <span v-if="isLiked" @click="unFavorite()"><b-icon icon="star" size="is-midium" class="star"></b-icon></span>
               <span v-else @click="favorite()"><b-icon icon="star-outline" size="is-midium" class="star-outline"></b-icon></span>
             </div>
         </div>
-      <a target="_blank" :href="item.Item.itemUrl">
+      <a target="_blank" :href="item.url">
         <div class="content">
           <p>
-            <small>{{ sliceItemName(item.Item.itemName) }}</small>
+            <small>{{ sliceItemName(item.name) }}</small>
           </p>
           <p class="item-price">
             <big
-              ><b>{{ item.Item.itemPrice.toLocaleString() }}円</b></big
+              ><b>{{ item.price.toLocaleString() }}円</b></big
             >
           </p>
           <div class="columns">
             <star-rating
-              v-model="item.Item.reviewAverage"
+              v-model="item.review_average"
               :increment="0.01"
               read-only
               :star-size="15"
               class="column review-average"
             ></star-rating>
             <span class="column review-count"
-              >({{ item.Item.reviewCount.toLocaleString() }}件)</span
+              >({{ item.review_count.toLocaleString() }}件)</span
             >
           </div>
           <p>
             <b-icon icon="store-outline" size="is-small"> </b-icon>
-            <small>{{ item.Item.shopName }}</small>
+            <small>{{ item.shop_name }}</small>
           </p>
         </div>
       </a>
-    </div>
   </div>
 </template>
 
 <script>
 import { mapGetters } from "vuex";
 export default {
-  name: "RakutenApiResultItem",
+  name: "FavoriteItem",
   props: {
     item: Object,
     required: true,
   },
   data() {
     return {
-      isLiked: false,
+      isLiked: true,
     }
   },
   computed: {
-    ...mapGetters("users", ["authUser"])
+    ...mapGetters("users", ["authUser"]),
   },
   methods: {
     sliceItemName(itemName) {
@@ -66,32 +64,47 @@ export default {
         return itemName;
       }
     },
+    unFavorite() {
+      this.$axios.delete('/v1/items/:item_id',
+      {
+        params: {
+         item_id: this.item.id
+      }
+      })
+        .then(res => {
+          console.log(res)
+        })
+        .catch(err => {
+          console.log(err)
+        });
+        this.isLiked = false
+    },
     favorite() {
       this.$axios.post('/v1/items',
       {
-        name: this.item.Item.itemName,
-        price: this.item.Item.itemPrice,
-        url: this.item.Item.itemUrl,
-        image: this.item.Item.mediumImageUrls[0].imageUrl,
-        review_count: this.item.Item.reviewCount,
-        review_average: this.item.Item.reviewAverage,
-        shop_name: this.item.Item.shopName,
-        genre_id: this.item.Item.genreId,
+        name: this.item.name,
+        price: this.item.price,
+        url: this.item.url,
+        image: this.item.image,
+        review_count: this.item.review_count,
+        review_average: this.item.review_average,
+        shop_name: this.item.shop_name,
+        genre_id: this.item.genre_id,
         user_id: this.authUser.id,
-        item_code: this.item.Item.itemCode
+        item_code: this.item.item_code,
       })
         .then(res => {
           console.log(res);
         })
         .catch(error => {
           this.errors = error.response.data.message
-          this.$toasted.show(this.errors);
         });
           this.isLiked = true
     },
-  },
-};
+  }
+}
 </script>
+
 <style lang="scss">
 .card {
   a {
