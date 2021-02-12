@@ -1,6 +1,8 @@
 <template>
-<div class="container">
-  <FavoriteList></FavoriteList>
+  <div class="container">
+    <div class="columns">
+      <FavoriteList class="column"></FavoriteList>
+    </div>
   </div>
 </template>
 
