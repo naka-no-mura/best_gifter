@@ -1,5 +1,5 @@
 <template>
-  <div class="section">
+  <!-- <div class="section">
     <p class="title">Twitterアンケート投稿</p>
     <div class="section">
     <b-field label="投稿内容">
@@ -24,6 +24,9 @@
       投稿する
     </b-button>
     </div>
+  </div> -->
+  <div class="section">
+    <vue-poll v-bind="options" @addvote="addVote()"></vue-poll>
   </div>
 </template>
 
@@ -34,20 +37,32 @@ export default {
   data() {
     return {
       tweets: [],
+      options: {
+        question: "What's your favourite <strong>JS</strong> framework?",
+        answers: [
+          { value: 1, text: "Vue", votes: 53 },
+          { value: 2, text: "React", votes: 35 },
+          { value: 3, text: "Angular", votes: 30 },
+          { value: 4, text: "Other", votes: 10 },
+        ],
+      },
     };
   },
   methods: {
-    tweetQuestionnarie() {
-      axios
-        .post("/v1/twitter", {
-          name: "テスト",
-          first_choice: "1",
-          second_choice: "2",
-          duration_in_minutes: 5,
-        })
-        .then((res) => {
-          this.tweets = res.data;
-        });
+    // tweetQuestionnarie() {
+    //   axios
+    //     .post("/v1/twitter", {
+    //       name: "テスト",
+    //       first_choice: "1",
+    //       second_choice: "2",
+    //       duration_in_minutes: 5,
+    //     })
+    //     .then((res) => {
+    //       this.tweets = res.data;
+    //     });
+    // },
+    addVote(obj) {
+      console.log("You voted " + obj.value + "!");
     },
   },
 };

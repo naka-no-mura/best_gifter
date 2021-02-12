@@ -13,7 +13,7 @@ export default {
   name: "MypageIndex",
   components: {
     FavoriteList,
-  }
+  },
 };
 </script>
 

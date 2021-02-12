@@ -1,15 +1,23 @@
 <template>
   <div>
     <div class="card">
-        <div class="card-image">
-          <figure class="image">
-            <img :src="item.Item.mediumImageUrls[0].imageUrl" />
-          </figure>
-            <div class="favorite-mark">
-              <span v-if="isLiked" @click="favorite()"><b-icon icon="star" size="is-midium" class="star"></b-icon></span>
-              <span v-else @click="favorite()"><b-icon icon="star-outline" size="is-midium" class="star-outline"></b-icon></span>
-            </div>
+      <div class="card-image">
+        <figure class="image">
+          <img :src="item.Item.mediumImageUrls[0].imageUrl" />
+        </figure>
+        <div class="favorite-mark">
+          <span v-if="isLiked" @click="favorite()"
+            ><b-icon icon="star" size="is-midium" class="star"></b-icon
+          ></span>
+          <span v-else @click="favorite()"
+            ><b-icon
+              icon="star-outline"
+              size="is-midium"
+              class="star-outline"
+            ></b-icon
+          ></span>
         </div>
+      </div>
       <a target="_blank" :href="item.Item.itemUrl">
         <div class="content">
           <p>
@@ -53,10 +61,10 @@ export default {
   data() {
     return {
       isLiked: false,
-    }
+    };
   },
   computed: {
-    ...mapGetters("users", ["authUser"])
+    ...mapGetters("users", ["authUser"]),
   },
   methods: {
     sliceItemName(itemName) {
@@ -67,27 +75,27 @@ export default {
       }
     },
     favorite() {
-      this.$axios.post('/v1/items',
-      {
-        name: this.item.Item.itemName,
-        price: this.item.Item.itemPrice,
-        url: this.item.Item.itemUrl,
-        image: this.item.Item.mediumImageUrls[0].imageUrl,
-        review_count: this.item.Item.reviewCount,
-        review_average: this.item.Item.reviewAverage,
-        shop_name: this.item.Item.shopName,
-        genre_id: this.item.Item.genreId,
-        user_id: this.authUser.id,
-        item_code: this.item.Item.itemCode
-      })
-        .then(res => {
+      this.$axios
+        .post("/v1/items", {
+          name: this.item.Item.itemName,
+          price: this.item.Item.itemPrice,
+          url: this.item.Item.itemUrl,
+          image: this.item.Item.mediumImageUrls[0].imageUrl,
+          review_count: this.item.Item.reviewCount,
+          review_average: this.item.Item.reviewAverage,
+          shop_name: this.item.Item.shopName,
+          genre_id: this.item.Item.genreId,
+          user_id: this.authUser.id,
+          item_code: this.item.Item.itemCode,
+        })
+        .then((res) => {
           console.log(res);
         })
-        .catch(error => {
-          this.errors = error.response.data.message
+        .catch((error) => {
+          this.errors = error.response.data.message;
           this.$toasted.show(this.errors);
         });
-          this.isLiked = true
+      this.isLiked = true;
     },
   },
 };
