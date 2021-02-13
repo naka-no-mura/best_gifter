@@ -5,7 +5,7 @@
         <figure class="image">
           <img :src="item.Item.mediumImageUrls[0].imageUrl" />
         </figure>
-        <div class="favorite-mark">
+        <div class="favorite-mark" v-if="authUser">
           <span v-if="isLiked" @click="favorite()"
             ><b-icon icon="star" size="is-midium" class="star"></b-icon
           ></span>

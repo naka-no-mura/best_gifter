@@ -1,42 +1,62 @@
 <template>
+<div class="container">
+<div class="columns">
+  <div class="column">
+<div class="section">
   <div id="register-form">
-    <div>
-      ユーザー登録
-    </div>
-    <div>
-      <label for="name">ユーザー名</label>
-      <input id="name" v-model="user.name" type="text" placeholder="username" />
-    </div>
-    <div>
-      <label for="email">メールアドレス</label>
-      <input
-        id="email"
+    <h1 class="title">
+      新規登録
+    </h1>
+    <b-field label="ユーザー名">
+      <b-input
+        v-model="user.name"
+        type="text"
+        placeholder="ベストギフター"
+      ></b-input>
+    </b-field>
+    <b-field label="メールアドレス">
+      <b-input
         v-model="user.email"
         type="email"
         placeholder="test@example.com"
-      />
-    </div>
-    <div>
-      <label for="password">パスワード</label>
-      <input
-        id="password"
+      /></b-input>
+    </b-field>
+    <b-field label="パスワード">
+      <b-input
         v-model="user.password"
         type="password"
         placeholder="password"
-      />
-    </div>
-    <div>
-      <label for="password_confirmation">パスワード（確認）</label>
-      <input
-        id="password_confirmation"
+      /></b-input>
+    </b-field>
+    <b-field label="パスワード（確認）">
+      <b-input
         v-model="user.password_confirmation"
         type="password"
         placeholder="password"
-      />
+      /></b-input>
+    </b-field>
+    <b-button type="submit" @click="register">
+      登録（無料）
+    </b-button>
+  </div>
+  </div>
+  </div>
+  <div class="column">
+    <div class="section">
+      <div class="block">
+    <h1 class="title">新規登録のメリット</h1>
+    <b-icon icon="check-circle-outline" size="is-medium"></b-icon>
+    <h2 class="subtitle">検索した商品をお気に入りに登録できるようになります。</h2>
+    <p>検索だけであれば新規登録せずにご利用頂けます。</p>
     </div>
-    <button type="submit" @click="register">
-      登録
-    </button>
+    <div class="block">
+    <b-icon icon="check-circle-outline" size="is-medium"></b-icon>
+    <h2 class="subtitle">アンケート投稿機能がご利用できるようになります。</h2>
+    <p>アンケートの閲覧だけであれば新規登録せずにご利用頂けます。</p>
+    </div>
+    </div>
+  </div>
+  </div>
   </div>
 </template>
 

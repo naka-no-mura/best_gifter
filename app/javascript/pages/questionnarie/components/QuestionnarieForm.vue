@@ -1,6 +1,7 @@
 <template>
-  <!-- <div class="section">
-    <p class="title">Twitterアンケート投稿</p>
+<div>
+  <div class="section">
+    <p class="title">アンケート投稿</p>
     <div class="section">
     <b-field label="投稿内容">
       <b-input maxlength="200" type="textarea"></b-input>
@@ -17,16 +18,17 @@
     <b-field label="4つ目">
       <b-input placeholder="任意（最大25文字）"></b-input>
     </b-field>
-    <b-field label="投票を受け付ける期間">
+    <!-- <b-field label="投票を受け付ける期間">
       <b-input></b-input>
-    </b-field>
+    </b-field> -->
     <b-button @click="tweetQuestionnarie()" class="button is-warning">
       投稿する
     </b-button>
     </div>
-  </div> -->
+  </div>
   <div class="section">
     <vue-poll v-bind="options" @addvote="addVote()"></vue-poll>
+  </div>
   </div>
 </template>
 
@@ -49,18 +51,18 @@ export default {
     };
   },
   methods: {
-    // tweetQuestionnarie() {
-    //   axios
-    //     .post("/v1/twitter", {
-    //       name: "テスト",
-    //       first_choice: "1",
-    //       second_choice: "2",
-    //       duration_in_minutes: 5,
-    //     })
-    //     .then((res) => {
-    //       this.tweets = res.data;
-    //     });
-    // },
+    tweetQuestionnarie() {
+      axios
+        .post("/v1/twitter", {
+          name: "テスト",
+          first_choice: "1",
+          second_choice: "2",
+          duration_in_minutes: 5,
+        })
+        .then((res) => {
+          this.tweets = res.data;
+        });
+    },
     addVote(obj) {
       console.log("You voted " + obj.value + "!");
     },
