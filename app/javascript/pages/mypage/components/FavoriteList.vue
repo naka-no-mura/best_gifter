@@ -22,17 +22,17 @@ export default {
   },
   data() {
     return {
-      items: []
+      items: [],
     };
   },
   computed: {
     ...mapGetters("users", ["authUser"])
   },
   created() {
-    this.favoriteItem();
+    this.getFavoriteItems();
   },
   methods: {
-    favoriteItem() {
+    getFavoriteItems() {
       return this.$axios.get('/v1/items/favorites', {
         params: {
           user_id: this.authUser.id

@@ -21,6 +21,7 @@ import VueLoading from "vue-loading-template";
 import "../plugins/veevalidate";
 import Toasted from 'vue-toasted';
 import VuePoll from 'vue-poll';
+import "../../assets/stylesheets/style.scss";
 
 var options = {
   position: 'top-center',

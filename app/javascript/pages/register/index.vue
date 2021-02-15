@@ -1,5 +1,8 @@
 <template>
 <div class="container">
+<div class="block">
+<p><img src="../../../assets/images/logo_medium_pink.JPG"></p>
+</div>
 <div class="columns">
   <div class="column">
 <div class="section">
@@ -7,35 +10,32 @@
     <h1 class="title">
       新規登録
     </h1>
-    <b-field label="ユーザー名">
+    <b-field label="ユーザー名" 
+        message="（例）山田花子">
       <b-input
         v-model="user.name"
         type="text"
-        placeholder="ベストギフター"
       ></b-input>
     </b-field>
-    <b-field label="メールアドレス">
+    <b-field label="メールアドレス" message="（例）example@example.com">
       <b-input
         v-model="user.email"
         type="email"
-        placeholder="test@example.com"
       /></b-input>
     </b-field>
-    <b-field label="パスワード">
+    <b-field label="パスワード" message="（例）password">
       <b-input
         v-model="user.password"
         type="password"
-        placeholder="password"
       /></b-input>
     </b-field>
-    <b-field label="パスワード（確認）">
+    <b-field label="パスワード（確認）" message="（例）password">
       <b-input
         v-model="user.password_confirmation"
         type="password"
-        placeholder="password"
       /></b-input>
     </b-field>
-    <b-button type="submit" @click="register">
+    <b-button class="register" type="submit" @click="register">
       登録（無料）
     </b-button>
   </div>
@@ -88,4 +88,21 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+img {
+  width: 15%;
+  margin: 0 auto;
+}
+.block {
+  text-align: center;
+}
+.register {
+  background-color: #ffd3d4;
+  border: 5px solid #ffd3d4;
+  transition: 0.3s ;
+}
+.register:hover {
+  background-color: white;
+  border: 5px solid #ffd3d4;
+}
+</style>

@@ -1,27 +1,28 @@
 <template>
   <div class="container">
+<div class="block">
+<p><img src="../../../assets/images/logo_light_pink.JPG"></p>
+</div>
     <div class="section">
       <h1 class="title">
         ログイン
       </h1>
-      <b-field label="メールアドレス">
+      <b-field label="メールアドレス" message="（例）example@example.com">
         <b-input
           v-model="user.email"
           type="email"
-          placeholder="test@example.com"
         ></b-input>
       </b-field>
-      <b-field label="パスワード">
+      <b-field label="パスワード" message="（例）password">
         <b-input
           v-model="user.password"
           type="password"
-          placeholder="password"
         ></b-input>
       </b-field>
-      <b-button type="submit" @click="login">
+      <b-button class="login" type="submit" @click="login">
         ログイン
       </b-button>
-      <b-button type="submit" @click="login">
+      <b-button class="login" type="submit" @click="login">
         ゲストログイン
       </b-button>
     </div>
@@ -54,4 +55,21 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+img {
+  width: 15%;
+  margin: 0 auto;
+}
+.block {
+  text-align: center;
+}
+.login {
+  background-color: #ffd3d4;
+  border: 5px solid #ffd3d4;
+  transition: 0.3s ;
+}
+.login:hover {
+  background-color: white;
+  border: 5px solid #ffd3d4;
+}
+</style>

@@ -5,6 +5,7 @@
         <figure class="image">
           <img :src="item.Item.mediumImageUrls[0].imageUrl" />
         </figure>
+        <!-- お気に入りマーク -->
         <div class="favorite-mark" v-if="authUser">
           <span v-if="isLiked" @click="favorite()"
             ><b-icon icon="star" size="is-midium" class="star"></b-icon
@@ -17,6 +18,7 @@
             ></b-icon
           ></span>
         </div>
+        <!-- お気に入りマーク ここまで-->
       </div>
       <a target="_blank" :href="item.Item.itemUrl">
         <div class="content">

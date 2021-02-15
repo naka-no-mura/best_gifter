@@ -1,13 +1,13 @@
 <template>
-  <div>
+  <div class="relationships">
     <!-- ご親族 -->
     <div class="section">
       <div class="block">
-        <p class="title">ご親族</p>
+        <h1 class="title">ご親族</h1>
+        <h2 class="subtitle">相場：30,000〜50,000円</h2>
         <p>
           身内が結婚する場合は、質の良い、かつ実用性の高いものを贈りましょう。本人に直接聞いてから選んでも良いかもしれません。
         </p>
-        <p>相場：30,000〜50,000円</p>
       </div>
       <div class="columns is-multiline">
         <div
@@ -38,12 +38,12 @@
     <!-- ご友人 -->
     <div class="section">
       <div class="block">
-        <p class="title">ご友人</p>
+        <h1 class="title">ご友人</h1>
+        <h2 class="subtitle">
+          相場：10,000〜30,000円<br>（ただし、先に結婚祝いをもらっている場合は、その金額に合わせるのがマナーです。）
+        </h2>
         <p>
           結婚を機に1人分から2人分へサイズ＆ランクアップしたいものは喜ばれるでしょう。友人同士が集まって、グループで贈ることで高価な品物を選んでもよいでしょう。
-        </p>
-        <p>
-          相場：10,000〜30,000円（ただし、先に結婚祝いをもらっている場合は、その金額に合わせるのがマナーです。）
         </p>
       </div>
       <div class="columns is-multiline">
@@ -75,13 +75,13 @@
     <!-- 職場の同僚 -->
     <div class="section">
       <div class="block">
-        <p class="title">職場の同僚</p>
+        <h1 class="title">職場の同僚</h1>
+        <h2 class="subtitle">
+          相場：5,000円程度
+          連盟の場合は10,000〜20,000円<br>（結婚祝いを贈る人数にもよりますが、高くてもひとり5000円以内に収めましょう。）
+        </h2>
         <p>
           個性的なギフトではなく、より安全感のあるギフトを選びましょう。他の人と被ってしまっても大丈夫なように、いくつあっても困らないものがおすすめです。連名でのプレゼントであれば、新郎新婦のお返しの負担も少なくなるので受け取りやすいでしょう。
-        </p>
-        <p>
-          相場：5,000円程度
-          連盟の場合は10,000〜20,000円（結婚祝いを贈る人数にもよりますが、高くてもひとり5000円以内に収めましょう。）
         </p>
       </div>
       <div class="columns is-multiline">
@@ -113,11 +113,11 @@
     <!-- 職場の上司 -->
     <div class="section">
       <div class="block">
-        <p class="title">職場の上司</p>
+        <h1 class="title">職場の上司</h1>
+        <h2 class="subtitle">相場：個人からでも、連盟の場合でも5,000円程度</h2>
         <p>
           個性的なギフトではなく、より安全感のあるギフトを選びましょう。他の人と被ってしまっても大丈夫なように、いくつあっても困らないものがおすすめです。連名でのプレゼントであれば、新郎新婦のお返しの負担も少なくなるので受け取りやすいでしょう。
         </p>
-        <p>相場：個人からでも、連盟の場合でも5,000円程度</p>
       </div>
       <div class="columns is-multiline">
         <div
@@ -319,7 +319,7 @@ export default {
 };
 </script>
 <style scoped>
-.select_box {
-  width: 10rem;
+.relationships {
+  text-align: center;
 }
 </style>

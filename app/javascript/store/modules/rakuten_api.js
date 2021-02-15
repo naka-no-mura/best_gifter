@@ -89,40 +89,34 @@ const mutations = {
 
 // フォームから検索する用
 function searchItem(keyword, genreId, minPrice, maxPrice, sort, changePage) {
-  return axios.get(
-    "/v1/rakuten_apis/search",
-    {
-      params: {
-        keyword: "結婚" + " " + keyword,
-        genreId: genreId,
-        minPrice: minPrice || 1000,
-        maxPrice: maxPrice || 150000,
-        sort: sort || "standard",
-        giftFlag: 1,
-        imageFlag: 1,
-        page: changePage || 1,
-      },
-    }
-  );
+  return axios.get("/v1/rakuten_apis/search", {
+    params: {
+      keyword: "結婚" + " " + keyword,
+      genreId: genreId,
+      minPrice: minPrice || 1000,
+      maxPrice: maxPrice || 150000,
+      sort: sort || "standard",
+      giftFlag: 1,
+      imageFlag: 1,
+      page: changePage || 1,
+    },
+  });
 }
 
 // サイドバーからジャンル検索するとき用
 function genreSearchItem(genreId, minPrice, maxPrice, changePage, sort) {
-  return axios.get(
-    "/v1/rakuten_apis/search",
-    {
-      params: {
-        keyword: "結婚",
-        genreId: genreId,
-        minPrice: minPrice || 1000,
-        maxPrice: maxPrice || 150000,
-        sort: sort || "standard",
-        page: changePage || 1,
-        giftFlag: 1,
-        imageFlag: 1,
-      },
-    }
-  );
+  return axios.get("/v1/rakuten_apis/search", {
+    params: {
+      keyword: "結婚",
+      genreId: genreId,
+      minPrice: minPrice || 1000,
+      maxPrice: maxPrice || 150000,
+      sort: sort || "standard",
+      page: changePage || 1,
+      giftFlag: 1,
+      imageFlag: 1,
+    },
+  });
 }
 
 // 別ジャンルで検索する時はキーワードをnullにする
