@@ -10,15 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_11_042814) do
+ActiveRecord::Schema.define(version: 2021_02_15_235815) do
 
-  create_table "favorites", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+  create_table "answers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.bigint "user_id", null: false
-    t.bigint "item_id", null: false
+    t.bigint "questionnaire_choice_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["item_id"], name: "index_favorites_on_item_id"
-    t.index ["user_id"], name: "index_favorites_on_user_id"
+    t.index ["questionnaire_choice_id"], name: "index_answers_on_questionnaire_choice_id"
+    t.index ["user_id"], name: "index_answers_on_user_id"
   end
 
   create_table "items", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
@@ -37,6 +37,25 @@ ActiveRecord::Schema.define(version: 2021_02_11_042814) do
     t.index ["user_id"], name: "index_items_on_user_id"
   end
 
+  create_table "questionnaire_choices", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+    t.bigint "questionnaire_id", null: false
+    t.string "choice", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["questionnaire_id"], name: "index_questionnaire_choices_on_questionnaire_id"
+  end
+
+  create_table "questionnaires", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.text "text", null: false
+    t.string "relationship"
+    t.string "gender"
+    t.string "age"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_questionnaires_on_user_id"
+  end
+
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.string "name", null: false
     t.string "email", null: false
@@ -47,7 +66,9 @@ ActiveRecord::Schema.define(version: 2021_02_11_042814) do
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
-  add_foreign_key "favorites", "items"
-  add_foreign_key "favorites", "users"
+  add_foreign_key "answers", "questionnaire_choices"
+  add_foreign_key "answers", "users"
   add_foreign_key "items", "users"
+  add_foreign_key "questionnaire_choices", "questionnaires"
+  add_foreign_key "questionnaires", "users"
 end

@@ -10,7 +10,7 @@
         <div class="buttons">
           <router-link to="/" class="button">トップ</router-link>
           <router-link to="/items" class="button">検索</router-link>
-          <router-link to="/questionnaries" class="button"
+          <router-link to="/questionnaires" class="button"
             >アンケート</router-link
           >
           <template v-if="!authUser">

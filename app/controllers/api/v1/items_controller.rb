@@ -27,9 +27,6 @@ class Api::V1::ItemsController < ApplicationController
     @favorite_items = Item.where(user_id: params[:user_id]).order(created_at: :desc)
 
     render json: @favorite_items
-    # @favorite_items = current_user.favorite_items.includes(:user).order(created_at: :desc)
-
-    # render json: @favorite_items
   end
 
   private

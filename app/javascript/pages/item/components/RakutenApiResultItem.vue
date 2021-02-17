@@ -102,11 +102,9 @@ export default {
   },
 };
 </script>
-<style lang="scss">
+<style scope>
 .card {
-  a {
-    color: #4a4a4a;
-  }
+  color: #4a4a4a;
 }
 .card-image {
   position: relative;
