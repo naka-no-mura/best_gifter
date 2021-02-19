@@ -1,6 +1,5 @@
 class Api::V1::QuestionnaireChoicesController < ApplicationController
   def index
-    @questionnaire_choices = QuestionnaireChoice.all.includes(:user).order(created_at: :desc)
   end
 
   def create

@@ -1,6 +1,8 @@
 class Api::V1::QuestionnairesController < ApplicationController
   def index
-    @questionnaires = Questionnaire.all.includes(:user).order(created_at: :desc)
+    @questionnaires = Questionnaire.all
+
+    render json: @questionnaires.to_json(include: :questionnaire_choices)
   end
 
   def create

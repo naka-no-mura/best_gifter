@@ -8,7 +8,7 @@
 import QuestionnaireForm from "./components/QuestionnaireForm.vue";
 
 export default {
-  name: "QuestionnaireIndex",
+  name: "QuestionnaireFormIndex",
   components: {
     QuestionnaireForm,
   }

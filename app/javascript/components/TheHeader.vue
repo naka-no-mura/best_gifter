@@ -10,16 +10,17 @@
         <div class="buttons">
           <router-link to="/" class="button">トップ</router-link>
           <router-link to="/items" class="button">検索</router-link>
-          <router-link to="/questionnaires" class="button"
-            >アンケート</router-link
-          >
+          <b-navbar-dropdown label="アンケート" class="button">
+            <b-navbar-item>
+              <router-link to="/questionnaire_form">投稿する</router-link>
+            </b-navbar-item>
+            <b-navbar-item>
+              <router-link to="/questionnaire_list">閲覧</router-link>
+            </b-navbar-item>
+          </b-navbar-dropdown>
           <template v-if="!authUser">
-            <router-link to="register" class="button"
-              >新規登録</router-link
-            >
-            <router-link to="/login" class="button"
-              >ログイン</router-link
-            >
+            <router-link to="register" class="button">新規登録</router-link>
+            <router-link to="/login" class="button">ログイン</router-link>
           </template>
           <template v-else>
             <router-link
@@ -70,7 +71,7 @@ export default {
 .button {
   background-color: #ffd3d4;
   border: 5px solid #ffd3d4;
-  transition: 0.3s ;
+  transition: 0.3s;
 }
 .button:hover {
   background-color: white;
