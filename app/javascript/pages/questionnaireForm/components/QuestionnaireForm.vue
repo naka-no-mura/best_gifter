@@ -27,15 +27,14 @@
         </b-field>
         <b-field label="3つ目 任意">
           <b-input v-model="questionnaire.choice_third"></b-input>
-        </b-field>
-        <b-button @click="createQuestionnaire()" class="button is-warning">
-          投稿する
-        </b-button>
+        </b-field><b-button @click="createQuestionnaire()" class="button is-warning">
+            
+        <router-link to="/questionnaire_list"
+          >投稿する
+        </router-link>
+          </b-button>
       </div>
     </div>
-    <!-- <div class="section">
-    <vue-poll v-bind="options" @addvote="addVote()"></vue-poll>
-  </div> -->
   </div>
 </template>
 
@@ -55,15 +54,6 @@ export default {
         choice_second: "",
         choice_third: "",
       },
-      // options: {
-      //   question: "What's your favourite <strong>JS</strong> framework?",
-      //   answers: [
-      //     { value: 1, text: "Vue", votes: 53 },
-      //     { value: 2, text: "React", votes: 35 },
-      //     { value: 3, text: "Angular", votes: 30 },
-      //     { value: 4, text: "Other", votes: 10 },
-      //   ],
-      // },
     };
   },
   computed: {
@@ -104,11 +94,10 @@ export default {
         .catch((error) => {
           console.log(error);
         });
-      if (this.questionnaire.choice_third != null) {
       this.$axios
         .post("/v1/questionnaire_choices", {
           questionnaire_id: response_questionnaire_id,
-          choice: this.questionnaire.choice_third,
+          choice: this.questionnaire.choice_third || "結果だけ閲覧する",
         })
         .then((res) => {
           console.log(res);
@@ -116,13 +105,10 @@ export default {
         .catch((error) => {
           console.log(error);
         });
-      } else {
-        return
-      }
     },
-    // addVote(obj) {
-    //   console.log("You voted " + obj.value + "!");
-    // },
+    pushQuestionnaireList() {
+      this.$router.push("/questionnaire_list");
+    },
   },
 };
 </script>

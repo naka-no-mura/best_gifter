@@ -10,6 +10,11 @@
         <div class="buttons">
           <router-link to="/" class="button">トップ</router-link>
           <router-link to="/items" class="button">検索</router-link>
+          <template v-if="!authUser">
+            <router-link to="register" class="button">新規登録</router-link>
+            <router-link to="/login" class="button">ログイン</router-link>
+          </template>
+          <template v-else>
           <b-navbar-dropdown label="アンケート" class="button">
             <b-navbar-item>
               <router-link to="/questionnaire_form">投稿する</router-link>
@@ -18,11 +23,6 @@
               <router-link to="/questionnaire_list">閲覧</router-link>
             </b-navbar-item>
           </b-navbar-dropdown>
-          <template v-if="!authUser">
-            <router-link to="register" class="button">新規登録</router-link>
-            <router-link to="/login" class="button">ログイン</router-link>
-          </template>
-          <template v-else>
             <router-link
               to="/logout"
               class="button"

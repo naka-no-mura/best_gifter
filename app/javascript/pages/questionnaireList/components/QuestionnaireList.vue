@@ -1,12 +1,12 @@
 <template>
-  <div class="ccontainer">
+  <div class="questionnaire-list">
     <template v-for="questionnaire in questionnaires">
       <QuestionnaireItem
         :key="questionnaire.id"
         :questionnaire="questionnaire"
+        class="questionnaire-item"
       />
     </template>
-    <button @click="getQuestionnaires()">とってくる</button>
   </div>
 </template>
 
@@ -46,4 +46,12 @@ export default {
 };
 </script>
 
-<style lang="scss"></style>
+<style lang="scss">
+.questionnaire-list {
+  display: flex;
+  flex-wrap:wrap;
+}
+.questionnaire-item {
+  width: 50%;
+}
+</style>
