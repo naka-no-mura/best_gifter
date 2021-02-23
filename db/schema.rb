@@ -10,14 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_15_235815) do
+ActiveRecord::Schema.define(version: 2021_02_23_015846) do
 
   create_table "answers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "questionnaire_choice_id", null: false
+    t.bigint "questionnaire_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["questionnaire_choice_id"], name: "index_answers_on_questionnaire_choice_id"
+    t.index ["questionnaire_id"], name: "index_answers_on_questionnaire_id"
     t.index ["user_id"], name: "index_answers_on_user_id"
   end
 
@@ -42,6 +44,7 @@ ActiveRecord::Schema.define(version: 2021_02_15_235815) do
     t.string "choice", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "answers_count", default: 0, null: false
     t.index ["questionnaire_id"], name: "index_questionnaire_choices_on_questionnaire_id"
   end
 
@@ -67,6 +70,7 @@ ActiveRecord::Schema.define(version: 2021_02_15_235815) do
   end
 
   add_foreign_key "answers", "questionnaire_choices"
+  add_foreign_key "answers", "questionnaires"
   add_foreign_key "answers", "users"
   add_foreign_key "items", "users"
   add_foreign_key "questionnaire_choices", "questionnaires"

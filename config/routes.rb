@@ -20,6 +20,7 @@ Rails.application.routes.draw do
       end
       resources :questionnaires
       resources :questionnaire_choices
+      resources :answers
     end
   end
   get '*path', to: 'home#index'

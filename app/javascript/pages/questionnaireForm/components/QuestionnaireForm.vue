@@ -108,7 +108,7 @@ export default {
       this.$axios
         .post("/v1/questionnaire_choices", {
           questionnaire_id: response_questionnaire_id,
-          choice: this.questionnaire.choice_second,
+          choice: this.questionnaire.choice_third,
         })
         .then((res) => {
           console.log(res);

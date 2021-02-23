@@ -1,5 +1,8 @@
 class Api::V1::QuestionnaireChoicesController < ApplicationController
   def index
+    @questionnaire_choices = QuestionnaireChoice.includes(:answer).group("QuestionnaireChoices.questionnaire_choice_id").count
+
+    render json: @questionnaire_choices
   end
 
   def create
@@ -13,6 +16,10 @@ class Api::V1::QuestionnaireChoicesController < ApplicationController
   end
 
   def desrtroy
+  end
+
+  def count
+    answers.count
   end
 
   def questionnaire_choice_params

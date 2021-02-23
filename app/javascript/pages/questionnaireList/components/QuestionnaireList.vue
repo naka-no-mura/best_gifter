@@ -1,7 +1,10 @@
 <template>
-  <div class="container">
+  <div class="ccontainer">
     <template v-for="questionnaire in questionnaires">
-        <QuestionnaireItem :key="questionnaire.id" :questionnaire="questionnaire" />
+      <QuestionnaireItem
+        :key="questionnaire.id"
+        :questionnaire="questionnaire"
+      />
     </template>
     <button @click="getQuestionnaires()">とってくる</button>
   </div>
@@ -19,26 +22,27 @@ export default {
   data() {
     return {
       questionnaires: [],
-    }
+    };
   },
-  // created() {
-  //   this.getQuestionnaires();
-  // },
+  created() {
+    this.getQuestionnaires();
+  },
   methods: {
     getQuestionnaires() {
-     return this.$axios.get("/v1/questionnaires")
-      .then(res => {
-        this.$data.questionnaires = res.data;
-        // for (let key of Object.keys(res)) {
-        //   console.log(key);
-        //   console.log(res[key]);
-        // }
-      })
-      .catch(err => {
-        console.log(err)
-      })
-    }
-  }
+      return this.$axios
+        .get("/v1/questionnaires")
+        .then((res) => {
+          this.$data.questionnaires = res.data;
+          // for (let key of Object.keys(res)) {
+          //   console.log(key);
+          //   console.log(res[key]);
+          // }
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    },
+  },
 };
 </script>
 

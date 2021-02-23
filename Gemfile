@@ -100,3 +100,6 @@ gem 'twitter-ads'
 # ログイン・新規登録機能
 gem 'sorcery'
 gem 'jwt'
+
+# カウント機能
+gem 'counter_culture'
