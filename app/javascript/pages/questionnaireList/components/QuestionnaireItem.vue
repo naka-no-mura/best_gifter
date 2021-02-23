@@ -74,6 +74,10 @@ export default {
       .then(res => {
         console.log(res)
       })
+        .catch((error) => {
+          this.errors = error.response.data.message;
+          this.$toasted.show(this.errors);
+        });
     },
     addVote2(){
       this.$axios.post("/v1/answers", {
@@ -84,6 +88,10 @@ export default {
       .then(res => {
         console.log(res)
       })
+        .catch((error) => {
+          this.errors = error.response.data.message;
+          this.$toasted.show(this.errors);
+        });
     },
     addVote3(){
       this.$axios.post("/v1/answers", {
@@ -94,6 +102,10 @@ export default {
       .then(res => {
         console.log(res)
       })
+        .catch((error) => {
+          this.errors = error.response.data.message;
+          this.$toasted.show(this.errors);
+        });
     },
   }
 };

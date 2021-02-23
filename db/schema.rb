@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(version: 2021_02_23_015846) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["questionnaire_choice_id"], name: "index_answers_on_questionnaire_choice_id"
     t.index ["questionnaire_id"], name: "index_answers_on_questionnaire_id"
+    t.index ["user_id", "questionnaire_id"], name: "index_answers_on_user_id_and_questionnaire_id", unique: true
     t.index ["user_id"], name: "index_answers_on_user_id"
   end
 

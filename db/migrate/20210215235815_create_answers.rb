@@ -7,5 +7,6 @@ class CreateAnswers < ActiveRecord::Migration[6.0]
 
       t.timestamps
     end
+    add_index  :answers, [:user_id, :questionnaire_id], unique: true
   end
 end
