@@ -76,6 +76,4 @@ export default {
   justify-content: center;
   margin-top: 5rem;
 }
-.b-field {
-}
 </style>

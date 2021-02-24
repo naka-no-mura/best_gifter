@@ -10,7 +10,7 @@
     <h1 class="title">
       新規登録
     </h1>
-    <b-field label="ユーザー名" 
+    <b-field label="ユーザー名"
         message="（例）山田花子">
       <b-input
         v-model="user.name"
@@ -27,12 +27,14 @@
       <b-input
         v-model="user.password"
         type="password"
+        password-reveal
       /></b-input>
     </b-field>
     <b-field label="パスワード（確認）" message="（例）password">
       <b-input
         v-model="user.password_confirmation"
         type="password"
+        password-reveal
       /></b-input>
     </b-field>
     <b-button class="register" type="submit" @click="register">

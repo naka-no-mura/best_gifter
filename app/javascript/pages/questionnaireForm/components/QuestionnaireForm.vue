@@ -2,38 +2,89 @@
   <div>
     <div class="section">
       <p class="title">アンケート投稿</p>
-      <div class="section">
-        <b-field label="ギフトを贈りたい方との間柄">
-          <b-input v-model="questionnaire.relationship"></b-input>
-        </b-field>
-        <b-field label="ギフトを贈りたい方の性別">
-          <b-input v-model="questionnaire.gender"></b-input>
-        </b-field>
-        <b-field label="ギフトを贈りたい方の年齢">
-          <b-input v-model="questionnaire.age"></b-input>
-        </b-field>
-        <b-field label="投稿内容">
-          <b-input
-            maxlength="200"
-            type="textarea"
-            v-model="questionnaire.text"
-          ></b-input>
-        </b-field>
-        <b-field label="1つ目 必須">
-          <b-input v-model="questionnaire.choice_first"></b-input>
-        </b-field>
-        <b-field label="2つ目 必須">
-          <b-input v-model="questionnaire.choice_second"></b-input>
-        </b-field>
-        <b-field label="3つ目 任意">
-          <b-input v-model="questionnaire.choice_third"></b-input>
-        </b-field><b-button @click="createQuestionnaire()" class="button is-warning">
-            
-        <router-link to="/questionnaire_list"
-          >投稿する
-        </router-link>
+      <ValidationObserver v-slot="{ handleSubmit }">
+        <form class="section">
+          <ValidationProvider rules="required" v-slot="{ errors }">
+            <label for="relationship" class="subtitle">ギフトを贈りたい方の間柄</label>
+            <span class="flash-message">{{ errors[0] }}</span>
+              <b-input
+              id="relationship"
+                v-model="questionnaire.relationship"
+                type="text"
+                maxlength="30"
+                placeholder="（例）高校時代の同級生"
+              ></b-input>
+          </ValidationProvider>
+          <ValidationProvider rules="required" v-slot="{ errors }">
+            <label for="gender" class="subtitle">ギフトを贈りたい方の性別</label>
+            <span class="flash-message">{{ errors[0] }}</span>
+              <b-select
+              id="gender"
+              class="gender-select"
+                placeholder="選択してください"
+                v-model="questionnaire.gender"
+              >
+                <option value="男性" v-model="questionnaire.gender"
+                  >男性</option
+                >
+                <option value="女性" v-model="questionnaire.gender"
+                  >女性</option
+                ></b-select
+              >
+          </ValidationProvider>
+          <ValidationProvider rules="required" v-slot="{ errors }">
+            <label for="age" class="subtitle">ギフトを贈りたい方の年齢</label>
+            <span class="flash-message">{{ errors[0] }}</span>
+              <b-input
+              id="age"
+                v-model="questionnaire.age"
+                maxlength="10"
+                placeholder="（例）25歳（定かではない場合はおおよそでも構いません）"
+              ></b-input>
+          </ValidationProvider>
+          <ValidationProvider rules="required" v-slot="{ errors }">
+            <label for="content" class="subtitle">投稿内容</label>
+            <span class="flash-message">{{ errors[0] }}</span>
+              <b-input
+              id="content"
+                maxlength="200"
+                type="textarea"
+                v-model="questionnaire.text"
+                placeholder="（例）高校時代からの仲で社会人になっても頻繁に飲みにいく関係です"
+              ></b-input>
+          </ValidationProvider>
+          <ValidationProvider rules="required" v-slot="{ errors }">
+            <label for="choice-1" class="subtitle">1つ目 必須</label>
+            <span class="flash-message">{{ errors[0] }}</span>
+              <b-input
+              id="choice-1"
+                v-model="questionnaire.choice_first"
+                maxlength="30"
+              ></b-input>
+          </ValidationProvider>
+          <ValidationProvider rules="required" v-slot="{ errors }">
+            <label for="choice-2" class="subtitle">2つ目 必須</label>
+            <span class="flash-message">{{ errors[0] }}</span>
+              <b-input
+              id="choice-2"
+                v-model="questionnaire.choice_second"
+                maxlength="30"
+              ></b-input>
+          </ValidationProvider>
+          <label for="choice-3" class="subtitle">3つ目 任意</label>
+            <b-input
+            id="choice-3"
+              v-model="questionnaire.choice_third"
+              maxlength="30"
+            ></b-input>
+          <b-button
+            @click="handleSubmit(createQuestionnaire)"
+            class="button q-btn"
+          >
+            投稿する
           </b-button>
-      </div>
+        </form>
+      </ValidationObserver>
     </div>
   </div>
 </template>
@@ -54,6 +105,7 @@ export default {
         choice_second: "",
         choice_third: "",
       },
+      form: {},
     };
   },
   computed: {
@@ -78,10 +130,11 @@ export default {
           choice: this.questionnaire.choice_first,
         })
         .then((res) => {
-          console.log(res);
+          this.$toasted.show("投稿完了しました。投票結果はマイページからいつでも確認できます。");
         })
         .catch((error) => {
-          console.log(error);
+          this.errors = error.response.data.message;
+          this.$toasted.show(this.errors);
         });
       this.$axios
         .post("/v1/questionnaire_choices", {
@@ -89,10 +142,11 @@ export default {
           choice: this.questionnaire.choice_second,
         })
         .then((res) => {
-          console.log(res);
+          this.$toasted.show("投稿完了しました。投票結果はマイページからいつでも確認できます。");
         })
         .catch((error) => {
-          console.log(error);
+          this.errors = error.response.data.message;
+          this.$toasted.show(this.errors);
         });
       this.$axios
         .post("/v1/questionnaire_choices", {
@@ -100,10 +154,11 @@ export default {
           choice: this.questionnaire.choice_third || "結果だけ閲覧する",
         })
         .then((res) => {
-          console.log(res);
+          this.$toasted.show("投稿完了しました。投票結果はマイページからいつでも確認できます。");
         })
         .catch((error) => {
-          console.log(error);
+          this.errors = error.response.data.message;
+          this.$toasted.show(this.errors);
         });
     },
     pushQuestionnaireList() {
@@ -113,4 +168,20 @@ export default {
 };
 </script>
 
-<style lang="scss"></style>
+<style lang="scss">
+.q-btn {
+  background-color: #ffd3d4 !important;
+  border: 5px solid #ffd3d4 !important;
+  transition: 0.3s;
+}
+.q-btn:hover {
+  background-color: white !important;
+  border: 5px solid #ffd3d4 !important;
+}
+.gender-select {
+  margin-bottom: 1rem;
+}
+.flash-message {
+  color: red;
+}
+</style>

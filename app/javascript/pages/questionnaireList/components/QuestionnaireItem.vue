@@ -158,7 +158,7 @@ export default {
 .q-tx {
   margin-top: 3rem;
   color: white;
-  font-size: 1.5rem;
+  font-size: 1.3em;
   text-shadow: 0 0 1rem #333;
 }
 .isClickedTx {
