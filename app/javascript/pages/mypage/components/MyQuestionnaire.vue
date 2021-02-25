@@ -5,7 +5,6 @@
       <MyQuestionnaireItem
         :key="questionnaire.id"
         :questionnaire="questionnaire"
-        class="questionnaire-item"
       />
     </template>
   </div>
@@ -54,4 +53,5 @@ export default {
 };
 </script>
 
-<style lang="scss"></style>
+<style lang="scss">
+</style>

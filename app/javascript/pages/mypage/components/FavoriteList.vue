@@ -3,7 +3,7 @@
     <h2 class="title">お気に入り</h2>
     <div class="columns is-multiline">
       <template v-for="item in items">
-        <div class="column is-2">
+        <div class="column is-4">
           <FavoriteItem :key="item.id" :item="item" />
         </div>
       </template>

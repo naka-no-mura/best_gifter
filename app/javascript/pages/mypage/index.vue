@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div class="columns">
-      <MyQuestionnaire class="column"></MyQuestionnaire>
+      <MyQuestionnaire class="column is-one-third"></MyQuestionnaire>
       <FavoriteList class="column"></FavoriteList>
     </div>
   </div>

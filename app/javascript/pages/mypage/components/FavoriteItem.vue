@@ -1,8 +1,8 @@
 <template>
-  <div class="card">
-    <div class="card-image">
+  <div class="tile is-parent">
+    <article class="tile is-child card-image">
       <figure class="image">
-        <img :src="item.image" />
+        <img :src="item.image" class="item-img" />
       </figure>
       <div class="favorite-mark">
         <span v-if="isLiked" @click="unFavorite()"
@@ -16,7 +16,6 @@
           ></b-icon
         ></span>
       </div>
-    </div>
     <a target="_blank" :href="item.url">
       <div class="content">
         <p>
@@ -27,24 +26,21 @@
             ><b>{{ item.price.toLocaleString() }}円</b></big
           >
         </p>
-        <div class="columns">
-          <star-rating
+        <div class="review-box">
+          <small><star-rating
             v-model="item.review_average"
             :increment="0.01"
             read-only
             :star-size="15"
-            class="column review-average"
-          ></star-rating>
-          <span class="column review-count"
-            >({{ item.review_count.toLocaleString() }}件)</span
-          >
+            class="review-average"
+          ></star-rating></small>
+          <small><span class="review-count"
+            >{{ item.review_count.toLocaleString() }}件</span
+          ></small>
         </div>
-        <p>
-          <b-icon icon="store-outline" size="is-small"> </b-icon>
-          <small>{{ item.shop_name }}</small>
-        </p>
       </div>
     </a>
+    </article>
   </div>
 </template>
 
@@ -123,7 +119,7 @@ export default {
 .favorite-mark {
   position: absolute;
   right: 0.5rem;
-  top: 0.5rem;
+  top: 1rem;
   background-color: white;
   border: #999;
   border-radius: 3px;

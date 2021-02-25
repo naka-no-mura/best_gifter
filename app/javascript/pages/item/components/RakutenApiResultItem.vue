@@ -1,9 +1,9 @@
 <template>
   <div>
-    <div class="card">
-      <div class="card-image">
-        <figure class="image">
-          <img :src="item.Item.mediumImageUrls[0].imageUrl" />
+    <div class="tile is-parent">
+      <article class="tile is-child card-image">
+        <figure class="image image-box">
+          <img :src="item.Item.mediumImageUrls[0].imageUrl" class="item-img" />
         </figure>
         <!-- お気に入りマーク -->
         <div class="favorite-mark" v-if="authUser">
@@ -19,7 +19,6 @@
           ></span>
         </div>
         <!-- お気に入りマーク ここまで-->
-      </div>
       <a target="_blank" :href="item.Item.itemUrl">
         <div class="content">
           <p>
@@ -30,24 +29,20 @@
               ><b>{{ item.Item.itemPrice.toLocaleString() }}円</b></big
             >
           </p>
-          <div class="columns">
-            <star-rating
+          <div class="review-box">
+            <small><star-rating
               v-model="item.Item.reviewAverage"
               :increment="0.01"
               read-only
               :star-size="15"
-              class="column review-average"
-            ></star-rating>
-            <span class="column review-count"
-              >({{ item.Item.reviewCount.toLocaleString() }}件)</span
-            >
-          </div>
-          <p>
-            <b-icon icon="store-outline" size="is-small"> </b-icon>
-            <small>{{ item.Item.shopName }}</small>
-          </p>
+              class="review-average"
+            ></star-rating></small>
+            <small><span class="review-count"
+              >{{ item.Item.reviewCount.toLocaleString() }}件</span
+            ></small></div>
         </div>
       </a>
+      </article>
     </div>
   </div>
 </template>
@@ -125,17 +120,30 @@ export default {
 }
 .item-price {
   color: red;
+  margin-bottom: 0 !important;
+}
+.review-box {
+  display: flex;
 }
 .review-average {
   color: orange;
+  margin: 0 !important;
 }
 .review-count {
   color: #999;
+  padding: auto 0 !important;
+  margin-left: 10px;
 }
 .star {
   color: #ff694b;
 }
 .star-outline {
   color: #ff694b;
+}
+.item-img {
+  width: 16rem !important;
+  height: 16rem !important;
+  object-fit: contain !important;
+  margin: 0 auto;
 }
 </style>

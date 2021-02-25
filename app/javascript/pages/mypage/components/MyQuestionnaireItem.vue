@@ -1,5 +1,5 @@
 <template>
-    <div class="section questionnaire-item">
+    <div class="section my-q-item">
       <div>
         <p>ギフトを贈りたい相手の</p>
         <p>間柄：{{ questionnaire.relationship }}</p>
@@ -41,12 +41,12 @@ export default {
 </script>
 
 <style lang="scss">
-.questionnaire-item {
-  -webkit-transition: .3s;
-  transition: .3s;
+.my-q-item {
   border-radius: 1rem;
+  background-color: #f8f8f8;
+  margin: 1rem;
 }
-.questionnaire-item:hover {
+.my-q-item:hover {
   background-color: #f8f8f8;
 }
 </style>
