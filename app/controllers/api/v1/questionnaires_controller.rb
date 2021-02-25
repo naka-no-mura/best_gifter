@@ -18,6 +18,12 @@ class Api::V1::QuestionnairesController < ApplicationController
   def destroy
   end
 
+  def my_questionnaires
+    @my_questionnaires = Questionnaire.where(user_id: params[:user_id]).order(created_at: :desc)
+
+    render json: @my_questionnaires.to_json(include: :questionnaire_choices)
+  end
+
   private
 
   def questionnaire_params

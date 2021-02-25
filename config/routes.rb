@@ -18,7 +18,11 @@ Rails.application.routes.draw do
           get 'search'
         end
       end
-      resources :questionnaires
+      resources :questionnaires do
+        collection do
+          get 'my_questionnaires'
+        end
+      end
       resources :questionnaire_choices
       resources :answers
     end

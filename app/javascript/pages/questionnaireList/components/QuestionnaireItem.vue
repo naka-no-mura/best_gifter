@@ -11,7 +11,7 @@
         <b-field>
           <b-radio-button
             v-model="radioButton"
-            native-value=questionnaire.questionnaire_choices.[0].choice
+            native-value=questionnaire.questionnaire_choices[0].choice
             type="is-light"
             ><span @click="addVote1()">{{
               questionnaire.questionnaire_choices[0].choice
@@ -19,7 +19,7 @@
           >
           <b-radio-button
             v-model="radioButton"
-            native-value=Dquestionnaire.questionnaire_choices.[1].choice
+            native-value=Dquestionnaire.questionnaire_choices[1].choice
             type="is-light"
             ><span @click="addVote2()">{{
               questionnaire.questionnaire_choices[1].choice
@@ -27,7 +27,7 @@
           >
           <b-radio-button
             v-model="radioButton"
-            native-value=questionnaire.questionnaire_choices.[2].choice
+            native-value=questionnaire.questionnaire_choices[2].choice
             type="is-light"
             ><span @click="addVote3()">{{
               questionnaire.questionnaire_choices[2].choice
@@ -55,7 +55,7 @@ export default {
   data() {
     return {
       options: {
-        // question: this.questionnaire.text,
+        question: "",
         answers: [
           { value: this.questionnaire.questionnaire_choices[0].id, text: this.questionnaire.questionnaire_choices[0].choice, votes: this.questionnaire.questionnaire_choices[0].answers_count },
           { value: this.questionnaire.questionnaire_choices[1].id, text: this.questionnaire.questionnaire_choices[1].choice, votes: this.questionnaire.questionnaire_choices[1].answers_count },

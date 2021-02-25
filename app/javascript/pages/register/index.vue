@@ -10,8 +10,8 @@
     <h1 class="title">
       新規登録
     </h1>
-    <b-field label="ユーザー名"
-        message="（例）山田花子">
+    <b-field label="ニックネーム"
+        message="（例）ギフター">
       <b-input
         v-model="user.name"
         type="text"
