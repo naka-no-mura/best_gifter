@@ -31,7 +31,7 @@ ActiveRecord::Schema.define(version: 2021_02_23_015846) do
     t.string "image"
     t.integer "review_count", null: false
     t.float "review_average", null: false
-    t.string "shop_name", null: false
+    t.string "shop_name"
     t.integer "genre_id", null: false
     t.bigint "user_id"
     t.datetime "created_at", precision: 6, null: false
@@ -52,9 +52,9 @@ ActiveRecord::Schema.define(version: 2021_02_23_015846) do
   create_table "questionnaires", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.text "text", null: false
-    t.string "relationship"
-    t.string "gender"
-    t.string "age"
+    t.string "relationship", null: false
+    t.string "gender", null: false
+    t.string "age", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_questionnaires_on_user_id"

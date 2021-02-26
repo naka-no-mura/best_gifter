@@ -19,29 +19,34 @@
           ></span>
         </div>
         <!-- お気に入りマーク ここまで-->
-      <a target="_blank" :href="item.Item.itemUrl">
-        <div class="content">
-          <p>
-            <small>{{ sliceItemName(item.Item.itemName) }}</small>
-          </p>
-          <p class="item-price">
-            <big
-              ><b>{{ item.Item.itemPrice.toLocaleString() }}円</b></big
-            >
-          </p>
-          <div class="review-box">
-            <small><star-rating
-              v-model="item.Item.reviewAverage"
-              :increment="0.01"
-              read-only
-              :star-size="15"
-              class="review-average"
-            ></star-rating></small>
-            <small><span class="review-count"
-              >{{ item.Item.reviewCount.toLocaleString() }}件</span
-            ></small></div>
-        </div>
-      </a>
+        <a target="_blank" :href="item.Item.itemUrl">
+          <div class="content">
+            <p>
+              <small>{{ sliceItemName(item.Item.itemName) }}</small>
+            </p>
+            <p class="item-price">
+              <big
+                ><b>{{ item.Item.itemPrice.toLocaleString() }}円</b></big
+              >
+            </p>
+            <div class="review-box">
+              <small
+                ><star-rating
+                  v-model="item.Item.reviewAverage"
+                  :increment="0.01"
+                  read-only
+                  :star-size="15"
+                  class="review-average"
+                ></star-rating
+              ></small>
+              <small
+                ><span class="review-count"
+                  >{{ item.Item.reviewCount.toLocaleString() }}件</span
+                ></small
+              >
+            </div>
+          </div>
+        </a>
       </article>
     </div>
   </div>

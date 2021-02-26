@@ -6,7 +6,7 @@
         <form class="section">
           <ValidationProvider rules="required" v-slot="{ errors }">
             <label for="relationship" class="subtitle"
-              >ギフトを贈りたい方の間柄</label
+              >ギフトを贈りたい方との間柄</label
             >
             <span class="flash-message">{{ errors[0] }}</span>
             <b-input
@@ -75,13 +75,13 @@
               placeholder="（例）温泉旅行チケット"
             ></b-input>
           </ValidationProvider>
-            <label for="choice-3" class="subtitle">3つ目</label>
-            <b-input
-              id="choice-3"
-              v-model="questionnaire.choice_third"
-              maxlength="30"
-              placeholder="（例）お掃除ロボット"
-            ></b-input>
+          <label for="choice-3" class="subtitle">3つ目</label>
+          <b-input
+            id="choice-3"
+            v-model="questionnaire.choice_third"
+            maxlength="30"
+            placeholder="（例）お掃除ロボット"
+          ></b-input>
           <b-button
             @click="handleSubmit(createQuestionnaire)"
             class="button q-btn"
@@ -129,48 +129,102 @@ export default {
         }
       );
       const response_questionnaire_id = createQuestionnaireResponse.data.id;
-      this.$axios
-        .post("/v1/questionnaire_choices", {
+      const choice_first = this.questionnaire.choice_first;
+      const choice_second = this.questionnaire.choice_second;
+      const choice_third = this.questionnaire.choice_third;
+
+      const choice1 = async function() {
+        await axios.post("/v1/questionnaire_choices", {
           questionnaire_id: response_questionnaire_id,
-          choice: this.questionnaire.choice_first,
-        })
-        .then((res) => {
+          choice: choice_first,
+        });
+      };
+
+      const choice2 = async function() {
+        await axios.post("/v1/questionnaire_choices", {
+          questionnaire_id: response_questionnaire_id,
+          choice: choice_second,
+        });
+      };
+
+      const choice3 = async function() {
+        axios.post("/v1/questionnaire_choices", {
+          questionnaire_id: response_questionnaire_id,
+          choice: choice_third || "結果だけ閲覧する",
+        });
+      };
+
+      const choiceAll = async function() {
+        await choice1();
+        await choice2();
+        await choice3();
+      };
+      choiceAll()
+        .then((res) =>
           this.$toasted.show(
             "投稿完了しました。投票結果はマイページからいつでも確認できます。"
-          );
-        })
-        .catch((error) => {
-          this.errors = error.response.data.message;
-          this.$toasted.show(this.errors);
-        });
-      this.$axios
-        .post("/v1/questionnaire_choices", {
-          questionnaire_id: response_questionnaire_id,
-          choice: this.questionnaire.choice_second,
-        })
-        .then((res) => {
+          )
+        )
+        .catch((err) =>
           this.$toasted.show(
-            "投稿完了しました。投票結果はマイページからいつでも確認できます。"
-          );
-        })
-        .catch((error) => {
-          this.errors = error.response.data.message;
-          this.$toasted.show(this.errors);
-        });
-      this.$axios
-        .post("/v1/questionnaire_choices", {
-          questionnaire_id: response_questionnaire_id,
-          choice: this.questionnaire.choice_third || "結果だけ閲覧する",
-        })
-        .then((res) => {
-          this.$toasted.show(
-            "投稿完了しました。投票結果はマイページからいつでも確認できます。"
-          );
-        })
-        .catch((error) => {
-          this.errors = error.response.data.message;
-          this.$toasted.show(this.errors);
-        });
+            "入力漏れがあります。必須項目をすべて入力して下さい。"
+          )
+        );
+
+      // async createQuestionnaire() {
+      //   const createQuestionnaireResponse = await this.$axios.post(
+      //     "/v1/questionnaires",
+      //     {
+      //       relationship: this.questionnaire.relationship,
+      //       gender: this.questionnaire.gender,
+      //       age: this.questionnaire.age,
+      //       text: this.questionnaire.text,
+      //       user_id: this.authUser.id,
+      //     }
+      //   );
+
+      // this.$axios
+      //   .post("/v1/questionnaire_choices", {
+      //     questionnaire_id: response_questionnaire_id,
+      //     choice: this.questionnaire.choice_first,
+      //   })
+      //   .then((res) => {
+      //     this.$toasted.show(
+      //       "投稿完了しました。投票結果はマイページからいつでも確認できます。"
+      //     );
+      //   })
+      //   .catch((error) => {
+      //     this.errors = error.response.data.message;
+      //     this.$toasted.show(this.errors);
+      //   })
+      // this.$axios
+      //   .post("/v1/questionnaire_choices", {
+      //     questionnaire_id: response_questionnaire_id,
+      //     choice: this.questionnaire.choice_second,
+      //   })
+      //   .then((res) => {
+      //     this.$toasted.show(
+      //       "投稿完了しました。投票結果はマイページからいつでも確認できます。"
+      //     );
+      //   })
+      //   .catch((error) => {
+      //     this.errors = error.response.data.message;
+      //     this.$toasted.show(this.errors);
+      //   })
+      // this.$axios
+      //   .post("/v1/questionnaire_choices", {
+      //     questionnaire_id: response_questionnaire_id,
+      //     choice: this.questionnaire.choice_third || "結果だけ閲覧する",
+      //   })
+      //   .then((res) => {
+      //     this.$toasted.show(
+      //       "投稿完了しました。投票結果はマイページからいつでも確認できます。"
+      //     );
+      //   })
+      //   .catch((error) => {
+      //     this.errors = error.response.data.message;
+      //     this.$toasted.show(this.errors);
+      //   })
     },
     pushQuestionnaireList() {
       this.$router.push("/questionnaire_list");
