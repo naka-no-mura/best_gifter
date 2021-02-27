@@ -41,10 +41,6 @@ export default {
         })
         .then((res) => {
           this.$data.questionnaires = res.data;
-          // for (let key of Object.keys(res)) {
-          //   console.log(key);
-          //   console.log(res[key]);
-          // }
         })
         .catch((err) => {
           console.log(err);

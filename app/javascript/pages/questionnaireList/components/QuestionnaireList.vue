@@ -5,6 +5,7 @@
         :key="questionnaire.id"
         :questionnaire="questionnaire"
         class="questionnaire-item"
+        @choice-voted="getQuestionnaires"
       />
     </template>
   </div>
@@ -29,7 +30,7 @@ export default {
   },
   methods: {
     getQuestionnaires() {
-      return this.$axios
+      this.$axios
         .get("/v1/questionnaires")
         .then((res) => {
           this.$data.questionnaires = res.data;
