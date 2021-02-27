@@ -5,6 +5,7 @@
       <MyQuestionnaireItem
         :key="questionnaire.id"
         :questionnaire="questionnaire"
+        @after-delete="getQuestionnaires"
       />
     </template>
   </div>
@@ -32,7 +33,7 @@ export default {
   },
   methods: {
     getQuestionnaires() {
-      return this.$axios
+      this.$axios
         .get("/v1/questionnaires/my_questionnaires", {
           params: {
             user_id: this.authUser.id

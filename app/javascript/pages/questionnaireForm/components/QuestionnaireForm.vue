@@ -1,7 +1,9 @@
 <template>
   <div>
-    <div class="section">
-      <p class="title">アンケート投稿</p>
+    <div class="section q-box">
+      <p class="title q-tl">アンケート投稿</p>
+      <p class="subtitle q-tl">新郎新婦へ贈るギフトをいくつか考えたが一つに絞れない…とお困りのあなたに。<br>
+      アンケートを投稿することでギフト選びの手助けとなるかもしれません</p>
       <ValidationObserver v-slot="{ handleSubmit }">
         <form class="section">
           <ValidationProvider rules="required" v-slot="{ errors }">
@@ -170,61 +172,6 @@ export default {
             "入力漏れがあります。必須項目をすべて入力して下さい。"
           )
         );
-
-      // async createQuestionnaire() {
-      //   const createQuestionnaireResponse = await this.$axios.post(
-      //     "/v1/questionnaires",
-      //     {
-      //       relationship: this.questionnaire.relationship,
-      //       gender: this.questionnaire.gender,
-      //       age: this.questionnaire.age,
-      //       text: this.questionnaire.text,
-      //       user_id: this.authUser.id,
-      //     }
-      //   );
-
-      // this.$axios
-      //   .post("/v1/questionnaire_choices", {
-      //     questionnaire_id: response_questionnaire_id,
-      //     choice: this.questionnaire.choice_first,
-      //   })
-      //   .then((res) => {
-      //     this.$toasted.show(
-      //       "投稿完了しました。投票結果はマイページからいつでも確認できます。"
-      //     );
-      //   })
-      //   .catch((error) => {
-      //     this.errors = error.response.data.message;
-      //     this.$toasted.show(this.errors);
-      //   })
-      // this.$axios
-      //   .post("/v1/questionnaire_choices", {
-      //     questionnaire_id: response_questionnaire_id,
-      //     choice: this.questionnaire.choice_second,
-      //   })
-      //   .then((res) => {
-      //     this.$toasted.show(
-      //       "投稿完了しました。投票結果はマイページからいつでも確認できます。"
-      //     );
-      //   })
-      //   .catch((error) => {
-      //     this.errors = error.response.data.message;
-      //     this.$toasted.show(this.errors);
-      //   })
-      // this.$axios
-      //   .post("/v1/questionnaire_choices", {
-      //     questionnaire_id: response_questionnaire_id,
-      //     choice: this.questionnaire.choice_third || "結果だけ閲覧する",
-      //   })
-      //   .then((res) => {
-      //     this.$toasted.show(
-      //       "投稿完了しました。投票結果はマイページからいつでも確認できます。"
-      //     );
-      //   })
-      //   .catch((error) => {
-      //     this.errors = error.response.data.message;
-      //     this.$toasted.show(this.errors);
-      //   })
     },
     pushQuestionnaireList() {
       this.$router.push("/questionnaire_list");
@@ -248,5 +195,12 @@ export default {
 }
 .flash-message {
   color: red;
+}
+.q-box {
+  width: 60%;
+  margin: 0 auto;
+}
+.q-tl {
+  text-align: center;
 }
 </style>

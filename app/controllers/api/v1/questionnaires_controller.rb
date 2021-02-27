@@ -16,6 +16,10 @@ class Api::V1::QuestionnairesController < ApplicationController
   end
 
   def destroy
+    @questionnaire = Questionnaire.find(params[:id])
+    @questionnaire.destroy!
+
+    render json: @qestionnaire
   end
 
   def my_questionnaires

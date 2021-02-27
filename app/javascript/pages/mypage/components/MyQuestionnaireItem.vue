@@ -8,6 +8,7 @@
         <p>内容：{{ questionnaire.text }}</p>
       </div>
         <vue-poll v-bind="options" finalResults></vue-poll>
+        <p class="delete-btn"><b-button @click="deleteQuestionnaire(questionnaire.id)">削除</b-button></p>
     </div>
 </template>
 
@@ -30,13 +31,23 @@ export default {
         ],
       },
       radioButton: '',
-      isClicked: true,
-      isClickedTx: false,
     }
   },
   computed: {
     ...mapGetters("users", ["authUser"]),
   },
+  methods: {
+    deleteQuestionnaire(id) {
+      if(confirm('アンケートを削除してもよろしいでしょうか？一度削除すると、元には戻せません。'))
+      this.$axios.delete('/v1/questionnaires/' + id, {data: {id: this.questionnaire.id}})
+      .then((res) => {
+          this.$toasted.show(
+            "アンケートを削除しました。"
+          )
+          this.$emit('after-delete')
+      })
+    },
+  }
 };
 </script>
 
@@ -48,5 +59,8 @@ export default {
 }
 .my-q-item:hover {
   background-color: #f8f8f8;
+}
+.delete-btn {
+  text-align: right;
 }
 </style>
