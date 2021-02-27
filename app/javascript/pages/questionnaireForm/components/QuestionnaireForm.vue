@@ -2,7 +2,7 @@
   <div>
     <div class="section q-box">
       <p class="title q-tl">アンケート投稿</p>
-      <p class="subtitle q-tl">新郎新婦へ贈るギフトをいくつか考えたが一つに絞れない…とお困りのあなたに。<br>
+      <p class="subtitle q-tl">新郎新婦へ贈るギフトをいくつか考えたが一つに絞れない…とお困りのあなたに<br>
       アンケートを投稿することでギフト選びの手助けとなるかもしれません</p>
       <ValidationObserver v-slot="{ handleSubmit }">
         <form class="section">
@@ -163,14 +163,10 @@ export default {
       };
       choiceAll()
         .then((res) =>
-          this.$toasted.show(
-            "投稿完了しました。投票結果はマイページからいつでも確認できます。"
-          )
+          this.$toasted.show(res)
         )
         .catch((err) =>
-          this.$toasted.show(
-            "入力漏れがあります。必須項目をすべて入力して下さい。"
-          )
+          this.$toasted.show(err)
         );
     },
     pushQuestionnaireList() {

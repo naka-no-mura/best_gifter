@@ -5,7 +5,6 @@
         :key="questionnaire.id"
         :questionnaire="questionnaire"
         class="questionnaire-item"
-        @choice-voted="getQuestionnaires"
       />
     </template>
   </div>

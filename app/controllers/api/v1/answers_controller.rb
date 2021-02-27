@@ -12,7 +12,7 @@ class Api::V1::AnswersController < ApplicationController
     if @answer.save
       render json: @answer
     else
-      render status: 409, json: { status: 409, message: "このアンケートには投票済みです" }
+      render status: 400, json: { status: 400, message: 'このアンケートには投票済みです' }
     end
   end
 

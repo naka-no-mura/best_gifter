@@ -95,7 +95,7 @@ export default {
         })
         .catch((error) => {
           this.errors = error.response.data.message;
-          this.$toasted.show(this.errors);
+          this.$toasted.error(this.errors);
         });
       this.isLiked = true;
     },
