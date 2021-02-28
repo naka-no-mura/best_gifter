@@ -1,45 +1,84 @@
 <template>
-  <div v-if="count">
-    <div>
-      {{ first.toLocaleString() }}〜{{ last.toLocaleString() }}件（{{
-        count.toLocaleString()
-      }}件）
-    </div>
-    <div class="block">
-      <b-taglist>
-        検索条件：
-        <b-tag class="tag" rounded v-if="keyword">{{ keyword }}</b-tag>
-        <b-tag class="tag" rounded v-if="genreId">{{
-          genreIdToName(genreId)
-        }}</b-tag>
-        <b-tag class="tag" rounded v-if="minPrice"
-          >{{ minPrice.toLocaleString() }}円〜</b-tag
-        >
-        <b-tag class="tag" rounded v-if="maxPrice"
-          >〜{{ maxPrice.toLocaleString() }}円</b-tag
-        >
-        <b-tag
-        class="tag"
-          rounded
-          v-if="!(keyword || maxPrice || minPrice || maxPrice || genreId)"
-          >結婚（デフォルト検索）</b-tag
-        >
-        <b-button
-         class="tag button"
-          v-if="keyword || maxPrice || minPrice || maxPrice || genreId"
-          @click="resetSearch()"
-          >検索条件の解除</b-button
-        >
-      </b-taglist>
-    </div>
+  <div v-if="count" class="block">
+    <nav class="level">
+      <div class="level-left">
+        <div class="level-item">
+          <div class="hit-count">
+            {{ first.toLocaleString() }}〜{{ last.toLocaleString() }}件（{{
+              count.toLocaleString()
+            }}件ヒット）
+          </div>
+          <span>検索条件：</span>
+          <b-taglist>
+            <b-tag class="tag" rounded v-if="keyword">{{ keyword }}</b-tag>
+            <b-tag class="tag" rounded v-if="genreId">{{
+              genreIdToName(genreId)
+            }}</b-tag>
+            <b-tag class="tag" rounded v-if="minPrice"
+              >{{ minPrice.toLocaleString() }}円〜</b-tag
+            >
+            <b-tag class="tag" rounded v-if="maxPrice"
+              >〜{{ maxPrice.toLocaleString() }}円</b-tag
+            >
+            <b-tag
+              class="tag"
+              rounded
+              v-if="!(keyword || maxPrice || minPrice || maxPrice || genreId)"
+              >結婚（デフォルト検索）</b-tag
+            >
+            <b-button
+              class="tag button"
+              v-if="keyword || maxPrice || minPrice || maxPrice || genreId"
+              @click="resetSearch()"
+              >検索条件の解除</b-button
+            >
+          </b-taglist>
+        </div>
+      </div>
+      <!-- 並び替え ここから -->
+      <div class="level-right"></div>
+      <div class="level-right">
+        <div class="level-item">
+          <span class="sort-btn">並び替え</span>
+          <div class="select">
+            <select
+              v-model="sort_selected.sort"
+              v-if="count"
+              @change="
+                changeSort($event.target.value);
+                setPage(1);
+              "
+            >
+              <option v-for="sort in sorts" :value="sort.sort" :key="sort.id">
+                {{ sort.name }}
+              </option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </nav>
   </div>
 </template>
 
 <script>
 import { mapGetters, mapActions } from "vuex";
-
+import { changeSort, changePage, search } from "../../../store/mutation-types";
 export default {
   name: "RakutenApiResultHit",
+  data() {
+    return {
+      // フォーム部分(プルダウン)の並び替え用
+      sorts: [
+        { sort: "standard", name: "標準" },
+        { sort: "-reviewCount", name: "レビュー件数順" },
+        { sort: "-reviewAverage", name: "レビュー評価順" },
+        { sort: "-itemPrice", name: "価格が高い順" },
+        { sort: "+itemPrice", name: "価格が安い順" },
+        { sort: "+updateTimestamp", name: "新着順" },
+      ],
+      sort_selected: { sort: "standard", name: "標準" },
+    };
+  },
   computed: {
     ...mapGetters("rakuten_api", [
       "keyword",
@@ -53,7 +92,12 @@ export default {
     ]),
   },
   methods: {
-    ...mapActions("rakuten_api", ["resetSearch"]),
+    ...mapActions("rakuten_api", [
+      "resetSearch",
+      "changeSort",
+      "changePage",
+      "search",
+    ]),
     genreIdToName(genreId) {
       if (genreId === 100433) {
         return "ルームウェア";
@@ -75,6 +119,11 @@ export default {
         return "キッチン用品・食器";
       }
     },
+    //再検索とソート変更の時は毎回1ページ目を表示させる
+    setPage(page) {
+      var vm = this;
+      vm.search(vm.changePage(page));
+    },
   },
 };
 </script>
@@ -90,5 +139,8 @@ export default {
 }
 .button:hover {
   opacity: 0.5;
+}
+.hit-count {
+  margin-right: 2rem;
 }
 </style>

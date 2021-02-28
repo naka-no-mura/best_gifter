@@ -1,7 +1,7 @@
 <template>
   <div v-if="pageCount">
     <section>
-      <nav aria-label="Page navigation">
+      <nav class="pagination is-centered" role="navigation" aria-label="pagination">
         <ul class="pagination-list">
           <!-- 1ページ目に戻るリンク -->
           <li class="pagination-link">
@@ -108,13 +108,13 @@ export default {
 };
 </script>
 
-<style scope>
+<style lang="scss">
 .pagination-number {
   color: #999;
   display: block !important;
   width: 100% !important;
   line-height: 2.5rem !important;
-  vertical-align: middle !important;
+  // vertical-align: middle !important;
 }
 .pagination-link {
   padding: 0 !important;

@@ -1,6 +1,6 @@
 <template>
   <!-- 検索フォーム ここから -->
-  <div class="section">
+  <div class="block api-call">
     <nav class="level">
       <div class="level-left">
         <div class="level-item">
@@ -49,27 +49,28 @@
       </div>
     </nav>
     <!-- 並び替え ここから -->
-    <nav class="level">
+    <!-- <nav class="level">
       <div class="level-right"></div>
       <div class="level-right">
         <div class="level-item">
-          <span>並び替え　</span>
-          <select
-            class="select"
-            v-model="sort_selected.sort"
-            v-if="count"
-            @change="
-              changeSort($event.target.value);
-              setPage(1);
-            "
-          >
-            <option v-for="sort in sorts" :value="sort.sort" :key="sort.id">
-              {{ sort.name }}
-            </option>
-          </select>
+          <span class="sort-btn">並び替え</span>
+          <div class="select">
+            <select
+              v-model="sort_selected.sort"
+              v-if="count"
+              @change="
+                changeSort($event.target.value);
+                setPage(1);
+              "
+            >
+              <option v-for="sort in sorts" :value="sort.sort" :key="sort.id">
+                {{ sort.name }}
+              </option>
+            </select>
+          </div>
         </div>
       </div>
-    </nav>
+    </nav> -->
   </div>
 </template>
 <script>
@@ -135,19 +136,14 @@ export default {
 };
 </script>
 <style scoped>
+.api-call {
+  margin-top: 5rem;
+}
 .flash-message {
   color: red;
   margin: 0.5rem;
 }
-.search-btn {
-  /* margin: 0.5rem;
-  width: 15rem; */
-  background-color: #ffd3d4;
-  border: 5px solid #ffd3d4;
-  transition: 0.3s;
-}
-.search-btn:hover {
-  background-color: white;
-  border: 5px solid #ffd3d4;
+.sort-btn {
+  margin-right: 1rem;
 }
 </style>

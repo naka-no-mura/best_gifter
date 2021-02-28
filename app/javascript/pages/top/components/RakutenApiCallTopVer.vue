@@ -78,18 +78,6 @@ export default {
   justify-content: center;
   margin-top: 5rem;
 }
-/* .top-call-field {
-  width: 150rem;
-}
-.top-call-keyword {
-  width: 50%;
-}
-.top-call-min {
-  width: 20%;
-}
-.top-call-max {
-  width: 20%;
-} */
 .top-call-keyword {
   width: 30rem;
 }
