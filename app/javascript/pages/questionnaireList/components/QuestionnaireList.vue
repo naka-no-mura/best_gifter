@@ -50,8 +50,10 @@ export default {
 .questionnaire-list {
   display: flex;
   flex-wrap:wrap;
+  justify-content: space-between;
 }
 .questionnaire-item {
-  width: 50%;
+  width: 48%;
+  margin-bottom: 5rem;
 }
 </style>

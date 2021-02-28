@@ -1,11 +1,11 @@
 <template>
   <div class="section questionnaire-item">
     <div>
-      <p>ギフトを贈りたい相手の</p>
-      <p>間柄：{{ questionnaire.relationship }}</p>
-      <p>性別：{{ questionnaire.gender }}</p>
-      <p>年齢：{{ questionnaire.age }}</p>
-      <p>内容：{{ questionnaire.text }}</p>
+      <p class="gift-q-tl"><b-icon icon="gift-outline" size="is-middium" class="gift-icon"></b-icon> ギフトを贈りたいお相手について</p>
+      <p><b-icon icon="arrow-right-drop-circle-outline" size="is-small"></b-icon> 間柄：{{ questionnaire.relationship }}</p>
+      <p><b-icon icon="arrow-right-drop-circle-outline" size="is-small"></b-icon> 性別：{{ questionnaire.gender }}</p>
+      <p><b-icon icon="arrow-right-drop-circle-outline" size="is-small"></b-icon> 年齢：{{ questionnaire.age }}</p>
+      <p><b-icon icon="arrow-right-drop-circle-outline" size="is-small"></b-icon> 内容：{{ questionnaire.text }}</p>
     </div>
     <div>
       <!-- <b-field>
@@ -170,9 +170,12 @@ export default {
   -webkit-transition: 0.3s;
   transition: 0.3s;
   border-radius: 1rem;
+  background-color: white;
+  padding: 1rem;
+  border: 5px solid white;
 }
 .questionnaire-item:hover {
-  background-color: #f8f8f8;
+  border: 5px solid #ffd3d4;
 }
 .answers {
   position: relative;
@@ -199,5 +202,12 @@ export default {
 // }
 .isClickedTx {
   display: none;
+}
+.gift-icon {
+  color: #ffd3d4;
+}
+.gift-q-tl {
+  border-bottom: 1px solid #ffd3d4;
+  margin-bottom: 1rem;
 }
 </style>

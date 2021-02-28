@@ -1,5 +1,5 @@
 <template>
-<div class="container">
+<div class="container q-container">
   <QuestionnaireForm></QuestionnaireForm>
   </div>
 </template>
@@ -15,4 +15,9 @@ export default {
 };
 </script>
 
-<style lang="scss"></style>
+<style lang="scss">
+.q-container {
+  margin: 0 calc(50% - 50vw);
+  background-color: rgba(255,249,255,1);
+}
+</style>

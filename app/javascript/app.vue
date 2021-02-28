@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="inner-box">
     <TheHeader />
     <router-view />
     <TheFooter />
@@ -18,5 +18,8 @@
   };
 </script>
 
-<style scoped>
+<style lang="scss">
+.inner-box {
+  background-color: #fff9ff;
+}
 </style>

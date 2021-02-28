@@ -1,14 +1,14 @@
 <template>
     <div class="section my-q-item">
       <div>
-        <p>ギフトを贈りたい相手の</p>
-        <p>間柄：{{ questionnaire.relationship }}</p>
-        <p>性別：{{ questionnaire.gender }}</p>
-        <p>年齢：{{ questionnaire.age }}</p>
-        <p>内容：{{ questionnaire.text }}</p>
+        <p class="gift-q-tl"><b-icon icon="gift-outline" size="is-middium" class="gift-icon"></b-icon> ギフトを贈りたい相手の</p>
+        <p><b-icon icon="arrow-right-drop-circle-outline" size="is-small"></b-icon> 間柄：{{ questionnaire.relationship }}</p>
+        <p><b-icon icon="arrow-right-drop-circle-outline" size="is-small"></b-icon> 性別：{{ questionnaire.gender }}</p>
+        <p><b-icon icon="arrow-right-drop-circle-outline" size="is-small"></b-icon> 年齢：{{ questionnaire.age }}</p>
+        <p><b-icon icon="arrow-right-drop-circle-outline" size="is-small"></b-icon> 内容：{{ questionnaire.text }}</p>
       </div>
         <vue-poll v-bind="options" finalResults></vue-poll>
-        <p class="delete-btn"><b-button @click="deleteQuestionnaire(questionnaire.id)">削除</b-button></p>
+        <p class="delete-btn"><b-button type="is-text" @click="deleteQuestionnaire(questionnaire.id)">削除</b-button></p>
     </div>
 </template>
 
@@ -54,11 +54,16 @@ export default {
 <style lang="scss">
 .my-q-item {
   border-radius: 1rem;
-  background-color: #f8f8f8;
+  background-color: white;
   margin: 1rem;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+  border-radius: 1rem;
+  background-color: white;
+  border: 5px solid white;
 }
 .my-q-item:hover {
-  background-color: #f8f8f8;
+  border: 5px solid #ffd3d4;
 }
 .delete-btn {
   text-align: right;

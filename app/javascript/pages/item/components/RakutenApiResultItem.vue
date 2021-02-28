@@ -2,7 +2,10 @@
   <div>
     <div class="tile is-parent">
       <article class="tile is-child card-image">
-        <figure class="image image-box">
+      <figure v-if="item.Item.mediumImageUrls[0].imageUrl === null">
+      <img src="../../../../assets/images/logo_light_pink.JPG">
+      </figure>
+        <figure v-else class="image image-box">
           <img :src="item.Item.mediumImageUrls[0].imageUrl" class="item-img" />
         </figure>
         <!-- お気に入りマーク -->

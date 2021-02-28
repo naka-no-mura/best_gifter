@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="inner-box">
     <div class="section q-box">
       <p class="title q-tl">アンケート投稿</p>
       <p class="subtitle q-tl">新郎新婦へ贈るギフトをいくつか考えたが一つに絞れない…とお困りのあなたに<br>
@@ -7,27 +7,20 @@
       <ValidationObserver v-slot="{ handleSubmit }">
         <form class="section">
           <ValidationProvider rules="required" v-slot="{ errors }">
-            <label for="relationship" class="subtitle"
-              >ギフトを贈りたい方との間柄</label
-            >
-            <span class="flash-message">{{ errors[0] }}</span>
+            <b-field label="ギフトを贈りたい方との間柄" message="（例）高校時代の同級生" class="tx-box">
             <b-input
-              id="relationship"
+            class="tx-box"
               v-model="questionnaire.relationship"
               type="text"
               maxlength="30"
-              placeholder="（例）高校時代の同級生"
             ></b-input>
+            </b-field>
+            <span class="flash-message">{{ errors[0] }}</span><br>
           </ValidationProvider>
           <ValidationProvider rules="required" v-slot="{ errors }">
-            <label for="gender" class="subtitle"
-              >ギフトを贈りたい方の性別</label
-            >
-            <span class="flash-message">{{ errors[0] }}</span>
+          <b-field label="ギフトを贈りたい方の性別" message="選択してください" class="tx-box">
             <b-select
-              id="gender"
               class="gender-select"
-              placeholder="選択してください"
               v-model="questionnaire.gender"
             >
               <option value="男性" v-model="questionnaire.gender">男性</option>
@@ -35,58 +28,57 @@
                 >女性</option
               ></b-select
             >
+            </b-field>
+            <span class="flash-message">{{ errors[0] }}</span><br>
           </ValidationProvider>
           <ValidationProvider rules="required" v-slot="{ errors }">
-            <label for="age" class="subtitle">ギフトを贈りたい方の年齢</label>
-            <span class="flash-message">{{ errors[0] }}</span>
+          <b-field label="ギフトを贈りたい方の年齢" message="（例）25歳（定かではない場合はおおよそでも構いません）" class="tx-box">
             <b-input
-              id="age"
               v-model="questionnaire.age"
               maxlength="10"
-              placeholder="（例）25歳（定かではない場合はおおよそでも構いません）"
             ></b-input>
+            </b-field>
+            <span class="flash-message">{{ errors[0] }}</span><br>
           </ValidationProvider>
           <ValidationProvider rules="required" v-slot="{ errors }">
-            <label for="content" class="subtitle">投稿内容</label>
-            <span class="flash-message">{{ errors[0] }}</span>
+          <b-field label="投稿内容" message="（例）高校時代からの仲で社会人になっても頻繁に飲みにいく関係です" class="tx-box">
             <b-input
-              id="content"
               maxlength="200"
               type="textarea"
               v-model="questionnaire.text"
-              placeholder="（例）高校時代からの仲で社会人になっても頻繁に飲みにいく関係です"
             ></b-input>
+            </b-field>
+            <span class="flash-message">{{ errors[0] }}</span><br>
           </ValidationProvider>
           <ValidationProvider rules="required" v-slot="{ errors }">
-            <label for="choice-1" class="subtitle">1つ目 必須</label>
-            <span class="flash-message">{{ errors[0] }}</span>
+          <b-field label="1つ目 必須" message="（例）1万円のワイン" class="tx-box">
             <b-input
-              id="choice-1"
               v-model="questionnaire.choice_first"
               maxlength="30"
-              placeholder="（例）カタログギフト"
             ></b-input>
+            </b-field>
+            <span class="flash-message">{{ errors[0] }}</span><br>
           </ValidationProvider>
           <ValidationProvider rules="required" v-slot="{ errors }">
-            <label for="choice-2" class="subtitle">2つ目 必須</label>
-            <span class="flash-message">{{ errors[0] }}</span>
+          <b-field label="2つ目 必須" message="（例）温泉旅行ペアチケット" class="tx-box">
             <b-input
-              id="choice-2"
               v-model="questionnaire.choice_second"
               maxlength="30"
-              placeholder="（例）温泉旅行チケット"
             ></b-input>
+            </b-field>
+            <span class="flash-message">{{ errors[0] }}</span><br>
           </ValidationProvider>
-          <label for="choice-3" class="subtitle">3つ目</label>
+          <b-field label="3つ目 任意" message="（例）お掃除ロボット／ただし、何も入力しなければ「結果だけ見る」という選択肢が追加されます。" class="tx-box">
           <b-input
-            id="choice-3"
             v-model="questionnaire.choice_third"
             maxlength="30"
-            placeholder="（例）お掃除ロボット"
           ></b-input>
+          </b-field>
           <b-button
             @click="handleSubmit(createQuestionnaire)"
             class="button q-btn"
+            expanded
+            v-bind:disabled="isPush"
           >
             投稿する
           </b-button>
@@ -113,6 +105,7 @@ export default {
         choice_third: "",
       },
       form: {},
+      isPush : false,
     };
   },
   computed: {
@@ -152,7 +145,7 @@ export default {
       const choice3 = async function() {
         axios.post("/v1/questionnaire_choices", {
           questionnaire_id: response_questionnaire_id,
-          choice: choice_third || "結果だけ閲覧する",
+          choice: choice_third || "結果だけ見る",
         });
       };
 
@@ -163,10 +156,11 @@ export default {
       };
       choiceAll()
         .then((res) =>
-          this.$toasted.show(res)
+          this.$toasted.success('アンケートを投稿しました。結果はマイページからいつでも確認できます。'),
+          this.isPush = true
         )
         .catch((err) =>
-          this.$toasted.show(err)
+          this.$toasted.error(err.response.data.message)
         );
     },
     pushQuestionnaireList() {
@@ -181,6 +175,7 @@ export default {
   background-color: #ffd3d4 !important;
   border: 5px solid #ffd3d4 !important;
   transition: 0.3s;
+  margin-top: 3.5rem;
 }
 .q-btn:hover {
   background-color: white !important;
@@ -198,5 +193,8 @@ export default {
 }
 .q-tl {
   text-align: center;
+}
+.tx-box {
+  margin-top: 2em !important;
 }
 </style>
