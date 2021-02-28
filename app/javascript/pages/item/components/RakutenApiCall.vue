@@ -1,80 +1,75 @@
 <template>
   <!-- 検索フォーム ここから -->
   <div class="section">
-    <ValidationProvider rules="minKeyword:1" v-slot="{ errors }">
-      <b-field class="b-field">
-        <span>キーワードで絞る　：</span>
-        <div>
-          <input
-            class="input"
-            type="text"
-            v-model="keywordBox"
-            name="キーワード"
-            placeholder="複数入力可能（任意）"
-            @input="changeKeyword($event.target.value)"
-          />
+    <nav class="level">
+      <div class="level-left">
+        <div class="level-item">
+          <div class="field has-addons">
+            <p class="control">
+              <input
+                class="input call-keyword is-medium"
+                type="search"
+                v-model="keywordBox"
+                placeholder="キーワード"
+                @input="changeKeyword($event.target.value)"
+              />
+            </p>
+            <p class="control">
+              <input
+                class="input call-min is-medium"
+                type="number"
+                min="0"
+                v-model="minPriceBox"
+                placeholder="いくらから"
+                @input="changeMinPrice($event.target.value)"
+              />
+            </p>
+            <p class="control">
+              <input
+                class="input call-max is-medium"
+                type="number"
+                min="0"
+                v-model="maxPriceBox"
+                placeholder="いくらまで"
+                @input="changeMaxPrice($event.target.value)"
+              />
+            </p>
+            <p class="control">
+              <b-button class="is-medium" @click="setPage(1)"
+                ><b-icon icon="magnify" size="is-medium"></b-icon
+              ></b-button>
+            </p>
+            <p>
+              <b-button @click="formClear()" class="is-medium" type="is-text">
+                クリア
+              </b-button>
+            </p>
+          </div>
         </div>
-        <span class="flash-message">{{ errors[0] }}</span>
-      </b-field>
-    </ValidationProvider>
-    <ValidationProvider rules="min:0" v-slot="{ errors }">
-      <b-field class="b-field">
-        <span>価格下限を設定する：</span>
-        <div>
-          <input
-            class="input"
-            type="number"
-            v-model="minPriceBox"
-            name="価格下限"
-            placeholder="0以上の数値（任意）"
-            @input="changeMinPrice($event.target.value)"
-          />
-        </div>
-        <span class="flash-message">{{ errors[0] }}</span>
-      </b-field>
-    </ValidationProvider>
-    <ValidationProvider rules="min:0" v-slot="{ errors }">
-      <b-field class="b-field">
-        <span>価格上限を設定する：</span>
-        <div>
-          <input
-            class="input"
-            type="number"
-            v-model="maxPriceBox"
-            name="価格上限"
-            placeholder="0以上の数値（任意）"
-            @input="changeMaxPrice($event.target.value)"
-          />
-        </div>
-        <span class="flash-message">{{ errors[0] }}</span>
-      </b-field>
-    </ValidationProvider>
-    <b-field>
-      <div>
-        <b-button class="button" @click="setPage(1)">検索</b-button>
       </div>
-      <!-- フォーム内クリア -->
-      <b-button type="is-text" @click="formClear()" class="button clear-button">
-        クリア
-      </b-button>
-    </b-field>
+    </nav>
     <!-- 並び替え ここから -->
-    <b-field>
-      <select
-        class="select"
-        v-model="sort_selected.sort"
-        v-if="count"
-        @change="
-          changeSort($event.target.value);
-          setPage(1);
-        "
-      >
-        <option v-for="sort in sorts" :value="sort.sort" :key="sort.id">
-          {{ sort.name }}
-        </option>
-      </select>
-    </b-field>
-    <!-- 検索フォーム ここまで -->
+    <nav class="level">
+      <div class="level-right"></div>
+      <div class="level-right">
+        <div class="level-item">
+          <span>並び替え　</span>
+          <select
+            class="select"
+            v-model="sort_selected.sort"
+            v-if="count"
+            @change="
+              changeSort($event.target.value);
+              setPage(1);
+            "
+          >
+            <option v-for="sort in sorts" :value="sort.sort" :key="sort.id">
+              {{ sort.name }}
+            </option>
+          </select>
+        </div>
+      </div>
+    </nav>
   </div>
 </template>
 <script>
@@ -140,17 +135,19 @@ export default {
 };
 </script>
 <style scoped>
-.b-field {
-  margin: 0.5rem;
-}
 .flash-message {
   color: red;
   margin: 0.5rem;
 }
-.button {
-  margin: 0.5rem;
-  width: 15rem;
+.search-btn {
+  /* margin: 0.5rem;
+  width: 15rem; */
   background-color: #ffd3d4;
-  border: none;
+  border: 5px solid #ffd3d4;
+  transition: 0.3s;
+}
+.search-btn:hover {
+  background-color: white;
+  border: 5px solid #ffd3d4;
 }
 </style>

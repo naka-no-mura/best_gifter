@@ -1,43 +1,45 @@
 <template>
   <div class="section">
-        <b-field class="b-field">
-            <b-input
-              type="search"
-              style="width: 30rem;"
-              size="is-large"
-              placeholder="必須：キーワード（例：結婚）"
-              @input="changeKeyword($event.target.value)"
-            /></b-input>
-            <b-input
-              class="control"
-              type="number"
-              min="0"
-              size="is-large"
-              placeholder="任意：いくらから"
-              @input="changeMinPrice($event.target.value)"
-            /></b-input>
-            <b-input
-              class="control"
-              type="number"
-              min="0"
-              size="is-large"
-              placeholder="任意：いくらまで"
-              @input="changeMaxPrice($event.target.value)"
-            /></b-input>
-        <p class="control">
-          <b-button
-            class="button"
-            type="submit is-large"
-            @click="
-              keywordSearch();
-              search();
-            "
-            :disabled="invalid"
-          >
-            <b-icon icon="magnify" size="is-medium"></b-icon>
-          </b-button>
-        </p>
-      </b-field>
+    <div class="field has-addons">
+      <p class="control">
+        <input
+          class="input top-call-keyword is-medium"
+          type="search"
+          placeholder="必須：キーワード（例：結婚）"
+          @input="changeKeyword($event.target.value)"
+        />
+      </p>
+      <p class="control">
+        <input
+          class="input top-call-min is-medium"
+          type="number"
+          min="0"
+          placeholder="任意：いくらから"
+          @input="changeMinPrice($event.target.value)"
+        />
+      </p>
+      <p class="control">
+        <input
+          class="input top-call-max is-medium"
+          type="number"
+          min="0"
+          placeholder="任意：いくらまで"
+          @input="changeMaxPrice($event.target.value)"
+        />
+      </p>
+      <p class="control">
+        <b-button
+          type="submit is-medium"
+          @click="
+            keywordSearch();
+            search();
+          "
+          :disabled="invalid"
+        >
+          <b-icon icon="magnify" size="is-medium"></b-icon>
+        </b-button>
+      </p>
+    </div>
   </div>
 </template>
 <script>
@@ -72,8 +74,23 @@ export default {
 </script>
 <style scoped>
 .section {
-      display: flex;
+  display: flex;
   justify-content: center;
   margin-top: 5rem;
+}
+/* .top-call-field {
+  width: 150rem;
+}
+.top-call-keyword {
+  width: 50%;
+}
+.top-call-min {
+  width: 20%;
+}
+.top-call-max {
+  width: 20%;
+} */
+.top-call-keyword {
+  width: 30rem;
 }
 </style>
