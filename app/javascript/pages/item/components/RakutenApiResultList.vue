@@ -1,5 +1,5 @@
 <template>
-<div class="container is-fluid">
+<div class="container item-box">
     <div class="columns is-multiline">
       <template v-for="item in items">
         <div class="column is-3">
@@ -40,4 +40,10 @@ export default {
 };
 </script>
 
-<style scope></style>
+<style scope>
+.item-box {
+  border-top: 0.5px solid #d3d3d3;
+  border-bottom: 0.5px solid #d3d3d3;
+  padding: 2rem 0rem;
+}
+</style>

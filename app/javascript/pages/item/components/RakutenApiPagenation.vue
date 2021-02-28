@@ -1,5 +1,5 @@
 <template>
-  <div v-if="pageCount" class="block">
+  <div v-if="pageCount" class="block pagenation-box">
     <nav class="pagination is-medium" role="navigation" aria-label="pagination">
       <ul class="pagination-list">
         <!-- 1ページ目に戻るリンク -->
@@ -138,5 +138,8 @@ export default {
 .pagination-link {
   padding: 0 !important;
   background-color: white;
+}
+.pagenation-box {
+  margin: 2rem 0rem;
 }
 </style>

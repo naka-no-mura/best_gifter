@@ -1,9 +1,9 @@
 <template>
   <div class="tile is-parent">
-    <article class="tile is-child card-image">
-      <figure class="image">
-        <img :src="item.image" class="item-img" />
-      </figure>
+        <a target="_blank" :href="item.url" class="item-url">
+    <div class="mask"><p class="caption"><b>READ MORE</b></p></div>
+        </a>
+    <article class="tile is-child tile-image">
       <div class="favorite-mark">
         <span v-if="isLiked" @click="unFavorite()"
           ><b-icon icon="star" size="is-midium" class="star"></b-icon
@@ -16,7 +16,9 @@
           ></b-icon
         ></span>
       </div>
-    <a target="_blank" :href="item.url">
+      <figure class="image">
+        <img :src="item.image" class="item-img" />
+      </figure>
       <div class="content">
         <p>
           <small>{{ sliceItemName(item.name) }}</small>
@@ -39,7 +41,6 @@
           ></small>
         </div>
       </div>
-    </a>
     </article>
   </div>
 </template>
@@ -110,39 +111,4 @@ export default {
 </script>
 
 <style scope>
-.card a{
-  color: #4a4a4a;
-}
-.card-image {
-  position: relative;
-}
-.favorite-mark {
-  position: absolute;
-  right: 0.5rem;
-  top: 1rem;
-  background-color: white;
-  border: #999;
-  border-radius: 3px;
-}
-.content {
-  margin: 0.5rem;
-}
-.content:hover {
-  opacity: 0.5;
-}
-.item-price {
-  color: red;
-}
-.review-average {
-  color: orange;
-}
-.review-count {
-  color: #999;
-}
-.star {
-  color: #ff694b;
-}
-.star-outline {
-  color: #ff694b;
-}
 </style>
