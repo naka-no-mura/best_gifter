@@ -1,15 +1,15 @@
 <template>
-  <div class="" v-if="pageCount">
+  <div v-if="pageCount">
     <section>
       <nav aria-label="Page navigation">
         <ul class="pagination-list">
           <!-- 1ページ目に戻るリンク -->
           <li class="pagination-link">
-            <a href="#" v-on:click.prevent="setPage(1)"><<</a>
+            <a class="pagination-number" href="#" v-on:click.prevent="setPage(1)"><<</a>
           </li>
           <!-- 1ページ前に戻るリンク -->
           <li class="pagination-link">
-            <a href="#" @click.prevent="setPage(currentPage - 1)"><</a>
+            <a class="pagination-number" href="#" @click.prevent="setPage(currentPage - 1)"><</a>
           </li>
           <!-- ここからページ数分のリンクを生成 -->
           <li
@@ -21,17 +21,17 @@
             <template v-if="numFix(num) == currentPage">
               <span class="page-link is-current">{{ numFix(num) }}</span>
             </template>
-            <a href="#" @click.prevent="setPage(numFix(num))" v-else>{{
+            <a class="pagination-number" href="#" @click.prevent="setPage(numFix(num))" v-else>{{
               numFix(num)
             }}</a>
           </li>
           <!-- 1ページ次に進むリンク -->
           <li class="pagination-link">
-            <a href="#" @click.prevent="setPage(currentPage + 1)">></a>
+            <a class="pagination-number" href="#" @click.prevent="setPage(currentPage + 1)">></a>
           </li>
           <!-- 最後のページに進むリンク -->
           <li class="pagination-link">
-            <a href="#" @click.prevent="setPage(pageCount)">>></a>
+            <a class="pagination-number" href="#" @click.prevent="setPage(pageCount)">>></a>
           </li>
         </ul>
       </nav>
@@ -109,5 +109,14 @@ export default {
 </script>
 
 <style scope>
-
+.pagination-number {
+  color: #999;
+  display: block !important;
+  width: 100% !important;
+  line-height: 2.5rem !important;
+  vertical-align: middle !important;
+}
+.pagination-link {
+  padding: 0 !important;
+}
 </style>

@@ -1,43 +1,56 @@
 <template>
   <div>
-    <div class="card">
-        <div class="card-image">
-          <figure class="image">
-            <img :src="item.Item.mediumImageUrls[0].imageUrl" />
-          </figure>
-            <div class="favorite-mark">
-              <span v-if="isLiked" @click="favorite()"><b-icon icon="star" size="is-midium" class="star"></b-icon></span>
-              <span v-else @click="favorite()"><b-icon icon="star-outline" size="is-midium" class="star-outline"></b-icon></span>
+    <div class="tile is-parent">
+      <article class="tile is-child card-image">
+      <figure v-if="item.Item.mediumImageUrls[0].imageUrl === null">
+      <img src="../../../../assets/images/logo_light_pink.JPG">
+      </figure>
+        <figure v-else class="image image-box">
+          <img :src="item.Item.mediumImageUrls[0].imageUrl" class="item-img" />
+        </figure>
+        <!-- お気に入りマーク -->
+        <div class="favorite-mark" v-if="authUser">
+          <span v-if="isLiked" @click="favorite()"
+            ><b-icon icon="star" size="is-midium" class="star"></b-icon
+          ></span>
+          <span v-else @click="favorite()"
+            ><b-icon
+              icon="star-outline"
+              size="is-midium"
+              class="star-outline"
+            ></b-icon
+          ></span>
+        </div>
+        <!-- お気に入りマーク ここまで-->
+        <a target="_blank" :href="item.Item.itemUrl">
+          <div class="content">
+            <p>
+              <small>{{ sliceItemName(item.Item.itemName) }}</small>
+            </p>
+            <p class="item-price">
+              <big
+                ><b>{{ item.Item.itemPrice.toLocaleString() }}円</b></big
+              >
+            </p>
+            <div class="review-box">
+              <small
+                ><star-rating
+                  v-model="item.Item.reviewAverage"
+                  :increment="0.01"
+                  read-only
+                  :star-size="15"
+                  class="review-average"
+                ></star-rating
+              ></small>
+              <small
+                ><span class="review-count"
+                  >{{ item.Item.reviewCount.toLocaleString() }}件</span
+                ></small
+              >
             </div>
-        </div>
-      <a target="_blank" :href="item.Item.itemUrl">
-        <div class="content">
-          <p>
-            <small>{{ sliceItemName(item.Item.itemName) }}</small>
-          </p>
-          <p class="item-price">
-            <big
-              ><b>{{ item.Item.itemPrice.toLocaleString() }}円</b></big
-            >
-          </p>
-          <div class="columns">
-            <star-rating
-              v-model="item.Item.reviewAverage"
-              :increment="0.01"
-              read-only
-              :star-size="15"
-              class="column review-average"
-            ></star-rating>
-            <span class="column review-count"
-              >({{ item.Item.reviewCount.toLocaleString() }}件)</span
-            >
           </div>
-          <p>
-            <b-icon icon="store-outline" size="is-small"> </b-icon>
-            <small>{{ item.Item.shopName }}</small>
-          </p>
-        </div>
-      </a>
+        </a>
+      </article>
     </div>
   </div>
 </template>
@@ -53,10 +66,10 @@ export default {
   data() {
     return {
       isLiked: false,
-    }
+    };
   },
   computed: {
-    ...mapGetters("users", ["authUser"])
+    ...mapGetters("users", ["authUser"]),
   },
   methods: {
     sliceItemName(itemName) {
@@ -67,36 +80,34 @@ export default {
       }
     },
     favorite() {
-      this.$axios.post('/v1/items',
-      {
-        name: this.item.Item.itemName,
-        price: this.item.Item.itemPrice,
-        url: this.item.Item.itemUrl,
-        image: this.item.Item.mediumImageUrls[0].imageUrl,
-        review_count: this.item.Item.reviewCount,
-        review_average: this.item.Item.reviewAverage,
-        shop_name: this.item.Item.shopName,
-        genre_id: this.item.Item.genreId,
-        user_id: this.authUser.id,
-        item_code: this.item.Item.itemCode
-      })
-        .then(res => {
+      this.$axios
+        .post("/v1/items", {
+          name: this.item.Item.itemName,
+          price: this.item.Item.itemPrice,
+          url: this.item.Item.itemUrl,
+          image: this.item.Item.mediumImageUrls[0].imageUrl,
+          review_count: this.item.Item.reviewCount,
+          review_average: this.item.Item.reviewAverage,
+          shop_name: this.item.Item.shopName,
+          genre_id: this.item.Item.genreId,
+          user_id: this.authUser.id,
+          item_code: this.item.Item.itemCode,
+        })
+        .then((res) => {
           console.log(res);
         })
-        .catch(error => {
-          this.errors = error.response.data.message
-          this.$toasted.show(this.errors);
+        .catch((error) => {
+          this.errors = error.response.data.message;
+          this.$toasted.error(this.errors);
         });
-          this.isLiked = true
+      this.isLiked = true;
     },
   },
 };
 </script>
-<style lang="scss">
+<style scope>
 .card {
-  a {
-    color: #4a4a4a;
-  }
+  color: #4a4a4a;
 }
 .card-image {
   position: relative;
@@ -117,17 +128,30 @@ export default {
 }
 .item-price {
   color: red;
+  margin-bottom: 0 !important;
+}
+.review-box {
+  display: flex;
 }
 .review-average {
   color: orange;
+  margin: 0 !important;
 }
 .review-count {
   color: #999;
+  padding: auto 0 !important;
+  margin-left: 10px;
 }
 .star {
   color: #ff694b;
 }
 .star-outline {
   color: #ff694b;
+}
+.item-img {
+  width: 16rem !important;
+  height: 16rem !important;
+  object-fit: contain !important;
+  margin: 0 auto;
 }
 </style>

@@ -1,8 +1,8 @@
 <template>
-  <div>
+<div class="container is-fluid">
     <div class="columns is-multiline">
       <template v-for="item in items">
-        <div class="column is-2">
+        <div class="column is-3">
           <RakutenApiResultItem :key="item.id" :item="item" />
         </div>
       </template>
@@ -15,7 +15,7 @@
         <img src="../../../../assets/images/empty.jpg" />
       </section>
     </div>
-  </div>
+    </div>
 </template>
 
 <script>

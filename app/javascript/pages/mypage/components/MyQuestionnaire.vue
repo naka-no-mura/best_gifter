@@ -1,0 +1,93 @@
+<template>
+  <div class="section inner-box">
+    <h2 class="title">アンケート結果</h2>
+    <div class="q-ads">
+    <p>アンケートを投稿して<br>ギフトを厳選してみましょう！</p>
+    <b-icon icon="gift-outline" size="is-large" class="mypage-gift-icon"></b-icon><br>
+    <router-link to="/questionnaire_form" class="button q-ads-button">投稿する</router-link>
+    </div>
+    <div>
+    <template v-for="questionnaire in questionnaires">
+      <MyQuestionnaireItem
+        :key="questionnaire.id"
+        :questionnaire="questionnaire"
+        @after-delete="getQuestionnaires"
+      />
+    </template>
+    </div>
+  </div>
+</template>
+
+<script>
+import { mapGetters } from "vuex";
+import axios from "../../../plugins/axios";
+import MyQuestionnaireItem from "./MyQuestionnaireItem.vue";
+export default {
+  name: "MyQuestionnaire",
+  components: {
+    MyQuestionnaireItem,
+  },
+  data() {
+    return {
+      questionnaires: [],
+    };
+  },
+  created() {
+    this.getQuestionnaires();
+  },
+  computed: {
+    ...mapGetters("users", ["authUser"]),
+  },
+  methods: {
+    getQuestionnaires() {
+      this.$axios
+        .get("/v1/questionnaires/my_questionnaires", {
+          params: {
+            user_id: this.authUser.id
+          }
+        })
+        .then((res) => {
+          this.$data.questionnaires = res.data;
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    },
+  },
+};
+</script>
+
+<style lang="scss">
+.q-ads {
+  border-radius: 1rem;
+  background-color: white;
+  margin: 1rem;
+  padding: 3rem 1rem;
+  text-align: center;
+}
+.inner-box {
+  background-color: #f0eee9;
+}
+.mypage-gift-icon {
+  color: #ffd3d4;
+  margin: 1rem;
+}
+// .button {
+//   background-color: #ffd3d4 !important;
+//   border: 5px solid #ffd3d4 !important;
+//   transition: 0.3s !important;
+// }
+// .button:hover {
+//   background-color: white !important;
+//   border: 5px solid #ffd3d4 !important;
+// }
+.q-ads-button {
+  background-color: #ffd3d4 !important;
+  border: 5px solid #ffd3d4 !important;
+  transition: 0.3s !important;
+}
+.q-ads-button:hover {
+  background-color: white !important;
+  border: 5px solid #ffd3d4 !important;
+}
+</style>

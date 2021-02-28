@@ -8,24 +8,24 @@
     <div class="block">
       <b-taglist>
         検索条件：
-        <b-tag type="is-warning" rounded v-if="keyword">{{ keyword }}</b-tag>
-        <b-tag type="is-warning" rounded v-if="genreId">{{
+        <b-tag class="tag" rounded v-if="keyword">{{ keyword }}</b-tag>
+        <b-tag class="tag" rounded v-if="genreId">{{
           genreIdToName(genreId)
         }}</b-tag>
-        <b-tag type="is-warning" rounded v-if="minPrice"
+        <b-tag class="tag" rounded v-if="minPrice"
           >{{ minPrice.toLocaleString() }}円〜</b-tag
         >
-        <b-tag type="is-warning" rounded v-if="maxPrice"
+        <b-tag class="tag" rounded v-if="maxPrice"
           >〜{{ maxPrice.toLocaleString() }}円</b-tag
         >
         <b-tag
-          type="is-warning"
+        class="tag"
           rounded
           v-if="!(keyword || maxPrice || minPrice || maxPrice || genreId)"
           >結婚（デフォルト検索）</b-tag
         >
         <b-button
-          type="is-text"
+         class="tag button"
           v-if="keyword || maxPrice || minPrice || maxPrice || genreId"
           @click="resetSearch()"
           >検索条件の解除</b-button
@@ -79,4 +79,16 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+.tag {
+  background-color: #ffd3d4;
+  border: none;
+}
+.button {
+  background-color: #ffd3d4;
+  border: none;
+}
+.button:hover {
+  opacity: 0.5;
+}
+</style>

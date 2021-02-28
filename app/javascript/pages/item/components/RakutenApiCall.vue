@@ -51,12 +51,12 @@
     </ValidationProvider>
     <b-field>
       <div>
-        <button class="button is-warning" @click="setPage(1)">検索</button>
+        <b-button class="button" @click="setPage(1)">検索</b-button>
       </div>
       <!-- フォーム内クリア -->
-      <button @click="formClear()" class="button is-warning is-light">
+      <b-button type="is-text" @click="formClear()" class="button clear-button">
         クリア
-      </button>
+      </b-button>
     </b-field>
     <!-- 並び替え ここから -->
     <b-field>
@@ -150,5 +150,7 @@ export default {
 .button {
   margin: 0.5rem;
   width: 15rem;
+  background-color: #ffd3d4;
+  border: none;
 }
 </style>

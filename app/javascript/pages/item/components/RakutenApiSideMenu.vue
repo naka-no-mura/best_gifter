@@ -252,7 +252,7 @@ export default {
   },
 };
 </script>
-<style lang="scss">
+<style scope>
 .p-1 {
   padding: 1em;
 }

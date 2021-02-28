@@ -23,3 +23,8 @@ extend("minKeyword", {
   },
   message: "{_field_}は1文字以上で入力してください",
 });
+
+extend("required", {
+  ...required,
+  message: "必須項目です",
+});

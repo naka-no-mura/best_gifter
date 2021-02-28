@@ -4,7 +4,8 @@ import store from '../store'
 
 import TopIndex from '../pages/top/index';
 import ItemIndex from '../pages/item/index';
-import QuestionnarieIndex from "../pages/questionnarie/index";
+import QuestionnaireFormIndex from "../pages/questionnaireForm/index";
+import QuestionnaireListIndex from "../pages/questionnaireList/index";
 import RegisterIndex from "../pages/register/index";
 import LoginIndex from "../pages/login/index";
 import MypageIndex from "../pages/mypage/index";
@@ -25,9 +26,14 @@ const router = new Router({
       name: "ItemIndex",
     },
     {
-      path: "/questionnaries",
-      component: QuestionnarieIndex,
-      name: "QuestionnarieIndex",
+      path: "/questionnaire_form",
+      component: QuestionnaireFormIndex,
+      name: "QuestionnaireFormIndex",
+    },
+    {
+      path: "/questionnaire_list",
+      component: QuestionnaireListIndex,
+      name: "QuestionnaireListIndex",
     },
     {
       path: "/register",

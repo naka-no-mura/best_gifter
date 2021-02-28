@@ -18,7 +18,13 @@ Rails.application.routes.draw do
           get 'search'
         end
       end
-      resource :favorites, only: %i[create destroy]
+      resources :questionnaires do
+        collection do
+          get 'my_questionnaires'
+        end
+      end
+      resources :questionnaire_choices
+      resources :answers
     end
   end
   get '*path', to: 'home#index'

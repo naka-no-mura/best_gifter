@@ -10,15 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_11_042814) do
+ActiveRecord::Schema.define(version: 2021_02_23_015846) do
 
-  create_table "favorites", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+  create_table "answers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.bigint "user_id", null: false
-    t.bigint "item_id", null: false
+    t.bigint "questionnaire_choice_id", null: false
+    t.bigint "questionnaire_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["item_id"], name: "index_favorites_on_item_id"
-    t.index ["user_id"], name: "index_favorites_on_user_id"
+    t.index ["questionnaire_choice_id"], name: "index_answers_on_questionnaire_choice_id"
+    t.index ["questionnaire_id"], name: "index_answers_on_questionnaire_id"
+    t.index ["user_id", "questionnaire_id"], name: "index_answers_on_user_id_and_questionnaire_id", unique: true
+    t.index ["user_id"], name: "index_answers_on_user_id"
   end
 
   create_table "items", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
@@ -28,13 +31,33 @@ ActiveRecord::Schema.define(version: 2021_02_11_042814) do
     t.string "image"
     t.integer "review_count", null: false
     t.float "review_average", null: false
-    t.string "shop_name", null: false
+    t.string "shop_name"
     t.integer "genre_id", null: false
     t.bigint "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "item_code", null: false
     t.index ["user_id"], name: "index_items_on_user_id"
+  end
+
+  create_table "questionnaire_choices", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+    t.bigint "questionnaire_id", null: false
+    t.string "choice", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "answers_count", default: 0, null: false
+    t.index ["questionnaire_id"], name: "index_questionnaire_choices_on_questionnaire_id"
+  end
+
+  create_table "questionnaires", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.text "text", null: false
+    t.string "relationship", null: false
+    t.string "gender", null: false
+    t.string "age", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_questionnaires_on_user_id"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
@@ -47,7 +70,10 @@ ActiveRecord::Schema.define(version: 2021_02_11_042814) do
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
-  add_foreign_key "favorites", "items"
-  add_foreign_key "favorites", "users"
+  add_foreign_key "answers", "questionnaire_choices"
+  add_foreign_key "answers", "questionnaires"
+  add_foreign_key "answers", "users"
   add_foreign_key "items", "users"
+  add_foreign_key "questionnaire_choices", "questionnaires"
+  add_foreign_key "questionnaires", "users"
 end
