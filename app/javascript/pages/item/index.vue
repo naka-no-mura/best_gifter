@@ -63,6 +63,9 @@ export default {
 </script>
 
 <style lang="scss">
+main {
+  padding-top: 5rem;
+}
 .sidebar-page {
   display: flex;
   flex-direction: column;

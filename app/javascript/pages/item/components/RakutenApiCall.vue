@@ -48,29 +48,6 @@
         </div>
       </div>
     </nav>
-    <!-- 並び替え ここから -->
-    <!-- <nav class="level">
-      <div class="level-right"></div>
-      <div class="level-right">
-        <div class="level-item">
-          <span class="sort-btn">並び替え</span>
-          <div class="select">
-            <select
-              v-model="sort_selected.sort"
-              v-if="count"
-              @change="
-                changeSort($event.target.value);
-                setPage(1);
-              "
-            >
-              <option v-for="sort in sorts" :value="sort.sort" :key="sort.id">
-                {{ sort.name }}
-              </option>
-            </select>
-          </div>
-        </div>
-      </div>
-    </nav> -->
   </div>
 </template>
 <script>

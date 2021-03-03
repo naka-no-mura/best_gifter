@@ -42,5 +42,6 @@ export default {
 <style lang="scss">
 .q-tl {
   text-align: center;
+  padding-top: 5rem !important;
 }
 </style>

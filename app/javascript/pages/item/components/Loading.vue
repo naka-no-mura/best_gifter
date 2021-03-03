@@ -31,7 +31,7 @@ export default {
 .fullview {
   width: 100%;
   height: 100%;
-  background: #fefefe;
+  background: #f0eee9;
   position: fixed;
   top: 0;
   left: 0;

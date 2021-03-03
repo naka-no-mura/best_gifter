@@ -18,11 +18,8 @@
           ></span>
         </div>
         <!-- お気に入りマーク ここまで-->
-      <figure v-if="item.Item.mediumImageUrls[0].imageUrl === null">
-      <img src="../../../../assets/images/logo_light_pink.JPG">
-      </figure>
-        <figure v-else class="image image-box">
-          <img :src="item.Item.mediumImageUrls[0].imageUrl" class="item-img" />
+        <figure class="image image-box">
+          <img :src="item.Item.mediumImageUrls[0].imageUrl" alt="" @error="altImg()" class="item-img" />
         </figure>
           <div class="content">
             <p>
@@ -60,7 +57,6 @@ export default {
   name: "RakutenApiResultItem",
   props: {
     item: Object,
-    required: true,
   },
   data() {
     return {
@@ -101,6 +97,9 @@ export default {
         });
       this.isLiked = true;
     },
+    altImg() {
+      this.item.Item.mediumImageUrls[0].imageUrl = '../../../../assets/images/logo_light_pink.JPG'
+    }
   },
 };
 </script>
@@ -123,7 +122,6 @@ export default {
   top: 0;
   left: 0;
   z-index: 10;
-  /* background-color: #999999; */
   background-color:	rgba(0,0,0,0.2);
   transition: 0.3s;
   opacity: 0;
@@ -137,7 +135,7 @@ export default {
   text-align: center;
   color: white;
   margin-top: 10rem;
-  font-size: 130%;
+  font-size: 140%;
 }
 /* .tile-image {
   position: relative;

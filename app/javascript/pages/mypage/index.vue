@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="container mypage">
     <div class="columns">
       <MyQuestionnaire class="column is-one-third"></MyQuestionnaire>
       <FavoriteList class="column"></FavoriteList>
@@ -21,4 +21,7 @@ export default {
 </script>
 
 <style lang="scss">
+.mypage {
+  padding-top: 5rem;
+}
 </style>

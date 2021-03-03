@@ -31,7 +31,8 @@ export default {
   background-position: center;
   background-size: cover;
   text-align: center;
-  height: 45rem;
+  height: 48rem;
+  padding-top: 6rem;
 }
 h1 {
   font-size: 9rem;

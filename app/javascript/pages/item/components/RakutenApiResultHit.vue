@@ -143,4 +143,7 @@ export default {
 .hit-count {
   margin-right: 2rem;
 }
+.sort-btn {
+  margin-right: 0.5rem;
+}
 </style>

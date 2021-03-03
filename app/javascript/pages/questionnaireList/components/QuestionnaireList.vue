@@ -51,6 +51,7 @@ export default {
   display: flex;
   flex-wrap:wrap;
   justify-content: space-between;
+  padding-top: 5rem;
 }
 .questionnaire-item {
   width: 48%;

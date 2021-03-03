@@ -34,7 +34,6 @@
             keywordSearch();
             search();
           "
-          :disabled="invalid"
         >
           <b-icon icon="magnify" size="is-medium"></b-icon>
         </b-button>
@@ -52,13 +51,6 @@ import {
 } from "../../../store/mutation-types";
 export default {
   name: "RakutenApiCallTopVer",
-  data() {
-    return {
-      keywordBox: "",
-      minPriceBox: "",
-      maxPriceBox: "",
-    };
-  },
   methods: {
     ...mapActions("rakuten_api", [
       "changeKeyword",
