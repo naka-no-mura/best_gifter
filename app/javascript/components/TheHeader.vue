@@ -6,9 +6,7 @@
   >
     <div class="navbar-brand">
       <p class="navbar-item">
-        <img
-          src="../../assets/images/logo_header.JPG"
-        />
+        <img src="../../assets/images/logo_header.JPG" />
       </p>
       <a
         role="button"
@@ -32,14 +30,17 @@
     >
       <div class="navbar-start"></div>
       <div class="navbar-end">
-          <router-link to="/" class="navbar-item nav-item">トップ</router-link>
-        
-          <router-link to="/items"  class="navbar-item nav-item">検索</router-link>
+        <router-link to="/" class="navbar-item nav-item">トップ</router-link>
+
+        <router-link to="/items" class="navbar-item nav-item">検索</router-link>
         <template v-if="!authUser">
-            <router-link to="register" class="navbar-item nav-item">新規登録</router-link>
-          
-            <router-link to="/login" class="navbar-item nav-item">ログイン</router-link>
-          
+          <router-link to="register" class="navbar-item nav-item"
+            >新規登録</router-link
+          >
+
+          <router-link to="/login" class="navbar-item nav-item"
+            >ログイン</router-link
+          >
         </template>
         <template v-else>
           <div class="navbar-item has-dropdown is-hoverable nav-item">
@@ -47,27 +48,25 @@
               アンケート
             </a>
             <div class="navbar-dropdown">
-                <router-link to="/questionnaire_form"  class="navbar-item">投稿する</router-link>
-              
-              
-                <router-link to="/questionnaire_list" class="navbar-item">閲覧</router-link>
-            
+              <router-link to="/questionnaire_form" class="navbar-item"
+                >投稿する</router-link
+              >
+
+              <router-link to="/questionnaire_list" class="navbar-item"
+                >閲覧</router-link
+              >
             </div>
           </div>
-          <a class="navbar-item">
-            <router-link
-              to="/logout"
-              @click.native="handleLogout"
-               class="nav-item"
-              >ログアウト</router-link
-            >
-          </a>
+          <router-link
+            to=""
+            @click.native="handleLogout"
+            class="nav-item navbar-item"
+            >ログアウト</router-link
+          >
         </template>
-        <a class="navbar-item">
-          <router-link to="/mypage"  class="navbar-item nav-item" v-if="authUser">
-            <b-icon icon="account-outline" size="is-medium"></b-icon
-          ></router-link>
-        </a>
+        <router-link to="/mypage" class="navbar-item nav-item" v-if="authUser">
+          <b-icon icon="account-outline" size="is-medium"></b-icon
+        ></router-link>
       </div>
     </div>
   </nav>
@@ -91,15 +90,16 @@ export default {
   methods: {
     ...mapActions("users", ["logoutUser"]),
     async handleLogout() {
-      try {
-        await this.logoutUser();
-        this.$router.push({ name: "TopIndex" });
-      } catch (error) {
-        console.log(error);
-      }
+      if (confirm("ログアウトしますか？"))
+        try {
+          this.logoutUser();
+          this.$router.push({ name: "TopIndex" });
+        } catch (error) {
+          console.log(error);
+        }
     },
     changeIsActive() {
-      this.isActive =! this.isActive
+      this.isActive = !this.isActive;
     },
   },
 };
