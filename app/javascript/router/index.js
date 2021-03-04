@@ -29,11 +29,13 @@ const router = new Router({
       path: "/questionnaire_form",
       component: QuestionnaireFormIndex,
       name: "QuestionnaireFormIndex",
+      meta: { requiredAuth: true },
     },
     {
       path: "/questionnaire_list",
       component: QuestionnaireListIndex,
       name: "QuestionnaireListIndex",
+      meta: { requiredAuth: true },
     },
     {
       path: "/register",
@@ -49,6 +51,7 @@ const router = new Router({
       path: "/mypage",
       component: MypageIndex,
       name: "MypageIndex",
+      meta: { requiredAuth: true },
     },
   ],
 });
