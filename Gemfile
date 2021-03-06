@@ -103,3 +103,6 @@ gem 'jwt'
 
 # カウント機能
 gem 'counter_culture'
+
+# 日本語化
+gem 'rails-i18n'

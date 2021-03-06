@@ -27,12 +27,14 @@
         type="text"
       ></b-input>
     </b-field>
-    <b-field label="メールアドレス" message="（例）example@example.com">
+      <span class="error-message" v-if="errors.name">{{ errors.name }}</span>
+    <b-field label="メールアドレス" message="（例）best@gifter.com">
       <b-input
         v-model="user.email"
         type="email"
       /></b-input>
     </b-field>
+      <span class="error-message" v-if="errors.email">{{ errors.email }}</span>
     <b-field label="パスワード" message="（例）password">
       <b-input
         v-model="user.password"
@@ -40,6 +42,7 @@
         password-reveal
       /></b-input>
     </b-field>
+      <span class="error-message" v-if="errors.password">{{ errors.password }}</span>
     <b-field label="パスワード（確認）" message="（例）password">
       <b-input
         v-model="user.password_confirmation"
@@ -47,9 +50,10 @@
         password-reveal
       /></b-input>
     </b-field>
-    <b-button class="register" type="submit" @click="register">
+      <span class="error-message" v-if="errors.password_confirmation">{{ errors.password_confirmation }}</span>
+    <p><b-button class="register" type="submit" @click="register">
       登録（無料）
-    </b-button>
+    </b-button></p>
   </div>
   </div>
   </div>
@@ -68,6 +72,12 @@ export default {
         password: "",
         password_confirmation: "",
       },
+      errors: {
+      name: '',
+      email: '',
+      password: '',
+      password_confirmation: '',
+      }
     };
   },
   methods: {
@@ -77,8 +87,12 @@ export default {
         .then((res) => {
           this.$router.push({ name: "LoginIndex" });
         })
-        .catch((err) => {
-          console.log(err);
+        .catch((error) => {
+          console.log(error);
+          this.errors.name = error.response.data.errors.name[0]
+          this.errors.email = error.response.data.errors.email[0]
+          this.errors.password = error.response.data.errors.password[0]
+          this.errors.password_confirmation = error.response.data.errors.password_confirmation[0]
         });
     },
   },
@@ -109,5 +123,10 @@ img {
 .register:hover {
   background-color: white;
   border: 5px solid #ffd3d4;
+}
+.error-message {
+  color: red;
+  margin-left: 1rem;
+  padding-bottom: 1rem;
 }
 </style>

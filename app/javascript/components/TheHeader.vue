@@ -94,6 +94,7 @@ export default {
         try {
           this.logoutUser();
           this.$router.push({ name: "TopIndex" });
+          this.$toasted.success("ログアウトしました");
         } catch (error) {
           console.log(error);
         }

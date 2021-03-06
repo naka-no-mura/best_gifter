@@ -27,7 +27,7 @@
               >結婚（デフォルト検索）</b-tag
             >
             <b-button
-              class="tag button"
+              class="tag reset-tag"
               v-if="keyword || maxPrice || minPrice || maxPrice || genreId"
               @click="resetSearch()"
               >検索条件の解除</b-button
@@ -145,5 +145,8 @@ export default {
 }
 .sort-btn {
   margin-right: 0.5rem;
+}
+.reset-tag {
+  text-decoration: underline;
 }
 </style>

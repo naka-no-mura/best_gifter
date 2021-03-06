@@ -7,7 +7,8 @@ class Api::V1::UsersController < ApplicationController
     if user.save
       render json: user
     else
-      render json: user.errors, status: :bad_request
+      # render json: user.errors, status: :bad_request
+      render json: { errors: user.errors.keys.map { |key| [key, user.errors.full_messages_for(key)]}.to_h }, status: :unprocessable_entity
     end
   end
 

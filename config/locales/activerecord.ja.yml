@@ -1,0 +1,44 @@
+ja:
+  activerecord:
+    models:
+      user: 'ユーザー'
+    attributes:
+      user:
+        id: 'ID'
+        name: 'ニックネーム'
+        email: 'メールアドレス'
+        password: 'パスワード'
+        password_confirmation: 'パスワード（確認）'
+        created_at: '登録日'
+      items:
+        name: '商品名'
+        price: '価格'
+        url: 'URL'
+        image: '画像'
+        review_count: 'レビュー件数'
+        review_average: 'レビュー評価'
+        shop_name: '店名'
+        genre_id: 'ジャンル名'
+        created_at: 'お気に入り登録日'
+      questionnaire:
+        text: 'メッセージ'
+        relationship: '間柄'
+        gender: '性別'
+        age: '年齢'
+        created_at: '投稿日'
+      questionnaire_choice:
+        choice: '選択肢'
+        created_at: '投稿日'
+    errors:
+      models:
+        user:
+          attributes:
+            password:
+              blank: 'を入力してください'
+              invalid: 'に誤りがあります'
+              too_short: 'は3文字以上入力してください'
+            password_confirmation:
+              blank: 'を入力してください'
+              confirmation: 'が異なります'
+
+

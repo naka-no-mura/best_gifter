@@ -10,15 +10,17 @@
       <b-field label="メールアドレス" message="（例）example@example.com">
         <b-input v-model="user.email" type="email"></b-input>
       </b-field>
+      <span class="error-message" v-if="errors.email">{{ errors.email }}</span>
       <b-field label="パスワード" message="（例）password">
         <b-input v-model="user.password" type="password"></b-input>
       </b-field>
-      <b-button class="login" type="submit" @click="login">
+      <span class="error-message" v-if="errors.password">{{ errors.password }}</span>
+      <p><b-button class="login" type="submit" @click="login">
         ログイン
       </b-button>
       <b-button class="login" type="submit" @click="gestLogin">
         ゲストログイン
-      </b-button>
+      </b-button></p>
     </div>
   </div>
 </template>
@@ -36,6 +38,10 @@ export default {
       gest: {
         email: "gest@gest.com",
         password: "password"
+      },
+      errors: {
+        email: '',
+        password: ''
       }
     };
   },
@@ -45,14 +51,18 @@ export default {
       try {
         await this.loginUser(this.user);
         this.$router.push({ name: "ItemIndex" });
+        this.$toasted.success("ログインしました");
       } catch (error) {
         console.log(error);
+        this.errors.email = "正しいメールアドレスを入力してください"
+        this.errors.password = "正しいパスワードを入力してください"
       }
     },
     async gestLogin() {
       try {
         await this.loginUser(this.gest);
         this.$router.push({ name: "ItemIndex" });
+        this.$toasted.success("ログインしました");
       } catch (error) {
         console.log(error);
       }
@@ -84,5 +94,10 @@ img {
 .login-form {
   width: 50%;
   margin: 0 auto;
+}
+.error-message {
+  color: red;
+  margin-left: 1rem;
+  padding-bottom: 1rem;
 }
 </style>
