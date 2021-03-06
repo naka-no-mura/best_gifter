@@ -30,30 +30,53 @@
     >
       <div class="navbar-start"></div>
       <div class="navbar-end">
-        <router-link to="/" class="navbar-item nav-item">トップ</router-link>
+        <router-link to="/" class="navbar-item nav-item"
+          ><b-icon class="nav-icon" icon="laptop" size="is-small"></b-icon
+          >トップ</router-link
+        >
 
-        <router-link to="/items" class="navbar-item nav-item">検索</router-link>
+        <router-link to="/items" class="navbar-item nav-item"
+          ><b-icon class="nav-icon" icon="magnify" size="is-small"></b-icon
+          >検索</router-link
+        >
         <template v-if="!authUser">
           <router-link to="register" class="navbar-item nav-item"
+            ><b-icon
+              class="nav-icon"
+              icon="account-plus-outline"
+              size="is-small"
+            ></b-icon
             >新規登録</router-link
           >
 
           <router-link to="/login" class="navbar-item nav-item"
+            ><b-icon class="nav-icon" icon="login" size="is-small"></b-icon
             >ログイン</router-link
           >
         </template>
         <template v-else>
           <div class="navbar-item has-dropdown is-hoverable nav-item">
-            <a class="navbar-link">
+            <a class="navbar-link"
+              ><b-icon class="nav-icon" icon="forum" size="is-small"></b-icon>
               アンケート
             </a>
             <div class="navbar-dropdown">
               <router-link to="/questionnaire_form" class="navbar-item"
+                ><b-icon
+                  class="nav-icon"
+                  icon="comment-question-outline"
+                  size="is-small"
+                ></b-icon
                 >投稿する</router-link
               >
 
               <router-link to="/questionnaire_list" class="navbar-item"
-                >閲覧</router-link
+                ><b-icon
+                  class="nav-icon"
+                  icon="vote-outline"
+                  size="is-small"
+                ></b-icon
+                >投票して結果をみる</router-link
               >
             </div>
           </div>
@@ -61,12 +84,18 @@
             to=""
             @click.native="handleLogout"
             class="nav-item navbar-item"
+            ><b-icon class="nav-icon" icon="logout" size="is-small"></b-icon
             >ログアウト</router-link
           >
         </template>
         <router-link to="/mypage" class="navbar-item nav-item" v-if="authUser">
-          <b-icon icon="account-outline" size="is-medium"></b-icon
-        ></router-link>
+          <b-icon
+            class="nav-icon"
+            icon="account-outline"
+            size="is-small"
+          ></b-icon
+          >マイページ</router-link
+        >
       </div>
     </div>
   </nav>
@@ -117,6 +146,12 @@ export default {
   border: 5px solid #ffd3d4;
 }
 .nav-item {
+  padding: 0 2rem;
+}
+.nav-icon {
+  padding-right: 1rem;
+}
+.navbar-link {
   padding: 0 2rem;
 }
 </style>

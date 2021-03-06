@@ -1,6 +1,6 @@
 <template>
-  <div class="section inner-box">
-    <h2 class="title">アンケート結果</h2>
+  <div class="section">
+    <h2 class="title my-q-tl">アンケート結果</h2>
     <div class="q-ads">
     <p>アンケートを投稿して<br>ギフトを厳選してみましょう！</p>
     <b-icon icon="gift-outline" size="is-large" class="mypage-gift-icon"></b-icon><br>
@@ -72,15 +72,6 @@ export default {
   color: #ffd3d4;
   margin: 1rem;
 }
-// .button {
-//   background-color: #ffd3d4 !important;
-//   border: 5px solid #ffd3d4 !important;
-//   transition: 0.3s !important;
-// }
-// .button:hover {
-//   background-color: white !important;
-//   border: 5px solid #ffd3d4 !important;
-// }
 .q-ads-button {
   background-color: #ffd3d4 !important;
   border: 5px solid #ffd3d4 !important;
@@ -89,5 +80,8 @@ export default {
 .q-ads-button:hover {
   background-color: white !important;
   border: 5px solid #ffd3d4 !important;
+}
+.my-q-tl {
+  text-align: center;
 }
 </style>

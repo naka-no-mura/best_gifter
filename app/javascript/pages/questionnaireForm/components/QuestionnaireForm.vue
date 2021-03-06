@@ -1,7 +1,8 @@
 <template>
   <div class="inner-box">
     <div class="section q-box">
-      <p class="title q-tl">アンケート投稿</p>
+      <h1 class="title tl-shadow">Questionnaire</h1>
+      <h1 class="title tl-relative">アンケート投稿</h1>
       <p class="subtitle q-tl">新郎新婦へ贈るギフトをいくつか考えたが一つに絞れない…とお困りのあなたに<br>
       アンケートを投稿することでギフト選びの手助けとなるかもしれません</p>
       <ValidationObserver v-slot="{ handleSubmit }">
@@ -170,7 +171,7 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style scoped>
 .q-btn {
   background-color: #ffd3d4 !important;
   border: 5px solid #ffd3d4 !important;
@@ -193,8 +194,21 @@ export default {
 }
 .q-tl {
   text-align: center;
+  padding-top: 3rem;
 }
 .tx-box {
   margin-top: 2em !important;
+}
+.tl-relative {
+  margin-top: -4rem;
+  font-size: 2.5rem !important;
+  text-align: center;
+}
+.tl-shadow {
+  font-size: 5rem;
+  font-weight: bold;
+  color: #ffd3d4;
+  margin-top: 3rem;
+  text-align: center;
 }
 </style>

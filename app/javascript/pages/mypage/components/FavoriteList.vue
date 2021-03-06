@@ -1,6 +1,6 @@
 <template>
   <div class="section">
-    <h2 class="title">お気に入り</h2>
+    <h2 class="title my-f-tl">お気に入り</h2>
     <div class="columns is-multiline">
       <template v-for="item in items">
         <div class="column is-4">
@@ -49,4 +49,8 @@ export default {
 };
 </script>
 
-<style lang="scss"></style>
+<style lang="scss">
+.my-f-tl {
+  text-align: center;
+}
+</style>
