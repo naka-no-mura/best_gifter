@@ -35,7 +35,7 @@
               />
             </p>
             <p class="control">
-              <b-button class="is-medium" @click="setPage(1)"
+              <b-button class="is-medium" @keyup.enter="setPage(1)"
                 ><b-icon icon="magnify" size="is-medium"></b-icon
               ></b-button>
             </p>

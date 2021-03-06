@@ -30,7 +30,7 @@
       <p class="control">
         <b-button
           type="submit is-medium"
-          @click="
+          @keyup.enter="
             keywordSearch();
             search();
           "
