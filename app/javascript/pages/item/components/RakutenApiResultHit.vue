@@ -185,6 +185,9 @@ export default {
 </script>
 
 <style scoped>
+.pc-hit {
+  margin-left: 1rem;
+}
 .tag {
   background-color: #ffd3d4;
   border: none;
@@ -207,6 +210,19 @@ export default {
 }
 .responsive-hit {
   display: none;
+}
+.conditions {
+  display: none;
+}
+@media screen and (max-width: 959px) {
+  .pc-hit {
+    display: block;
+    width: 100%;
+    padding: 9rem 0.5rem 0.5rem;
+    position: fixed;
+    z-index: 28;
+    background-color: #f0eee9;
+  }
 }
 @media screen and (max-width: 480px) {
   .pc-hit {
@@ -231,6 +247,7 @@ export default {
   justify-content: space-around;
 }
 .conditions {
+  display: block;
   padding: 7rem 0.5rem 0;
   font-size: 0.7rem;
 }

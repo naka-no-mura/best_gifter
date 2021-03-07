@@ -154,7 +154,7 @@ export default {
 </script>
 <style scoped>
 .api-call {
-  margin-top: 5rem;
+  margin: 5rem 1rem 0;
 }
 .flash-message {
   color: red;
@@ -165,6 +165,17 @@ export default {
 }
 .responsive-call {
   display: none;
+}
+@media screen and (max-width: 959px) {
+  .pc-call {
+    display: block;
+    width: 100%;
+    margin: 0 auto;
+    padding: 5rem 0.5rem 0;
+    position: fixed;
+    z-index: 29;
+    background-color: #f0eee9;
+  }
 }
 @media screen and (max-width: 480px) {
   .pc-call {

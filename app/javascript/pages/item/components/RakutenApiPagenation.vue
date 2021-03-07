@@ -138,14 +138,17 @@ export default {
   background-color: white;
 }
 .pagenation-box {
-  margin: 2rem 0rem;
+  margin: 2rem 1rem;
+}
+@media screen and (max-width: 959px) {
+  .pagenation-box {
+  margin-top: 17rem;
+}
 }
 @media screen and (max-width: 480px) {
   .pagenation-box {
     width: 95%;
     margin: 1rem auto;
-  }
-  .pagination-list {
   }
   .pagination-link {
     min-width: 1.3em;

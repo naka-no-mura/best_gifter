@@ -52,6 +52,11 @@ export default {
   width: 21%;
   margin: 1rem;
 }
+@media screen and (max-width: 959px) {
+.item-box {
+  width: 45%;
+}
+}
 @media screen and (max-width: 480px) {
 .items-box {
   border-top: 0.5px solid #d3d3d3;

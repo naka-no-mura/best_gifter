@@ -145,9 +145,6 @@ export default {
   margin-top: 10rem;
   font-size: 140%;
 }
-/* .tile-image {
-  position: relative;
-} */
 .favorite-mark {
   position: absolute;
   right: 0.5rem;
