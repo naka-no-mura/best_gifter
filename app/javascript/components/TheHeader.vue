@@ -155,8 +155,22 @@ export default {
   padding: 0 2rem;
 }
 @media screen and (max-width: 480px) {
+  .navbar {
+    min-height: 2rem;
+  }
+  .navbar-brand {
+    min-height: 2rem;
+    line-height: 2.0;
+  }
+  .navbar-item {
+    line-height: 2.0;
+    padding: 0 0.5rem;
+  }
+  .navbar-burger {
+    height: 2rem;
+}
 .nav-item {
-  padding: 1rem 2rem;
+  padding: 0.25rem 2rem;
 }
 .responsive-nav-dropdown {
   margin-left: 2rem;

@@ -143,7 +143,7 @@ export default {
 @media screen and (max-width: 480px) {
   .pagenation-box {
     width: 95%;
-    margin: 0 auto;
+    margin: 1rem auto;
   }
   .pagination-list {
   }

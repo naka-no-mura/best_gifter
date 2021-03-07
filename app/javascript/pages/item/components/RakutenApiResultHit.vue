@@ -1,62 +1,118 @@
 <template>
-  <div v-if="count" class="block">
-    <nav class="level">
-      <div class="level-left">
-        <div class="level-item">
-          <div class="hit-count">
-            {{ first.toLocaleString() }}〜{{ last.toLocaleString() }}件（{{
-              count.toLocaleString()
-            }}件ヒット）
-          </div>
-          <span>検索条件：</span>
-          <b-taglist>
-            <b-tag class="tag" rounded v-if="keyword">{{ keyword }}</b-tag>
-            <b-tag class="tag" rounded v-if="genreId">{{
-              genreIdToName(genreId)
-            }}</b-tag>
-            <b-tag class="tag" rounded v-if="minPrice"
-              >{{ minPrice.toLocaleString() }}円〜</b-tag
-            >
-            <b-tag class="tag" rounded v-if="maxPrice"
-              >〜{{ maxPrice.toLocaleString() }}円</b-tag
-            >
-            <b-tag
-              class="tag"
-              rounded
-              v-if="!(keyword || maxPrice || minPrice || maxPrice || genreId)"
-              >結婚（デフォルト検索）</b-tag
-            >
-            <b-button
-              class="tag reset-tag"
-              v-if="keyword || maxPrice || minPrice || maxPrice || genreId"
-              @click="resetSearch()"
-              >検索条件の解除</b-button
-            >
-          </b-taglist>
-        </div>
-      </div>
-      <!-- 並び替え ここから -->
-      <div class="level-right"></div>
-      <div class="level-right">
-        <div class="level-item">
-          <span class="sort-btn">並び替え</span>
-          <div class="select">
-            <select
-              v-model="sort_selected.sort"
-              v-if="count"
-              @change="
-                changeSort($event.target.value);
-                setPage(1);
-              "
-            >
-              <option v-for="sort in sorts" :value="sort.sort" :key="sort.id">
-                {{ sort.name }}
-              </option>
-            </select>
+  <div>
+    <!-- pcバージョン -->
+    <div v-if="count" class="block pc-hit">
+      <nav class="level">
+        <div class="level-left">
+          <div class="level-item">
+            <div class="hit-count">
+              {{ first.toLocaleString() }}〜{{ last.toLocaleString() }}件（{{
+                count.toLocaleString()
+              }}件ヒット）
+            </div>
+            <span>検索条件：</span>
+            <b-taglist>
+              <b-tag class="tag" rounded v-if="keyword">{{ keyword }}</b-tag>
+              <b-tag class="tag" rounded v-if="genreId">{{
+                genreIdToName(genreId)
+              }}</b-tag>
+              <b-tag class="tag" rounded v-if="minPrice"
+                >{{ minPrice.toLocaleString() }}円〜</b-tag
+              >
+              <b-tag class="tag" rounded v-if="maxPrice"
+                >〜{{ maxPrice.toLocaleString() }}円</b-tag
+              >
+              <b-tag
+                class="tag"
+                rounded
+                v-if="!(keyword || maxPrice || minPrice || maxPrice || genreId)"
+                >結婚（デフォルト検索）</b-tag
+              >
+              <b-button
+                class="tag reset-tag"
+                v-if="keyword || maxPrice || minPrice || maxPrice || genreId"
+                @click="resetSearch()"
+                >検索条件の解除</b-button
+              >
+            </b-taglist>
           </div>
         </div>
+        <!-- 並び替え ここから -->
+        <div class="level-right"></div>
+        <div class="level-right">
+          <div class="level-item">
+            <span class="sort-btn">並び替え</span>
+            <div class="select">
+              <select
+                v-model="sort_selected.sort"
+                v-if="count"
+                @change="
+                  changeSort($event.target.value);
+                  setPage(1);
+                "
+              >
+                <option v-for="sort in sorts" :value="sort.sort" :key="sort.id">
+                  {{ sort.name }}
+                </option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </div>
+    <!-- スマホバージョン -->
+    <div v-if="count" class="block responsive-hit">
+      <div class="hit-detail">
+      <div class="hit-sort">
+      <div class="hit-count">
+        {{ first.toLocaleString() }}〜{{ last.toLocaleString() }}件（{{
+          count.toLocaleString()
+        }}件ヒット）
       </div>
-    </nav>
+      <div class="select is-small">
+        <select
+          v-model="sort_selected.sort"
+          v-if="count"
+          @change="
+            changeSort($event.target.value);
+            setPage(1);
+          "
+        >
+          <option v-for="sort in sorts" :value="sort.sort" :key="sort.id">
+            {{ sort.name }}
+          </option>
+        </select>
+      </div>
+      </div>
+    </div>
+    </div>
+    <div class="conditions">
+      <span>検索条件：</span>
+      <b-taglist>
+        <b-tag class="tag" rounded v-if="keyword">{{ keyword }}</b-tag>
+        <b-tag class="tag" rounded v-if="genreId">{{
+          genreIdToName(genreId)
+        }}</b-tag>
+        <b-tag class="tag" rounded v-if="minPrice"
+          >{{ minPrice.toLocaleString() }}円〜</b-tag
+        >
+        <b-tag class="tag" rounded v-if="maxPrice"
+          >〜{{ maxPrice.toLocaleString() }}円</b-tag
+        >
+        <b-tag
+          class="tag"
+          rounded
+          v-if="!(keyword || maxPrice || minPrice || maxPrice || genreId)"
+          >結婚（デフォルト検索）</b-tag
+        >
+        <b-button
+          class="tag reset-tag"
+          v-if="keyword || maxPrice || minPrice || maxPrice || genreId"
+          @click="resetSearch()"
+          >検索条件の解除</b-button
+        >
+      </b-taglist>
+  </div>
   </div>
 </template>
 
@@ -148,5 +204,35 @@ export default {
 }
 .reset-tag {
   text-decoration: underline;
+}
+.responsive-hit {
+  display: none;
+}
+@media screen and (max-width: 480px) {
+  .pc-hit {
+    display: none;
+  }
+  .responsive-hit {
+    display: block;
+    width: 100%;
+    padding: 4rem 0.5rem 0.5rem;
+    position: fixed;
+    z-index: 28;
+    background-color: #f0eee9;
+  }
+  .hit-detail {
+    font-size: 0.7rem;
+  }
+.hit-count {
+  margin: 0rem;
+}
+.hit-sort {
+  display: flex;
+  justify-content: space-around;
+}
+.conditions {
+  padding: 7rem 0.5rem 0;
+  font-size: 0.7rem;
+}
 }
 </style>

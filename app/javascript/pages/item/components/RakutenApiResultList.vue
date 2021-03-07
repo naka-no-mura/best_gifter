@@ -56,7 +56,7 @@ export default {
 .items-box {
   border-top: 0.5px solid #d3d3d3;
   border-bottom: 0.5px solid #d3d3d3;
-  padding: 2rem 0rem;
+  padding: 1rem 0rem;
   display: block;
   flex-wrap: wrap;
   margin: 0 auto;

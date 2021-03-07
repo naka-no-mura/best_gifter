@@ -1,53 +1,93 @@
 <template>
-  <!-- 検索フォーム ここから -->
-  <div class="block api-call">
-    <nav class="level">
-      <div class="level-left">
-        <div class="level-item">
-          <div class="field has-addons">
-            <p class="control">
-              <input
-                class="input call-keyword is-medium"
-                type="search"
-                v-model="keywordBox"
-                placeholder="キーワード"
-                @input="changeKeyword($event.target.value)"
-              />
-            </p>
-            <p class="control">
-              <input
-                class="input call-min is-medium"
-                type="number"
-                min="0"
-                v-model="minPriceBox"
-                placeholder="いくらから"
-                @input="changeMinPrice($event.target.value)"
-              />
-            </p>
-            <p class="control">
-              <input
-                class="input call-max is-medium"
-                type="number"
-                min="0"
-                v-model="maxPriceBox"
-                placeholder="いくらまで"
-                @input="changeMaxPrice($event.target.value)"
-              />
-            </p>
-            <p class="control">
-              <b-button class="is-medium" @keyup.enter="setPage(1)"
-                ><b-icon icon="magnify" size="is-medium"></b-icon
-              ></b-button>
-            </p>
-            <p>
-              <b-button @click="formClear()" class="is-medium" type="is-text">
-                クリア
-              </b-button>
-            </p>
-          </div>
-        </div>
+  <div>
+    <!-- pcバージョン -->
+    <div class="block api-call pc-call">
+      <div class="field has-addons">
+        <p class="control">
+          <input
+            class="input call-keyword is-medium"
+            type="search"
+            v-model="keywordBox"
+            placeholder="キーワード"
+            @input="changeKeyword($event.target.value)"
+          />
+        </p>
+        <p class="control">
+          <input
+            class="input call-min is-medium"
+            type="number"
+            min="0"
+            v-model="minPriceBox"
+            placeholder="いくらから"
+            @input="changeMinPrice($event.target.value)"
+          />
+        </p>
+        <p class="control">
+          <input
+            class="input call-max is-medium"
+            type="number"
+            min="0"
+            v-model="maxPriceBox"
+            placeholder="いくらまで"
+            @input="changeMaxPrice($event.target.value)"
+          />
+        </p>
+        <p class="control">
+          <b-button class="is-medium" @keyup.enter="setPage(1)"
+            ><b-icon icon="magnify" size="is-medium"></b-icon
+          ></b-button>
+        </p>
+        <p>
+          <b-button @click="formClear()" class="is-medium" type="is-text">
+            クリア
+          </b-button>
+        </p>
       </div>
-    </nav>
+    </div>
+    <!-- スマホバージョン -->
+    <div class="block api-call responsive-call">
+      <div class="field has-addons">
+        <p class="control">
+          <input
+            class="input call-keyword is-small"
+            type="search"
+            v-model="keywordBox"
+            placeholder="キーワード"
+            @input="changeKeyword($event.target.value)"
+          />
+        </p>
+        <p class="control">
+          <input
+            class="input call-min is-small"
+            type="number"
+            min="0"
+            v-model="minPriceBox"
+            placeholder="いくらから"
+            @input="changeMinPrice($event.target.value)"
+          />
+        </p>
+        <p class="control">
+          <input
+            class="input call-max is-small"
+            type="number"
+            min="0"
+            v-model="maxPriceBox"
+            placeholder="いくらまで"
+            @input="changeMaxPrice($event.target.value)"
+          />
+        </p>
+        <p class="control">
+          <b-button class="is-small" @keyup.enter="setPage(1)"
+            ><b-icon icon="magnify" size="is-small"></b-icon
+          ></b-button>
+        </p>
+        <!-- <p>
+          <b-button @click="formClear()" class="is-medium" type="is-text">
+            クリア
+          </b-button>
+        </p> -->
+      </div>
+    </div>
   </div>
 </template>
 <script>
@@ -122,5 +162,22 @@ export default {
 }
 .sort-btn {
   margin-right: 1rem;
+}
+.responsive-call {
+  display: none;
+}
+@media screen and (max-width: 480px) {
+  .pc-call {
+    display: none;
+  }
+  .responsive-call {
+    display: block;
+    width: 100%;
+    margin: 0 auto;
+    padding: 2rem 0.5rem 0;
+    position: fixed;
+    z-index: 29;
+    background-color: #f0eee9;
+  }
 }
 </style>

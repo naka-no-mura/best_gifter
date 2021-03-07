@@ -1,5 +1,4 @@
 <template>
-  <main>
     <div class="sidebar-page">
       <section class="sidebar-layout">
         <!-- <b-sidebar
@@ -23,7 +22,6 @@
         </div>
       </section>
     </div>
-  </main>
 </template>
 
 <script>

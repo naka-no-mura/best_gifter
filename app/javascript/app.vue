@@ -19,7 +19,7 @@
 </script>
 
 <style lang="scss">
-.inner-box {
-  background-color: #fff9ff;
-}
+// .inner-box {
+  // background-color: #fff9ff;
+// }
 </style>
