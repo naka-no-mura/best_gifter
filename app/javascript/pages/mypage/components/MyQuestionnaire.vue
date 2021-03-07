@@ -13,12 +13,13 @@
         >投稿する</router-link
       >
     </div>
-    <div>
+    <div class="my-q-items">
       <template v-for="questionnaire in questionnaires">
         <MyQuestionnaireItem
           :key="questionnaire.id"
           :questionnaire="questionnaire"
           @after-delete="getQuestionnaires"
+          class="my-q-item"
         />
       </template>
     </div>
@@ -93,7 +94,11 @@ export default {
 }
 @media screen and (max-width: 480px) {
   .q-ads {
-    margin: 1rem 0;
+    margin: 1rem  auto;
+  }
+  .my-q-item {
+  }
+  .section {
   }
 }
 </style>

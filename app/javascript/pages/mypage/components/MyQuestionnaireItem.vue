@@ -111,6 +111,11 @@ export default {
 @media screen and (max-width: 480px) {
   .my-q-item {
     margin: 1rem 0rem;
+    width: 100%;
+  }
+  .section {
+    padding: 1rem 0 !important;
+    margin: 1rem auto;
   }
 }
 </style>

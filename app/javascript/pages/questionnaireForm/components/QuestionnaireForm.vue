@@ -223,6 +223,10 @@ export default {
 }
 .q-box {
   width: 100%;
+  padding: 0rem;
+}
+.section {
+  padding: 1rem;
 }
 }
 </style>
