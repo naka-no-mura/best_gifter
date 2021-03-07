@@ -32,12 +32,12 @@
       <div class="navbar-end">
         <router-link to="/" class="navbar-item nav-item"
           ><b-icon class="nav-icon" icon="laptop" size="is-small"></b-icon
-          >トップ</router-link
+          ><span @click="changeIsActive(); pageToTop();">トップ</span></router-link
         >
 
         <router-link to="/items" class="navbar-item nav-item"
           ><b-icon class="nav-icon" icon="magnify" size="is-small"></b-icon
-          >検索</router-link
+          ><span @click="changeIsActive(); pageToTop();">検索</span></router-link
         >
         <template v-if="!authUser">
           <router-link to="register" class="navbar-item nav-item"
@@ -46,12 +46,12 @@
               icon="account-plus-outline"
               size="is-small"
             ></b-icon
-            >新規登録</router-link
+            ><span @click="changeIsActive(); pageToTop();">新規登録</span></router-link
           >
 
           <router-link to="/login" class="navbar-item nav-item"
             ><b-icon class="nav-icon" icon="login" size="is-small"></b-icon
-            >ログイン</router-link
+            ><span @click="changeIsActive(); pageToTop();">ログイン</span></router-link
           >
         </template>
         <template v-else>
@@ -67,7 +67,7 @@
                   icon="comment-question-outline"
                   size="is-small"
                 ></b-icon
-                >投稿する</router-link
+                ><span @click="changeIsActive(); pageToTop();">投稿する</span></router-link
               >
 
               <router-link to="/questionnaire_list" class="navbar-item responsive-nav-dropdown"
@@ -76,7 +76,7 @@
                   icon="vote-outline"
                   size="is-small"
                 ></b-icon
-                >投票して結果をみる</router-link
+                ><span @click="changeIsActive(); pageToTop();">投票して結果をみる</span></router-link
               >
             </div>
           </div>
@@ -86,14 +86,14 @@
             icon="account-outline"
             size="is-small"
           ></b-icon
-          >マイページ</router-link
+          ><span @click="changeIsActive(); pageToTop();">マイページ</span></router-link
         >
           <router-link
             to=""
             @click.native="handleLogout"
             class="nav-item navbar-item"
             ><b-icon class="nav-icon" icon="logout" size="is-small"></b-icon
-            >ログアウト</router-link
+            ><span @click="changeIsActive(); pageToTop();">ログアウト</span></router-link
           >
         </template>
       </div>
@@ -131,6 +131,12 @@ export default {
     changeIsActive() {
       this.isActive = !this.isActive;
     },
+    pageToTop() {
+      window.scrollTo({
+        top: 0,
+        behavior: "auto"
+      });
+    }
   },
 };
 </script>
