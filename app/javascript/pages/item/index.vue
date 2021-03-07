@@ -12,7 +12,7 @@
         >
           <RakutenApiSideMenu v-show="!loading"></RakutenApiSideMenu>
         </b-sidebar>
-        <div class="container">
+        <div class="container inner">
         <RakutenApiCall v-show="!loading"></RakutenApiCall>
         <RakutenApiError v-show="!loading"></RakutenApiError>
         <RakutenApiResultHit v-show="!loading"></RakutenApiResultHit>

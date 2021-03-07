@@ -211,4 +211,18 @@ export default {
   margin-top: 3rem;
   text-align: center;
 }
+
+@media screen and (max-width: 480px) {
+.tl-relative {
+  margin-top: -2.5rem;
+  font-size: 1.5rem !important;
+}
+.tl-shadow {
+  font-size: 2.5rem;
+  margin-top: 3rem;
+}
+.q-box {
+  width: 100%;
+}
+}
 </style>

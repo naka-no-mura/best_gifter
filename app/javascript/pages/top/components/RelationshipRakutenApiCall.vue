@@ -1,43 +1,5 @@
 <template>
   <div class="relationships">
-    <!-- ご親族 -->
-    <div class="section">
-      <div class="block">
-      <p class="top-tl-box">
-        <h1 class="title tl-shadow">Relative</h1>
-        <h1 class="title tl-relative">ご親族</h1>
-      </p>
-        <h2 class="subtitle tl-price"><b><big>30,000〜50,000円</big></b></h2>
-        <p class="tx">
-          身内が結婚する場合は、質の良い、かつ実用性の高いものを贈りましょう。本人に直接聞いてから選んでも良いかもしれません。
-        </p>
-      </div>
-      <div class="items">
-        <div
-        class="item"
-          v-for="relative_search_card in relative_search_cards"
-          :key="relative_search_card.id"
-        >
-        <router-link to="/items">
-          <div
-            class="card"
-            @click="
-              changeGenreId(relative_search_card.genreId);
-              search();
-            "
-            :value="relative_search_card.genreId"
-          >
-            <div class="card-image">
-              <figure class="image">
-                <img :src="relative_search_card.image" alt="ロゴ" />
-              </figure>
-              <p class="item-name">{{ relative_search_card.name }}</p>
-            </div>
-          </div>
-        </router-link>
-        </div>
-      </div>
-    </div>
     <!-- ご友人 -->
     <div class="section">
       <div class="block">
@@ -69,12 +31,50 @@
           >
             <div class="card-image">
               <figure class="image">
-                <img :src="friend_search_card.image" alt="ロゴ" />
+                <img class="relationship-img" :src="friend_search_card.image" alt="ロゴ" />
               </figure>
               <p class="item-name">{{ friend_search_card.name }}</p>
             </div>
           </div>
           </router-link>
+        </div>
+      </div>
+    </div>
+    <!-- ご親族 -->
+    <div class="section">
+      <div class="block">
+      <p class="top-tl-box">
+        <h1 class="title tl-shadow">Relative</h1>
+        <h1 class="title tl-relative">ご親族</h1>
+      </p>
+        <h2 class="subtitle tl-price"><b><big>30,000〜50,000円</big></b></h2>
+        <p class="tx">
+          身内が結婚する場合は、質の良い、かつ実用性の高いものを贈りましょう。本人に直接聞いてから選んでも良いかもしれません。
+        </p>
+      </div>
+      <div class="items">
+        <div
+        class="item"
+          v-for="relative_search_card in relative_search_cards"
+          :key="relative_search_card.id"
+        >
+        <router-link to="/items">
+          <div
+            class="card"
+            @click="
+              changeGenreId(relative_search_card.genreId);
+              search();
+            "
+            :value="relative_search_card.genreId"
+          >
+            <div class="card-image">
+              <figure class="image">
+                <img class="relationship-img" :src="relative_search_card.image" alt="ロゴ" />
+              </figure>
+              <p class="item-name">{{ relative_search_card.name }}</p>
+            </div>
+          </div>
+        </router-link>
         </div>
       </div>
     </div>
@@ -109,7 +109,7 @@
           >
             <div class="card-image">
               <figure class="image">
-                <img :src="colleague_search_card.image" alt="ロゴ" />
+                <img class="relationship-img" :src="colleague_search_card.image" alt="ロゴ" />
               </figure>
               <p class="item-name">{{ colleague_search_card.name }}</p>
             </div>
@@ -147,7 +147,7 @@
           >
             <div class="card-image">
               <figure class="image">
-                <img :src="boss_search_card.image" alt="ロゴ" />
+                <img class="relationship-img" :src="boss_search_card.image" alt="ロゴ" />
               </figure>
               <p class="item-name">{{ boss_search_card.name }}</p>
             </div>
@@ -362,9 +362,48 @@ export default {
   transform: scale(1.05);
   box-shadow: 0 0 30px rgba(0,0,0,.2);
 }
+.relationship-img {
+  object-fit: cover;
+  height: 13rem;
+}
 .item-name {
   margin: 1rem;
   font-weight: bold;
+}
+@media screen and (max-width: 480px) {
+  .section {
+    padding: 1rem;
+  }
+.tl-relative {
+  margin-top: -2.5rem;
+  font-size: 1.5rem !important;
+}
+.tl-shadow {
+  font-size: 3rem;
+  font-weight: bold;
+  color: #ffd3d4;
+  margin-top: 1rem;
+}
+.tl-price {
+  padding: 1rem 0rem;
+  line-height: 1.5rem;
+  margin-top: 1rem;
+  font-size: 1rem;
+}
+.items {
+  display: block;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.item {
+  width: 100%;
+  margin: 2rem auto;
+  transition: 0.3s;
+}
+.item-name {
+  margin: 0.5rem;
+  font-weight: bold;
+}
 }
 </style>
 

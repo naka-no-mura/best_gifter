@@ -86,12 +86,6 @@ export default {
 .questionnaire-item:hover {
   border: 5px solid #ffd3d4;
 }
-.answers {
-  position: relative;
-}
-.isClickedTx {
-  display: none;
-}
 .gift-icon {
   color: #ffd3d4;
 }

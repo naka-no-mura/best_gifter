@@ -5,7 +5,7 @@
         <input
           class="input top-call-keyword is-medium"
           type="search"
-          placeholder="必須：キーワード（例：結婚）"
+          placeholder="キーワード(例:結婚)"
           @input="changeKeyword($event.target.value)"
         />
       </p>
@@ -72,5 +72,22 @@ export default {
 }
 .top-call-keyword {
   width: 30rem;
+}
+@media screen and (max-width: 480px) {
+  .top-call-keyword {
+    width: 100%;
+  }
+  .section {
+    display: flex;
+    justify-content: center;
+    margin-top: 0rem;
+    padding: 1rem 0.5rem;
+  }
+  .top-call-min {
+    display: none;
+  }
+  .top-call-max {
+    display: none;
+  }
 }
 </style>

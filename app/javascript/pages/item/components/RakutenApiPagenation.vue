@@ -133,7 +133,6 @@ export default {
   display: block !important;
   width: 100% !important;
   line-height: 3rem !important;
-  // vertical-align: middle !important;
 }
 .pagination-link {
   padding: 0 !important;
@@ -141,5 +140,16 @@ export default {
 }
 .pagenation-box {
   margin: 2rem 0rem;
+}
+@media screen and (max-width: 480px) {
+  .pagenation-box {
+    width: 100% !important;
+  }
+.pagination-number {
+  color: #999;
+  display: block !important;
+  width: 20% !important;
+  line-height: 1rem !important;
+}
 }
 </style>

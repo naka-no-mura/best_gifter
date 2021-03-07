@@ -2,18 +2,25 @@
   <div class="section">
     <h2 class="title my-q-tl">アンケート結果</h2>
     <div class="q-ads">
-    <p>アンケートを投稿して<br>ギフトを厳選してみましょう！</p>
-    <b-icon icon="gift-outline" size="is-large" class="mypage-gift-icon"></b-icon><br>
-    <router-link to="/questionnaire_form" class="button q-ads-button">投稿する</router-link>
+      <p>アンケートを投稿して<br />ギフトを厳選してみましょう！</p>
+      <b-icon
+        icon="gift-outline"
+        size="is-large"
+        class="mypage-gift-icon"
+      ></b-icon
+      ><br />
+      <router-link to="/questionnaire_form" class="button q-ads-button"
+        >投稿する</router-link
+      >
     </div>
     <div>
-    <template v-for="questionnaire in questionnaires">
-      <MyQuestionnaireItem
-        :key="questionnaire.id"
-        :questionnaire="questionnaire"
-        @after-delete="getQuestionnaires"
-      />
-    </template>
+      <template v-for="questionnaire in questionnaires">
+        <MyQuestionnaireItem
+          :key="questionnaire.id"
+          :questionnaire="questionnaire"
+          @after-delete="getQuestionnaires"
+        />
+      </template>
     </div>
   </div>
 </template>
@@ -43,8 +50,8 @@ export default {
       this.$axios
         .get("/v1/questionnaires/my_questionnaires", {
           params: {
-            user_id: this.authUser.id
-          }
+            user_id: this.authUser.id,
+          },
         })
         .then((res) => {
           this.$data.questionnaires = res.data;
@@ -83,5 +90,10 @@ export default {
 }
 .my-q-tl {
   text-align: center;
+}
+@media screen and (max-width: 480px) {
+  .q-ads {
+    margin: 1rem 0;
+  }
 }
 </style>

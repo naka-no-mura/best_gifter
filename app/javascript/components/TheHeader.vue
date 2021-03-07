@@ -1,6 +1,6 @@
 <template>
   <nav
-    class="navbar is-fixed-top"
+    class="navbar is-fixed-top responsive-nav"
     role="navigation"
     aria-label="main navigation"
   >
@@ -61,7 +61,7 @@
               アンケート
             </a>
             <div class="navbar-dropdown">
-              <router-link to="/questionnaire_form" class="navbar-item"
+              <router-link to="/questionnaire_form" class="navbar-item responsive-nav-dropdown"
                 ><b-icon
                   class="nav-icon"
                   icon="comment-question-outline"
@@ -70,7 +70,7 @@
                 >投稿する</router-link
               >
 
-              <router-link to="/questionnaire_list" class="navbar-item"
+              <router-link to="/questionnaire_list" class="navbar-item responsive-nav-dropdown"
                 ><b-icon
                   class="nav-icon"
                   icon="vote-outline"
@@ -80,14 +80,6 @@
               >
             </div>
           </div>
-          <router-link
-            to=""
-            @click.native="handleLogout"
-            class="nav-item navbar-item"
-            ><b-icon class="nav-icon" icon="logout" size="is-small"></b-icon
-            >ログアウト</router-link
-          >
-        </template>
         <router-link to="/mypage" class="navbar-item nav-item" v-if="authUser">
           <b-icon
             class="nav-icon"
@@ -96,6 +88,14 @@
           ></b-icon
           >マイページ</router-link
         >
+          <router-link
+            to=""
+            @click.native="handleLogout"
+            class="nav-item navbar-item"
+            ><b-icon class="nav-icon" icon="logout" size="is-small"></b-icon
+            >ログアウト</router-link
+          >
+        </template>
       </div>
     </div>
   </nav>
@@ -153,5 +153,16 @@ export default {
 }
 .navbar-link {
   padding: 0 2rem;
+}
+@media screen and (max-width: 480px) {
+.responsive-nav {
+  height: 30px !important;
+}
+.nav-item {
+  padding: 1rem 2rem;
+}
+.responsive-nav-dropdown {
+  margin-left: 2rem;
+}
 }
 </style>

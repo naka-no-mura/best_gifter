@@ -49,12 +49,21 @@ export default {
 <style lang="scss">
 .questionnaire-list {
   display: flex;
-  flex-wrap:wrap;
-  justify-content: space-between;
+  flex-wrap: wrap;
+  justify-content: center;
   padding-top: 5rem;
 }
 .questionnaire-item {
   width: 48%;
-  margin-bottom: 5rem;
+  margin: 0 0.5rem 5rem 0.5rem;
+}
+@media screen and (max-width: 480px) {
+.questionnaire-list {
+  padding-top: 2rem;
+}
+  .questionnaire-item {
+    width: 90% ;
+    margin: 0 0.5rem 2rem 0.5rem;
+  }
 }
 </style>

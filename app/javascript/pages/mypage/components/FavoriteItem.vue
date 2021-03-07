@@ -1,8 +1,10 @@
 <template>
   <div class="tile is-parent">
-        <a target="_blank" :href="item.url" class="item-url">
-    <div class="mask"><p class="caption"><b>READ MORE</b></p></div>
-        </a>
+    <a target="_blank" :href="item.url" class="item-url">
+      <div class="mask">
+        <p class="caption"><b>READ MORE</b></p>
+      </div>
+    </a>
     <article class="tile is-child tile-image">
       <div class="favorite-mark">
         <span v-if="isLiked" @click="unFavorite()"
@@ -29,16 +31,20 @@
           >
         </p>
         <div class="review-box">
-          <small><star-rating
-            v-model="item.review_average"
-            :increment="0.01"
-            read-only
-            :star-size="15"
-            class="review-average"
-          ></star-rating></small>
-          <small><span class="review-count"
-            >{{ item.review_count.toLocaleString() }}件</span
+          <small
+            ><star-rating
+              v-model="item.review_average"
+              :increment="0.01"
+              read-only
+              :star-size="15"
+              class="review-average"
+            ></star-rating
           ></small>
+          <small
+            ><span class="review-count"
+              >{{ item.review_count.toLocaleString() }}件</span
+            ></small
+          >
         </div>
       </div>
     </article>

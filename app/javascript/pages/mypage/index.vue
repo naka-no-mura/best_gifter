@@ -45,4 +45,10 @@ img {
 .subtitle {
   margin: 1rem;
 }
+
+@media screen and (max-width: 480px) {
+img {
+  width: 50%;
+}
+}
 </style>

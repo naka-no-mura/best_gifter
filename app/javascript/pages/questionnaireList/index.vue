@@ -27,10 +27,6 @@ export default {
         .get("/v1/questionnaires")
         .then((res) => {
           this.$data.questionnaires = res.data;
-          // for (let key of Object.keys(res)) {
-          //   console.log(key);
-          //   console.log(res[key]);
-          // }
         })
         .catch((err) => {
           console.log(err);
@@ -57,5 +53,17 @@ export default {
 }
 .v-tl {
   padding-top: 3rem;
+}
+@media screen and (max-width: 480px) {
+.tl-relative {
+  margin-top: -2.5rem;
+  font-size: 1.5rem !important;
+}
+.tl-shadow {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #ffd3d4;
+  margin-top: 3rem;
+}
 }
 </style>

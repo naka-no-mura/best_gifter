@@ -53,4 +53,5 @@ export default {
 .my-f-tl {
   text-align: center;
 }
+
 </style>

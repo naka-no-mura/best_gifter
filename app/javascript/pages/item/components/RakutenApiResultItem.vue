@@ -1,54 +1,61 @@
 <template>
-    <div class="tile is-parent">
-        <a target="_blank" :href="item.Item.itemUrl">
-    <div class="mask"><p class="caption"><b>READ MORE</b></p></div>
-        </a>
-      <article class="tile is-child tile-image">
-        <!-- お気に入りマーク -->
-        <div class="favorite-mark" v-if="authUser">
-          <span v-if="isLiked" @click="favorite()"
-            ><b-icon icon="star" size="is-midium" class="star"></b-icon
-          ></span>
-          <span v-else @click="favorite()"
-            ><b-icon
-              icon="star-outline"
-              size="is-midium"
-              class="star-outline"
-            ></b-icon
-          ></span>
+  <div class="tile is-parent">
+    <a target="_blank" :href="item.Item.itemUrl">
+      <div class="mask">
+        <p class="caption"><b>READ MORE</b></p>
+      </div>
+    </a>
+    <article class="tile is-child tile-image">
+      <!-- お気に入りマーク -->
+      <div class="favorite-mark" v-if="authUser">
+        <span v-if="isLiked" @click="favorite()"
+          ><b-icon icon="star" size="is-midium" class="star"></b-icon
+        ></span>
+        <span v-else @click="favorite()"
+          ><b-icon
+            icon="star-outline"
+            size="is-midium"
+            class="star-outline"
+          ></b-icon
+        ></span>
+      </div>
+      <!-- お気に入りマーク ここまで-->
+      <figure class="image image-box">
+        <img
+          :src="item.Item.mediumImageUrls[0].imageUrl"
+          alt=""
+          @error="altImg()"
+          class="item-img"
+        />
+      </figure>
+      <div class="content">
+        <p>
+          <small>{{ sliceItemName(item.Item.itemName) }}</small>
+        </p>
+        <p class="item-price">
+          <big
+            ><b>{{ item.Item.itemPrice.toLocaleString() }}円</b></big
+          >
+        </p>
+        <div class="review-box">
+          <small
+            ><star-rating
+              v-model="item.Item.reviewAverage"
+              :increment="0.01"
+              read-only
+              :star-size="15"
+              class="review-average"
+            ></star-rating
+          ></small>
+          <small
+            ><span class="review-count"
+              >{{ item.Item.reviewCount.toLocaleString() }}件</span
+            ></small
+          >
         </div>
-        <!-- お気に入りマーク ここまで-->
-        <figure class="image image-box">
-          <img :src="item.Item.mediumImageUrls[0].imageUrl" alt="" @error="altImg()" class="item-img" />
-        </figure>
-          <div class="content">
-            <p>
-              <small>{{ sliceItemName(item.Item.itemName) }}</small>
-            </p>
-            <p class="item-price">
-              <big
-                ><b>{{ item.Item.itemPrice.toLocaleString() }}円</b></big
-              >
-            </p>
-            <div class="review-box">
-              <small
-                ><star-rating
-                  v-model="item.Item.reviewAverage"
-                  :increment="0.01"
-                  read-only
-                  :star-size="15"
-                  class="review-average"
-                ></star-rating
-              ></small>
-              <small
-                ><span class="review-count"
-                  >{{ item.Item.reviewCount.toLocaleString() }}件</span
-                ></small
-              >
-            </div>
-          </div>
-      </article>
-    </div>
+      </div>
+    </article>
+  </div>
 </template>
 
 <script>
@@ -98,13 +105,14 @@ export default {
       this.isLiked = true;
     },
     altImg() {
-      this.item.Item.mediumImageUrls[0].imageUrl = '../../../../assets/images/logo_light_pink.JPG'
-    }
+      this.item.Item.mediumImageUrls[0].imageUrl =
+        "../../../../assets/images/logo_light_pink.JPG";
+    },
   },
 };
 </script>
 <style scope>
-.is-parent{
+.is-parent {
   background-color: white;
   border-radius: 20px;
   border: 5px solid white;
@@ -122,10 +130,10 @@ export default {
   top: 0;
   left: 0;
   z-index: 10;
-  background-color:	rgba(0,0,0,0.2);
+  background-color: rgba(0, 0, 0, 0.2);
   transition: 0.3s;
   opacity: 0;
-  -webkit-transition:	all 0.3s;
+  -webkit-transition: all 0.3s;
   border-radius: 15px;
 }
 .mask:hover {
@@ -182,5 +190,14 @@ export default {
 }
 a {
   color: #333 !important;
+}
+@media screen and (max-width: 480px) {
+  .is-parent {
+    padding: 0;
+  }
+  .item-img {
+    width: 10rem !important;
+    height: 10rem !important;
+  }
 }
 </style>
