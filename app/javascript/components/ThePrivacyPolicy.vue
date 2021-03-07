@@ -97,6 +97,7 @@
         <li>
           Googleアナリティクスについて、詳しくは<a
             href="https://marketingplatform.google.com/about/analytics/terms/jp/"
+            target="_blank"
             >こちら</a
           >からご確認ください。
         </li>
@@ -114,7 +115,9 @@
           やそのパートナーは、Cookieを使用することにより適切な広告を表示しています。お客様は、以下のGoogleアカウントの広告設定ページから、パーソナライズ広告を無効にできます
         </li>
         <li>
-          お客様は、<a href="https://adssettings.google.com/u/0/authenticated"
+          お客様は、<a
+            href="https://adssettings.google.com/u/0/authenticated"
+            target="_blank"
             >こちら</a
           >のGoogleアカウントの広告設定ページから、パーソナライズ広告を無効にできます。
         </li>
@@ -125,6 +128,7 @@
         <li>
           その他、GoogleによるCookieの取り扱い詳細については、<a
             href="https://policies.google.com/technologies/ads"
+            target="_blank"
             >こちら</a
           >のGoogleのポリシーと規約のページをご覧ください。
         </li>
@@ -143,6 +147,7 @@
       <p>
         本ポリシーに関するお問い合わせは，管理者Twitterアカウント<a
           href="https://twitter.com/Best_Gifter"
+          target="_blank"
           >(@Best_Gifter)</a
         >までお願いいたします。
       </p>

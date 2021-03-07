@@ -2,13 +2,25 @@
   <footer class="footer">
     <div class="content has-text-centered">
       <p>
-        &copy; {{ copyText }} 2001<strong>Best Gifter</strong>
+        <router-link to="/"
+          ><button class="button is-text copyright" @click="pageToTop()">
+            &copy; 2021<strong> Best Gifter</strong>
+          </button></router-link
+        >
         <router-link to="/terms"
-          ><span @click="pageToTop()">利用規約</span></router-link
+          ><button class="button is-text" @click="pageToTop()">
+            利用規約
+          </button></router-link
         >
         <router-link to="/privacy_policys"
-          ><span @click="pageToTop()">プライバシーポリシー</span></router-link
-        >.
+          ><button class="button is-text" @click="pageToTop()">
+            プライバシーポリシー
+          </button></router-link
+        >
+        <a href="https://twitter.com/Best_Gifter" target="_blank"
+          ><button class="button is-text">
+            <b-icon icon="twitter" size="is-middle"></b-icon></button
+        ></a>
       </p>
     </div>
   </footer>
@@ -33,4 +45,8 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+.copyright {
+  padding: 1rem 2rem;
+}
+</style>
