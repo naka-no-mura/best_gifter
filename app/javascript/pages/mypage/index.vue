@@ -54,6 +54,14 @@ img {
 .my-page-f {
   width: 65%;
 }
+@media screen and (max-width: 959px) {
+.my-page-q {
+  width: 50%;
+}
+.my-page-f {
+  width: 50%;
+}
+}
 @media screen and (max-width: 480px) {
 img {
   width: 50%;

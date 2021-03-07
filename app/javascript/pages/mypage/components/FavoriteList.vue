@@ -62,6 +62,15 @@ export default {
   width: 30%;
   margin: 0.5rem;
 }
+@media screen and (max-width: 959px) {
+.my-favorite-items {
+  display: block;
+}
+.my-favorite-item {
+  width: 100%;
+  margin: 1rem auto;
+}
+}
 @media screen and (max-width: 480px) {
 .my-favorite-items {
   display: block;

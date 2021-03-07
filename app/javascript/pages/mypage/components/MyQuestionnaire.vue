@@ -96,9 +96,5 @@ export default {
   .q-ads {
     margin: 1rem  auto;
   }
-  .my-q-item {
-  }
-  .section {
-  }
 }
 </style>
