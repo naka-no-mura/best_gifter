@@ -155,9 +155,6 @@ export default {
   padding: 0 2rem;
 }
 @media screen and (max-width: 480px) {
-.responsive-nav {
-  height: 30px !important;
-}
 .nav-item {
   padding: 1rem 2rem;
 }

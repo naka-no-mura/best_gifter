@@ -2,7 +2,7 @@
   <main>
     <div class="sidebar-page">
       <section class="sidebar-layout">
-        <b-sidebar
+        <!-- <b-sidebar
           position="static"
           :mobile="mobile"
           :expand-on-hover="expandOnHover"
@@ -11,7 +11,7 @@
           open
         >
           <RakutenApiSideMenu v-show="!loading"></RakutenApiSideMenu>
-        </b-sidebar>
+        </b-sidebar> -->
         <div class="container inner">
         <RakutenApiCall v-show="!loading"></RakutenApiCall>
         <RakutenApiError v-show="!loading"></RakutenApiError>

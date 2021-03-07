@@ -1,12 +1,10 @@
 <template>
-<div class="container item-box">
-    <div class="columns is-multiline">
+  <div class="container items-box">
       <template v-for="item in items">
-        <div class="column is-3">
+        <div class="item-box">
           <RakutenApiResultItem :key="item.id" :item="item" />
         </div>
       </template>
-    </div>
     <div v-if="hits === 0">
       <section>
         <div class="block">
@@ -15,7 +13,7 @@
         <img src="../../../../assets/images/empty.jpg" />
       </section>
     </div>
-    </div>
+  </div>
 </template>
 
 <script>
@@ -41,9 +39,31 @@ export default {
 </script>
 
 <style scope>
-.item-box {
+.items-box {
   border-top: 0.5px solid #d3d3d3;
   border-bottom: 0.5px solid #d3d3d3;
   padding: 2rem 0rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 0 auto;
+}
+.item-box {
+  width: 21%;
+  margin: 1rem;
+}
+@media screen and (max-width: 480px) {
+.items-box {
+  border-top: 0.5px solid #d3d3d3;
+  border-bottom: 0.5px solid #d3d3d3;
+  padding: 2rem 0rem;
+  display: block;
+  flex-wrap: wrap;
+  margin: 0 auto;
+}
+.item-box {
+  width: 95%;
+  margin: 1rem auto;
+}
 }
 </style>

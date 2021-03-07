@@ -127,9 +127,8 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style scoped>
 .pagination-number {
-  color: #999;
   display: block !important;
   width: 100% !important;
   line-height: 3rem !important;
@@ -143,13 +142,18 @@ export default {
 }
 @media screen and (max-width: 480px) {
   .pagenation-box {
-    width: 100% !important;
+    width: 95%;
+    margin: 0 auto;
   }
-.pagination-number {
-  color: #999;
-  display: block !important;
-  width: 20% !important;
-  line-height: 1rem !important;
-}
+  .pagination-list {
+  }
+  .pagination-link {
+    min-width: 1.3em;
+    height: 1.3em;
+  }
+  .pagination-number {
+    font-size: 1rem;
+    line-height: 1rem;
+  }
 }
 </style>
