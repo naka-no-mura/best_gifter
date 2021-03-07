@@ -100,4 +100,15 @@ img {
   margin-left: 1rem;
   padding-bottom: 1rem;
 }
+@media screen and (max-width: 480px) {
+  .login-page {
+    text-align: center;
+  }
+img {
+  width: 50%;
+}
+.login-form {
+  width: 95%;
+}
+}
 </style>
