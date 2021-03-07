@@ -3,10 +3,10 @@
 <div class="block register-logo">
 <p><img src="../../../assets/images/logo_medium_pink.JPG"></p>
 </div>
-<div class="columns">
-  <div class="column">
+<div class="register-box">
+  <div class="register-item">
     <div class="section">
-      <h1 class="title">新規登録</h1>
+      <h1 class="title" style="text-align:center">新規登録</h1>
       <div class="block merit">
           <h2 class="subtitle">検索した商品を<b><big>お気に入り登録</big></b>できるようになります。</h2>
           <p>検索だけであれば新規登録せずにご利用頂けます。</p>
@@ -17,7 +17,7 @@
       </div>
     </div>
   </div>
-  <div class="column">
+  <div class="register-item">
 <div class="section">
   <div id="register-form">
     <b-field label="ニックネーム"
@@ -110,6 +110,14 @@ img {
 .register-logo {
   text-align: center;
 }
+.register-box {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.register-item {
+  width: 50%;
+}
 .merit {
   padding: 2rem;
   border: 5px solid #ffd3d4;
@@ -128,5 +136,20 @@ img {
   color: red;
   margin-left: 1rem;
   padding-bottom: 1rem;
+}
+@media screen and (max-width: 480px) {
+img {
+  width: 50%;
+}
+.register-page {
+  width: 95%;
+}
+.register-box {
+  display: block;
+  text-align: center;
+}
+.register-item {
+  width: 100%;
+}
 }
 </style>
