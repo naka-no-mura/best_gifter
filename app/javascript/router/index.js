@@ -10,6 +10,7 @@ import RegisterIndex from "../pages/register/index";
 import LoginIndex from "../pages/login/index";
 import MypageIndex from "../pages/mypage/index";
 import TheTermsIndex from "../components/TheTerms.vue";
+import ThePrivacyPolicyIndex from "../components/ThePrivacyPolicy.vue";
 
 Vue.use(Router);
 
@@ -58,6 +59,11 @@ const router = new Router({
       path: "/terms",
       component:  TheTermsIndex,
       name: "TermsIndex",
+    },
+    {
+      path: "/privacy_policys",
+      component:  ThePrivacyPolicyIndex,
+      name: "PrivacyPolicyIndex",
     },
   ],
 });

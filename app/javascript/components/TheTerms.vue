@@ -179,6 +179,7 @@
       </li>
     </ul>
     <p class="last">以上</p>
+    <p class="production_date">2021年03月08日 制定</p>
   </div>
   </div>
 </template>
@@ -223,6 +224,9 @@ p {
 .last {
   text-align: right;
   margin: 2rem 0;
+}
+.production_date {
+  padding-bottom: 2rem;
 }
 @media screen and (max-width: 480px) {
   ul {
