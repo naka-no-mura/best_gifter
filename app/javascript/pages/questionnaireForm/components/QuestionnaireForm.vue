@@ -211,6 +211,16 @@ export default {
   margin-top: 3rem;
   text-align: center;
 }
+@media screen and (max-width: 959px) {
+.q-box {
+  width: 100%;
+  padding: 0rem;
+}
+.tl-shadow {
+  margin-top: 0;
+  padding-top: 3rem;
+}
+}
 
 @media screen and (max-width: 480px) {
 .tl-relative {
@@ -219,10 +229,10 @@ export default {
 }
 .tl-shadow {
   font-size: 2.5rem;
-  margin-top: 3rem;
+  margin-top: 0rem;
 }
 .q-box {
-  width: 100%;
+  width: 95%;
   padding: 0rem;
 }
 .section {

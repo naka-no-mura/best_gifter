@@ -55,6 +55,10 @@ export default {
   padding-top: 3rem;
 }
 @media screen and (max-width: 480px) {
+.q-tl {
+  padding-top: 3rem !important;
+  width: 95%;
+}
 .tl-relative {
   margin-top: -2.5rem;
   font-size: 1.5rem !important;
@@ -63,7 +67,7 @@ export default {
   font-size: 2.5rem;
   font-weight: bold;
   color: #ffd3d4;
-  margin-top: 3rem;
+  margin-top: 0rem;
 }
 }
 </style>

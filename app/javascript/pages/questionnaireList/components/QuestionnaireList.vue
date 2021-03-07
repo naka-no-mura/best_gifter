@@ -46,7 +46,7 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style scoped>
 .questionnaire-list {
   display: flex;
   flex-wrap: wrap;
@@ -56,6 +56,12 @@ export default {
 .questionnaire-item {
   width: 48%;
   margin: 0 0.5rem 5rem 0.5rem;
+}
+@media screen and (max-width: 959px) {
+.questionnaire-item {
+  width: 40%;
+  margin: 0 0.5rem 5rem 0.5rem;
+}
 }
 @media screen and (max-width: 480px) {
 .questionnaire-list {
