@@ -73,6 +73,11 @@ export default {
 .top-call-keyword {
   width: 30rem;
 }
+@media screen and (max-width: 959px) {
+  .top-call-keyword {
+    width: auto;
+  }
+}
 @media screen and (max-width: 480px) {
   .top-call-keyword {
     width: 100%;

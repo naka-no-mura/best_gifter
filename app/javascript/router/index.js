@@ -9,6 +9,7 @@ import QuestionnaireListIndex from "../pages/questionnaireList/index";
 import RegisterIndex from "../pages/register/index";
 import LoginIndex from "../pages/login/index";
 import MypageIndex from "../pages/mypage/index";
+import TheTermsIndex from "../components/TheTerms.vue";
 
 Vue.use(Router);
 
@@ -52,6 +53,11 @@ const router = new Router({
       component: MypageIndex,
       name: "MypageIndex",
       meta: { requiredAuth: true },
+    },
+    {
+      path: "/terms",
+      component:  TheTermsIndex,
+      name: "TermsIndex",
     },
   ],
 });

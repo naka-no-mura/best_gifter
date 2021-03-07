@@ -58,17 +58,17 @@ export default {
   margin: 0 0.5rem 5rem 0.5rem;
 }
 @media screen and (max-width: 959px) {
-.questionnaire-item {
-  width: 40%;
-  margin: 0 0.5rem 5rem 0.5rem;
-}
+  .questionnaire-item {
+    width: 40%;
+    margin: 0 0.5rem 5rem 0.5rem;
+  }
 }
 @media screen and (max-width: 480px) {
-.questionnaire-list {
-  padding-top: 2rem;
-}
+  .questionnaire-list {
+    padding-top: 2rem;
+  }
   .questionnaire-item {
-    width: 90% ;
+    width: 90%;
     margin: 0 0.5rem 2rem 0.5rem;
   }
 }

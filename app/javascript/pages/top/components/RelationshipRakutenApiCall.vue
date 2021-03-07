@@ -370,6 +370,11 @@ export default {
   margin: 1rem;
   font-weight: bold;
 }
+@media screen and (max-width: 959px) {
+.item {
+  width: 40%;
+}
+}
 @media screen and (max-width: 480px) {
   .section {
     padding: 1rem;
