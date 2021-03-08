@@ -2,24 +2,25 @@
   <footer class="footer">
     <div class="content has-text-centered">
       <p>
+        <span>&copy; {{ copyText }}</span>
         <router-link to="/"
-          ><button class="button is-text copyright" @click="pageToTop()">
-            &copy; 2021<strong> Best Gifter</strong>
-          </button></router-link
+          ><span @click="pageToTop()" class="f-item">
+            <strong> Best Gifter</strong>
+          </span></router-link
         >
         <router-link to="/terms"
-          ><button class="button is-text" @click="pageToTop()">
+          ><span @click="pageToTop()" class="f-item">
             利用規約
-          </button></router-link
+          </span></router-link
         >
         <router-link to="/privacy_policys"
-          ><button class="button is-text" @click="pageToTop()">
+          ><span @click="pageToTop()" class="f-item">
             プライバシーポリシー
-          </button></router-link
+          </span></router-link
         >
         <a href="https://twitter.com/Best_Gifter" target="_blank"
-          ><button class="button is-text">
-            <b-icon icon="twitter" size="is-middle"></b-icon></button
+          ><span class="f-item">
+            <b-icon icon="twitter" size="is-middle"></b-icon></span
         ></a>
       </p>
     </div>
@@ -34,6 +35,18 @@ export default {
       startYear: 2021,
     };
   },
+
+  computed: {
+    thisYear() {
+      return new Date().getFullYear()
+    },
+    copyText() {
+      if (this.startYear === this.thisYear) {
+        return `${this.thisYear}`
+      }
+      return `${this.startYear} - ${this.thisYear}`
+    }
+  },
   methods: {
     pageToTop() {
       window.scrollTo({
@@ -46,7 +59,11 @@ export default {
 </script>
 
 <style scoped>
-.copyright {
-  padding: 1rem 2rem;
+.f-item {
+  padding: 0.8rem;
+  border-radius: 5px;
+}
+.f-item:hover {
+  background-color: #f5f5f5
 }
 </style>
