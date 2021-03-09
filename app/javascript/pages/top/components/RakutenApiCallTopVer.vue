@@ -34,6 +34,9 @@
             keywordSearch();
             search();
           "
+           @click="
+            keywordSearch();
+            search();"
         >
           <b-icon icon="magnify" size="is-medium"></b-icon>
         </b-button>

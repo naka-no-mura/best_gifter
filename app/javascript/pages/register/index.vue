@@ -63,6 +63,7 @@
     <p v-else><b-button class="register" type="submit" expanded @click="register" disabled>
       登録（無料）
     </b-button></p>
+    <p class="gest-login">アカウント登録をせず機能を試したい方は<a @click="gestLogin">こちら</a></p>
   </div>
   </div>
   </div>
@@ -71,6 +72,7 @@
 </template>
 
 <script>
+import { mapActions } from "vuex";
 export default {
   name: "RegisterIndex",
   data() {
@@ -80,6 +82,10 @@ export default {
         email: "",
         password: "",
         password_confirmation: "",
+      },
+      gest: {
+        email: "gest@gest.com",
+        password: "password"
       },
       errors: {
       name: '',
@@ -91,6 +97,7 @@ export default {
     };
   },
   methods: {
+    ...mapActions("users", ["loginUser", "fetchUser"]),
     register() {
       this.$axios
         .post("/v1/users", { user: this.user })
@@ -104,6 +111,15 @@ export default {
           this.errors.password = error.response.data.errors.password[0]
           this.errors.password_confirmation = error.response.data.errors.password_confirmation[0]
         });
+    },
+    async gestLogin() {
+      try {
+        await this.loginUser(this.gest);
+        this.$router.push({ name: "ItemIndex" });
+        this.$toasted.success("ログインしました");
+      } catch (error) {
+        console.log(error);
+      }
     },
     termesCheck() {
       this.isChecked = !this.isChecked
@@ -158,6 +174,15 @@ img {
 }
 .terms-check {
   margin: 1rem;;
+}
+a {
+  text-decoration-line: underline;
+}
+a:hover {
+  opacity: 0.5;
+}
+.gest-login {
+  margin: 1rem auto;
 }
 @media screen and (max-width: 480px) {
 img {

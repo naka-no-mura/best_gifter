@@ -18,9 +18,7 @@
       <p><b-button class="login" type="submit" expanded @click="login" style="margin:1rem 0">
         ログイン
       </b-button></p>
-      <p><b-button class="login" type="submit" expanded @click="gestLogin"  style="margin:1rem 0">
-        ゲストログイン
-      </b-button></p>
+    <p class="gest-login">アカウント登録をせず機能を試したい方は<a @click="gestLogin">こちら</a></p>
     </div>
   </div>
 </template>
@@ -99,6 +97,12 @@ img {
   color: red;
   margin-left: 1rem;
   padding-bottom: 1rem;
+}
+a {
+  text-decoration-line: underline;
+}
+a:hover {
+  opacity: 0.5;
 }
 @media screen and (max-width: 480px) {
   .login-page {

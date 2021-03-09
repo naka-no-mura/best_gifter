@@ -33,7 +33,7 @@
           />
         </p>
         <p class="control">
-          <b-button class="is-medium" @keyup.enter="setPage(1)"
+          <b-button class="is-medium" @keyup.enter="setPage(1)" @click="setPage(1)"
             ><b-icon icon="magnify" size="is-medium"></b-icon
           ></b-button>
         </p>
@@ -77,7 +77,7 @@
           />
         </p>
         <p class="control">
-          <b-button class="is-small" @keyup.enter="setPage(1)"
+          <b-button class="is-small" @keyup.enter="setPage(1)" @click="setPage(1)"
             ><b-icon icon="magnify" size="is-small"></b-icon
           ></b-button>
         </p>
