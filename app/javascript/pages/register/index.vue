@@ -51,7 +51,16 @@
       /></b-input>
     </b-field>
       <span class="error-message" v-if="errors.password_confirmation">{{ errors.password_confirmation }}</span>
-    <p><b-button class="register" type="submit" @click="register">
+      <p class="terms-check">
+        <label class="checkbox"  @click="termesCheck()">
+          <input type="checkbox" style="margin-right:0.5rem">
+            <router-link to="/terms" class="terms">利用規約</router-link>に同意する
+          </label>
+      </p>
+    <p v-if="isChecked === true"><b-button class="register" type="submit" expanded @click="register">
+      登録（無料）
+    </b-button></p>
+    <p v-else><b-button class="register" type="submit" expanded @click="register" disabled>
       登録（無料）
     </b-button></p>
   </div>
@@ -77,7 +86,8 @@ export default {
       email: '',
       password: '',
       password_confirmation: '',
-      }
+      },
+       isChecked: false,
     };
   },
   methods: {
@@ -95,6 +105,9 @@ export default {
           this.errors.password_confirmation = error.response.data.errors.password_confirmation[0]
         });
     },
+    termesCheck() {
+      this.isChecked = !this.isChecked
+    }
   },
 };
 </script>
@@ -136,6 +149,15 @@ img {
   color: red;
   margin-left: 1rem;
   padding-bottom: 1rem;
+}
+.terms {
+  text-decoration: underline;
+}
+.terms:hover {
+  opacity: 0.4;
+}
+.terms-check {
+  margin: 1rem;;
 }
 @media screen and (max-width: 480px) {
 img {

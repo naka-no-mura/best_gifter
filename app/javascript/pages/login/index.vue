@@ -15,10 +15,10 @@
         <b-input v-model="user.password" type="password"></b-input>
       </b-field>
       <span class="error-message" v-if="errors.password">{{ errors.password }}</span>
-      <p><b-button class="login" type="submit" @click="login">
+      <p><b-button class="login" type="submit" expanded @click="login" style="margin:1rem 0">
         ログイン
-      </b-button>
-      <b-button class="login" type="submit" @click="gestLogin">
+      </b-button></p>
+      <p><b-button class="login" type="submit" expanded @click="gestLogin"  style="margin:1rem 0">
         ゲストログイン
       </b-button></p>
     </div>
