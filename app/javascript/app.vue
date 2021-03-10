@@ -30,11 +30,15 @@
         behavior: "smooth"
       });
       }
-    }
+  },
   };
 </script>
 
 <style scoped>
+@import url('https://fonts.googleapis.com/css2?family=Sawarabi+Mincho&display=swap');
+.inner-box {
+  font-family: 'Sawarabi Gothic', sans-serif;
+}
 .Page-Btn{
   position: fixed;
   right: 14px;

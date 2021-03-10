@@ -65,6 +65,10 @@ const router = new Router({
       component:  ThePrivacyPolicyIndex,
       name: "PrivacyPolicyIndex",
     },
+    {
+            path: '*',
+            redirect: "not-found",
+    },
   ],
 });
 
