@@ -3,6 +3,14 @@
     <TheHeader />
     <router-view />
     <TheFooter />
+    <div class="Page-Btn" @click="scrollTop">
+    <b-icon
+                  class="scroll-top"
+                  icon="chevron-up-circle-outline"
+                  size="is-large"
+                ></b-icon
+                >
+  </div>
   </div>
 </template>
 
@@ -14,12 +22,31 @@
     components: {
       TheHeader,
       TheFooter,
-    }
+    },
+    methods: {
+      scrollTop() {
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+      });
+      }
+  },
   };
 </script>
 
-<style lang="scss">
+<style scoped>
+@import url('https://fonts.googleapis.com/css2?family=Sawarabi+Mincho&display=swap');
 .inner-box {
-  background-color: #fff9ff;
+  font-family: 'Sawarabi Gothic', sans-serif;
+}
+.Page-Btn{
+  position: fixed;
+  right: 14px;
+  bottom: 14px;
+  text-align: center;
+  border-radius: 50%;
+  background: #ffd3d4;
+  color: #666666;
+  z-index: 100;
 }
 </style>

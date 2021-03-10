@@ -1,41 +1,60 @@
 <template>
-  <div v-if="pageCount">
-    <section>
-      <nav aria-label="Page navigation">
-        <ul class="pagination-list">
-          <!-- 1ページ目に戻るリンク -->
-          <li class="pagination-link">
-            <a class="pagination-number" href="#" v-on:click.prevent="setPage(1)"><<</a>
-          </li>
-          <!-- 1ページ前に戻るリンク -->
-          <li class="pagination-link">
-            <a class="pagination-number" href="#" @click.prevent="setPage(currentPage - 1)"><</a>
-          </li>
-          <!-- ここからページ数分のリンクを生成 -->
-          <li
-            class="pagination-link"
-            v-for="num in showPagesFix"
-            :key="num"
-            :class="{ 'is-current': numFix(num) == currentPage }"
+  <div v-if="pageCount" class="block pagenation-box">
+    <nav class="pagination is-medium" role="navigation" aria-label="pagination">
+      <ul class="pagination-list">
+        <!-- 1ページ目に戻るリンク -->
+        <li class="pagination-link">
+          <a class="pagination-number" href="#" v-on:click.prevent="setPage(1)"
+            ><<</a
           >
-            <template v-if="numFix(num) == currentPage">
-              <span class="page-link is-current">{{ numFix(num) }}</span>
-            </template>
-            <a class="pagination-number" href="#" @click.prevent="setPage(numFix(num))" v-else>{{
-              numFix(num)
-            }}</a>
-          </li>
-          <!-- 1ページ次に進むリンク -->
-          <li class="pagination-link">
-            <a class="pagination-number" href="#" @click.prevent="setPage(currentPage + 1)">></a>
-          </li>
-          <!-- 最後のページに進むリンク -->
-          <li class="pagination-link">
-            <a class="pagination-number" href="#" @click.prevent="setPage(pageCount)">>></a>
-          </li>
-        </ul>
-      </nav>
-    </section>
+        </li>
+        <!-- 1ページ前に戻るリンク -->
+        <li class="pagination-link">
+          <a
+            class="pagination-number"
+            href="#"
+            @click.prevent="setPage(currentPage - 1)"
+            ><</a
+          >
+        </li>
+        <!-- ここからページ数分のリンクを生成 -->
+        <li
+          class="pagination-link"
+          v-for="num in showPagesFix"
+          :key="num"
+          :class="{ 'is-current': numFix(num) == currentPage }"
+        >
+          <template v-if="numFix(num) == currentPage">
+            <span class="page-link is-current">{{ numFix(num) }}</span>
+          </template>
+          <a
+            class="pagination-number"
+            href="#"
+            @click.prevent="setPage(numFix(num))"
+            v-else
+            >{{ numFix(num) }}</a
+          >
+        </li>
+        <!-- 1ページ次に進むリンク -->
+        <li class="pagination-link">
+          <a
+            class="pagination-number"
+            href="#"
+            @click.prevent="setPage(currentPage + 1)"
+            >></a
+          >
+        </li>
+        <!-- 最後のページに進むリンク -->
+        <li class="pagination-link">
+          <a
+            class="pagination-number"
+            href="#"
+            @click.prevent="setPage(pageCount)"
+            >>></a
+          >
+        </li>
+      </ul>
+    </nav>
   </div>
 </template>
 
@@ -108,15 +127,36 @@ export default {
 };
 </script>
 
-<style scope>
+<style scoped>
 .pagination-number {
-  color: #999;
   display: block !important;
   width: 100% !important;
-  line-height: 2.5rem !important;
-  vertical-align: middle !important;
+  line-height: 3rem !important;
 }
 .pagination-link {
   padding: 0 !important;
+  background-color: white;
+}
+.pagenation-box {
+  margin: 2rem 1rem;
+}
+@media screen and (max-width: 959px) {
+  .pagenation-box {
+  margin-top: 17rem;
+}
+}
+@media screen and (max-width: 480px) {
+  .pagenation-box {
+    width: 95%;
+    margin: 1rem auto;
+  }
+  .pagination-link {
+    min-width: 1.3em;
+    height: 1.3em;
+  }
+  .pagination-number {
+    font-size: 1rem;
+    line-height: 1rem;
+  }
 }
 </style>

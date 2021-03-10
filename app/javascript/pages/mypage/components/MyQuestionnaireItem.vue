@@ -1,15 +1,38 @@
 <template>
-    <div class="section my-q-item">
-      <div>
-        <p class="gift-q-tl"><b-icon icon="gift-outline" size="is-middium" class="gift-icon"></b-icon> ギフトを贈りたい相手の</p>
-        <p><b-icon icon="arrow-right-drop-circle-outline" size="is-small"></b-icon> 間柄：{{ questionnaire.relationship }}</p>
-        <p><b-icon icon="arrow-right-drop-circle-outline" size="is-small"></b-icon> 性別：{{ questionnaire.gender }}</p>
-        <p><b-icon icon="arrow-right-drop-circle-outline" size="is-small"></b-icon> 年齢：{{ questionnaire.age }}</p>
-        <p><b-icon icon="arrow-right-drop-circle-outline" size="is-small"></b-icon> 内容：{{ questionnaire.text }}</p>
-      </div>
-        <vue-poll v-bind="options" finalResults></vue-poll>
-        <p class="delete-btn"><b-button type="is-text" @click="deleteQuestionnaire(questionnaire.id)">削除</b-button></p>
+  <div class="section my-q-item">
+    <div>
+      <p class="gift-q-tl">
+        <b-icon
+          icon="gift-outline"
+          size="is-middium"
+          class="gift-icon"
+        ></b-icon>
+        ギフトを贈りたい相手の
+      </p>
+      <p>
+        <b-icon icon="arrow-right-drop-circle-outline" size="is-small"></b-icon>
+        間柄：{{ questionnaire.relationship }}
+      </p>
+      <p>
+        <b-icon icon="arrow-right-drop-circle-outline" size="is-small"></b-icon>
+        性別：{{ questionnaire.gender }}
+      </p>
+      <p>
+        <b-icon icon="arrow-right-drop-circle-outline" size="is-small"></b-icon>
+        年齢：{{ questionnaire.age }}
+      </p>
+      <p>
+        <b-icon icon="arrow-right-drop-circle-outline" size="is-small"></b-icon>
+        内容：{{ questionnaire.text }}
+      </p>
     </div>
+    <vue-poll v-bind="options" finalResults></vue-poll>
+    <p class="delete-btn">
+      <b-button type="is-text" @click="deleteQuestionnaire(questionnaire.id)"
+        >削除</b-button
+      >
+    </p>
+  </div>
 </template>
 
 <script>
@@ -25,29 +48,46 @@ export default {
       options: {
         question: "",
         answers: [
-          { value: this.questionnaire.questionnaire_choices[0].id, text: this.questionnaire.questionnaire_choices[0].choice, votes: this.questionnaire.questionnaire_choices[0].answers_count },
-          { value: this.questionnaire.questionnaire_choices[1].id, text: this.questionnaire.questionnaire_choices[1].choice, votes: this.questionnaire.questionnaire_choices[1].answers_count },
-          { value: this.questionnaire.questionnaire_choices[2].id, text: this.questionnaire.questionnaire_choices[2].choice, votes: this.questionnaire.questionnaire_choices[2].answers_count },
+          {
+            value: this.questionnaire.questionnaire_choices[0].id,
+            text: this.questionnaire.questionnaire_choices[0].choice,
+            votes: this.questionnaire.questionnaire_choices[0].answers_count,
+          },
+          {
+            value: this.questionnaire.questionnaire_choices[1].id,
+            text: this.questionnaire.questionnaire_choices[1].choice,
+            votes: this.questionnaire.questionnaire_choices[1].answers_count,
+          },
+          {
+            value: this.questionnaire.questionnaire_choices[2].id,
+            text: this.questionnaire.questionnaire_choices[2].choice,
+            votes: this.questionnaire.questionnaire_choices[2].answers_count,
+          },
         ],
       },
-      radioButton: '',
-    }
+      radioButton: "",
+    };
   },
   computed: {
     ...mapGetters("users", ["authUser"]),
   },
   methods: {
     deleteQuestionnaire(id) {
-      if(confirm('アンケートを削除してもよろしいでしょうか？一度削除すると、元には戻せません。'))
-      this.$axios.delete('/v1/questionnaires/' + id, {data: {id: this.questionnaire.id}})
-      .then((res) => {
-          this.$toasted.show(
-            "アンケートを削除しました。"
-          )
-          this.$emit('after-delete')
-      })
+      if (
+        confirm(
+          "アンケートを削除してもよろしいでしょうか？一度削除すると、元には戻せません。"
+        )
+      )
+        this.$axios
+          .delete("/v1/questionnaires/" + id, {
+            data: { id: this.questionnaire.id },
+          })
+          .then((res) => {
+            this.$toasted.show("アンケートを削除しました。");
+            this.$emit("after-delete");
+          });
     },
-  }
+  },
 };
 </script>
 
@@ -67,5 +107,15 @@ export default {
 }
 .delete-btn {
   text-align: right;
+}
+@media screen and (max-width: 480px) {
+  .my-q-item {
+    margin: 1rem 0rem;
+    width: 100%;
+  }
+  .section {
+    padding: 1rem 0 !important;
+    margin: 1rem auto;
+  }
 }
 </style>

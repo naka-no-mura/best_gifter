@@ -1,54 +1,22 @@
 <template>
   <div class="relationships">
-    <!-- ご親族 -->
-    <div class="section">
-      <div class="block">
-        <h1 class="title">ご親族</h1>
-        <h2 class="subtitle">相場：30,000〜50,000円</h2>
-        <p>
-          身内が結婚する場合は、質の良い、かつ実用性の高いものを贈りましょう。本人に直接聞いてから選んでも良いかもしれません。
-        </p>
-      </div>
-      <div class="columns is-multiline">
-        <div
-          class="column is-2"
-          v-for="relative_search_card in relative_search_cards"
-          :key="relative_search_card.id"
-        >
-        <router-link to="/items">
-          <div
-            class="card"
-            @click="
-              changeGenreId(relative_search_card.genreId);
-              search();
-            "
-            :value="relative_search_card.genreId"
-          >
-            <div class="card-image">
-              <figure class="image">
-                <img :src="relative_search_card.image" alt="ロゴ" />
-              </figure>
-              <p>{{ relative_search_card.name }}</p>
-            </div>
-          </div>
-        </router-link>
-        </div>
-      </div>
-    </div>
     <!-- ご友人 -->
     <div class="section">
       <div class="block">
-        <h1 class="title">ご友人</h1>
-        <h2 class="subtitle">
-          相場：10,000〜30,000円<br>（ただし、先に結婚祝いをもらっている場合は、その金額に合わせるのがマナーです。）
+      <p class="top-tl-box">
+        <h1 class="title tl-shadow">Friend</h1>
+        <h1 class="title tl-relative">ご友人</h1>
+        </p>
+        <h2 class="subtitle tl-price">
+          <b><big>10,000〜30,000円</big></b><br>（ただし、先に結婚祝いをもらっている場合は、その金額に合わせるのがマナーです。）
         </h2>
-        <p>
-          結婚を機に1人分から2人分へサイズ＆ランクアップしたいものは喜ばれるでしょう。友人同士が集まって、グループで贈ることで高価な品物を選んでもよいでしょう。
+        <p class="sub-tx">
+          結婚を機に1人分から2人分へサイズ＆ランクアップしたいものは喜ばれるでしょう。<br>友人同士が集まって、グループで贈ることで高価な品物を選んでもよいでしょう。
         </p>
       </div>
-      <div class="columns is-multiline">
+      <div class="items">
         <div
-          class="column is-2"
+          class="item"
           v-for="friend_search_card in friend_search_cards"
           :key="friend_search_card.id"
         >
@@ -63,30 +31,70 @@
           >
             <div class="card-image">
               <figure class="image">
-                <img :src="friend_search_card.image" alt="ロゴ" />
+                <img class="relationship-img" :src="friend_search_card.image" alt="ロゴ" />
               </figure>
-              <p>{{ friend_search_card.name }}</p>
+              <p class="item-name">{{ friend_search_card.name }}</p>
             </div>
           </div>
           </router-link>
         </div>
       </div>
     </div>
+    <!-- ご親族 -->
+    <div class="section">
+      <div class="block">
+      <p class="top-tl-box">
+        <h1 class="title tl-shadow">Relative</h1>
+        <h1 class="title tl-relative">ご親族</h1>
+      </p>
+        <h2 class="subtitle tl-price"><b><big>30,000〜50,000円</big></b></h2>
+        <p class="sub-tx">
+          身内が結婚する場合は、質の良い、かつ実用性の高いものを贈りましょう。<br>本人に直接聞いてから選んでも良いかもしれません。
+        </p>
+      </div>
+      <div class="items">
+        <div
+        class="item"
+          v-for="relative_search_card in relative_search_cards"
+          :key="relative_search_card.id"
+        >
+        <router-link to="/items">
+          <div
+            class="card"
+            @click="
+              changeGenreId(relative_search_card.genreId);
+              search();
+            "
+            :value="relative_search_card.genreId"
+          >
+            <div class="card-image">
+              <figure class="image">
+                <img class="relationship-img" :src="relative_search_card.image" alt="ロゴ" />
+              </figure>
+              <p class="item-name">{{ relative_search_card.name }}</p>
+            </div>
+          </div>
+        </router-link>
+        </div>
+      </div>
+    </div>
     <!-- 職場の同僚 -->
     <div class="section">
       <div class="block">
-        <h1 class="title">職場の同僚</h1>
-        <h2 class="subtitle">
-          相場：5,000円程度
-          連盟の場合は10,000〜20,000円<br>（結婚祝いを贈る人数にもよりますが、高くてもひとり5000円以内に収めましょう。）
+      <p class="top-tl-box">
+        <h1 class="title tl-shadow">Colleague</h1>
+        <h1 class="title tl-relative">職場の同僚</h1>
+        </p>
+        <h2 class="subtitle tl-price">
+          <b><big>個人からなら5,000円程度、連盟の場合は10,000〜20,000円</big></b><br>（結婚祝いを贈る人数にもよりますが、高くてもひとり5000円以内に収めましょう。）
         </h2>
-        <p>
-          個性的なギフトではなく、より安全感のあるギフトを選びましょう。他の人と被ってしまっても大丈夫なように、いくつあっても困らないものがおすすめです。連名でのプレゼントであれば、新郎新婦のお返しの負担も少なくなるので受け取りやすいでしょう。
+        <p class="sub-tx">
+          個性的なギフトではなく、より安全感のあるギフトを選びましょう。<br>他の人と被ってしまっても大丈夫なように、いくつあっても困らないものがおすすめです。<br>連名でのプレゼントであれば、新郎新婦のお返しの負担も少なくなるので受け取りやすいでしょう。
         </p>
       </div>
-      <div class="columns is-multiline">
+      <div class="items">
         <div
-          class="column is-2"
+          class="item"
           v-for="colleague_search_card in colleague_search_cards"
           :key="colleague_search_card.id"
         >
@@ -101,9 +109,9 @@
           >
             <div class="card-image">
               <figure class="image">
-                <img :src="colleague_search_card.image" alt="ロゴ" />
+                <img class="relationship-img" :src="colleague_search_card.image" alt="ロゴ" />
               </figure>
-              <p>{{ colleague_search_card.name }}</p>
+              <p class="item-name">{{ colleague_search_card.name }}</p>
             </div>
           </div>
         </router-link>
@@ -113,15 +121,18 @@
     <!-- 職場の上司 -->
     <div class="section">
       <div class="block">
-        <h1 class="title">職場の上司</h1>
-        <h2 class="subtitle">相場：個人からでも、連盟の場合でも5,000円程度</h2>
-        <p>
-          個性的なギフトではなく、より安全感のあるギフトを選びましょう。他の人と被ってしまっても大丈夫なように、いくつあっても困らないものがおすすめです。連名でのプレゼントであれば、新郎新婦のお返しの負担も少なくなるので受け取りやすいでしょう。
+      <p class="top-tl-box">
+        <h1 class="title tl-shadow">Boss</h1>
+        <h1 class="title tl-relative">職場の上司</h1>
+        </p>
+        <h2 class="subtitle tl-price"><b><big>個人からでも、連盟の場合でも5,000円程度</big></b></h2>
+        <p class="sub-tx">
+          個性的なギフトではなく、より安全感のあるギフトを選びましょう。<br>他の人と被ってしまっても大丈夫なように、いくつあっても困らないものがおすすめです。<br>連名でのプレゼントであれば、新郎新婦のお返しの負担も少なくなるので受け取りやすいでしょう。
         </p>
       </div>
-      <div class="columns is-multiline">
+      <div class="items">
         <div
-          class="column is-2"
+          class="item"
           v-for="boss_search_card in boss_search_cards"
           :key="boss_search_card.id"
         >
@@ -136,9 +147,9 @@
           >
             <div class="card-image">
               <figure class="image">
-                <img :src="boss_search_card.image" alt="ロゴ" />
+                <img class="relationship-img" :src="boss_search_card.image" alt="ロゴ" />
               </figure>
-              <p>{{ boss_search_card.name }}</p>
+              <p class="item-name">{{ boss_search_card.name }}</p>
             </div>
           </div>
         </router-link>
@@ -322,4 +333,86 @@ export default {
 .relationships {
   text-align: center;
 }
+.tl-relative {
+  margin-top: -4rem;
+  font-size: 2.5rem !important;
+}
+.tl-shadow {
+  font-size: 6rem;
+  font-weight: bold;
+  color: #ffd3d4;
+  margin-top: 3rem;
+}
+.tl-price {
+  text-decoration: underline 5px #ffd3d4;
+  padding: 2rem 0rem;
+  line-height: 2.5rem;
+}
+.items {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.item {
+  width: 25%;
+  margin: 2rem;
+  transition: 0.3s;
+}
+.item:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 30px rgba(0,0,0,.2);
+}
+.relationship-img {
+  object-fit: cover;
+  height: 13rem;
+}
+.item-name {
+  margin: 1rem;
+  font-weight: bold;
+}
+@media screen and (max-width: 959px) {
+.item {
+  width: 40%;
+}
+}
+@media screen and (max-width: 480px) {
+  .section {
+    padding: 1rem;
+  }
+.tl-relative {
+  margin-top: -2.5rem;
+  font-size: 1.5rem !important;
+}
+.tl-shadow {
+  font-size: 3rem;
+  font-weight: bold;
+  color: #ffd3d4;
+  margin-top: 1rem;
+}
+.tl-price {
+  padding: 1rem 0rem;
+  line-height: 1.5rem;
+  margin: 1rem;
+  font-size: 1rem;
+}
+.sub-tx {
+  margin: 0 1rem;
+}
+.items {
+  display: block;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.item {
+  width: 95%;
+  margin: 2rem auto;
+  transition: 0.3s;
+}
+.item-name {
+  margin: 0.5rem;
+  font-weight: bold;
+}
+}
 </style>
+
+// :src="require('../../../../assets/images/logo_light_pink.JPG')"

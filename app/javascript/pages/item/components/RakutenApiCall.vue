@@ -1,80 +1,93 @@
 <template>
-  <!-- 検索フォーム ここから -->
-  <div class="section">
-    <ValidationProvider rules="minKeyword:1" v-slot="{ errors }">
-      <b-field class="b-field">
-        <span>キーワードで絞る　：</span>
-        <div>
+  <div>
+    <!-- pcバージョン -->
+    <div class="block api-call pc-call">
+      <div class="field has-addons">
+        <p class="control">
           <input
-            class="input"
-            type="text"
+            class="input call-keyword is-medium"
+            type="search"
             v-model="keywordBox"
-            name="キーワード"
-            placeholder="複数入力可能（任意）"
+            placeholder="キーワード"
             @input="changeKeyword($event.target.value)"
           />
-        </div>
-        <span class="flash-message">{{ errors[0] }}</span>
-      </b-field>
-    </ValidationProvider>
-    <ValidationProvider rules="min:0" v-slot="{ errors }">
-      <b-field class="b-field">
-        <span>価格下限を設定する：</span>
-        <div>
+        </p>
+        <p class="control">
           <input
-            class="input"
+            class="input call-min is-medium"
             type="number"
+            min="0"
             v-model="minPriceBox"
-            name="価格下限"
-            placeholder="0以上の数値（任意）"
+            placeholder="いくらから"
             @input="changeMinPrice($event.target.value)"
           />
-        </div>
-        <span class="flash-message">{{ errors[0] }}</span>
-      </b-field>
-    </ValidationProvider>
-    <ValidationProvider rules="min:0" v-slot="{ errors }">
-      <b-field class="b-field">
-        <span>価格上限を設定する：</span>
-        <div>
+        </p>
+        <p class="control">
           <input
-            class="input"
+            class="input call-max is-medium"
             type="number"
+            min="0"
             v-model="maxPriceBox"
-            name="価格上限"
-            placeholder="0以上の数値（任意）"
+            placeholder="いくらまで"
             @input="changeMaxPrice($event.target.value)"
           />
-        </div>
-        <span class="flash-message">{{ errors[0] }}</span>
-      </b-field>
-    </ValidationProvider>
-    <b-field>
-      <div>
-        <b-button class="button" @click="setPage(1)">検索</b-button>
+        </p>
+        <p class="control">
+          <b-button class="is-medium" @keyup.enter="setPage(1)" @click="setPage(1)"
+            ><b-icon icon="magnify" size="is-medium"></b-icon
+          ></b-button>
+        </p>
+        <p>
+          <b-button @click="formClear()" class="is-medium" type="is-text">
+            クリア
+          </b-button>
+        </p>
       </div>
-      <!-- フォーム内クリア -->
-      <b-button type="is-text" @click="formClear()" class="button clear-button">
-        クリア
-      </b-button>
-    </b-field>
-    <!-- 並び替え ここから -->
-    <b-field>
-      <select
-        class="select"
-        v-model="sort_selected.sort"
-        v-if="count"
-        @change="
-          changeSort($event.target.value);
-          setPage(1);
-        "
-      >
-        <option v-for="sort in sorts" :value="sort.sort" :key="sort.id">
-          {{ sort.name }}
-        </option>
-      </select>
-    </b-field>
-    <!-- 検索フォーム ここまで -->
+    </div>
+    <!-- スマホバージョン -->
+    <div class="block api-call responsive-call">
+      <div class="field has-addons">
+        <p class="control">
+          <input
+            class="input call-keyword is-small"
+            type="search"
+            v-model="keywordBox"
+            placeholder="キーワード"
+            @input="changeKeyword($event.target.value)"
+          />
+        </p>
+        <p class="control">
+          <input
+            class="input call-min is-small"
+            type="number"
+            min="0"
+            v-model="minPriceBox"
+            placeholder="いくらから"
+            @input="changeMinPrice($event.target.value)"
+          />
+        </p>
+        <p class="control">
+          <input
+            class="input call-max is-small"
+            type="number"
+            min="0"
+            v-model="maxPriceBox"
+            placeholder="いくらまで"
+            @input="changeMaxPrice($event.target.value)"
+          />
+        </p>
+        <p class="control">
+          <b-button class="is-small" @keyup.enter="setPage(1)" @click="setPage(1)"
+            ><b-icon icon="magnify" size="is-small"></b-icon
+          ></b-button>
+        </p>
+        <!-- <p>
+          <b-button @click="formClear()" class="is-medium" type="is-text">
+            クリア
+          </b-button>
+        </p> -->
+      </div>
+    </div>
   </div>
 </template>
 <script>
@@ -140,17 +153,42 @@ export default {
 };
 </script>
 <style scoped>
-.b-field {
-  margin: 0.5rem;
+.api-call {
+  margin: 5rem 1rem 0;
 }
 .flash-message {
   color: red;
   margin: 0.5rem;
 }
-.button {
-  margin: 0.5rem;
-  width: 15rem;
-  background-color: #ffd3d4;
-  border: none;
+.sort-btn {
+  margin-right: 1rem;
+}
+.responsive-call {
+  display: none;
+}
+@media screen and (max-width: 959px) {
+  .pc-call {
+    display: block;
+    width: 100%;
+    margin: 0 auto;
+    padding: 5rem 0.5rem 0;
+    position: fixed;
+    z-index: 29;
+    background-color: #f0eee9;
+  }
+}
+@media screen and (max-width: 480px) {
+  .pc-call {
+    display: none;
+  }
+  .responsive-call {
+    display: block;
+    width: 100%;
+    margin: 0 auto;
+    padding: 2rem 0.5rem 0;
+    position: fixed;
+    z-index: 29;
+    background-color: #f0eee9;
+  }
 }
 </style>

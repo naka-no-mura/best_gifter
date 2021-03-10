@@ -25,8 +25,9 @@ import "../../assets/stylesheets/style.scss";
 
 var options = {
   position: 'top-center',
-  duration: 3000,
+  duration: 4000,
   singleton: true,
+  theme: 'outline'
 }
 
 Vue.prototype.$axios = axios

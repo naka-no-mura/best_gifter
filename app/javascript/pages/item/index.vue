@@ -1,5 +1,4 @@
 <template>
-  <main>
     <div class="sidebar-page">
       <section class="sidebar-layout">
         <b-sidebar
@@ -9,21 +8,21 @@
           :reduce="reduce"
           type="is-white"
           open
+          class="reserch-sidebar"
         >
           <RakutenApiSideMenu v-show="!loading"></RakutenApiSideMenu>
         </b-sidebar>
-        <div class="container">
+        <div class="container inner">
         <RakutenApiCall v-show="!loading"></RakutenApiCall>
         <RakutenApiError v-show="!loading"></RakutenApiError>
         <RakutenApiResultHit v-show="!loading"></RakutenApiResultHit>
         <Loading v-show="loading"></Loading>
         <RakutenApiPagenation v-show="!loading"></RakutenApiPagenation>
         <RakutenApiResultList v-show="!loading"></RakutenApiResultList>
-        <RakutenApiPagenation v-show="!loading"></RakutenApiPagenation>
+        <RakutenApiPagenation style="margin-top:2rem" v-show="!loading"></RakutenApiPagenation>
         </div>
       </section>
     </div>
-  </main>
 </template>
 
 <script>
@@ -63,6 +62,9 @@ export default {
 </script>
 
 <style lang="scss">
+main {
+  padding-top: 5rem;
+}
 .sidebar-page {
   display: flex;
   flex-direction: column;
@@ -143,6 +145,20 @@ export default {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+  }
+}
+.b-sidebar .sidebar-content.is-static {
+    position: static;
+    margin-top: 5rem;
+}
+@media screen and (max-width: 959px) {
+  .reserch-sidebar {
+    display: none;
+  }
+}
+@media screen and (max-width: 480px) {
+  .reserch-sidebar {
+    display: none;
   }
 }
 </style>

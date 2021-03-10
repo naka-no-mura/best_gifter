@@ -9,6 +9,9 @@ import QuestionnaireListIndex from "../pages/questionnaireList/index";
 import RegisterIndex from "../pages/register/index";
 import LoginIndex from "../pages/login/index";
 import MypageIndex from "../pages/mypage/index";
+import TheTermsIndex from "../components/TheTerms.vue";
+import ThePrivacyPolicyIndex from "../components/ThePrivacyPolicy.vue";
+import NotFoundIndex from "../components/errors/NotFound.vue";
 
 Vue.use(Router);
 
@@ -29,11 +32,13 @@ const router = new Router({
       path: "/questionnaire_form",
       component: QuestionnaireFormIndex,
       name: "QuestionnaireFormIndex",
+      meta: { requiredAuth: true },
     },
     {
       path: "/questionnaire_list",
       component: QuestionnaireListIndex,
       name: "QuestionnaireListIndex",
+      meta: { requiredAuth: true },
     },
     {
       path: "/register",
@@ -49,6 +54,22 @@ const router = new Router({
       path: "/mypage",
       component: MypageIndex,
       name: "MypageIndex",
+      meta: { requiredAuth: true },
+    },
+    {
+      path: "/terms",
+      component:  TheTermsIndex,
+      name: "TermsIndex",
+    },
+    {
+      path: "/privacy_policys",
+      component:  ThePrivacyPolicyIndex,
+      name: "PrivacyPolicyIndex",
+    },
+    {
+      path: '*',
+      component: NotFoundIndex,
+      name: "NotFoundIndex"
     },
   ],
 });

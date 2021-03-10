@@ -2,22 +2,6 @@
   <div class="p-1">
     <b-menu class="is-custom-mobile">
       <b-menu-list label="間柄別ジャンルで選ぶ">
-        <!-- ご親族 -->
-        <b-menu-list>
-          <b-menu-item label="ご親族">
-            <b-menu-item
-              v-for="relative_search_card in relative_search_cards"
-              :key="relative_search_card.id"
-              @click="
-                changeGenreId(relative_search_card.genreId);
-                setPage(1);
-              "
-              :label="relative_search_card.name"
-              :value="relative_search_card.genreId"
-            >
-            </b-menu-item>
-          </b-menu-item>
-        </b-menu-list>
         <!-- ご友人 -->
         <b-menu-list>
           <b-menu-item label="ご友人">
@@ -30,6 +14,22 @@
               "
               :label="friend_search_card.name"
               :value="friend_search_card.genreId"
+            >
+            </b-menu-item>
+          </b-menu-item>
+        </b-menu-list>
+        <!-- ご親族 -->
+        <b-menu-list>
+          <b-menu-item label="ご親族">
+            <b-menu-item
+              v-for="relative_search_card in relative_search_cards"
+              :key="relative_search_card.id"
+              @click="
+                changeGenreId(relative_search_card.genreId);
+                setPage(1);
+              "
+              :label="relative_search_card.name"
+              :value="relative_search_card.genreId"
             >
             </b-menu-item>
           </b-menu-item>

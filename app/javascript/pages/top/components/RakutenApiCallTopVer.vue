@@ -1,43 +1,47 @@
 <template>
   <div class="section">
-        <b-field class="b-field">
-            <b-input
-              type="search"
-              style="width: 30rem;"
-              size="is-large"
-              placeholder="必須：キーワード（例：結婚）"
-              @input="changeKeyword($event.target.value)"
-            /></b-input>
-            <b-input
-              class="control"
-              type="number"
-              min="0"
-              size="is-large"
-              placeholder="任意：いくらから"
-              @input="changeMinPrice($event.target.value)"
-            /></b-input>
-            <b-input
-              class="control"
-              type="number"
-              min="0"
-              size="is-large"
-              placeholder="任意：いくらまで"
-              @input="changeMaxPrice($event.target.value)"
-            /></b-input>
-        <p class="control">
-          <b-button
-            class="button"
-            type="submit is-large"
-            @click="
-              keywordSearch();
-              search();
-            "
-            :disabled="invalid"
-          >
-            <b-icon icon="magnify" size="is-medium"></b-icon>
-          </b-button>
-        </p>
-      </b-field>
+    <div class="field has-addons">
+      <p class="control">
+        <input
+          class="input top-call-keyword is-medium"
+          type="search"
+          placeholder="キーワード(例:結婚)"
+          @input="changeKeyword($event.target.value)"
+        />
+      </p>
+      <p class="control">
+        <input
+          class="input top-call-min is-medium"
+          type="number"
+          min="0"
+          placeholder="任意：いくらから"
+          @input="changeMinPrice($event.target.value)"
+        />
+      </p>
+      <p class="control">
+        <input
+          class="input top-call-max is-medium"
+          type="number"
+          min="0"
+          placeholder="任意：いくらまで"
+          @input="changeMaxPrice($event.target.value)"
+        />
+      </p>
+      <p class="control">
+        <b-button
+          type="submit is-medium"
+          @keyup.enter="
+            keywordSearch();
+            search();
+          "
+           @click="
+            keywordSearch();
+            search();"
+        >
+          <b-icon icon="magnify" size="is-medium"></b-icon>
+        </b-button>
+      </p>
+    </div>
   </div>
 </template>
 <script>
@@ -50,13 +54,6 @@ import {
 } from "../../../store/mutation-types";
 export default {
   name: "RakutenApiCallTopVer",
-  data() {
-    return {
-      keywordBox: "",
-      minPriceBox: "",
-      maxPriceBox: "",
-    };
-  },
   methods: {
     ...mapActions("rakuten_api", [
       "changeKeyword",
@@ -72,8 +69,33 @@ export default {
 </script>
 <style scoped>
 .section {
-      display: flex;
+  display: flex;
   justify-content: center;
   margin-top: 5rem;
+}
+.top-call-keyword {
+  width: 30rem;
+}
+@media screen and (max-width: 959px) {
+  .top-call-keyword {
+    width: auto;
+  }
+}
+@media screen and (max-width: 480px) {
+  .top-call-keyword {
+    width: 100%;
+  }
+  .section {
+    display: flex;
+    justify-content: center;
+    margin-top: 0rem;
+    padding: 1rem 0.5rem;
+  }
+  .top-call-min {
+    display: none;
+  }
+  .top-call-max {
+    display: none;
+  }
 }
 </style>

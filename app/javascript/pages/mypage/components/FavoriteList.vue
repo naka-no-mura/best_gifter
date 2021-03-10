@@ -1,9 +1,9 @@
 <template>
   <div class="section">
-    <h2 class="title">お気に入り</h2>
-    <div class="columns is-multiline">
+    <h2 class="title my-f-tl">お気に入り</h2>
+    <div class="my-favorite-items">
       <template v-for="item in items">
-        <div class="column is-4">
+        <div  class="my-favorite-item">
           <FavoriteItem :key="item.id" :item="item" />
         </div>
       </template>
@@ -49,4 +49,38 @@ export default {
 };
 </script>
 
-<style lang="scss"></style>
+<style scoped>
+.my-f-tl {
+  text-align: center;
+}
+.my-favorite-items {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.my-favorite-item {
+  width: 30%;
+  margin: 0.5rem;
+}
+@media screen and (max-width: 959px) {
+.my-favorite-items {
+  display: block;
+}
+.my-favorite-item {
+  width: 100%;
+  margin: 1rem auto;
+}
+}
+@media screen and (max-width: 480px) {
+.my-favorite-items {
+  display: block;
+}
+.my-favorite-item {
+  width: 100%;
+  margin: 1rem auto;
+}
+.section {
+  padding: 0;
+}
+}
+</style>
