@@ -1,33 +1,60 @@
 <template>
-  <div class="container login-page">
-    <div class="block">
-      <p><img src="../../../assets/images/logo_light_pink.JPG" /></p>
-    </div>
-    <div class="section login-form">
-      <h1 class="title">
-        ログイン
-      </h1>
-      <b-field label="メールアドレス" message="（例）example@example.com">
-        <b-input v-model="user.email" type="email"></b-input>
-      </b-field>
-      <span class="error-message" v-if="errors.email">{{ errors.email }}</span>
-      <b-field label="パスワード" message="（例）password">
-        <b-input v-model="user.password" type="password"></b-input>
-      </b-field>
-      <span class="error-message" v-if="errors.password">{{ errors.password }}</span>
-      <p><b-button class="login" type="submit" expanded @click="login" style="margin:1rem 0">
-        ログイン
-      </b-button></p>
-    <p class="gest-login">アカウント登録をせず機能を試したい方は<a @click="gestLogin">こちら</a></p>
+  <div class="container error-box">
+    <p class="error-logo"><img src="../../../assets/images/logo_no_color.JPG"></p>
+    <div class="tx">
+      <p>お探しのページが見つかりませんでした。</p>
+      <p>一時的にアクセスができない状況にあるか</p>
+      <p>移動もしくは削除された可能性があります。</p>
+      <p>URLにお間違いがないか再度ご確認ください。</p>
+      <router-link to="/" class="button"><span @click="pageToTop()">トップページに戻る</span></router-link>
     </div>
   </div>
 </template>
 
 <script>
 export default {
-  name: "NotFound",
+  name: "NotFoundIndex",
+  methods: {
+    pageToTop() {
+      window.scrollTo({
+        top: 0,
+        behavior: "auto",
+      });
+    },
+  }
 }
 </script>
 
 <style scoped>
+.error-box {
+  text-align: center;
+}
+.error-logo {
+  padding-top: 10rem;
+}
+img {
+  width: 30%;
+}
+.tx {
+  line-height: 2rem;
+  padding: 3rem 0;
+}
+.button {
+  background-color: #ffd3d4;
+  border: 5px solid #ffd3d4;
+  transition: 0.3s;
+  margin-top: 2rem;
+}
+.button:hover {
+  background-color: white;
+  border: 5px solid #ffd3d4;
+}
+@media screen and (max-width: 480px) {
+  img {
+    width: 80%;
+  }
+.error-logo {
+  padding-top: 5rem;
+}
+}
 </style>

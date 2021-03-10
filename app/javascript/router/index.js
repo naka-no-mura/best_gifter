@@ -11,6 +11,7 @@ import LoginIndex from "../pages/login/index";
 import MypageIndex from "../pages/mypage/index";
 import TheTermsIndex from "../components/TheTerms.vue";
 import ThePrivacyPolicyIndex from "../components/ThePrivacyPolicy.vue";
+import NotFoundIndex from "../components/errors/NotFound.vue";
 
 Vue.use(Router);
 
@@ -66,8 +67,9 @@ const router = new Router({
       name: "PrivacyPolicyIndex",
     },
     {
-            path: '*',
-            redirect: "not-found",
+      path: '*',
+      component: NotFoundIndex,
+      name: "NotFoundIndex"
     },
   ],
 });
