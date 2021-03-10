@@ -10,7 +10,7 @@
         <h2 class="subtitle tl-price">
           <b><big>10,000〜30,000円</big></b><br>（ただし、先に結婚祝いをもらっている場合は、その金額に合わせるのがマナーです。）
         </h2>
-        <p>
+        <p class="sub-tx">
           結婚を機に1人分から2人分へサイズ＆ランクアップしたいものは喜ばれるでしょう。<br>友人同士が集まって、グループで贈ることで高価な品物を選んでもよいでしょう。
         </p>
       </div>
@@ -48,7 +48,7 @@
         <h1 class="title tl-relative">ご親族</h1>
       </p>
         <h2 class="subtitle tl-price"><b><big>30,000〜50,000円</big></b></h2>
-        <p class="tx">
+        <p class="sub-tx">
           身内が結婚する場合は、質の良い、かつ実用性の高いものを贈りましょう。<br>本人に直接聞いてから選んでも良いかもしれません。
         </p>
       </div>
@@ -88,7 +88,7 @@
         <h2 class="subtitle tl-price">
           <b><big>個人からなら5,000円程度、連盟の場合は10,000〜20,000円</big></b><br>（結婚祝いを贈る人数にもよりますが、高くてもひとり5000円以内に収めましょう。）
         </h2>
-        <p>
+        <p class="sub-tx">
           個性的なギフトではなく、より安全感のあるギフトを選びましょう。<br>他の人と被ってしまっても大丈夫なように、いくつあっても困らないものがおすすめです。<br>連名でのプレゼントであれば、新郎新婦のお返しの負担も少なくなるので受け取りやすいでしょう。
         </p>
       </div>
@@ -126,7 +126,7 @@
         <h1 class="title tl-relative">職場の上司</h1>
         </p>
         <h2 class="subtitle tl-price"><b><big>個人からでも、連盟の場合でも5,000円程度</big></b></h2>
-        <p>
+        <p class="sub-tx">
           個性的なギフトではなく、より安全感のあるギフトを選びましょう。<br>他の人と被ってしまっても大丈夫なように、いくつあっても困らないものがおすすめです。<br>連名でのプレゼントであれば、新郎新婦のお返しの負担も少なくなるので受け取りやすいでしょう。
         </p>
       </div>
@@ -392,8 +392,11 @@ export default {
 .tl-price {
   padding: 1rem 0rem;
   line-height: 1.5rem;
-  margin-top: 1rem;
+  margin: 1rem;
   font-size: 1rem;
+}
+.sub-tx {
+  margin: 0 1rem;
 }
 .items {
   display: block;
@@ -401,7 +404,7 @@ export default {
   justify-content: center;
 }
 .item {
-  width: 100%;
+  width: 95%;
   margin: 2rem auto;
   transition: 0.3s;
 }
