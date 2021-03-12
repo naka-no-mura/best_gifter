@@ -20,50 +20,62 @@
   <div class="register-item">
 <div class="section">
   <div id="register-form">
-    <b-field label="ニックネーム"
+    <b-field label="ニックネーム" class="r-f"
         message="（例）ギフター">
       <b-input
         v-model="user.name"
         type="text"
+        id="register-name"
       ></b-input>
     </b-field>
-      <span class="error-message" v-if="errors.name">{{ errors.name }}</span>
-    <b-field label="メールアドレス" message="（例）best@gifter.com">
+      <span class="error-message" v-if="errors.name">
+        <p v-for="error in errors.name">{{ error }}</p>
+      </span>
+    <b-field label="メールアドレス" class="r-f"  message="（例）best@gifter.com">
       <b-input
         v-model="user.email"
         type="email"
+        id="register-email"
       /></b-input>
     </b-field>
-      <span class="error-message" v-if="errors.email">{{ errors.email }}</span>
-    <b-field label="パスワード" message="（例）password">
+      <span class="error-message" v-if="errors.email">
+        <p v-for="error in errors.email">{{ error }}</p>
+      </span>
+    <b-field label="パスワード"  class="r-f" message="（例）password ※３文字以上で入力してください">
       <b-input
         v-model="user.password"
         type="password"
+        id="register-password"
         password-reveal
       /></b-input>
     </b-field>
-      <span class="error-message" v-if="errors.password">{{ errors.password }}</span>
-    <b-field label="パスワード（確認）" message="（例）password">
+      <span class="error-message" v-if="errors.password">
+        <p v-for="error in errors.password">{{ error }}</p>
+      </span>
+    <b-field label="パスワード（確認）"  class="r-f" message="（例）password">
       <b-input
         v-model="user.password_confirmation"
         type="password"
+        id="register-password-confirmation"
         password-reveal
       /></b-input>
     </b-field>
-      <span class="error-message" v-if="errors.password_confirmation">{{ errors.password_confirmation }}</span>
+      <span class="error-message" v-if="errors.password_confirmation">
+        <p v-for="error in errors.password_confirmation">{{ error }}</p>
+      </span>
       <p class="terms-check">
         <label class="checkbox"  @click="termesCheck()">
-          <input type="checkbox" style="margin-right:0.5rem">
+          <input type="checkbox" style="margin-right:0.5rem" id="register-check">
             <router-link to="/terms" class="terms">利用規約</router-link>に同意する
           </label>
       </p>
-    <p v-if="isChecked === true"><b-button class="register" type="submit" expanded @click="register">
+    <p v-if="isChecked === true"><b-button class="register" type="submit" id="register-btn" expanded @click="register">
       登録（無料）
     </b-button></p>
     <p v-else><b-button class="register" type="submit" expanded @click="register" disabled>
       登録（無料）
     </b-button></p>
-    <p class="gest-login">アカウント登録をせず機能を試したい方は<a @click="gestLogin">こちら</a></p>
+    <p class="gest-login">アカウント登録をせず機能を試したい方は<a @click="gestLogin" id="register-gest">こちら</a></p>
   </div>
   </div>
   </div>
@@ -87,12 +99,7 @@ export default {
         email: "gest@gest.com",
         password: "password"
       },
-      errors: {
-      name: '',
-      email: '',
-      password: '',
-      password_confirmation: '',
-      },
+      errors: '',
        isChecked: false,
     };
   },
@@ -106,10 +113,7 @@ export default {
         })
         .catch((error) => {
           console.log(error);
-          this.errors.name = error.response.data.errors.name[0]
-          this.errors.email = error.response.data.errors.email[0]
-          this.errors.password = error.response.data.errors.password[0]
-          this.errors.password_confirmation = error.response.data.errors.password_confirmation[0]
+          this.errors = error.response.data.errors
         });
     },
     async gestLogin() {
@@ -163,8 +167,6 @@ img {
 }
 .error-message {
   color: red;
-  margin-left: 1rem;
-  padding-bottom: 1rem;
 }
 .terms {
   text-decoration: underline;
@@ -174,6 +176,9 @@ img {
 }
 .terms-check {
   margin: 1rem;;
+}
+.r-f {
+  margin: 2rem 0 0 !important;
 }
 a {
   text-decoration-line: underline;

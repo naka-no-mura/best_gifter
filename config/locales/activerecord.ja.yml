@@ -29,16 +29,5 @@ ja:
       questionnaire_choice:
         choice: '選択肢'
         created_at: '投稿日'
-    errors:
-      models:
-        user:
-          attributes:
-            password:
-              blank: 'を入力してください'
-              invalid: 'に誤りがあります'
-              too_short: 'は3文字以上入力してください'
-            password_confirmation:
-              blank: 'を入力してください'
-              confirmation: 'が異なります'
 
 
