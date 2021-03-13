@@ -41,7 +41,7 @@
       <span class="error-message" v-if="errors.email">
         <p v-for="error in errors.email">{{ error }}</p>
       </span>
-    <b-field label="パスワード"  class="r-f" message="（例）password ※３文字以上で入力してください">
+    <b-field label="パスワード"  class="r-f" message="（例）password ※３文字以上30文字以下で入力してください">
       <b-input
         v-model="user.password"
         type="password"
