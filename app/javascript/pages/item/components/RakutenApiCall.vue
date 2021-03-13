@@ -7,6 +7,7 @@
           <input
             class="input call-keyword is-medium"
             type="search"
+            id="search-item"
             v-model="keywordBox"
             placeholder="キーワード"
             @input="changeKeyword($event.target.value)"
@@ -17,6 +18,7 @@
             class="input call-min is-medium"
             type="number"
             min="0"
+            id="search-min"
             v-model="minPriceBox"
             placeholder="いくらから"
             @input="changeMinPrice($event.target.value)"
@@ -27,13 +29,14 @@
             class="input call-max is-medium"
             type="number"
             min="0"
+            id="search-max"
             v-model="maxPriceBox"
             placeholder="いくらまで"
             @input="changeMaxPrice($event.target.value)"
           />
         </p>
         <p class="control">
-          <b-button class="is-medium" @keyup.enter="setPage(1)" @click="setPage(1)"
+          <b-button class="is-medium" @keyup.enter="setPage(1)" id="serch-btn" @click="setPage(1)"
             ><b-icon icon="magnify" size="is-medium"></b-icon
           ></b-button>
         </p>

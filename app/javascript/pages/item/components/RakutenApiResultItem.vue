@@ -8,10 +8,10 @@
     <article class="tile is-child tile-image">
       <!-- お気に入りマーク -->
       <div class="favorite-mark" v-if="authUser">
-        <span v-if="isLiked" @click="favorite()"
+        <span v-if="isLiked" @click="favorite()" class="is-liked"
           ><b-icon icon="star" size="is-midium" class="star"></b-icon
         ></span>
-        <span v-else @click="favorite()"
+        <span v-else @click="favorite()" class="is-not-liked"
           ><b-icon
             icon="star-outline"
             size="is-midium"
@@ -97,6 +97,7 @@ export default {
         })
         .then((res) => {
           console.log(res);
+          this.$toasted.success('お気に入りに登録しました');
         })
         .catch((error) => {
           this.errors = error.response.data.message;

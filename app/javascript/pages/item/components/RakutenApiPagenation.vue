@@ -4,7 +4,7 @@
       <ul class="pagination-list">
         <!-- 1ページ目に戻るリンク -->
         <li class="pagination-link">
-          <a class="pagination-number" href="#" v-on:click.prevent="setPage(1)"
+          <a class="pagination-number" href="#" v-on:click.prevent="setPage(1)" id="pg-first"
             ><<</a
           >
         </li>
@@ -13,7 +13,7 @@
           <a
             class="pagination-number"
             href="#"
-            @click.prevent="setPage(currentPage - 1)"
+            @click.prevent="setPage(currentPage - 1)" id="pg-previous"
             ><</a
           >
         </li>
@@ -31,7 +31,7 @@
             class="pagination-number"
             href="#"
             @click.prevent="setPage(numFix(num))"
-            v-else
+            v-else id="pg-number"
             >{{ numFix(num) }}</a
           >
         </li>
@@ -40,7 +40,7 @@
           <a
             class="pagination-number"
             href="#"
-            @click.prevent="setPage(currentPage + 1)"
+            @click.prevent="setPage(currentPage + 1)" id="pg-next"
             >></a
           >
         </li>
@@ -49,7 +49,7 @@
           <a
             class="pagination-number"
             href="#"
-            @click.prevent="setPage(pageCount)"
+            @click.prevent="setPage(pageCount)" id="pg-last"
             >>></a
           >
         </li>
