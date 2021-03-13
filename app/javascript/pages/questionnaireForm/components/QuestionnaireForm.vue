@@ -14,6 +14,7 @@
               v-model="questionnaire.relationship"
               type="text"
               maxlength="30"
+              id="q-relatinoship"
             ></b-input>
             </b-field>
             <span class="flash-message">{{ errors[0] }}</span><br>
@@ -23,6 +24,7 @@
             <b-select
               class="gender-select"
               v-model="questionnaire.gender"
+              id="q-gender"
             >
               <option value="男性" v-model="questionnaire.gender">男性</option>
               <option value="女性" v-model="questionnaire.gender"
@@ -37,6 +39,7 @@
             <b-input
               v-model="questionnaire.age"
               maxlength="10"
+              id="q-age"
             ></b-input>
             </b-field>
             <span class="flash-message">{{ errors[0] }}</span><br>
@@ -47,6 +50,7 @@
               maxlength="200"
               type="textarea"
               v-model="questionnaire.text"
+              id="q-text"
             ></b-input>
             </b-field>
             <span class="flash-message">{{ errors[0] }}</span><br>
@@ -56,6 +60,7 @@
             <b-input
               v-model="questionnaire.choice_first"
               maxlength="30"
+              id="q-first-choice"
             ></b-input>
             </b-field>
             <span class="flash-message">{{ errors[0] }}</span><br>
@@ -65,20 +70,23 @@
             <b-input
               v-model="questionnaire.choice_second"
               maxlength="30"
+              id="q-second-choice"
             ></b-input>
             </b-field>
             <span class="flash-message">{{ errors[0] }}</span><br>
           </ValidationProvider>
-          <b-field label="3つ目 任意" message="（例）お掃除ロボット／ただし、何も入力しなければ「結果だけ見る」という選択肢が追加されます。" class="tx-box">
+          <b-field label="3つ目 任意" message="（例）友人3人で1万円ずつ出してお掃除ロボット／ただし、何も入力しなければ「結果だけ見る」という選択肢が追加されます。" class="tx-box">
           <b-input
             v-model="questionnaire.choice_third"
             maxlength="30"
+              id="q-third-choice"
           ></b-input>
           </b-field>
           <b-button
             @click="handleSubmit(createQuestionnaire)"
             class="button q-btn"
             expanded
+              id="q-post"
             v-bind:disabled="isPush"
           >
             投稿する

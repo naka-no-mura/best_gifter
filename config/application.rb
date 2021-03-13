@@ -37,6 +37,10 @@ module BestGifter
 
     # Don't generate system test files.
     config.generators.system_tests = nil
+    config.i18n.available_locales = %i[ja]
     config.i18n.default_locale = :ja
+    config.time_zone = 'Tokyo'
+    config.active_record.default_timezone = :local
+    config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '**', '*.yml').to_s]
   end
 end

@@ -12,7 +12,7 @@
 
 ActiveRecord::Schema.define(version: 2021_02_23_015846) do
 
-  create_table "answers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+  create_table "answers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "questionnaire_choice_id", null: false
     t.bigint "questionnaire_id", null: false
@@ -24,7 +24,7 @@ ActiveRecord::Schema.define(version: 2021_02_23_015846) do
     t.index ["user_id"], name: "index_answers_on_user_id"
   end
 
-  create_table "items", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+  create_table "items", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.text "name", null: false
     t.integer "price", null: false
     t.string "url", null: false
@@ -40,7 +40,7 @@ ActiveRecord::Schema.define(version: 2021_02_23_015846) do
     t.index ["user_id"], name: "index_items_on_user_id"
   end
 
-  create_table "questionnaire_choices", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+  create_table "questionnaire_choices", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "questionnaire_id", null: false
     t.string "choice", null: false
     t.datetime "created_at", precision: 6, null: false
@@ -49,7 +49,7 @@ ActiveRecord::Schema.define(version: 2021_02_23_015846) do
     t.index ["questionnaire_id"], name: "index_questionnaire_choices_on_questionnaire_id"
   end
 
-  create_table "questionnaires", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+  create_table "questionnaires", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.text "text", null: false
     t.string "relationship", null: false
@@ -60,7 +60,7 @@ ActiveRecord::Schema.define(version: 2021_02_23_015846) do
     t.index ["user_id"], name: "index_questionnaires_on_user_id"
   end
 
-  create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+  create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name", null: false
     t.string "email", null: false
     t.string "crypted_password"

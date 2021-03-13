@@ -9,18 +9,18 @@
           </span></router-link
         ></p>
         <p class="f-item"><router-link to="/terms"
-          ><span @click="pageToTop()">
+          ><span @click="pageToTop()" id="terms">
             利用規約
           </span></router-link
         ></p>
         <p class="f-item"><router-link to="/privacy_policys"
-          ><span @click="pageToTop()">
+          ><span @click="pageToTop()" id="privacy_policys">
             プライバシーポリシー
           </span></router-link
         ></p>
         <p class="f-item"><a href="https://twitter.com/Best_Gifter" target="_blank"
           ><span>
-            <b-icon icon="twitter" size="is-middle"></b-icon></span
+            <b-icon icon="twitter" size="is-middle" id="twitter"></b-icon></span
         ></a></p>
       </p>
     </div>

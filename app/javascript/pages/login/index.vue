@@ -8,17 +8,17 @@
         ログイン
       </h1>
       <b-field label="メールアドレス" message="（例）example@example.com">
-        <b-input v-model="user.email" type="email"></b-input>
+        <b-input v-model="user.email" type="email" id="login-email"></b-input>
       </b-field>
       <span class="error-message" v-if="errors.email">{{ errors.email }}</span>
       <b-field label="パスワード" message="（例）password">
-        <b-input v-model="user.password" type="password"></b-input>
+        <b-input v-model="user.password" type="password" id="login-password"></b-input>
       </b-field>
       <span class="error-message" v-if="errors.password">{{ errors.password }}</span>
-      <p><b-button class="login" type="submit" expanded @click="login" style="margin:1rem 0">
+      <p><b-button class="login" type="submit" id="login-btn" expanded @click="login" style="margin:1rem 0">
         ログイン
       </b-button></p>
-    <p class="gest-login">アカウント登録をせず機能を試したい方は<a @click="gestLogin">こちら</a></p>
+    <p class="gest-login">アカウント登録をせず機能を試したい方は<a id="login-gest-btn" @click="gestLogin">こちら</a></p>
     </div>
   </div>
 </template>
@@ -98,10 +98,10 @@ img {
   margin-left: 1rem;
   padding-bottom: 1rem;
 }
-a {
-  text-decoration-line: underline;
+#login-gest-btn {
+  text-decoration: underline;
 }
-a:hover {
+#login-gest-btn:hover {
   opacity: 0.5;
 }
 @media screen and (max-width: 480px) {

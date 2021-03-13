@@ -7,10 +7,10 @@
     </a>
     <article class="tile is-child tile-image">
       <div class="favorite-mark">
-        <span v-if="isLiked" @click="unFavorite()"
+        <span v-if="isLiked" @click="unFavorite()" id="my-is-liked"
           ><b-icon icon="star" size="is-midium" class="star"></b-icon
         ></span>
-        <span v-else @click="favorite()"
+        <span v-else @click="favorite()" id="my-is-not-liked"
           ><b-icon
             icon="star-outline"
             size="is-midium"

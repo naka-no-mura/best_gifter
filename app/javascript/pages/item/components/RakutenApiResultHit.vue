@@ -41,11 +41,12 @@
         <div class="level-right"></div>
         <div class="level-right">
           <div class="level-item">
-            <span class="sort-btn">並び替え</span>
+            <label class="sort-btn" for="sort">並び替え</label>
             <div class="select">
               <select
                 v-model="sort_selected.sort"
                 v-if="count"
+                id="sort"
                 @change="
                   changeSort($event.target.value);
                   setPage(1);
