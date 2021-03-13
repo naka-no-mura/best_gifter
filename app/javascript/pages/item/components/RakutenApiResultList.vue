@@ -10,7 +10,7 @@
         <div class="block">
           ご指定の検索条件に該当する商品はみつかりませんでした
         </div>
-        <img src="../../../../assets/images/empty.jpg" />
+        <img src="../../../../assets/images/top_image_pink.JPG" />
       </section>
     </div>
   </div>
