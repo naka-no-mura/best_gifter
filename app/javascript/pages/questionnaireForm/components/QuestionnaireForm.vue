@@ -1,93 +1,153 @@
 <template>
   <div class="inner-box">
     <div class="section q-box">
-      <h1 class="title tl-shadow">Questionnaire</h1>
-      <h1 class="title tl-relative">アンケート投稿</h1>
-      <p class="subtitle q-tl">新郎新婦へ贈るギフトをいくつか考えたが一つに絞れない…とお困りのあなたに<br>
-      アンケートを投稿することでギフト選びの手助けとなるかもしれません</p>
+      <h1 class="title tl-shadow">
+        Questionnaire
+      </h1>
+      <h1 class="title tl-relative">
+        アンケート投稿
+      </h1>
+      <p class="subtitle q-tl">
+        新郎新婦へ贈るギフトをいくつか考えたが一つに絞れない…とお困りのあなたに<br>
+        アンケートを投稿することでギフト選びの手助けとなるかもしれません
+      </p>
       <ValidationObserver v-slot="{ handleSubmit }">
         <form class="section">
-          <ValidationProvider rules="required" v-slot="{ errors }">
-            <b-field label="ギフトを贈りたい方との間柄" message="（例）高校時代の同級生" class="tx-box">
-            <b-input
+          <ValidationProvider
+            v-slot="{ errors }"
+            rules="required"
+          >
+            <b-field
+              label="ギフトを贈りたい方との間柄"
+              message="（例）高校時代の同級生"
+              class="tx-box"
+            >
+              <b-input
+                id="q-relatinoship"
+                v-model="questionnaire.relationship"
+                class="tx-box"
+                type="text"
+                maxlength="30"
+              />
+            </b-field>
+            <span class="flash-message">{{ errors[0] }}</span><br>
+          </ValidationProvider>
+          <ValidationProvider
+            v-slot="{ errors }"
+            rules="required"
+          >
+            <b-field
+              label="ギフトを贈りたい方の性別"
+              message="選択してください"
+              class="tx-box"
+            >
+              <b-select
+                id="q-gender"
+                v-model="questionnaire.gender"
+                class="gender-select"
+              >
+                <option
+                  :v-model="questionnaire.gender"
+                  value="男性"
+                >
+                  男性
+                </option>
+                <option
+                  :v-model="questionnaire.gender"
+                  value="女性"
+                >
+                  女性
+                </option>
+              </b-select>
+            </b-field>
+            <span class="flash-message">{{ errors[0] }}</span><br>
+          </ValidationProvider>
+          <ValidationProvider
+            v-slot="{ errors }"
+            rules="required"
+          >
+            <b-field
+              label="ギフトを贈りたい方の年齢"
+              message="（例）25歳（定かではない場合はおおよそでも構いません）"
+              class="tx-box"
+            >
+              <b-input
+                id="q-age"
+                v-model="questionnaire.age"
+                maxlength="10"
+              />
+            </b-field>
+            <span class="flash-message">{{ errors[0] }}</span><br>
+          </ValidationProvider>
+          <ValidationProvider
+            v-slot="{ errors }"
+            rules="required"
+          >
+            <b-field
+              label="投稿内容"
+              message="（例）高校時代からの仲で社会人になっても頻繁に飲みにいく関係です"
+              class="tx-box"
+            >
+              <b-input
+                id="q-text"
+                v-model="questionnaire.text"
+                maxlength="200"
+                type="textarea"
+              />
+            </b-field>
+            <span class="flash-message">{{ errors[0] }}</span><br>
+          </ValidationProvider>
+          <ValidationProvider
+            v-slot="{ errors }"
+            rules="required"
+          >
+            <b-field
+              label="1つ目 必須"
+              message="（例）1万円のワイン"
+              class="tx-box"
+            >
+              <b-input
+                id="q-first-choice"
+                v-model="questionnaire.choice_first"
+                maxlength="30"
+              />
+            </b-field>
+            <span class="flash-message">{{ errors[0] }}</span><br>
+          </ValidationProvider>
+          <ValidationProvider
+            v-slot="{ errors }"
+            rules="required"
+          >
+            <b-field
+              label="2つ目 必須"
+              message="（例）温泉旅行ペアチケット"
+              class="tx-box"
+            >
+              <b-input
+                id="q-second-choice"
+                v-model="questionnaire.choice_second"
+                maxlength="30"
+              />
+            </b-field>
+            <span class="flash-message">{{ errors[0] }}</span><br>
+          </ValidationProvider>
+          <b-field
+            label="3つ目 任意"
+            message="（例）友人3人で1万円ずつ出してお掃除ロボット／ただし、何も入力しなければ「結果だけ見る」という選択肢が追加されます。"
             class="tx-box"
-              v-model="questionnaire.relationship"
-              type="text"
-              maxlength="30"
-              id="q-relatinoship"
-            ></b-input>
-            </b-field>
-            <span class="flash-message">{{ errors[0] }}</span><br>
-          </ValidationProvider>
-          <ValidationProvider rules="required" v-slot="{ errors }">
-          <b-field label="ギフトを贈りたい方の性別" message="選択してください" class="tx-box">
-            <b-select
-              class="gender-select"
-              v-model="questionnaire.gender"
-              id="q-gender"
-            >
-              <option value="男性" v-model="questionnaire.gender">男性</option>
-              <option value="女性" v-model="questionnaire.gender"
-                >女性</option
-              ></b-select
-            >
-            </b-field>
-            <span class="flash-message">{{ errors[0] }}</span><br>
-          </ValidationProvider>
-          <ValidationProvider rules="required" v-slot="{ errors }">
-          <b-field label="ギフトを贈りたい方の年齢" message="（例）25歳（定かではない場合はおおよそでも構いません）" class="tx-box">
+          >
             <b-input
-              v-model="questionnaire.age"
-              maxlength="10"
-              id="q-age"
-            ></b-input>
-            </b-field>
-            <span class="flash-message">{{ errors[0] }}</span><br>
-          </ValidationProvider>
-          <ValidationProvider rules="required" v-slot="{ errors }">
-          <b-field label="投稿内容" message="（例）高校時代からの仲で社会人になっても頻繁に飲みにいく関係です" class="tx-box">
-            <b-input
-              maxlength="200"
-              type="textarea"
-              v-model="questionnaire.text"
-              id="q-text"
-            ></b-input>
-            </b-field>
-            <span class="flash-message">{{ errors[0] }}</span><br>
-          </ValidationProvider>
-          <ValidationProvider rules="required" v-slot="{ errors }">
-          <b-field label="1つ目 必須" message="（例）1万円のワイン" class="tx-box">
-            <b-input
-              v-model="questionnaire.choice_first"
-              maxlength="30"
-              id="q-first-choice"
-            ></b-input>
-            </b-field>
-            <span class="flash-message">{{ errors[0] }}</span><br>
-          </ValidationProvider>
-          <ValidationProvider rules="required" v-slot="{ errors }">
-          <b-field label="2つ目 必須" message="（例）温泉旅行ペアチケット" class="tx-box">
-            <b-input
-              v-model="questionnaire.choice_second"
-              maxlength="30"
-              id="q-second-choice"
-            ></b-input>
-            </b-field>
-            <span class="flash-message">{{ errors[0] }}</span><br>
-          </ValidationProvider>
-          <b-field label="3つ目 任意" message="（例）友人3人で1万円ずつ出してお掃除ロボット／ただし、何も入力しなければ「結果だけ見る」という選択肢が追加されます。" class="tx-box">
-          <b-input
-            v-model="questionnaire.choice_third"
-            maxlength="30"
               id="q-third-choice"
-          ></b-input>
+              v-model="questionnaire.choice_third"
+              maxlength="30"
+            />
           </b-field>
           <b-button
-            @click="handleSubmit(createQuestionnaire)"
+            id="q-post"
             class="button q-btn"
             expanded
-              id="q-post"
-            v-bind:disabled="isPush"
+            :disabled="isPush"
+            @click="handleSubmit(createQuestionnaire)"
           >
             投稿する
           </b-button>

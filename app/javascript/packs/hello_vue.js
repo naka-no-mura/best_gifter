@@ -32,13 +32,13 @@ var options = {
 
 Vue.prototype.$axios = axios
 Vue.use(Buefy);
-Vue.component("v-select", vSelect);
+Vue.component("VSelect", vSelect);
 Vue.use(VuePaginate);
-Vue.component("star-rating", StarRating);
+Vue.component("StarRating", StarRating);
 Vue.use(VueLoading);
 Vue.use(Toasted, options);
 Vue.use(VuePoll);
-Vue.component("vue-poll", VuePoll);
+Vue.component("VuePoll", VuePoll);
 
 Vue.filter("priceLocaleString", function(value) {
   return value.toLocaleString();

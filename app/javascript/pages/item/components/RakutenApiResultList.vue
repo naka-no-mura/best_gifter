@@ -1,16 +1,21 @@
 <template>
   <div class="container items-box">
-      <template v-for="item in items">
-        <div class="item-box">
-          <RakutenApiResultItem :key="item.id" :item="item" />
-        </div>
-      </template>
+    <template v-for="item in items">
+      <div
+        :key="item.id"
+        class="item-box"
+      >
+        <RakutenApiResultItem
+          :item="item"
+        />
+      </div>
+    </template>
     <div v-if="hits === 0">
       <section>
         <div class="block">
           ご指定の検索条件に該当する商品はみつかりませんでした
         </div>
-        <img src="../../../../assets/images/top_image_pink.JPG" />
+        <img src="../../../../assets/images/top_image_pink.JPG">
       </section>
     </div>
   </div>

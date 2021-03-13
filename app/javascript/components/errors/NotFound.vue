@@ -1,12 +1,19 @@
 <template>
   <div class="container error-box">
-    <p class="error-logo"><img src="../../../assets/images/logo_no_color.JPG"></p>
+    <p class="error-logo">
+      <img src="../../../assets/images/logo_no_color.JPG">
+    </p>
     <div class="tx">
       <p>お探しのページが見つかりませんでした。</p>
       <p>一時的にアクセスができない状況にあるか</p>
       <p>移動もしくは削除された可能性があります。</p>
       <p>URLにお間違いがないか再度ご確認ください。</p>
-      <router-link to="/" class="button"><span @click="pageToTop()">トップページに戻る</span></router-link>
+      <router-link
+        to="/"
+        class="button"
+      >
+        <span @click="pageToTop()">トップページに戻る</span>
+      </router-link>
     </div>
   </div>
 </template>

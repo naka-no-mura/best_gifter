@@ -1,7 +1,10 @@
 <template>
   <div>
     <!-- pcバージョン -->
-    <div v-if="count" class="block pc-hit">
+    <div
+      v-if="count"
+      class="block pc-hit"
+    >
       <nav class="level">
         <div class="level-left">
           <div class="level-item">
@@ -12,47 +15,76 @@
             </div>
             <span>検索条件：</span>
             <b-taglist>
-              <b-tag class="tag" rounded v-if="keyword">{{ keyword }}</b-tag>
-              <b-tag class="tag" rounded v-if="genreId">{{
-                genreIdToName(genreId)
-              }}</b-tag>
-              <b-tag class="tag" rounded v-if="minPrice"
-                >{{ minPrice.toLocaleString() }}円〜</b-tag
-              >
-              <b-tag class="tag" rounded v-if="maxPrice"
-                >〜{{ maxPrice.toLocaleString() }}円</b-tag
-              >
               <b-tag
+                v-if="keyword"
                 class="tag"
                 rounded
+              >
+                {{ keyword }}
+              </b-tag>
+              <b-tag
+                v-if="genreId"
+                class="tag"
+                rounded
+              >
+                {{
+                  genreIdToName(genreId)
+                }}
+              </b-tag>
+              <b-tag
+                v-if="minPrice"
+                class="tag"
+                rounded
+              >
+                {{ minPrice.toLocaleString() }}円〜
+              </b-tag>
+              <b-tag
+                v-if="maxPrice"
+                class="tag"
+                rounded
+              >
+                〜{{ maxPrice.toLocaleString() }}円
+              </b-tag>
+              <b-tag
                 v-if="!(keyword || maxPrice || minPrice || maxPrice || genreId)"
-                >結婚（デフォルト検索）</b-tag
+                class="tag"
+                rounded
               >
+                結婚（デフォルト検索）
+              </b-tag>
               <b-button
-                class="tag reset-tag"
                 v-if="keyword || maxPrice || minPrice || maxPrice || genreId"
+                class="tag reset-tag"
                 @click="resetSearch()"
-                >検索条件の解除</b-button
               >
+                検索条件の解除
+              </b-button>
             </b-taglist>
           </div>
         </div>
         <!-- 並び替え ここから -->
-        <div class="level-right"></div>
+        <div class="level-right" />
         <div class="level-right">
           <div class="level-item">
-            <label class="sort-btn" for="sort">並び替え</label>
+            <label
+              class="sort-btn"
+              for="sort"
+            >並び替え</label>
             <div class="select">
               <select
-                v-model="sort_selected.sort"
                 v-if="count"
                 id="sort"
+                v-model="sort_selected.sort"
                 @change="
                   changeSort($event.target.value);
                   setPage(1);
                 "
               >
-                <option v-for="sort in sorts" :value="sort.sort" :key="sort.id">
+                <option
+                  v-for="sort in sorts"
+                  :key="sort.id"
+                  :value="sort.sort"
+                >
                   {{ sort.name }}
                 </option>
               </select>
@@ -62,58 +94,87 @@
       </nav>
     </div>
     <!-- スマホバージョン -->
-    <div v-if="count" class="block responsive-hit">
+    <div
+      v-if="count"
+      class="block responsive-hit"
+    >
       <div class="hit-detail">
-      <div class="hit-sort">
-      <div class="hit-count">
-        {{ first.toLocaleString() }}〜{{ last.toLocaleString() }}件（{{
-          count.toLocaleString()
-        }}件ヒット）
+        <div class="hit-sort">
+          <div class="hit-count">
+            {{ first.toLocaleString() }}〜{{ last.toLocaleString() }}件（{{
+              count.toLocaleString()
+            }}件ヒット）
+          </div>
+          <div class="select is-small">
+            <select
+              v-if="count"
+              v-model="sort_selected.sort"
+              @change="
+                changeSort($event.target.value);
+                setPage(1);
+              "
+            >
+              <option
+                v-for="sort in sorts"
+                :key="sort.id"
+                :value="sort.sort"
+              >
+                {{ sort.name }}
+              </option>
+            </select>
+          </div>
+        </div>
       </div>
-      <div class="select is-small">
-        <select
-          v-model="sort_selected.sort"
-          v-if="count"
-          @change="
-            changeSort($event.target.value);
-            setPage(1);
-          "
-        >
-          <option v-for="sort in sorts" :value="sort.sort" :key="sort.id">
-            {{ sort.name }}
-          </option>
-        </select>
-      </div>
-      </div>
-    </div>
     </div>
     <div class="conditions">
       <span>検索条件：</span>
       <b-taglist>
-        <b-tag class="tag" rounded v-if="keyword">{{ keyword }}</b-tag>
-        <b-tag class="tag" rounded v-if="genreId">{{
-          genreIdToName(genreId)
-        }}</b-tag>
-        <b-tag class="tag" rounded v-if="minPrice"
-          >{{ minPrice.toLocaleString() }}円〜</b-tag
-        >
-        <b-tag class="tag" rounded v-if="maxPrice"
-          >〜{{ maxPrice.toLocaleString() }}円</b-tag
-        >
         <b-tag
+          v-if="keyword"
           class="tag"
           rounded
+        >
+          {{ keyword }}
+        </b-tag>
+        <b-tag
+          v-if="genreId"
+          class="tag"
+          rounded
+        >
+          {{
+            genreIdToName(genreId)
+          }}
+        </b-tag>
+        <b-tag
+          v-if="minPrice"
+          class="tag"
+          rounded
+        >
+          {{ minPrice.toLocaleString() }}円〜
+        </b-tag>
+        <b-tag
+          v-if="maxPrice"
+          class="tag"
+          rounded
+        >
+          〜{{ maxPrice.toLocaleString() }}円
+        </b-tag>
+        <b-tag
           v-if="!(keyword || maxPrice || minPrice || maxPrice || genreId)"
-          >結婚（デフォルト検索）</b-tag
+          class="tag"
+          rounded
         >
+          結婚（デフォルト検索）
+        </b-tag>
         <b-button
-          class="tag reset-tag"
           v-if="keyword || maxPrice || minPrice || maxPrice || genreId"
+          class="tag reset-tag"
           @click="resetSearch()"
-          >検索条件の解除</b-button
         >
+          検索条件の解除
+        </b-button>
       </b-taglist>
-  </div>
+    </div>
   </div>
 </template>
 

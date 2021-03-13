@@ -6,31 +6,49 @@
           icon="gift-outline"
           size="is-middium"
           class="gift-icon"
-        ></b-icon>
+        />
         ギフトを贈りたい相手の
       </p>
       <p>
-        <b-icon icon="arrow-right-drop-circle-outline" size="is-small"></b-icon>
+        <b-icon
+          icon="arrow-right-drop-circle-outline"
+          size="is-small"
+        />
         間柄：{{ questionnaire.relationship }}
       </p>
       <p>
-        <b-icon icon="arrow-right-drop-circle-outline" size="is-small"></b-icon>
+        <b-icon
+          icon="arrow-right-drop-circle-outline"
+          size="is-small"
+        />
         性別：{{ questionnaire.gender }}
       </p>
       <p>
-        <b-icon icon="arrow-right-drop-circle-outline" size="is-small"></b-icon>
+        <b-icon
+          icon="arrow-right-drop-circle-outline"
+          size="is-small"
+        />
         年齢：{{ questionnaire.age }}
       </p>
       <p>
-        <b-icon icon="arrow-right-drop-circle-outline" size="is-small"></b-icon>
+        <b-icon
+          icon="arrow-right-drop-circle-outline"
+          size="is-small"
+        />
         内容：{{ questionnaire.text }}
       </p>
     </div>
-    <vue-poll v-bind="options" finalResults></vue-poll>
+    <vue-poll
+      v-bind="options"
+      final-results
+    />
     <p class="delete-btn">
-      <b-button type="is-text" @click="deleteQuestionnaire(questionnaire.id)"
-        >削除</b-button
+      <b-button
+        type="is-text"
+        @click="deleteQuestionnaire(questionnaire.id)"
       >
+        削除
+      </b-button>
     </p>
   </div>
 </template>
@@ -41,7 +59,10 @@ import { mapGetters } from "vuex";
 export default {
   name: "MyQuestionnaireItem",
   props: {
-    questionnaire: Object,
+    questionnaire: {
+      type: Object,
+      required: true
+    }
   },
   data() {
     return {

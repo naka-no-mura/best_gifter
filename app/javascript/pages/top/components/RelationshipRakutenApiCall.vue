@@ -3,10 +3,14 @@
     <!-- ご友人 -->
     <div class="section">
       <div class="block">
-      <p class="top-tl-box">
-        <h1 class="title tl-shadow">Friend</h1>
-        <h1 class="title tl-relative">ご友人</h1>
-        </p>
+        <div class="top-tl-box">
+          <h1 class="title tl-shadow">
+            Friend
+          </h1>
+          <h1 class="title tl-relative">
+            ご友人
+          </h1>
+        </div>
         <h2 class="subtitle tl-price">
           <b><big>10,000〜30,000円</big></b><br>（ただし、先に結婚祝いをもらっている場合は、その金額に合わせるのがマナーです。）
         </h2>
@@ -16,26 +20,32 @@
       </div>
       <div class="items">
         <div
-          class="item"
           v-for="friend_search_card in friend_search_cards"
           :key="friend_search_card.id"
+          class="item"
         >
-        <router-link to="/items">
-          <div
-            class="card"
-            @click="
-              changeGenreId(friend_search_card.genreId);
-              search();
-            "
-            :value="friend_search_card.genreId"
-          >
-            <div class="card-image">
-              <figure class="image">
-                <img class="relationship-img" :src="friend_search_card.image" alt="ロゴ" />
-              </figure>
-              <p class="item-name">{{ friend_search_card.name }}</p>
+          <router-link to="/items">
+            <div
+              class="card"
+              :value="friend_search_card.genreId"
+              @click="
+                changeGenreId(friend_search_card.genreId);
+                search();
+              "
+            >
+              <div class="card-image">
+                <figure class="image">
+                  <img
+                    class="relationship-img"
+                    :src="friend_search_card.image"
+                    alt="ロゴ"
+                  >
+                </figure>
+                <p class="item-name">
+                  {{ friend_search_card.name }}
+                </p>
+              </div>
             </div>
-          </div>
           </router-link>
         </div>
       </div>
@@ -43,48 +53,64 @@
     <!-- ご親族 -->
     <div class="section">
       <div class="block">
-      <p class="top-tl-box">
-        <h1 class="title tl-shadow">Relative</h1>
-        <h1 class="title tl-relative">ご親族</h1>
-      </p>
-        <h2 class="subtitle tl-price"><b><big>30,000〜50,000円</big></b></h2>
+        <div class="top-tl-box">
+          <h1 class="title tl-shadow">
+            Relative
+          </h1>
+          <h1 class="title tl-relative">
+            ご親族
+          </h1>
+        </div>
+        <h2 class="subtitle tl-price">
+          <b><big>30,000〜50,000円</big></b>
+        </h2>
         <p class="sub-tx">
           身内が結婚する場合は、質の良い、かつ実用性の高いものを贈りましょう。<br>本人に直接聞いてから選んでも良いかもしれません。
         </p>
       </div>
       <div class="items">
         <div
-        class="item"
           v-for="relative_search_card in relative_search_cards"
           :key="relative_search_card.id"
+          class="item"
         >
-        <router-link to="/items">
-          <div
-            class="card"
-            @click="
-              changeGenreId(relative_search_card.genreId);
-              search();
-            "
-            :value="relative_search_card.genreId"
-          >
-            <div class="card-image">
-              <figure class="image">
-                <img class="relationship-img" :src="relative_search_card.image" alt="ロゴ" />
-              </figure>
-              <p class="item-name">{{ relative_search_card.name }}</p>
+          <router-link to="/items">
+            <div
+              class="card"
+              :value="relative_search_card.genreId"
+              @click="
+                changeGenreId(relative_search_card.genreId);
+                search();
+              "
+            >
+              <div class="card-image">
+                <figure class="image">
+                  <img
+                    class="relationship-img"
+                    :src="relative_search_card.image"
+                    alt="ロゴ"
+                  >
+                </figure>
+                <p class="item-name">
+                  {{ relative_search_card.name }}
+                </p>
+              </div>
             </div>
-          </div>
-        </router-link>
+          </router-link>
         </div>
       </div>
     </div>
     <!-- 職場の同僚 -->
     <div class="section">
       <div class="block">
-      <p class="top-tl-box">
-        <h1 class="title tl-shadow">Colleague</h1>
-        <h1 class="title tl-relative">職場の同僚</h1>
-        </p>
+        <div class="top-tl-box">
+          <h1 class="title tl-shadow">
+            Colleague
+          </h1>
+          <h1 class="title tl-relative">
+            職場の同僚
+          </h1>
+        </div>
         <h2 class="subtitle tl-price">
           <b><big>個人からなら5,000円程度、連盟の場合は10,000〜20,000円</big></b><br>（結婚祝いを贈る人数にもよりますが、高くてもひとり5000円以内に収めましょう。）
         </h2>
@@ -94,65 +120,83 @@
       </div>
       <div class="items">
         <div
-          class="item"
           v-for="colleague_search_card in colleague_search_cards"
           :key="colleague_search_card.id"
+          class="item"
         >
-        <router-link to="/items">
-          <div
-            class="card"
-            @click="
-              changeGenreId(colleague_search_card.genreId);
-              search();
-            "
-            :value="colleague_search_card.genreId"
-          >
-            <div class="card-image">
-              <figure class="image">
-                <img class="relationship-img" :src="colleague_search_card.image" alt="ロゴ" />
-              </figure>
-              <p class="item-name">{{ colleague_search_card.name }}</p>
+          <router-link to="/items">
+            <div
+              class="card"
+              :value="colleague_search_card.genreId"
+              @click="
+                changeGenreId(colleague_search_card.genreId);
+                search();
+              "
+            >
+              <div class="card-image">
+                <figure class="image">
+                  <img
+                    class="relationship-img"
+                    :src="colleague_search_card.image"
+                    alt="ロゴ"
+                  >
+                </figure>
+                <p class="item-name">
+                  {{ colleague_search_card.name }}
+                </p>
+              </div>
             </div>
-          </div>
-        </router-link>
+          </router-link>
         </div>
       </div>
     </div>
     <!-- 職場の上司 -->
     <div class="section">
       <div class="block">
-      <p class="top-tl-box">
-        <h1 class="title tl-shadow">Boss</h1>
-        <h1 class="title tl-relative">職場の上司</h1>
-        </p>
-        <h2 class="subtitle tl-price"><b><big>個人からでも、連盟の場合でも5,000円程度</big></b></h2>
+        <div class="top-tl-box">
+          <h1 class="title tl-shadow">
+            Boss
+          </h1>
+          <h1 class="title tl-relative">
+            職場の上司
+          </h1>
+        </div>
+        <h2 class="subtitle tl-price">
+          <b><big>個人からでも、連盟の場合でも5,000円程度</big></b>
+        </h2>
         <p class="sub-tx">
           個性的なギフトではなく、より安全感のあるギフトを選びましょう。<br>他の人と被ってしまっても大丈夫なように、いくつあっても困らないものがおすすめです。<br>連名でのプレゼントであれば、新郎新婦のお返しの負担も少なくなるので受け取りやすいでしょう。
         </p>
       </div>
       <div class="items">
         <div
-          class="item"
           v-for="boss_search_card in boss_search_cards"
           :key="boss_search_card.id"
+          class="item"
         >
-        <router-link to="/items">
-          <div
-            class="card"
-            @click="
-              changeGenreId(boss_search_card.genreId);
-              search();
-            "
-            :value="boss_search_card.genreId"
-          >
-            <div class="card-image">
-              <figure class="image">
-                <img class="relationship-img" :src="boss_search_card.image" alt="ロゴ" />
-              </figure>
-              <p class="item-name">{{ boss_search_card.name }}</p>
+          <router-link to="/items">
+            <div
+              class="card"
+              :value="boss_search_card.genreId"
+              @click="
+                changeGenreId(boss_search_card.genreId);
+                search();
+              "
+            >
+              <div class="card-image">
+                <figure class="image">
+                  <img
+                    class="relationship-img"
+                    :src="boss_search_card.image"
+                    alt="ロゴ"
+                  >
+                </figure>
+                <p class="item-name">
+                  {{ boss_search_card.name }}
+                </p>
+              </div>
             </div>
-          </div>
-        </router-link>
+          </router-link>
         </div>
       </div>
     </div>
@@ -171,8 +215,10 @@ import {
 export default {
   name: "RelationshipRakutenApiCall",
   props: {
-    items: Array,
-    required: true,
+    items: {
+      type: Array,
+      required: true,
+    }
   },
   data() {
     return {

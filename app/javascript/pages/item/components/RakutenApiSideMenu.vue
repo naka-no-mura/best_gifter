@@ -8,14 +8,13 @@
             <b-menu-item
               v-for="friend_search_card in friend_search_cards"
               :key="friend_search_card.id"
+              :label="friend_search_card.name"
+              :value="friend_search_card.genreId"
               @click="
                 changeGenreId(friend_search_card.genreId);
                 setPage(1);
               "
-              :label="friend_search_card.name"
-              :value="friend_search_card.genreId"
-            >
-            </b-menu-item>
+            />
           </b-menu-item>
         </b-menu-list>
         <!-- ご親族 -->
@@ -24,14 +23,13 @@
             <b-menu-item
               v-for="relative_search_card in relative_search_cards"
               :key="relative_search_card.id"
+              :label="relative_search_card.name"
+              :value="relative_search_card.genreId"
               @click="
                 changeGenreId(relative_search_card.genreId);
                 setPage(1);
               "
-              :label="relative_search_card.name"
-              :value="relative_search_card.genreId"
-            >
-            </b-menu-item>
+            />
           </b-menu-item>
         </b-menu-list>
         <!-- 職場の同僚 -->
@@ -40,14 +38,13 @@
             <b-menu-item
               v-for="colleague_search_card in colleague_search_cards"
               :key="colleague_search_card.id"
+              :label="colleague_search_card.name"
+              :value="colleague_search_card.genreId"
               @click="
                 changeGenreId(colleague_search_card.genreId);
                 setPage(1);
               "
-              :label="colleague_search_card.name"
-              :value="colleague_search_card.genreId"
-            >
-            </b-menu-item>
+            />
           </b-menu-item>
         </b-menu-list>
         <!-- 職場の上司 -->
@@ -56,14 +53,13 @@
             <b-menu-item
               v-for="boss_search_card in boss_search_cards"
               :key="boss_search_card.id"
+              :label="boss_search_card.name"
+              :value="boss_search_card.genreId"
               @click="
                 changeGenreId(boss_search_card.genreId);
                 setPage(1);
               "
-              :label="boss_search_card.name"
-              :value="boss_search_card.genreId"
-            >
-            </b-menu-item>
+            />
           </b-menu-item>
         </b-menu-list>
       </b-menu-list>
@@ -84,10 +80,6 @@ import {
 } from "../../../store/mutation-types";
 export default {
   name: "RakutenApiSideMenu",
-  props: {
-    items: Array,
-    required: true,
-  },
   data() {
     return {
       expandOnHover: false,

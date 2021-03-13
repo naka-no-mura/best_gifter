@@ -32,6 +32,12 @@
   },
   "version": "0.1.0",
   "devDependencies": {
+    "eslint": "^7.22.0",
+    "eslint-plugin-vue": "^7.7.0",
     "webpack-dev-server": "^3.11.1"
+  },
+  "scripts": {
+    "lint": "eslint --ext .js,.vue app/javascript",
+    "lint-fix": "eslint --fix --ext .js,.vue app/javascript"
   }
 }

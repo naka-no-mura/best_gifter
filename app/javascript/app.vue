@@ -3,14 +3,16 @@
     <TheHeader />
     <router-view />
     <TheFooter />
-    <div class="Page-Btn" @click="scrollTop">
-    <b-icon
-                  class="scroll-top"
-                  icon="chevron-up-circle-outline"
-                  size="is-large"
-                ></b-icon
-                >
-  </div>
+    <div
+      class="Page-Btn"
+      @click="scrollTop"
+    >
+      <b-icon
+        class="scroll-top"
+        icon="chevron-up-circle-outline"
+        size="is-large"
+      />
+    </div>
   </div>
 </template>
 

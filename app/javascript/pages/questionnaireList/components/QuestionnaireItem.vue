@@ -1,16 +1,44 @@
 <template>
   <div class="section questionnaire-item">
     <div>
-      <p class="gift-q-tl"><b-icon icon="gift-outline" size="is-middium" class="gift-icon"></b-icon> ギフトを贈りたいお相手について</p>
-      <p><b-icon icon="arrow-right-drop-circle-outline" size="is-small"></b-icon> 間柄：{{ questionnaire.relationship }}</p>
-      <p><b-icon icon="arrow-right-drop-circle-outline" size="is-small"></b-icon> 性別：{{ questionnaire.gender }}</p>
-      <p><b-icon icon="arrow-right-drop-circle-outline" size="is-small"></b-icon> 年齢：{{ questionnaire.age }}</p>
-      <p><b-icon icon="arrow-right-drop-circle-outline" size="is-small"></b-icon> 内容：{{ questionnaire.text }}</p>
+      <p class="gift-q-tl">
+        <b-icon
+          icon="gift-outline"
+          size="is-middium"
+          class="gift-icon"
+        /> ギフトを贈りたいお相手について
+      </p>
+      <p>
+        <b-icon
+          icon="arrow-right-drop-circle-outline"
+          size="is-small"
+        /> 間柄：{{ questionnaire.relationship }}
+      </p>
+      <p>
+        <b-icon
+          icon="arrow-right-drop-circle-outline"
+          size="is-small"
+        /> 性別：{{ questionnaire.gender }}
+      </p>
+      <p>
+        <b-icon
+          icon="arrow-right-drop-circle-outline"
+          size="is-small"
+        /> 年齢：{{ questionnaire.age }}
+      </p>
+      <p>
+        <b-icon
+          icon="arrow-right-drop-circle-outline"
+          size="is-small"
+        /> 内容：{{ questionnaire.text }}
+      </p>
     </div>
-    <div>
-    </div>
+    <div />
     <div class="answers">
-      <vue-poll v-bind="options" @addvote="addVote"></vue-poll>
+      <vue-poll
+        v-bind="options"
+        @addvote="addVote"
+      />
     </div>
   </div>
 </template>
@@ -21,7 +49,10 @@ import { mapGetters } from "vuex";
 export default {
   name: "QuestionnaireItem",
   props: {
-    questionnaire: Object,
+    questionnaire: {
+      type: Object,
+      required: true
+    }
   },
   data() {
     return {

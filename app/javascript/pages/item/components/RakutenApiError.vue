@@ -1,15 +1,18 @@
 <template>
   <article
-    class="message is-danger"
     v-if="error"
+    class="message is-danger"
     aria-close-label="Close message"
   >
     <div class="message-body">
       {{ errorMessage(error) }}
       <div>
-        <b-button type="is-text" @click="reset()"
-          >検索条件をリセットする</b-button
+        <b-button
+          type="is-text"
+          @click="reset()"
         >
+          検索条件をリセットする
+        </b-button>
       </div>
     </div>
   </article>

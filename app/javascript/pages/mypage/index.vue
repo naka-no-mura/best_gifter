@@ -1,12 +1,14 @@
 <template>
   <div class="container mypage">
     <div class="block">
-    <p><img src="../../../assets/images/logo_medium_pink.JPG"></p>
-    <p class="subtitle"><b><big>{{ this.authUser.name }}</big></b>さんのマイページ</p>
+      <p><img src="../../../assets/images/logo_medium_pink.JPG"></p>
+      <p class="subtitle">
+        <b><big>{{ this.authUser.name }}</big></b>さんのマイページ
+      </p>
     </div>
     <div class="my-page-box">
-      <MyQuestionnaire class="my-page-q"></MyQuestionnaire>
-      <FavoriteList class="my-page-f"></FavoriteList>
+      <MyQuestionnaire class="my-page-q" />
+      <FavoriteList class="my-page-f" />
     </div>
   </div>
 </template>

@@ -6,151 +6,171 @@
   >
     <div class="navbar-brand">
       <p class="navbar-item">
-        <img src="../../assets/images/logo_header.JPG" />
+        <img src="../../assets/images/logo_header.JPG">
       </p>
       <a
         role="button"
         class="navbar-burger"
-        v-bind:class="{ 'is-active': isActive }"
+        :class="{ 'is-active': isActive }"
         aria-label="menu"
         aria-expanded="false"
         data-target="navbarBasicExample"
         @click="changeIsActive()"
       >
-        <span aria-hidden="true"></span>
-        <span aria-hidden="true"></span>
-        <span aria-hidden="true"></span>
+        <span aria-hidden="true" />
+        <span aria-hidden="true" />
+        <span aria-hidden="true" />
       </a>
     </div>
 
     <div
       id="navbarBasicExample"
       class="navbar-menu"
-      v-bind:class="{ 'is-active': isActive }"
+      :class="{ 'is-active': isActive }"
     >
-      <div class="navbar-start"></div>
+      <div class="navbar-start" />
       <div class="navbar-end">
-        <router-link to="/" class="navbar-item nav-item"
-          ><b-icon class="nav-icon" icon="laptop" size="is-small"></b-icon
-          ><span
+        <router-link
+          to="/"
+          class="navbar-item nav-item"
+        >
+          <b-icon
+            class="nav-icon"
+            icon="laptop"
+            size="is-small"
+          /><span
             @click="
               changeIsActive();
               pageToTop();
             "
-            >トップ</span
-          ></router-link
-        >
+          >トップ</span>
+        </router-link>
 
-        <router-link to="/items" class="navbar-item nav-item"
-          ><b-icon class="nav-icon" icon="magnify" size="is-small"></b-icon
-          ><span
+        <router-link
+          to="/items"
+          class="navbar-item nav-item"
+        >
+          <b-icon
+            class="nav-icon"
+            icon="magnify"
+            size="is-small"
+          /><span
             @click="
               changeIsActive();
               pageToTop();
             "
-            >検索</span
-          ></router-link
-        >
+          >検索</span>
+        </router-link>
         <template v-if="!authUser">
-          <router-link to="register" class="navbar-item nav-item"
-            ><b-icon
+          <router-link
+            to="register"
+            class="navbar-item nav-item"
+          >
+            <b-icon
               class="nav-icon"
               icon="account-plus-outline"
               size="is-small"
-            ></b-icon
-            ><span
+            /><span
               @click="
                 changeIsActive();
                 pageToTop();
               "
-              >新規登録</span
-            ></router-link
-          >
+            >新規登録</span>
+          </router-link>
 
-          <router-link to="/login" class="navbar-item nav-item"
-            ><b-icon class="nav-icon" icon="login" size="is-small"></b-icon
-            ><span
+          <router-link
+            to="/login"
+            class="navbar-item nav-item"
+          >
+            <b-icon
+              class="nav-icon"
+              icon="login"
+              size="is-small"
+            /><span
               @click="
                 changeIsActive();
                 pageToTop();
               "
-              >ログイン</span
-            ></router-link
-          >
+            >ログイン</span>
+          </router-link>
         </template>
         <template v-else>
           <div class="navbar-item has-dropdown is-hoverable nav-item">
-            <a class="navbar-link"
-              ><b-icon class="nav-icon" icon="forum" size="is-small"></b-icon>
+            <a
+              class="navbar-link"
+            ><b-icon
+              class="nav-icon"
+              icon="forum"
+              size="is-small"
+            />
               アンケート
             </a>
             <div class="navbar-dropdown">
               <router-link
                 to="/questionnaire_form"
                 class="navbar-item responsive-nav-dropdown"
-                ><b-icon
+              >
+                <b-icon
                   class="nav-icon"
                   icon="comment-question-outline"
                   size="is-small"
-                ></b-icon
-                ><span
+                /><span
                   @click="
                     changeIsActive();
                     pageToTop();
                   "
-                  >投稿する</span
-                ></router-link
-              >
+                >投稿する</span>
+              </router-link>
 
               <router-link
                 to="/questionnaire_list"
                 class="navbar-item responsive-nav-dropdown"
-                ><b-icon
+              >
+                <b-icon
                   class="nav-icon"
                   icon="vote-outline"
                   size="is-small"
-                ></b-icon
-                ><span
+                /><span
                   @click="
                     changeIsActive();
                     pageToTop();
                   "
-                  >投票して結果をみる</span
-                ></router-link
-              >
+                >投票して結果をみる</span>
+              </router-link>
             </div>
           </div>
           <router-link
+            v-if="authUser"
             to="/mypage"
             class="navbar-item nav-item"
-            v-if="authUser"
           >
             <b-icon
               class="nav-icon"
               icon="account-outline"
               size="is-small"
-            ></b-icon
-            ><span
+            /><span
               @click="
                 changeIsActive();
                 pageToTop();
               "
-              >マイページ</span
-            ></router-link
-          >
+            >マイページ</span>
+          </router-link>
           <router-link
             to=""
-            @click.native="handleLogout"
             class="nav-item navbar-item"
-            ><b-icon class="nav-icon" icon="logout" size="is-small"></b-icon
-            ><span
+            @click.native="handleLogout"
+          >
+            <b-icon
+              class="nav-icon"
+              icon="logout"
+              size="is-small"
+            /><span
               @click="
                 changeIsActive();
                 pageToTop();
               "
-              >ログアウト</span
-            ></router-link
-          >
+            >ログアウト</span>
+          </router-link>
         </template>
       </div>
     </div>

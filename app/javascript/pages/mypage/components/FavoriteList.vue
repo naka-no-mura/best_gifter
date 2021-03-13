@@ -1,10 +1,17 @@
 <template>
   <div class="section">
-    <h2 class="title my-f-tl">お気に入り</h2>
+    <h2 class="title my-f-tl">
+      お気に入り
+    </h2>
     <div class="my-favorite-items">
       <template v-for="item in items">
-        <div  class="my-favorite-item">
-          <FavoriteItem :key="item.id" :item="item" />
+        <div
+          :key="item.id"
+          class="my-favorite-item"
+        >
+          <FavoriteItem
+            :item="item"
+          />
         </div>
       </template>
     </div>
