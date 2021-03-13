@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :questionnaire do
-    user
+    association :user, factory: :user
     text { 'どれをプレゼントしたらいいか迷う' }
     relationship { '高校の同級生' }
     gender { '男性' }
