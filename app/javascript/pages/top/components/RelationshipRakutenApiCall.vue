@@ -214,12 +214,6 @@ import {
 } from "../../../store/mutation-types";
 export default {
   name: "RelationshipRakutenApiCall",
-  props: {
-    items: {
-      type: Array,
-      required: true,
-    }
-  },
   data() {
     return {
       show: true,

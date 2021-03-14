@@ -106,3 +106,9 @@ gem 'counter_culture'
 
 # 日本語化
 gem 'rails-i18n'
+
+# N+1を検知
+gem "bullet"
+
+# Google analytics
+gem 'google-analytics-rails'
