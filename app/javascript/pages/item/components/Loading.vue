@@ -1,13 +1,12 @@
 <template>
   <div>
     <div class="fullview">
-      <div class="loading-spacer"></div>
+      <div class="loading-spacer" />
       <vue-loading
         type="spiningDubbles"
         color="#aaa"
         :size="{ width: '80px', height: '80px' }"
-      >
-      </vue-loading>
+      />
     </div>
   </div>
 </template>
@@ -17,7 +16,7 @@ import { mapGetters } from "vuex";
 import { VueLoading } from "vue-loading-template";
 
 export default {
-  name: "loading",
+  name: "Loading",
   components: {
     VueLoading,
   },

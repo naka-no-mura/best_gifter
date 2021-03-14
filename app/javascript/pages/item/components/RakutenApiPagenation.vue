@@ -1,57 +1,67 @@
 <template>
-  <div v-if="pageCount" class="block pagenation-box">
-    <nav class="pagination is-medium" role="navigation" aria-label="pagination">
+  <div
+    v-if="pageCount"
+    class="block pagenation-box"
+  >
+    <nav
+      class="pagination is-medium"
+      role="navigation"
+      aria-label="pagination"
+    >
       <ul class="pagination-list">
         <!-- 1ページ目に戻るリンク -->
         <li class="pagination-link">
-          <a class="pagination-number" href="#" v-on:click.prevent="setPage(1)" id="pg-first"
-            ><<</a
-          >
+          <a
+            id="pg-first"
+            class="pagination-number"
+            href="#"
+            @click.prevent="setPage(1)"
+          >&lt;&lt;</a>
         </li>
         <!-- 1ページ前に戻るリンク -->
         <li class="pagination-link">
           <a
+            id="pg-previous"
             class="pagination-number"
             href="#"
-            @click.prevent="setPage(currentPage - 1)" id="pg-previous"
-            ><</a
-          >
+            @click.prevent="setPage(currentPage - 1)"
+          >&lt;</a>
         </li>
         <!-- ここからページ数分のリンクを生成 -->
         <li
-          class="pagination-link"
           v-for="num in showPagesFix"
           :key="num"
+          class="pagination-link"
           :class="{ 'is-current': numFix(num) == currentPage }"
         >
           <template v-if="numFix(num) == currentPage">
             <span class="page-link is-current">{{ numFix(num) }}</span>
           </template>
           <a
+            v-else
+            id="pg-number"
             class="pagination-number"
             href="#"
             @click.prevent="setPage(numFix(num))"
-            v-else id="pg-number"
-            >{{ numFix(num) }}</a
-          >
+          >{{ numFix(num) }}</a>
         </li>
         <!-- 1ページ次に進むリンク -->
         <li class="pagination-link">
           <a
+            id="pg-next"
             class="pagination-number"
             href="#"
-            @click.prevent="setPage(currentPage + 1)" id="pg-next"
-            >></a
-          >
+            @click.prevent="setPage(currentPage + 1)"
+          >></a>
         </li>
         <!-- 最後のページに進むリンク -->
         <li class="pagination-link">
           <a
+            id="pg-last"
             class="pagination-number"
             href="#"
-            @click.prevent="setPage(pageCount)" id="pg-last"
-            >>></a
-          >
+            @click.prevent="setPage(pageCount)"
+          >>></a>
         </li>
       </ul>
     </nav>

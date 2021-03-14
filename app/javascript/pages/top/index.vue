@@ -1,14 +1,14 @@
 <template>
   <div>
     <div class="top-image">
-      <h1>Best Gifter<br />wedding</h1>
+      <h1>Best Gifter<br>wedding</h1>
       <h2>新郎新婦へ、最高のギフトを贈りたい。</h2>
       <div class="container">
-        <RakutenApiCallTopVer></RakutenApiCallTopVer>
+        <RakutenApiCallTopVer />
       </div>
     </div>
     <div class="container">
-      <RelationshipRakutenApiCall></RelationshipRakutenApiCall>
+      <RelationshipRakutenApiCall />
     </div>
   </div>
 </template>

@@ -15,13 +15,6 @@ class Api::V1::QuestionnaireChoicesController < ApplicationController
     end
   end
 
-  def desrtroy
-  end
-
-  def count
-    answers.count
-  end
-
   def questionnaire_choice_params
     params.require(:questionnaire_choice).permit(:questionnaire_id, :choice)
   end

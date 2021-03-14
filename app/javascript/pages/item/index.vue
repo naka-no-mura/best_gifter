@@ -1,28 +1,31 @@
 <template>
-    <div class="sidebar-page">
-      <section class="sidebar-layout">
-        <b-sidebar
-          position="static"
-          :mobile="mobile"
-          :expand-on-hover="expandOnHover"
-          :reduce="reduce"
-          type="is-white"
-          open
-          class="reserch-sidebar"
-        >
-          <RakutenApiSideMenu v-show="!loading"></RakutenApiSideMenu>
-        </b-sidebar>
-        <div class="container inner">
-        <RakutenApiCall v-show="!loading"></RakutenApiCall>
-        <RakutenApiError v-show="!loading"></RakutenApiError>
-        <RakutenApiResultHit v-show="!loading"></RakutenApiResultHit>
-        <Loading v-show="loading"></Loading>
-        <RakutenApiPagenation v-show="!loading"></RakutenApiPagenation>
-        <RakutenApiResultList v-show="!loading"></RakutenApiResultList>
-        <RakutenApiPagenation style="margin-top:2rem" v-show="!loading"></RakutenApiPagenation>
-        </div>
-      </section>
-    </div>
+  <div class="sidebar-page">
+    <section class="sidebar-layout">
+      <b-sidebar
+        position="static"
+        :mobile="mobile"
+        :expand-on-hover="expandOnHover"
+        :reduce="reduce"
+        type="is-white"
+        open
+        class="reserch-sidebar"
+      >
+        <RakutenApiSideMenu v-show="!loading" />
+      </b-sidebar>
+      <div class="container inner">
+        <RakutenApiCall v-show="!loading" />
+        <RakutenApiError v-show="!loading" />
+        <RakutenApiResultHit v-show="!loading" />
+        <Loading v-show="loading" />
+        <RakutenApiPagenation v-show="!loading" />
+        <RakutenApiResultList v-show="!loading" />
+        <RakutenApiPagenation
+          v-show="!loading"
+          style="margin-top:2rem"
+        />
+      </div>
+    </section>
+  </div>
 </template>
 
 <script>

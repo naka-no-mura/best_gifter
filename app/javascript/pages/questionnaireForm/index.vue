@@ -1,6 +1,6 @@
 <template>
-<div class="container q-container">
-  <QuestionnaireForm></QuestionnaireForm>
+  <div class="container q-container">
+    <QuestionnaireForm />
   </div>
 </template>
 

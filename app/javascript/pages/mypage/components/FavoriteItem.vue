@@ -1,50 +1,61 @@
 <template>
   <div class="tile is-parent">
-    <a target="_blank" :href="item.url" class="item-url">
+    <a
+      target="_blank"
+      :href="item.url"
+      class="item-url"
+    >
       <div class="mask">
         <p class="caption"><b>READ MORE</b></p>
       </div>
     </a>
     <article class="tile is-child tile-image">
       <div class="favorite-mark">
-        <span v-if="isLiked" @click="unFavorite()" id="my-is-liked"
-          ><b-icon icon="star" size="is-midium" class="star"></b-icon
-        ></span>
-        <span v-else @click="favorite()" id="my-is-not-liked"
-          ><b-icon
-            icon="star-outline"
-            size="is-midium"
-            class="star-outline"
-          ></b-icon
-        ></span>
+        <span
+          v-if="isLiked"
+          id="my-is-liked"
+          @click="unFavorite()"
+        ><b-icon
+          icon="star"
+          size="is-midium"
+          class="star"
+        /></span>
+        <span
+          v-else
+          id="my-is-not-liked"
+          @click="favorite()"
+        ><b-icon
+          icon="star-outline"
+          size="is-midium"
+          class="star-outline"
+        /></span>
       </div>
       <figure class="image">
-        <img :src="item.image" class="item-img" />
+        <img
+          :src="item.image"
+          class="item-img"
+        >
       </figure>
       <div class="content">
         <p>
           <small>{{ sliceItemName(item.name) }}</small>
         </p>
         <p class="item-price">
-          <big
-            ><b>{{ item.price.toLocaleString() }}円</b></big
-          >
+          <big>
+            <b>{{ item.price.toLocaleString() }}円</b>
+          </big>
         </p>
         <div class="review-box">
-          <small
-            ><star-rating
-              v-model="item.review_average"
-              :increment="0.01"
-              read-only
-              :star-size="15"
-              class="review-average"
-            ></star-rating
-          ></small>
-          <small
-            ><span class="review-count"
-              >{{ item.review_count.toLocaleString() }}件</span
-            ></small
-          >
+          <small><star-rating
+            v-model="item.review_average"
+            :increment="0.01"
+            read-only
+            :star-size="15"
+            class="review-average"
+          /></small>
+          <small><span
+            class="review-count"
+          >{{ item.review_count.toLocaleString() }}件</span></small>
         </div>
       </div>
     </article>
@@ -56,8 +67,10 @@ import { mapGetters } from "vuex";
 export default {
   name: "FavoriteItem",
   props: {
-    item: Object,
-    required: true,
+    item: {
+      type: Object,
+      required: true,
+    }
   },
   data() {
     return {

@@ -1,27 +1,50 @@
 <template>
   <footer class="footer">
     <div class="content has-text-centered">
-      <p class="f-items">
-        <p class="f-item"><span>&copy; {{ copyText }}</span>
-        <router-link to="/"
-          ><span @click="pageToTop()">
+      <p class="f-items" /><p class="f-item">
+        <span>&copy; {{ copyText }}</span>
+        <router-link
+          to="/"
+        >
+          <span @click="pageToTop()">
             <strong> Best Gifter</strong>
-          </span></router-link
-        ></p>
-        <p class="f-item"><router-link to="/terms"
-          ><span @click="pageToTop()" id="terms">
+          </span>
+        </router-link>
+      </p>
+      <p class="f-item">
+        <router-link
+          to="/terms"
+        >
+          <span
+            id="terms"
+            @click="pageToTop()"
+          >
             利用規約
-          </span></router-link
-        ></p>
-        <p class="f-item"><router-link to="/privacy_policys"
-          ><span @click="pageToTop()" id="privacy_policys">
+          </span>
+        </router-link>
+      </p>
+      <p class="f-item">
+        <router-link
+          to="/privacy_policys"
+        >
+          <span
+            id="privacy_policys"
+            @click="pageToTop()"
+          >
             プライバシーポリシー
-          </span></router-link
-        ></p>
-        <p class="f-item"><a href="https://twitter.com/Best_Gifter" target="_blank"
-          ><span>
-            <b-icon icon="twitter" size="is-middle" id="twitter"></b-icon></span
-        ></a></p>
+          </span>
+        </router-link>
+      </p>
+      <p class="f-item">
+        <a
+          href="https://twitter.com/Best_Gifter"
+          target="_blank"
+        ><span>
+          <b-icon
+            id="twitter"
+            icon="twitter"
+            size="is-middle"
+          /></span></a>
       </p>
     </div>
   </footer>

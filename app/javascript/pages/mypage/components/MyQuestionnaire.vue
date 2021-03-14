@@ -1,25 +1,29 @@
 <template>
   <div class="section">
-    <h2 class="title my-q-tl">アンケート結果</h2>
+    <h2 class="title my-q-tl">
+      アンケート結果
+    </h2>
     <div class="q-ads">
-      <p>アンケートを投稿して<br />ギフトを厳選してみましょう！</p>
+      <p>アンケートを投稿して<br>ギフトを厳選してみましょう！</p>
       <b-icon
         icon="gift-outline"
         size="is-large"
         class="mypage-gift-icon"
-      ></b-icon
-      ><br />
-      <router-link to="/questionnaire_form" class="button q-ads-button"
-        >投稿する</router-link
+      /><br>
+      <router-link
+        to="/questionnaire_form"
+        class="button q-ads-button"
       >
+        投稿する
+      </router-link>
     </div>
     <div class="my-q-items">
       <template v-for="questionnaire in questionnaires">
         <MyQuestionnaireItem
           :key="questionnaire.id"
           :questionnaire="questionnaire"
-          @after-delete="getQuestionnaires"
           class="my-q-item"
+          @after-delete="getQuestionnaires"
         />
       </template>
     </div>
@@ -40,11 +44,11 @@ export default {
       questionnaires: [],
     };
   },
-  created() {
-    this.getQuestionnaires();
-  },
   computed: {
     ...mapGetters("users", ["authUser"]),
+  },
+  created() {
+    this.getQuestionnaires();
   },
   methods: {
     getQuestionnaires() {

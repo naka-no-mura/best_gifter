@@ -1,12 +1,20 @@
 <template>
   <div class="container">
     <div class="section q-tl">
-        <h1 class="title tl-shadow">Vote &amp; Result</h1>
-        <h1 class="title tl-relative">みんなのアンケート結果</h1>
-    <p class="subtitle v-tl">みんなのアンケートがヒントになるかもしれません。</br>
-    投票することで結果を見ることができます。</p>
+      <h1 class="title tl-shadow">
+        Vote &amp; Result
+      </h1>
+      <h1 class="title tl-relative">
+        みんなのアンケート結果
+      </h1>
+      <p class="subtitle v-tl">
+        みんなのアンケートがヒントになるかもしれません。
+      </p>
+      <p class="subtitle v-tl">
+        投票することで結果を見ることができます。
+      </p>
     </div>
-    <QuestionnaireList></QuestionnaireList>
+    <QuestionnaireList />
   </div>
 </template>
 

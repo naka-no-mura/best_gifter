@@ -5,43 +5,55 @@
       <div class="field has-addons">
         <p class="control">
           <input
-            class="input call-keyword is-medium"
-            type="search"
             id="search-item"
             v-model="keywordBox"
+            class="input call-keyword is-medium"
+            type="search"
             placeholder="キーワード"
             @input="changeKeyword($event.target.value)"
-          />
+          >
         </p>
         <p class="control">
           <input
+            id="search-min"
+            v-model="minPriceBox"
             class="input call-min is-medium"
             type="number"
             min="0"
-            id="search-min"
-            v-model="minPriceBox"
             placeholder="いくらから"
             @input="changeMinPrice($event.target.value)"
-          />
+          >
         </p>
         <p class="control">
           <input
+            id="search-max"
+            v-model="maxPriceBox"
             class="input call-max is-medium"
             type="number"
             min="0"
-            id="search-max"
-            v-model="maxPriceBox"
             placeholder="いくらまで"
             @input="changeMaxPrice($event.target.value)"
-          />
+          >
         </p>
         <p class="control">
-          <b-button class="is-medium" @keyup.enter="setPage(1)" id="serch-btn" @click="setPage(1)"
-            ><b-icon icon="magnify" size="is-medium"></b-icon
-          ></b-button>
+          <b-button
+            id="serch-btn"
+            class="is-medium"
+            @keyup.enter="setPage(1)"
+            @click="setPage(1)"
+          >
+            <b-icon
+              icon="magnify"
+              size="is-medium"
+            />
+          </b-button>
         </p>
         <p>
-          <b-button @click="formClear()" class="is-medium" type="is-text">
+          <b-button
+            class="is-medium"
+            type="is-text"
+            @click="formClear()"
+          >
             クリア
           </b-button>
         </p>
@@ -52,37 +64,44 @@
       <div class="field has-addons">
         <p class="control">
           <input
+            v-model="keywordBox"
             class="input call-keyword is-small"
             type="search"
-            v-model="keywordBox"
             placeholder="キーワード"
             @input="changeKeyword($event.target.value)"
-          />
+          >
         </p>
         <p class="control">
           <input
+            v-model="minPriceBox"
             class="input call-min is-small"
             type="number"
             min="0"
-            v-model="minPriceBox"
             placeholder="いくらから"
             @input="changeMinPrice($event.target.value)"
-          />
+          >
         </p>
         <p class="control">
           <input
+            v-model="maxPriceBox"
             class="input call-max is-small"
             type="number"
             min="0"
-            v-model="maxPriceBox"
             placeholder="いくらまで"
             @input="changeMaxPrice($event.target.value)"
-          />
+          >
         </p>
         <p class="control">
-          <b-button class="is-small" @keyup.enter="setPage(1)" @click="setPage(1)"
-            ><b-icon icon="magnify" size="is-small"></b-icon
-          ></b-button>
+          <b-button
+            class="is-small"
+            @keyup.enter="setPage(1)"
+            @click="setPage(1)"
+          >
+            <b-icon
+              icon="magnify"
+              size="is-small"
+            />
+          </b-button>
         </p>
         <!-- <p>
           <b-button @click="formClear()" class="is-medium" type="is-text">
@@ -106,10 +125,6 @@ import {
 } from "../../../store/mutation-types";
 export default {
   name: "RakutenApiCall",
-  props: {
-    items: Array,
-    required: true,
-  },
   data() {
     return {
       keywordBox: "",
