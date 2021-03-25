@@ -41,6 +41,7 @@ group :development, :test do
   gem 'rubocop-rails'
   gem 'rails_best_practices'
   gem 'rubocop-rspec'
+  gem "rspec_junit_formatter"
 
   # Debugger
   gem 'pry-byebug'
@@ -90,12 +91,6 @@ gem 'httpclient'
 
 # Railsで設定した環境変数をVueで使えるように
 gem 'gon'
-
-# Twitter
-gem 'twitter'
-
-# TwitterADS
-gem 'twitter-ads'
 
 # ログイン・新規登録機能
 gem 'sorcery'
