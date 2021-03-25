@@ -11,7 +11,9 @@ jobs:
           DB_HOST: 127.0.0.1
           RAILS_ENV: test
           BUNDLER_VERSION: 2.1.4
+          TZ: "Japan"
       - image: circleci/mysql:8.0.19-ram
+        command: [--default-authentication-plugin=mysql_native_password]
         environment:
           MYSQL_USER: root
           MYSQL_DB: circle_test
@@ -19,11 +21,23 @@ jobs:
     steps:
       - checkout
 
+      - run:
+          name: wait for database
+          command: dockerize -wait tcp://127.0.0.1:3306 -timeout 3m
+
       # Restore bundle cache
       - restore_cache:
           keys:
             - rails-demo-{{ checksum "Gemfile.lock" }}
             - rails-demo-
+
+      - run:
+          name: setup bundler
+          command: |
+            sudo gem update --system
+            sudo gem uninstall bundler
+            sudo rm /usr/local/bin/bundle
+            sudo gem install bundler
 
       - run:
           name: Which bundler?
@@ -40,12 +54,15 @@ jobs:
             - ./vendor/bundle
           key: v1-dependencies-{{ checksum "Gemfile.lock" }}
 
-      # Database setup
-      - run: cp -v config/database.ci.yml config/database.yml
+      - run:
+          name: setup database
+          command: |
+            cp -v config/database.ci.yml config/database.yml
+
+      - run: mysql_config --socket
       - run: bundle exec rails db:create
       - run: bundle exec rails db:schema:load
 
-      # RSpec
       - run:
           name: run rspec
           command: |
