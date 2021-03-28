@@ -5,7 +5,7 @@ RSpec.describe "Common", type: :system do
     let(:user) { create(:user) }
 
     context 'ログイン前' do
-      it 'ヘッダーが正しく表示されている' do
+      it 'ヘッダーが正しく表示されている', js: true  do
         visit root_path
         expect(page).to have_content('トップ')
         expect(page).to have_content('検索')
@@ -15,7 +15,7 @@ RSpec.describe "Common", type: :system do
     end
 
     context 'ログイン後' do
-      it 'ヘッダーが正しく表示されている' do
+      it 'ヘッダーが正しく表示されている', js: true  do
         login_as(user)
         visit root_path
         expect(page).to have_content('トップ')
@@ -28,7 +28,7 @@ RSpec.describe "Common", type: :system do
   end
 
   describe 'フッダーの表示' do
-    it '正しく表示されている' do
+    it '正しく表示されている', js: true  do
       visit root_path
         expect(page).to have_content('利用規約')
         expect(page).to have_content('プライバシーポリシー')
@@ -37,7 +37,7 @@ RSpec.describe "Common", type: :system do
   end
 
   describe '利用規約の表示' do
-    it '正しく表示されている' do
+    it '正しく表示されている', js: true  do
       visit root_path
       find('#terms').click
       expect(page).to have_current_path('/terms')
@@ -45,7 +45,7 @@ RSpec.describe "Common", type: :system do
   end
 
   describe 'プライバシーポリシー' do
-    it '正しく表示されている' do
+    it '正しく表示されている', js: true  do
       visit root_path
       find('#privacy_policys').click
       expect(page).to have_current_path('/privacy_policys')
