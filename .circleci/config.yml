@@ -69,6 +69,11 @@ jobs:
       - run: bundle exec bin/webpack
 
       - run:
+          name: Install Japanese font
+          command: |
+            sudo apt-get install fonts-migmix
+
+      - run:
           name: run rspec
           command: |
             bundle exec rspec --profile 10 \
