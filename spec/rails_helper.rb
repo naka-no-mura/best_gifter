@@ -66,8 +66,4 @@ RSpec.configure do |config|
   config.include FactoryBot::Syntax::Methods
     # spec/support/ 配下のモジュールを読み込む
   config.include LoginMacros, type: :system
-
-  config.before(:each, type: :system, js: true) do
-    driven_by :selenium, using: :headless_chrome, screen_size: [1920, 1080]
-  end
 end
