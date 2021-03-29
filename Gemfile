@@ -108,3 +108,5 @@ gem "bullet"
 
 # Google analytics
 gem 'google-analytics-rails'
+
+gem 'webmock'
