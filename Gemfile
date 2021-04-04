@@ -68,15 +68,11 @@ end
 group :test do
   gem 'capybara'
   gem 'webdrivers'
-  gem 'selenium-webdriver'
+  gem 'webmock'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
-
-# slim
-gem 'slim-rails'
-gem 'html2slim'
 
 # 楽天商品検索API
 gem 'rakuten_web_service'
@@ -106,7 +102,3 @@ gem 'rails-i18n'
 # N+1を検知
 gem "bullet"
 
-# Google analytics
-gem 'google-analytics-rails'
-
-gem 'webmock'

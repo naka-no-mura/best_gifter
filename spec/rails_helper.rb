@@ -68,5 +68,5 @@ RSpec.configure do |config|
     # FactoryBotの省略
   config.include FactoryBot::Syntax::Methods
     # spec/support/ 配下のモジュールを読み込む
-  config.include LoginMacros, type: :system
+  config.include LoginMacros
 end
