@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "Items", type: :system do
+RSpec.describe "Items", type: :system, js: true  do
   let!(:user) { create(:user) }
 
   
@@ -10,8 +10,8 @@ RSpec.describe "Items", type: :system do
       visit '/questionnaire_form'
     end
 
-    context '全ての入力が正常なとき' do
-      it '投稿が成功する' do
+    context '全ての入力が正常なとき', js: true  do
+      it '投稿が成功する', js: true  do
         fill_in 'q-relatinoship', with: '高校時代の同級生'
         select '男性', from: 'q-gender'
         fill_in 'q-age', with: '25歳'
@@ -27,8 +27,8 @@ RSpec.describe "Items", type: :system do
       end
     end
 
-    context '全ての入力が正常だが３つ目の選択肢だけ空欄のとき' do
-      it '「結果だけ見る」という選択肢が３つ目に作成され、投稿が成功する' do
+    context '全ての入力が正常だが３つ目の選択肢だけ空欄のとき', js: true  do
+      it '「結果だけ見る」という選択肢が３つ目に作成され、投稿が成功する', js: true  do
         fill_in 'q-relatinoship', with: '高校時代の同級生'
         select '男性', from: 'q-gender'
         fill_in 'q-age', with: '25歳'
@@ -45,8 +45,8 @@ RSpec.describe "Items", type: :system do
       end
     end
 
-    context '各項目が未入力の場合' do
-      it '投稿に失敗する' do
+    context '各項目が未入力の場合', js: true  do
+      it '投稿に失敗する', js: true  do
         fill_in 'q-relatinoship', with: ''
         # select '', from: 'q-gender'
         fill_in 'q-age', with: ''
@@ -63,7 +63,7 @@ RSpec.describe "Items", type: :system do
     end
   end
 
-  describe 'アンケートに投票する' do
+  describe 'アンケートに投票する', js: true  do
     before do 
       login_as(user)
       visit '/questionnaire_form'
@@ -79,14 +79,12 @@ RSpec.describe "Items", type: :system do
       get '/api/v1/questionnaires'
     end
 
-    context 'アンケートに投票したとき' do
-      xit 'vote数が1になる' do
+    context 'アンケートに投票したとき', js: true  do
+      xit 'vote数が1になる', js: true  do
         find('1万円のワイン').click
         expect(page).to have_content('アンケートに投票しました')
         expect(page).to have_content('1 votes')
       end
     end
   end
-
-
 end

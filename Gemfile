@@ -41,6 +41,7 @@ group :development, :test do
   gem 'rubocop-rails'
   gem 'rails_best_practices'
   gem 'rubocop-rspec'
+  gem "rspec_junit_formatter"
 
   # Debugger
   gem 'pry-byebug'
@@ -49,6 +50,16 @@ group :development, :test do
   # Provides a better error page for Rails
   gem 'better_errors', '~> 2.9', '>= 2.9.1'
   gem 'binding_of_caller', '~> 0.8.0'
+
+  # 自動デプロイ
+  gem 'capistrano'
+  gem 'capistrano-bundler'
+  gem 'capistrano-rails'
+  gem 'capistrano-rbenv'
+end
+
+group :production, :staging do
+  gem 'unicorn'
 end
 
 group :development do
@@ -67,14 +78,11 @@ end
 group :test do
   gem 'capybara'
   gem 'webdrivers'
+  gem 'webmock'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
-
-# slim
-gem 'slim-rails'
-gem 'html2slim'
 
 # 楽天商品検索API
 gem 'rakuten_web_service'
@@ -91,12 +99,6 @@ gem 'httpclient'
 # Railsで設定した環境変数をVueで使えるように
 gem 'gon'
 
-# Twitter
-gem 'twitter'
-
-# TwitterADS
-gem 'twitter-ads'
-
 # ログイン・新規登録機能
 gem 'sorcery'
 gem 'jwt'
@@ -110,5 +112,3 @@ gem 'rails-i18n'
 # N+1を検知
 gem "bullet"
 
-# Google analytics
-gem 'google-analytics-rails'
