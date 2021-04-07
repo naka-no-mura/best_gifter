@@ -5,8 +5,8 @@
     aria-label="main navigation"
   >
     <div class="navbar-brand">
-      <p>
-        <img class="hd-logo" src="../../assets/images/logo_dark_pink.JPG">
+      <p class="navbar-item">
+        <img src="../../assets/images/logo_header.JPG">
       </p>
       <a
         role="button"
@@ -235,11 +235,6 @@ export default {
 }
 .navbar-link {
   padding: 0 2rem;
-}
-.hd-logo {
-  margin: 0.5rem 1.5rem;
-  width: 5rem;
-  height: 5rem !important;
 }
 @media screen and (max-width: 959px) {
   .navbar {

@@ -14,8 +14,10 @@ default: &default
   encoding: utf8mb4
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   username: root
-  password:
-  socket: /tmp/mysql.sock
+  # password:
+  # socket: /tmp/mysql.sock
+  password: 0228Gyouzaumai@
+  socket: /var/lib/mysql/mysql.sock
 
 development:
   <<: *default
@@ -50,5 +52,7 @@ test:
 production:
   <<: *default
   database: best_gifter_production
-  username: best_gifter
-  password: <%= ENV['BEST_GIFTER_DATABASE_PASSWORD'] %>
+  # username: best_gifter
+  # password: <%= ENV['BEST_GIFTER_DATABASE_PASSWORD'] %>
+  username: root
+  password: 0228Gyouzaumai@
