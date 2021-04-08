@@ -113,3 +113,4 @@ gem 'rails-i18n'
 gem "bullet"
 
 gem "mimemagic", "~> 0.3.10"
+gem "sassc", '2.4.0'

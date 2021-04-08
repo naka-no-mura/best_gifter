@@ -396,6 +396,7 @@ DEPENDENCIES
   rubocop-rails
   rubocop-rspec
   sass-rails (>= 6)
+  sassc (= 2.4.0)
   sorcery
   spring
   spring-watcher-listen (~> 2.0.0)
