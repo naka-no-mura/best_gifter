@@ -1,6 +1,4 @@
 // @import '~bulma/sass/utilities/_all';
-@import '~bulma/sass/utilities/initial-variables';
-@import '~bulma/sass/utilities/functions';
 $pink: #ffb3b3;
 $default: #ffb3b3;
 $primary: $pink;
@@ -15,5 +13,5 @@ $navbar-height: 5rem;
 $navbar-background-color: #f0eee9;
 $navbar-item-active-color: #ffd3d4;
 
-@import '~bulma';
+@import '~bulma/bulma';
 @import '~buefy/src/scss/buefy';
