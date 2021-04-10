@@ -13,5 +13,6 @@ $navbar-height: 5rem;
 $navbar-background-color: #f0eee9;
 $navbar-item-active-color: #ffd3d4;
 
-@import "~bulma/bulma";
+// @import "~bulma";
+@import "../../..//node_modules/bulma/bulma.sass";
 @import "~buefy/src/scss/buefy";
