@@ -6,7 +6,8 @@
   >
     <div class="navbar-brand">
       <p class="navbar-item">
-        <img src="../../assets/images/logo_header.JPG">
+        <!-- <img src="../../assets/images/logo_header.JPG"> -->
+        <b class="logo-tx"><big>BGW</big></b>
       </p>
       <a
         role="button"
@@ -218,6 +219,12 @@ export default {
 </script>
 
 <style scoped>
+.logo-tx {
+  font-size: 1.5rem;
+  text-shadow: 0 0 3px #333;
+  /* color: white; */
+  color: #ffd3d4;
+}
 .button {
   background-color: #ffd3d4;
   border: 5px solid #ffd3d4;
@@ -256,6 +263,9 @@ export default {
   }
   .responsive-nav-dropdown {
     margin-left: 2rem;
+  }
+  .logo-tx {
+    font-size: 0.8rem;
   }
 }
 </style>
