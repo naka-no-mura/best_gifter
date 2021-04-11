@@ -3,7 +3,7 @@
 #何秒経過すればワーカーを削除するのかを決める
   $timeout = 30
 #自分のアプリケーション名、currentがつくことに注意。
-  $app_dir = "/var/www/best_gifter/current"
+  $app_dir = "/var/www/rails/best_gifter/current"
 #リクエストを受け取るポート番号を指定。後述
   $listen  = File.expand_path 'tmp/sockets/.unicorn.sock', $app_dir
 #PIDの管理ファイルディレクトリ
