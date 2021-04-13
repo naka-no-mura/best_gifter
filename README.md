@@ -1,3 +1,5 @@
+（Webpacker周りを修正するにあたり、記録を残しておくbranchとする）
+gitへのプルリク確認
 # Best Gifter（wedding）
 
 # サービス概要
