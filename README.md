@@ -1,3 +1,4 @@
+（Webpacker周りを修正するにあたり、記録を残しておくbranchとする）
 # Best Gifter（wedding）
 
 # サービス概要
