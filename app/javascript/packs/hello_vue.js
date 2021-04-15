@@ -22,7 +22,7 @@ import "../plugins/veevalidate";
 import Toasted from 'vue-toasted';
 import VuePoll from 'vue-poll';
 import "../../assets/stylesheets/style.scss";
-// import "packs/application.css";
+import "packs/application.css";
 
 var options = {
   position: 'top-center',
