@@ -5,9 +5,10 @@
     aria-label="main navigation"
   >
     <div class="navbar-brand">
-      <p class="navbar-item">
-        <!-- <img src="../../assets/images/logo_header.JPG"> -->
-        <b class="logo-tx"><big>BGW</big></b>
+      <p>
+      <!-- <p class="navbar-item"> -->
+        <img class="logo-img" src="../../assets/images/logo_dark_pink.JPG">
+        <!-- <b class="logo-tx"><big>BGW</big></b> -->
       </p>
       <a
         role="button"
@@ -219,11 +220,16 @@ export default {
 </script>
 
 <style scoped>
-.logo-tx {
+/* .logo-tx {
   font-size: 1.5rem;
   text-shadow: 0 0 3px #333;
-  /* color: white; */
+  color: white;
   color: #ffd3d4;
+} */
+.logo-img {
+  width: 80px;
+  height: 80px;
+  margin: 0.5rem 1rem;
 }
 .button {
   background-color: #ffd3d4;
@@ -266,6 +272,11 @@ export default {
   }
   .logo-tx {
     font-size: 0.8rem;
+  }
+  .logo-img {
+    width: 30px;
+    height: 30px;
+    margin: 0.2rem 0.5rem 0 0.5rem;
   }
 }
 </style>
