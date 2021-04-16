@@ -173,6 +173,7 @@ export default {
 <style scoped>
 .api-call {
   margin: 5rem 1rem 0;
+  padding-top: 5rem;
 }
 .flash-message {
   color: red;

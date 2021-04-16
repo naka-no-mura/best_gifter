@@ -1,7 +1,7 @@
 <template>
   <article
     v-if="error"
-    class="message is-danger"
+    class="message is-danger error-msg"
     aria-close-label="Close message"
   >
     <div class="message-body">
@@ -63,4 +63,8 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+.error-msg {
+  margin-top: 8rem !important;
+}
+</style>

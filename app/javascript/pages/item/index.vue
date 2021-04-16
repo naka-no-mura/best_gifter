@@ -65,6 +65,9 @@ export default {
 </script>
 
 <style lang="scss">
+.inner {
+  padding-top: 2rem;
+}
 main {
   padding-top: 5rem;
 }
