@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <title>BestGifter</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -11,6 +11,9 @@
     <% if Rails.env.production? %>
       <%= render partial: 'layouts/google_analytics' %>
     <% end %>
+    <%# <%= favicon_link_tag('../../assets/images/logo_dark_pink.JPG') %> %>
+    <%# <%= favicon_link_tag('../../assets/images/favicon.ico') %> %>
+    <%= favicon_link_tag('/favicon.ico') %>
   </head>
 
   <body>
