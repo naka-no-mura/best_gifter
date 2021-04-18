@@ -12,6 +12,8 @@
               :value="friend_search_card.genreId"
               @click="
                 changeGenreId(friend_search_card.genreId);
+                changeMinPrice(10000);
+                changeMaxPrice(30000);
                 setPage(1);
               "
             />
@@ -27,6 +29,8 @@
               :value="relative_search_card.genreId"
               @click="
                 changeGenreId(relative_search_card.genreId);
+                changeMinPrice(30000);
+                changeMaxPrice(50000);
                 setPage(1);
               "
             />
@@ -42,6 +46,8 @@
               :value="colleague_search_card.genreId"
               @click="
                 changeGenreId(colleague_search_card.genreId);
+                changeMinPrice(10000);
+                changeMaxPrice(20000);
                 setPage(1);
               "
             />
@@ -57,6 +63,8 @@
               :value="boss_search_card.genreId"
               @click="
                 changeGenreId(boss_search_card.genreId);
+                changeMinPrice(1000);
+                changeMaxPrice(5000);
                 setPage(1);
               "
             />
