@@ -11,8 +11,6 @@
     <% if Rails.env.production? %>
       <%= render partial: 'layouts/google_analytics' %>
     <% end %>
-    <%# <%= favicon_link_tag('../../assets/images/logo_dark_pink.JPG') %> %>
-    <%# <%= favicon_link_tag('../../assets/images/favicon.ico') %> %>
     <%= favicon_link_tag('/favicon.ico') %>
   </head>
 
