@@ -172,8 +172,8 @@ export default {
 </script>
 <style scoped>
 .api-call {
-  margin: 5rem 1rem 0;
-  padding-top: 5rem;
+  margin: 3rem 1rem 0;
+  padding-top: 3rem;
 }
 .flash-message {
   color: red;
@@ -190,7 +190,7 @@ export default {
     display: block;
     width: 100%;
     margin: 0 auto;
-    padding: 5rem 0.5rem 0;
+    padding: 3rem 0.5rem 0;
     position: fixed;
     z-index: 29;
     background-color: #f0eee9;

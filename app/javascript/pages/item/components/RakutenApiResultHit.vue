@@ -70,7 +70,7 @@
               class="sort-btn"
               for="sort"
             >並び替え</label>
-            <div class="select">
+            <div class="select search-select">
               <select
                 v-if="count"
                 id="sort"
@@ -275,6 +275,9 @@ export default {
 }
 .conditions {
   display: none;
+}
+.search-select {
+  margin-right: 1rem;
 }
 @media screen and (max-width: 959px) {
   .pc-hit {
