@@ -318,6 +318,9 @@ export default {
 }
 .reset-tag {
   text-decoration: underline;
+  background-color: white;
+  border: 2px solid #ffd3d4;
+  transition: 0.3s;
 }
 .responsive-hit {
   display: none;
