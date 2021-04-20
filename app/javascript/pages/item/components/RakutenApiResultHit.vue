@@ -1,10 +1,7 @@
 <template>
   <div>
     <!-- pcバージョン -->
-    <div
-      v-if="count"
-      class="block pc-hit"
-    >
+    <div v-if="count" class="block pc-hit">
       <nav class="level">
         <div class="level-left">
           <div class="level-item">
@@ -15,34 +12,16 @@
             </div>
             <span>検索条件：</span>
             <b-taglist>
-              <b-tag
-                v-if="keyword"
-                class="tag"
-                rounded
-              >
+              <b-tag v-if="keyword" class="tag" rounded>
                 {{ keyword }}
               </b-tag>
-              <b-tag
-                v-if="genreId"
-                class="tag"
-                rounded
-              >
-                {{
-                  genreIdToName(genreId)
-                }}
+              <b-tag v-if="genreId" class="tag" rounded>
+                {{ genreIdToName(genreId) }}
               </b-tag>
-              <b-tag
-                v-if="minPrice"
-                class="tag"
-                rounded
-              >
+              <b-tag v-if="minPrice" class="tag" rounded>
                 {{ minPrice.toLocaleString() }}円〜
               </b-tag>
-              <b-tag
-                v-if="maxPrice"
-                class="tag"
-                rounded
-              >
+              <b-tag v-if="maxPrice" class="tag" rounded>
                 〜{{ maxPrice.toLocaleString() }}円
               </b-tag>
               <b-tag
@@ -66,10 +45,7 @@
         <div class="level-right" />
         <div class="level-right">
           <div class="level-item">
-            <label
-              class="sort-btn"
-              for="sort"
-            >並び替え</label>
+            <label class="sort-btn" for="sort">並び替え</label>
             <div class="select search-select">
               <select
                 v-if="count"
@@ -80,11 +56,7 @@
                   setPage(1);
                 "
               >
-                <option
-                  v-for="sort in sorts"
-                  :key="sort.id"
-                  :value="sort.sort"
-                >
+                <option v-for="sort in sorts" :key="sort.id" :value="sort.sort">
                   {{ sort.name }}
                 </option>
               </select>
@@ -94,69 +66,42 @@
       </nav>
     </div>
     <!-- スマホバージョン -->
-    <div
-      v-if="count"
-      class="block responsive-hit"
-    >
-      <div class="hit-detail">
-        <div class="hit-sort">
-          <div class="hit-count">
-            {{ first.toLocaleString() }}〜{{ last.toLocaleString() }}件（{{
-              count.toLocaleString()
-            }}件ヒット）
-          </div>
-          <div class="select is-small">
-            <select
-              v-if="count"
-              v-model="sort_selected.sort"
-              @change="
-                changeSort($event.target.value);
-                setPage(1);
-              "
-            >
-              <option
-                v-for="sort in sorts"
-                :key="sort.id"
-                :value="sort.sort"
-              >
-                {{ sort.name }}
-              </option>
-            </select>
-          </div>
+    <div v-if="count" class="block responsive-hit">
+      <div class="hit-sort">
+        <div class="select is-small">
+          <select
+            v-if="count"
+            v-model="sort_selected.sort"
+            @change="
+              changeSort($event.target.value);
+              setPage(1);
+            "
+          >
+            <option v-for="sort in sorts" :key="sort.id" :value="sort.sort">
+              {{ sort.name }}
+            </option>
+          </select>
+        </div>
+        <div class="hit-count">
+          {{ first.toLocaleString() }}〜{{ last.toLocaleString() }}件（{{
+            count.toLocaleString()
+          }}件ヒット）
         </div>
       </div>
     </div>
     <div class="conditions">
       <span>検索条件：</span>
       <b-taglist>
-        <b-tag
-          v-if="keyword"
-          class="tag"
-          rounded
-        >
+        <b-tag v-if="keyword" class="tag" rounded>
           {{ keyword }}
         </b-tag>
-        <b-tag
-          v-if="genreId"
-          class="tag"
-          rounded
-        >
-          {{
-            genreIdToName(genreId)
-          }}
+        <b-tag v-if="genreId" class="tag" rounded>
+          {{ genreIdToName(genreId) }}
         </b-tag>
-        <b-tag
-          v-if="minPrice"
-          class="tag"
-          rounded
-        >
+        <b-tag v-if="minPrice" class="tag" rounded>
           {{ minPrice.toLocaleString() }}円〜
         </b-tag>
-        <b-tag
-          v-if="maxPrice"
-          class="tag"
-          rounded
-        >
+        <b-tag v-if="maxPrice" class="tag" rounded>
           〜{{ maxPrice.toLocaleString() }}円
         </b-tag>
         <b-tag
@@ -180,7 +125,13 @@
 
 <script>
 import { mapGetters, mapActions } from "vuex";
-import { changeSort, changePage, search } from "../../../store/mutation-types";
+import {
+  changeSort,
+  changePage,
+  changeGenreId,
+  search,
+  genreSearch,
+} from "../../../store/mutation-types";
 export default {
   name: "RakutenApiResultHit",
   data() {
@@ -195,6 +146,100 @@ export default {
         { sort: "+updateTimestamp", name: "新着順" },
       ],
       sort_selected: { sort: "standard", name: "標準" },
+      // ジャンルごとのパネル検索用
+      // 親族パネル
+      relative_search_cards: [
+        {
+          name: "キッチン用品・食器",
+          genreId: 558944,
+        },
+        {
+          name: "インテリア・雑貨",
+          genreId: 100804,
+        },
+        {
+          name: "家電",
+          genreId: 562637,
+        },
+        {
+          name: "カタログ",
+          genreId: 566732,
+        },
+        {
+          name: "商品券",
+          genreId: 553283,
+        },
+      ],
+      // 友人パネル
+      friend_search_cards: [
+        {
+          name: "インテリア・雑貨",
+          genreId: 100804,
+        },
+        {
+          name: "日用品雑貨",
+          genreId: 215783,
+        },
+        {
+          name: "ルームウエア",
+          genreId: 100433,
+        },
+        {
+          name: "キッチン用品・食器",
+          genreId: 558944,
+        },
+        {
+          name: "家電",
+          genreId: 562637,
+        },
+        {
+          name: "カタログ",
+          genreId: 566732,
+        },
+        {
+          name: "商品券",
+          genreId: 553283,
+        },
+      ],
+      // 職場の同僚パネル
+      colleague_search_cards: [
+        {
+          name: "花",
+          genreId: 100005,
+        },
+        {
+          name: "日用品雑貨",
+          genreId: 215783,
+        },
+        {
+          name: "カタログ",
+          genreId: 566732,
+        },
+        {
+          name: "商品券",
+          genreId: 553283,
+        },
+      ],
+      // 職場の上司パネル
+      boss_search_cards: [
+        {
+          name: "洋酒",
+          genreId: 510915,
+        },
+        {
+          name: "キッチン用品・食器",
+          genreId: 558944,
+        },
+        {
+          name: "カタログ",
+          genreId: 566732,
+        },
+        {
+          name: "商品券",
+          genreId: 553283,
+        },
+      ],
+      genre_selected: { name: "間柄別ジャンルで選ぶ" },
     };
   },
   computed: {
@@ -213,8 +258,12 @@ export default {
     ...mapActions("rakuten_api", [
       "resetSearch",
       "changeSort",
+      "changeGenreId",
+      "changeMinPrice",
+      "changeMaxPrice",
       "changePage",
       "search",
+      "genreSearch",
     ]),
     genreIdToName(genreId) {
       if (genreId === 100433) {
@@ -269,6 +318,9 @@ export default {
 }
 .reset-tag {
   text-decoration: underline;
+  background-color: white;
+  border: 2px solid #ffd3d4;
+  transition: 0.3s;
 }
 .responsive-hit {
   display: none;
@@ -281,12 +333,32 @@ export default {
 }
 @media screen and (max-width: 959px) {
   .pc-hit {
-    display: block;
+    display: none;
+  }
+  .responsive-hit {
+    display: flex;
     width: 100%;
-    padding: 9rem 0.5rem 0.5rem;
+    padding: 7rem 0.5rem 0 0.5rem;
     position: fixed;
     z-index: 28;
     background-color: #f0eee9;
+  }
+  .hit-detail {
+    font-size: 0.7rem;
+    width: 30%;
+  }
+  .hit-count {
+    margin: 0 0 0 2rem;
+    line-height: 2rem;
+    font-size: 1rem;
+  }
+  .hit-sort {
+    display: flex;
+    justify-content: space-around;
+  }
+  .conditions {
+    display: flex;
+    padding: 12rem 0.5rem 0 0.5rem;
   }
 }
 @media screen and (max-width: 480px) {
@@ -294,27 +366,22 @@ export default {
     display: none;
   }
   .responsive-hit {
-    display: block;
-    width: 100%;
-    padding: 4rem 0.5rem 0.5rem;
+    padding: 3.2rem 0.5rem 0 0.5rem;
     position: fixed;
     z-index: 28;
-    background-color: #f0eee9;
   }
-  .hit-detail {
+  .hit-sort {
+    display: flex;
+  }
+  .hit-count {
+    font-size: 0.5rem;
+    line-height: 2rem;
+    margin-left: 1rem;
+  }
+  .conditions {
+    display: block;
+    padding: 8rem 0.5rem 0;
     font-size: 0.7rem;
   }
-.hit-count {
-  margin: 0rem;
-}
-.hit-sort {
-  display: flex;
-  justify-content: space-around;
-}
-.conditions {
-  display: block;
-  padding: 7rem 0.5rem 0;
-  font-size: 0.7rem;
-}
 }
 </style>
