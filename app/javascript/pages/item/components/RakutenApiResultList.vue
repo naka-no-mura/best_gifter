@@ -11,10 +11,19 @@
       </div>
     </template>
     <div v-if="hits === 0">
-      <section>
+      <section class="reset-box">
         <div class="block">
           ご指定の検索条件に該当する商品はみつかりませんでした
         </div>
+      <div>
+        <b-button
+          type="is-link is-light"
+          class="reset-btn"
+          @click="reset()"
+        >
+          検索条件をリセットする
+        </b-button>
+      </div>
         <img src="../../../../assets/images/top_image_pink.JPG">
       </section>
     </div>
@@ -40,6 +49,11 @@ export default {
       "itemCode",
     ]),
   },
+  methods: {
+    reset() {
+      this.$router.go({ path: this.$router.currentRoute.path, force: true });
+    },
+  }
 };
 </script>
 
@@ -56,6 +70,15 @@ export default {
 .item-box {
   width: 21%;
   margin: 1rem;
+}
+.reset-btn {
+  margin: 2rem auto;
+}
+.reset-box {
+  text-align: center;
+}
+.reset-btn {
+  margin-bottom: 2rem;
 }
 @media screen and (max-width: 959px) {
 .item-box {
