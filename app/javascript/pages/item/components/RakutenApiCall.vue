@@ -103,11 +103,15 @@
             />
           </b-button>
         </p>
-        <!-- <p>
-          <b-button @click="formClear()" class="is-medium" type="is-text">
+        <p>
+          <b-button
+            class="is-small"
+            type="is-text"
+            @click="formClear()"
+          >
             クリア
           </b-button>
-        </p> -->
+        </p>
       </div>
     </div>
   </div>
@@ -190,7 +194,7 @@ export default {
     display: block;
     width: 100%;
     margin: 0 auto;
-    padding: 3rem 0.5rem 0;
+    padding: 3.5rem 0.5rem 0;
     position: fixed;
     z-index: 29;
     background-color: #f0eee9;
@@ -204,7 +208,7 @@ export default {
     display: block;
     width: 100%;
     margin: 0 auto;
-    padding: 2rem 0.5rem 0;
+    padding: 1rem 0.5rem 0;
     position: fixed;
     z-index: 29;
     background-color: #f0eee9;

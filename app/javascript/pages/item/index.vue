@@ -15,6 +15,7 @@
       <div class="container inner">
         <RakutenApiCall v-show="!loading" />
         <RakutenApiError v-show="!loading" />
+        <ResponsiveRelationshipSearch v-show="!loading" class="rps-rs-s" />
         <RakutenApiResultHit v-show="!loading" />
         <Loading v-show="loading" />
         <RakutenApiPagenation v-show="!loading" />
@@ -33,6 +34,7 @@ import RakutenApiSideMenu from "./components/RakutenApiSideMenu.vue";
 import RakutenApiCall from "./components/RakutenApiCall.vue";
 import RakutenApiResultList from "./components/RakutenApiResultList.vue";
 import RakutenApiError from "./components/RakutenApiError.vue";
+import ResponsiveRelationshipSearch from "./components/ResponsiveRelationshipSearch.vue";
 import RakutenApiResultHit from "./components/RakutenApiResultHit.vue";
 import RakutenApiPagenation from "./components/RakutenApiPagenation.vue";
 import Loading from "./components/Loading.vue";
@@ -44,6 +46,7 @@ export default {
     RakutenApiCall,
     RakutenApiResultList,
     RakutenApiError,
+    ResponsiveRelationshipSearch,
     RakutenApiResultHit,
     RakutenApiPagenation,
     Loading,
@@ -65,6 +68,9 @@ export default {
 </script>
 
 <style lang="scss">
+.rps-rs-s {
+  display: none;
+}
 .inner {
   padding-top: 2rem;
 }
@@ -161,10 +167,16 @@ main {
   .reserch-sidebar {
     display: none;
   }
+  .rps-rs-s {
+    display: block;
+  }
 }
 @media screen and (max-width: 480px) {
   .reserch-sidebar {
     display: none;
+  }
+  .rps-rs-s {
+    display: block;
   }
 }
 </style>

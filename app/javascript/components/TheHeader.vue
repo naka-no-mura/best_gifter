@@ -251,6 +251,37 @@ export default {
 }
 @media screen and (max-width: 959px) {
   .navbar {
+    min-height: 4rem;
+  }
+  .navbar-brand {
+    min-height: 4rem;
+    line-height: 4;
+  }
+  .navbar-item {
+    line-height: 4;
+    padding: 0 0.5rem;
+  }
+  .navbar-burger {
+    height: 4rem;
+  }
+  .nav-item {
+    padding: 0.25rem 2rem;
+  }
+  .responsive-nav-dropdown {
+    margin-left: 4rem;
+  }
+  .logo-tx {
+    font-size: 0.8rem;
+  }
+  .logo-img {
+    width: 50px;
+    height: 50px;
+    margin: 0.5rem 0.5rem 0 0.5rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .navbar {
     min-height: 2rem;
   }
   .navbar-brand {

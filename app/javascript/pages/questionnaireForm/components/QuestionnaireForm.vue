@@ -282,7 +282,7 @@ export default {
 @media screen and (max-width: 959px) {
 .q-box {
   width: 100%;
-  padding: 0rem;
+  padding-top: 5rem;
 }
 .tl-shadow {
   margin-top: 0;
@@ -302,6 +302,7 @@ export default {
 .q-box {
   width: 95%;
   padding: 0rem;
+  text-align: center;
 }
 .section {
   padding: 1rem;

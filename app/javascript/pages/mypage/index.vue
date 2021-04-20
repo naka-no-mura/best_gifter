@@ -35,7 +35,7 @@ export default {
 
 <style scoped>
 .mypage {
-  padding: 5rem 0;
+  padding: 8rem 0;
 }
 img {
   width: 15%;

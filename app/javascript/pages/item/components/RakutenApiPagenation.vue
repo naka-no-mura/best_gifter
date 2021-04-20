@@ -152,7 +152,7 @@ export default {
 }
 @media screen and (max-width: 959px) {
   .pagenation-box {
-  margin-top: 17rem;
+  margin-top: 1rem;
 }
 }
 @media screen and (max-width: 480px) {

@@ -14,7 +14,7 @@
                 changeGenreId(friend_search_card.genreId);
                 changeMinPrice(10000);
                 changeMaxPrice(30000);
-                setPage(1);
+                friendSetPage(1);
               "
             />
           </b-menu-item>
@@ -31,7 +31,7 @@
                 changeGenreId(relative_search_card.genreId);
                 changeMinPrice(30000);
                 changeMaxPrice(50000);
-                setPage(1);
+                relativeSetPage(1);
               "
             />
           </b-menu-item>
@@ -48,7 +48,7 @@
                 changeGenreId(colleague_search_card.genreId);
                 changeMinPrice(10000);
                 changeMaxPrice(20000);
-                setPage(1);
+                colleagueSetPage(1);
               "
             />
           </b-menu-item>
@@ -65,7 +65,7 @@
                 changeGenreId(boss_search_card.genreId);
                 changeMinPrice(1000);
                 changeMaxPrice(5000);
-                setPage(1);
+                bossSetPage(1);
               "
             />
           </b-menu-item>
@@ -122,27 +122,22 @@ export default {
         {
           name: "キッチン用品・食器",
           genreId: 558944,
-          image: require("../../../../assets/images/kitchen_goods.jpg"),
         },
         {
           name: "インテリア・雑貨",
           genreId: 100804,
-          image: require("../../../../assets/images/interior.jpg"),
         },
         {
           name: "家電",
           genreId: 562637,
-          image: require("../../../../assets/images/home_electriv_appliances.jpg"),
         },
         {
           name: "カタログ",
           genreId: 566732,
-          image: require("../../../../assets/images/catalog.jpg"),
         },
         {
           name: "商品券",
           genreId: 553283,
-          image: require("../../../../assets/images/gift_certificate.jpg"),
         },
       ],
       // 友人パネル
@@ -150,37 +145,30 @@ export default {
         {
           name: "インテリア・雑貨",
           genreId: 100804,
-          image: require("../../../../assets/images/interior.jpg"),
         },
         {
           name: "日用品雑貨",
           genreId: 215783,
-          image: require("../../../../assets/images/daily_necessaries.jpg"),
         },
         {
           name: "ルームウエア",
           genreId: 100433,
-          image: require("../../../../assets/images/loungwear.jpg"),
         },
         {
           name: "キッチン用品・食器",
           genreId: 558944,
-          image: require("../../../../assets/images/kitchen_goods.jpg"),
         },
         {
           name: "家電",
           genreId: 562637,
-          image: require("../../../../assets/images/home_electriv_appliances.jpg"),
         },
         {
           name: "カタログ",
           genreId: 566732,
-          image: require("../../../../assets/images/catalog.jpg"),
         },
         {
           name: "商品券",
           genreId: 553283,
-          image: require("../../../../assets/images/gift_certificate.jpg"),
         },
       ],
       // 職場の同僚パネル
@@ -188,22 +176,18 @@ export default {
         {
           name: "花",
           genreId: 100005,
-          image: require("../../../../assets/images/flower.jpg"),
         },
         {
           name: "日用品雑貨",
           genreId: 215783,
-          image: require("../../../../assets/images/daily_necessaries.jpg"),
         },
         {
           name: "カタログ",
           genreId: 566732,
-          image: require("../../../../assets/images/catalog.jpg"),
         },
         {
           name: "商品券",
           genreId: 553283,
-          image: require("../../../../assets/images/gift_certificate.jpg"),
         },
       ],
       // 職場の上司パネル
@@ -211,22 +195,18 @@ export default {
         {
           name: "洋酒",
           genreId: 510915,
-          image: require("../../../../assets/images/wine.jpg"),
         },
         {
           name: "キッチン用品・食器",
           genreId: 558944,
-          image: require("../../../../assets/images/kitchen_goods.jpg"),
         },
         {
           name: "カタログ",
           genreId: 566732,
-          image: require("../../../../assets/images/catalog.jpg"),
         },
         {
           name: "商品券",
           genreId: 553283,
-          image: require("../../../../assets/images/gift_certificate.jpg"),
         },
       ],
     };
@@ -241,13 +221,32 @@ export default {
       "changeSort",
       "search",
       "genreSearch",
+      "friendGenreSearch",
+      "relativeGenreSearch",
+      "colleagueGenreSearch",
+      "bossGenreSearch",
       "changePage",
       "setPage",
     ]),
-    //サイドバーでジャンルで検索の時は毎回1ページ目を表示させる
-    setPage(page) {
+    //友人のジャンルで検索の時は毎回1ページ目を表示させる
+    friendSetPage(page) {
       var vm = this;
-      vm.genreSearch(vm.changePage(page));
+      vm.friendGenreSearch(vm.changePage(page));
+    },
+    //親族のジャンルで検索の時は毎回1ページ目を表示させる
+    relativeSetPage(page) {
+      var vm = this;
+      vm.relativeGenreSearch(vm.changePage(page));
+    },
+    //同僚のジャンルで検索の時は毎回1ページ目を表示させる
+    colleagueSetPage(page) {
+      var vm = this;
+      vm.colleagueGenreSearch(vm.changePage(page));
+    },
+    //上司のジャンルで検索の時は毎回1ページ目を表示させる
+    bossSetPage(page) {
+      var vm = this;
+      vm.bossGenreSearch(vm.changePage(page));
     },
   },
 };

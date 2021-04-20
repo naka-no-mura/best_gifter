@@ -109,8 +109,72 @@ function genreSearchItem(genreId, minPrice, maxPrice, changePage, sort) {
     params: {
       keyword: "結婚",
       genreId: genreId,
-      minPrice: minPrice || 1000,
-      maxPrice: maxPrice || 150000,
+      minPrice: 1000,
+      maxPrice: 150000,
+      sort: sort || "standard",
+      page: changePage || 1,
+      giftFlag: 1,
+      imageFlag: 1,
+    },
+  });
+}
+
+// 友人でジャンル検索するとき用
+function friendGenreSearchItem(genreId, minPrice, maxPrice, changePage, sort) {
+  return axios.get("/v1/rakuten_apis/search", {
+    params: {
+      keyword: "結婚",
+      genreId: genreId,
+      minPrice: 10000,
+      maxPrice: 30000,
+      sort: sort || "standard",
+      page: changePage || 1,
+      giftFlag: 1,
+      imageFlag: 1,
+    },
+  });
+}
+
+// 親族でジャンル検索するとき用
+function relativeGenreSearchItem(genreId, minPrice, maxPrice, changePage, sort) {
+  return axios.get("/v1/rakuten_apis/search", {
+    params: {
+      keyword: "結婚",
+      genreId: genreId,
+      minPrice: 30000,
+      maxPrice: 50000,
+      sort: sort || "standard",
+      page: changePage || 1,
+      giftFlag: 1,
+      imageFlag: 1,
+    },
+  });
+}
+
+// 同僚でジャンル検索するとき用
+function colleagueGenreSearchItem(genreId, minPrice, maxPrice, changePage, sort) {
+  return axios.get("/v1/rakuten_apis/search", {
+    params: {
+      keyword: "結婚",
+      genreId: genreId,
+      minPrice: 10000,
+      maxPrice: 20000,
+      sort: sort || "standard",
+      page: changePage || 1,
+      giftFlag: 1,
+      imageFlag: 1,
+    },
+  });
+}
+
+// 上司でジャンル検索するとき用
+function bossGenreSearchItem(genreId, minPrice, maxPrice, changePage, sort) {
+  return axios.get("/v1/rakuten_apis/search", {
+    params: {
+      keyword: "結婚",
+      genreId: genreId,
+      minPrice: 1000,
+      maxPrice: 5000,
       sort: sort || "standard",
       page: changePage || 1,
       giftFlag: 1,
@@ -187,6 +251,82 @@ const actions = {
   genreSearch({ commit, state }) {
     resetKeywordState();
     genreSearchItem(
+      state.genreId,
+      state.minPrice,
+      state.maxPrice,
+      state.page,
+      state.sort
+    )
+      .then((res) => {
+        commit("search", res.data);
+      })
+      .catch((error) => {
+        console.log(error.response.data);
+        commit("search", error.response.data);
+      });
+  },
+
+  // 友人のジャンル検索用
+  friendGenreSearch({ commit, state }) {
+    resetKeywordState();
+    friendGenreSearchItem(
+      state.genreId,
+      state.minPrice,
+      state.maxPrice,
+      state.page,
+      state.sort
+    )
+      .then((res) => {
+        commit("search", res.data);
+      })
+      .catch((error) => {
+        console.log(error.response.data);
+        commit("search", error.response.data);
+      });
+  },
+
+  // 親族のジャンル検索用
+  relativeGenreSearch({ commit, state }) {
+    resetKeywordState();
+    relativeGenreSearchItem(
+      state.genreId,
+      state.minPrice,
+      state.maxPrice,
+      state.page,
+      state.sort
+    )
+      .then((res) => {
+        commit("search", res.data);
+      })
+      .catch((error) => {
+        console.log(error.response.data);
+        commit("search", error.response.data);
+      });
+  },
+
+  // 同僚のジャンル検索用
+  colleagueGenreSearch({ commit, state }) {
+    resetKeywordState();
+    colleagueGenreSearchItem(
+      state.genreId,
+      state.minPrice,
+      state.maxPrice,
+      state.page,
+      state.sort
+    )
+      .then((res) => {
+        commit("search", res.data);
+      })
+      .catch((error) => {
+        console.log(error.response.data);
+        commit("search", error.response.data);
+      });
+  },
+
+  // 上司のジャンル検索用
+  bossGenreSearch({ commit, state }) {
+    resetKeywordState();
+    bossGenreSearchItem(
       state.genreId,
       state.minPrice,
       state.maxPrice,
