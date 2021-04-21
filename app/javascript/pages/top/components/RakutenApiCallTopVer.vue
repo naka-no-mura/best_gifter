@@ -7,7 +7,7 @@
           type="search"
           placeholder="キーワード(例:結婚)"
           @input="changeKeyword($event.target.value)"
-        >
+        />
       </p>
       <p class="control">
         <input
@@ -16,7 +16,7 @@
           min="0"
           placeholder="任意：いくらから"
           @input="changeMinPrice($event.target.value)"
-        >
+        />
       </p>
       <p class="control">
         <input
@@ -25,7 +25,7 @@
           min="0"
           placeholder="任意：いくらまで"
           @input="changeMaxPrice($event.target.value)"
-        >
+        />
       </p>
       <p class="control">
         <b-button
@@ -36,12 +36,10 @@
           "
           @click="
             keywordSearch();
-            search();"
+            search();
+          "
         >
-          <b-icon
-            icon="magnify"
-            size="is-medium"
-          />
+          <b-icon icon="magnify" size="is-medium" />
         </b-button>
       </p>
     </div>
@@ -74,7 +72,6 @@ export default {
 .section {
   display: flex;
   justify-content: center;
-  margin-top: 5rem;
 }
 .top-call-keyword {
   width: 30rem;

@@ -6,9 +6,7 @@
   >
     <div class="navbar-brand">
       <p>
-      <!-- <p class="navbar-item"> -->
-        <img class="logo-img" src="../../assets/images/logo_dark_pink.JPG">
-        <!-- <b class="logo-tx"><big>BGW</big></b> -->
+        <img class="logo-img" src="../../assets/images/logo_dark_pink.JPG" />
       </p>
       <a
         role="button"
@@ -32,42 +30,27 @@
     >
       <div class="navbar-start" />
       <div class="navbar-end">
-        <router-link
-          to="/"
-          class="navbar-item nav-item"
-        >
-          <b-icon
-            class="nav-icon"
-            icon="laptop"
-            size="is-small"
-          /><span
+        <router-link to="/" class="navbar-item nav-item">
+          <b-icon class="nav-icon" icon="laptop" size="is-small" /><span
             @click="
               changeIsActive();
               pageToTop();
             "
-          >トップ</span>
+            >トップ</span
+          >
         </router-link>
 
-        <router-link
-          to="/items"
-          class="navbar-item nav-item"
-        >
-          <b-icon
-            class="nav-icon"
-            icon="magnify"
-            size="is-small"
-          /><span
+        <router-link to="/items" class="navbar-item nav-item">
+          <b-icon class="nav-icon" icon="magnify" size="is-small" /><span
             @click="
               changeIsActive();
               pageToTop();
             "
-          >検索</span>
+            >検索</span
+          >
         </router-link>
         <template v-if="!authUser">
-          <router-link
-            to="register"
-            class="navbar-item nav-item"
-          >
+          <router-link to="register" class="navbar-item nav-item">
             <b-icon
               class="nav-icon"
               icon="account-plus-outline"
@@ -77,34 +60,24 @@
                 changeIsActive();
                 pageToTop();
               "
-            >新規登録</span>
+              >新規登録</span
+            >
           </router-link>
 
-          <router-link
-            to="/login"
-            class="navbar-item nav-item"
-          >
-            <b-icon
-              class="nav-icon"
-              icon="login"
-              size="is-small"
-            /><span
+          <router-link to="/login" class="navbar-item nav-item">
+            <b-icon class="nav-icon" icon="login" size="is-small" /><span
               @click="
                 changeIsActive();
                 pageToTop();
               "
-            >ログイン</span>
+              >ログイン</span
+            >
           </router-link>
         </template>
         <template v-else>
           <div class="navbar-item has-dropdown is-hoverable nav-item">
-            <a
-              class="navbar-link"
-            ><b-icon
-              class="nav-icon"
-              icon="forum"
-              size="is-small"
-            />
+            <a class="navbar-link"
+              ><b-icon class="nav-icon" icon="forum" size="is-small" />
               アンケート
             </a>
             <div class="navbar-dropdown">
@@ -121,7 +94,8 @@
                     changeIsActive();
                     pageToTop();
                   "
-                >投稿する</span>
+                  >投稿する</span
+                >
               </router-link>
 
               <router-link
@@ -137,7 +111,8 @@
                     changeIsActive();
                     pageToTop();
                   "
-                >投票して結果をみる</span>
+                  >投票して結果をみる</span
+                >
               </router-link>
             </div>
           </div>
@@ -155,23 +130,21 @@
                 changeIsActive();
                 pageToTop();
               "
-            >マイページ</span>
+              >マイページ</span
+            >
           </router-link>
           <router-link
             to=""
             class="nav-item navbar-item"
             @click.native="handleLogout"
           >
-            <b-icon
-              class="nav-icon"
-              icon="logout"
-              size="is-small"
-            /><span
+            <b-icon class="nav-icon" icon="logout" size="is-small" /><span
               @click="
                 changeIsActive();
                 pageToTop();
               "
-            >ログアウト</span>
+              >ログアウト</span
+            >
           </router-link>
         </template>
       </div>
@@ -220,12 +193,6 @@ export default {
 </script>
 
 <style scoped>
-/* .logo-tx {
-  font-size: 1.5rem;
-  text-shadow: 0 0 3px #333;
-  color: white;
-  color: #ffd3d4;
-} */
 .logo-img {
   width: 80px;
   height: 80px;

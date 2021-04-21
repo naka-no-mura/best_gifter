@@ -5,6 +5,7 @@
       <h2>新郎新婦へ、最高のギフトを贈りたい。</h2>
       <div class="container">
         <RakutenApiCallTopVer />
+        <QuestionnaireButton />
       </div>
     </div>
     <div class="container">
@@ -16,11 +17,13 @@
 <script>
 import RakutenApiCallTopVer from "./components/RakutenApiCallTopVer.vue";
 import RelationshipRakutenApiCall from "./components/RelationshipRakutenApiCall.vue";
+import QuestionnaireButton from "./components/QuestionnaireButton.vue"
 export default {
   name: "TopIndex",
   components: {
     RakutenApiCallTopVer,
     RelationshipRakutenApiCall,
+    QuestionnaireButton,
   },
 };
 </script>
@@ -54,16 +57,16 @@ h2 {
     background-size: cover;
     text-align: left;
     height: 30rem;
-    padding-top: 4rem;
+    padding-top: 3rem;
   }
   h1 {
     font-size: 4rem;
     line-height: 4.5rem;
-    padding: 3rem 1rem 0;
+    padding: 1rem 1rem 0;
   }
   h2 {
     font-size: 1rem;
-    padding: 3rem 1rem 0;
+    padding: 0.5rem 1rem 0;
   }
 }
 </style>
