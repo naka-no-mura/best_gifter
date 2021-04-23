@@ -72,6 +72,9 @@ group :development do
 
   # webpacker立ち上げ用
   gem 'foreman'
+
+  gem 'ed25519'
+  gem 'bcrypt_pbkdf'
 end
 
 # テスト環境のみ
