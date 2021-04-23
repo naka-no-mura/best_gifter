@@ -11,6 +11,7 @@
           friendSetPage(1);
           changeMinPrice(10000);
           changeMaxPrice(30000);
+          pageToTop();
         "
       >
         <option disabled>友人</option>
@@ -32,6 +33,7 @@
           relativeSetPage(1);
           changeMinPrice(30000);
           changeMaxPrice(50000);
+          pageToTop();
         "
       >
         <option disabled>親族</option>
@@ -53,6 +55,7 @@
           colleagueSetPage(1);
           changeMinPrice(10000);
           changeMaxPrice(20000);
+          pageToTop();
         "
       >
         <option disabled>同僚</option>
@@ -74,6 +77,7 @@
           bossSetPage(1);
           changeMinPrice(1000);
           changeMaxPrice(5000);
+          pageToTop();
         "
       >
         <option disabled>上司</option>
@@ -237,6 +241,12 @@ export default {
     bossSetPage(page) {
       var vm = this;
       vm.bossGenreSearch(vm.changePage(page));
+    },
+    pageToTop() {
+      window.scrollTo({
+        top: 0,
+        behavior: "auto",
+      });
     },
   },
 };
