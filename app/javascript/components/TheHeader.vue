@@ -6,9 +6,9 @@
   >
     <div class="navbar-brand">
       <p>
-      <!-- <p class="navbar-item"> -->
-        <img class="logo-img" src="../../assets/images/logo_dark_pink.JPG">
-        <!-- <b class="logo-tx"><big>BGW</big></b> -->
+        <router-link to="/">
+          <img class="logo-img" src="../../assets/images/logo_dark_pink.JPG" @click="pageToTop()">
+        </router-link>
       </p>
       <a
         role="button"
@@ -35,6 +35,7 @@
         <router-link
           to="/"
           class="navbar-item nav-item"
+          @click.native="pageToTop()"
         >
           <b-icon
             class="nav-icon"
@@ -42,8 +43,7 @@
             size="is-small"
           /><span
             @click="
-              changeIsActive();
-              pageToTop();
+              changeIsActive()
             "
           >トップ</span>
         </router-link>
@@ -51,6 +51,7 @@
         <router-link
           to="/items"
           class="navbar-item nav-item"
+          @click.native="pageToTop()"
         >
           <b-icon
             class="nav-icon"
@@ -58,8 +59,7 @@
             size="is-small"
           /><span
             @click="
-              changeIsActive();
-              pageToTop();
+              changeIsActive()
             "
           >検索</span>
         </router-link>
@@ -67,6 +67,7 @@
           <router-link
             to="register"
             class="navbar-item nav-item"
+            @click.native="pageToTop()"
           >
             <b-icon
               class="nav-icon"
@@ -74,8 +75,7 @@
               size="is-small"
             /><span
               @click="
-                changeIsActive();
-                pageToTop();
+                changeIsActive()
               "
             >新規登録</span>
           </router-link>
@@ -83,6 +83,7 @@
           <router-link
             to="/login"
             class="navbar-item nav-item"
+            @click.native="pageToTop()"
           >
             <b-icon
               class="nav-icon"
@@ -90,8 +91,7 @@
               size="is-small"
             /><span
               @click="
-                changeIsActive();
-                pageToTop();
+                changeIsActive()
               "
             >ログイン</span>
           </router-link>
@@ -111,6 +111,7 @@
               <router-link
                 to="/questionnaire_form"
                 class="navbar-item responsive-nav-dropdown"
+                @click.native="pageToTop()"
               >
                 <b-icon
                   class="nav-icon"
@@ -118,8 +119,7 @@
                   size="is-small"
                 /><span
                   @click="
-                    changeIsActive();
-                    pageToTop();
+                    changeIsActive()
                   "
                 >投稿する</span>
               </router-link>
@@ -127,15 +127,15 @@
               <router-link
                 to="/questionnaire_list"
                 class="navbar-item responsive-nav-dropdown"
-              >
+                @click.native="pageToTop()"
+                >
                 <b-icon
                   class="nav-icon"
                   icon="vote-outline"
                   size="is-small"
                 /><span
                   @click="
-                    changeIsActive();
-                    pageToTop();
+                    changeIsActive()
                   "
                 >投票して結果をみる</span>
               </router-link>
@@ -145,6 +145,7 @@
             v-if="authUser"
             to="/mypage"
             class="navbar-item nav-item"
+            @click.native="pageToTop()"
           >
             <b-icon
               class="nav-icon"
@@ -152,15 +153,14 @@
               size="is-small"
             /><span
               @click="
-                changeIsActive();
-                pageToTop();
+                changeIsActive()
               "
             >マイページ</span>
           </router-link>
           <router-link
             to=""
             class="nav-item navbar-item"
-            @click.native="handleLogout"
+            @click.native="handleLogout(); pageToTop();"
           >
             <b-icon
               class="nav-icon"
@@ -168,8 +168,7 @@
               size="is-small"
             /><span
               @click="
-                changeIsActive();
-                pageToTop();
+                changeIsActive()
               "
             >ログアウト</span>
           </router-link>
@@ -220,12 +219,6 @@ export default {
 </script>
 
 <style scoped>
-/* .logo-tx {
-  font-size: 1.5rem;
-  text-shadow: 0 0 3px #333;
-  color: white;
-  color: #ffd3d4;
-} */
 .logo-img {
   width: 80px;
   height: 80px;
