@@ -39,8 +39,8 @@
           <b-button
             id="serch-btn"
             class="is-medium"
-            @keyup.enter="setPage(1)"
-            @click="setPage(1)"
+            @keyup.enter="setPage(1); pageToTop();"
+            @click="setPage(1); pageToTop()"
           >
             <b-icon
               icon="magnify"
@@ -94,8 +94,8 @@
         <p class="control">
           <b-button
             class="is-small"
-            @keyup.enter="setPage(1)"
-            @click="setPage(1)"
+            @keyup.enter="setPage(1); pageToTop();"
+            @click="setPage(1); pageToTop();"
           >
             <b-icon
               icon="magnify"
@@ -170,6 +170,12 @@ export default {
       this.keywordBox = "";
       this.minPriceBox = "";
       this.maxPriceBox = "";
+    },
+    pageToTop() {
+      window.scrollTo({
+        top: 0,
+        behavior: "auto",
+      });
     },
   },
 };
