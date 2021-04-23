@@ -109,7 +109,7 @@ img {
   margin: 0 auto;
 }
 .login-page {
-  padding: 5rem 0;
+  padding: 7rem 0;
 }
 .block {
   text-align: center;
