@@ -151,6 +151,16 @@
           >
             投稿する
           </b-button>
+          <p style="text-align: center"><small>必須項目を入力すると投稿できます</small></p>
+          <b-button
+            id="q-post"
+            class="button q-btn"
+            expanded
+            :disabled="isPushToList"
+            @click="pushQuestionnaireList(); pageToTop();"
+          >
+            投稿したアンケートを確認する
+          </b-button>
         </form>
       </ValidationObserver>
     </div>
@@ -175,6 +185,7 @@ export default {
       },
       form: {},
       isPush : false,
+      isPushToList : true,
     };
   },
   computed: {
@@ -226,7 +237,8 @@ export default {
       choiceAll()
         .then((res) =>
           this.$toasted.success('アンケートを投稿しました。結果はマイページからいつでも確認できます。'),
-          this.isPush = true
+          this.isPush = true,
+          this.isPushToList = false
         )
         .catch((err) =>
           this.$toasted.error(err.response.data.message)
@@ -234,6 +246,12 @@ export default {
     },
     pushQuestionnaireList() {
       this.$router.push("/questionnaire_list");
+    },
+    pageToTop() {
+      window.scrollTo({
+        top: 0,
+        behavior: "auto",
+      });
     },
   },
 };
