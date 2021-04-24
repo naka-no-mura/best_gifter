@@ -27,9 +27,6 @@ export default {
   computed: {
     ...mapGetters("users", ["authUser"])
   },
-  method: {
-
-  }
 };
 </script>
 
