@@ -1,5 +1,3 @@
-（Webpacker周りを修正するにあたり、記録を残しておくbranchとする）
-gitへのプルリク確認
 # Best Gifter（wedding）
 
 # サービス概要
@@ -35,11 +33,30 @@ gitへのプルリク確認
 
 # 使用技術
 - Ruby 2.7.2
-- Rails 6.0.3.4
-- Vue 2.6.11
+- Rails 6.0.3.6
+- Vue 2.6.12
 
-# 画面遷移図
-https://xd.adobe.com/view/8b1a99cc-ba49-49b1-8ec4-1746bbd25ad7-de49/
+# フロントエンド
+- Vue 2.6.12
+- vuex 3.6.0
+- Vue Router 3.4.9
+- vee-validate 3.4.5
+- vue-poll 0.1.8（アンケートの投稿/投票）
+
+# バックエンド
+- Ruby 2.7.2
+- Rails 6.0.3.6
+- RSpec 3.10.1
+- 楽天商品検索API（外部API）
+- counter_culture 2.7.0（投票数のカウント）
+- sourcery 0.16.0（ログイン）
+- jwt 2.2.2（トークンの発行）
+
+# CSSフレームワーク
+- Buefy 0.9.4
+- Bulma 0.9.1
 
 # ER図
 https://drive.google.com/file/d/1bTgWxJMa-G4l0CTDUi7WEk5j1Xw1iQYf/view?usp=sharing
+
+# インフラストラクチャー
