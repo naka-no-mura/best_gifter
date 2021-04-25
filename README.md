@@ -70,13 +70,13 @@
 - Nginx 1.12.2
 - unicorn 6.0.0
 - AWS
--- VPC
--- EC2
--- Amazon Linux 2
--- RDS
--- MySQL 5.7
--- ALB
--- Route53
--- ACM
+  - VPC
+  - EC2
+  - Amazon Linux 2
+  - RDS
+  - MySQL 5.7
+  - ALB
+  - Route53
+  - ACM
 
 <img width="934" alt="スクリーンショット 2021-04-25 10 44 24" src="https://user-images.githubusercontent.com/67740798/116011591-dbd25d00-a660-11eb-8676-7d3140af6c81.png">
