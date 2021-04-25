@@ -48,6 +48,7 @@
 - capistrano 3.16.0（自動デプロイ）
 - unicorn 6.0.0（アプケーションサーバ）
 
+
 ### フロントエンド
 - Vue 2.6.12
 - vuex 3.6.0
@@ -62,6 +63,20 @@
 - Bulma 0.9.1
 
 # ER図
-https://drive.google.com/file/d/1bTgWxJMa-G4l0CTDUi7WEk5j1Xw1iQYf/view?usp=sharing
+<img width="754" alt="スクリーンショット 2021-04-25 20 31 28" src="https://user-images.githubusercontent.com/67740798/116011553-9746c180-a660-11eb-8d87-caafefbbf9e5.png">
 
 # インフラストラクチャー
+- CircleCI
+- Nginx 1.12.2
+- unicorn 6.0.0
+- AWS
+-- VPC
+-- EC2
+-- Amazon Linux 2
+-- RDS
+-- MySQL 5.7
+-- ALB
+-- Route53
+-- ACM
+
+<img width="934" alt="スクリーンショット 2021-04-25 10 44 24" src="https://user-images.githubusercontent.com/67740798/116011591-dbd25d00-a660-11eb-8676-7d3140af6c81.png">
