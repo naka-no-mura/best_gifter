@@ -32,27 +32,32 @@
 特に、相場やギフトに慣れていない、第一次結婚ラッシュ渦にいる人。
 
 # 使用技術
-- Ruby 2.7.2
-- Rails 6.0.3.6
-- Vue 2.6.12
 
-# フロントエンド
-- Vue 2.6.12
-- vuex 3.6.0
-- Vue Router 3.4.9
-- vee-validate 3.4.5
-- vue-poll 0.1.8（アンケートの投稿/投票）
-
-# バックエンド
+## バックエンド
 - Ruby 2.7.2
 - Rails 6.0.3.6
 - RSpec 3.10.1
 - 楽天商品検索API（外部API）
-- counter_culture 2.7.0（投票数のカウント）
-- sourcery 0.16.0（ログイン）
-- jwt 2.2.2（トークンの発行）
 
-# CSSフレームワーク
+## 機能における主要なGem
+- counter_culture 2.7.0（投票数カウント）
+- sourcery 0.16.0（ログイン）
+- JWT 2.2.2（トークン発行）
+- rakuten_web_service 1.13.0（楽天商品検索API）
+- httpclient 2.8.3（ネットワーク通信）
+- capistrano 3.16.0（自動デプロイ）
+- unicorn 6.0.0（アプケーションサーバ）
+
+## フロントエンド
+- Vue 2.6.12
+- vuex 3.6.0
+- Vue Router 3.4.9
+- axios 0.21.1
+- vee-validate 3.4.5
+- vue-poll 0.1.8（アンケートの投稿/投票）
+
+
+## CSSフレームワーク
 - Buefy 0.9.4
 - Bulma 0.9.1
 
