@@ -42,12 +42,9 @@
             icon="laptop"
             size="is-small"
           /><span
-            @click="
-              changeIsActive()
-            "
-          >トップ</span>
+            >トップ</span
+          >
         </router-link>
-
         <router-link
           to="/items"
           class="navbar-item nav-item"
@@ -58,10 +55,8 @@
             icon="magnify"
             size="is-small"
           /><span
-            @click="
-              changeIsActive()
-            "
-          >検索</span>
+            >検索</span
+          >
         </router-link>
         <template v-if="!authUser">
           <router-link
@@ -77,9 +72,9 @@
               @click="
                 changeIsActive()
               "
-            >新規登録</span>
+              >新規登録</span
+            >
           </router-link>
-
           <router-link
             to="/login"
             class="navbar-item nav-item"
@@ -90,21 +85,14 @@
               icon="login"
               size="is-small"
             /><span
-              @click="
-                changeIsActive()
-              "
-            >ログイン</span>
+              >ログイン</span
+            >
           </router-link>
         </template>
         <template v-else>
           <div class="navbar-item has-dropdown is-hoverable nav-item">
-            <a
-              class="navbar-link"
-            ><b-icon
-              class="nav-icon"
-              icon="forum"
-              size="is-small"
-            />
+            <a class="navbar-link"
+              ><b-icon class="nav-icon" icon="forum" size="is-small" />
               アンケート
             </a>
             <div class="navbar-dropdown">
@@ -121,7 +109,8 @@
                   @click="
                     changeIsActive()
                   "
-                >投稿する</span>
+                  >投稿する</span
+                >
               </router-link>
 
               <router-link
@@ -137,7 +126,8 @@
                   @click="
                     changeIsActive()
                   "
-                >投票して結果をみる</span>
+                  >投票して結果をみる</span
+                >
               </router-link>
             </div>
           </div>
@@ -155,22 +145,20 @@
               @click="
                 changeIsActive()
               "
-            >マイページ</span>
+              >マイページ</span
+            >
           </router-link>
           <router-link
             to=""
             class="nav-item navbar-item"
             @click.native="handleLogout(); pageToTop();"
           >
-            <b-icon
-              class="nav-icon"
-              icon="logout"
-              size="is-small"
-            /><span
+            <b-icon class="nav-icon" icon="logout" size="is-small" /><span
               @click="
                 changeIsActive()
               "
-            >ログアウト</span>
+              >ログアウト</span
+            >
           </router-link>
         </template>
       </div>
