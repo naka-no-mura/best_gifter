@@ -22,7 +22,7 @@
       <div class="modal" :class="{ 'is-active': isActive }">
         <div class="modal-background" @click="changeIsActive()"></div>
         <div class="modal-content">
-          <router-link to="/login">
+          <router-link to="/login" @click.native="pageToTop()">
             <p class="q-tx">自分のアカウントで</p>
             <button class="button q-btn q-m-btn is-fullwidth is-rounded">
               ログインして投票する
@@ -32,7 +32,7 @@
           <br />
           <p class="q-tx">一時的な投票用アカウントを</p>
           <template v-if="!loginForVote">
-            <button class="button q-btn q-m-btn is-fullwidth is-rounded" disabled @click="register()">
+            <button class="button q-btn q-m-btn is-fullwidth is-rounded" disabled @click="register(); pageToTop();">
               ① 作成して
             </button>
           </template>
@@ -44,12 +44,12 @@
           <br />
           <template v-if="!gAccountForVote">
             <button class="button q-btn q-m-btn is-fullwidth is-rounded" disabled @click="login()">
-              ② ログインする
+              ② ログインして投票する
             </button>
           </template>
           <template v-else>
-            <button class="button q-btn q-m-btn is-fullwidth is-rounded" @click="login()">
-              ② ログインする
+            <button class="button q-btn q-m-btn is-fullwidth is-rounded" @click="login(); pageToTop();">
+              ② ログインして投票する
             </button>
           </template>
         </div>
@@ -129,6 +129,13 @@ export default {
       } catch (error) {
         console.log(error);
       }
+    },
+
+    pageToTop() {
+      window.scrollTo({
+        top: 0,
+        behavior: "auto",
+      });
     },
   },
 };
