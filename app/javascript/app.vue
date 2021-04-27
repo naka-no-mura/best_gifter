@@ -9,7 +9,7 @@
     >
       <b-icon
         class="scroll-top"
-        icon="chevron-up-circle-outline"
+        icon="arrow-up-drop-circle"
         size="is-large"
       />
     </div>
@@ -47,7 +47,6 @@
   bottom: 14px;
   text-align: center;
   border-radius: 50%;
-  background: #ffd3d4;
   color: #666666;
   z-index: 100;
 }

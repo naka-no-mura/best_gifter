@@ -13,6 +13,7 @@
       <router-link
         to="/questionnaire_form"
         class="button q-ads-button"
+        @click.native="pageToTop()"
       >
         投稿する
       </router-link>
@@ -64,6 +65,12 @@ export default {
         .catch((err) => {
           console.log(err);
         });
+    },
+    pageToTop() {
+      window.scrollTo({
+        top: 0,
+        behavior: "auto",
+      });
     },
   },
 };

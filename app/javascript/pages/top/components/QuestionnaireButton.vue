@@ -3,38 +3,55 @@
     <template v-if="!authUser">
       <button
         class="button is-large q-btn is-rounded pc-ver"
-        @click="changeIsActive()"
+        @click="changeIsActive(); gTmpEmail();"
       >
-        アンケートに投票してみんなのギフトを見てみる
-        <b-icon class="q-icon" icon="menu-right" size="is-large" />
+        アンケートに投票してみんなのギフトを参考にする
       </button>
       <button
         class="button is-midium q-btn is-rounded ip-ver"
-        @click="changeIsActive()"
+        @click="changeIsActive(); gTmpEmail();"
       >
-        アンケートに投票してみんなのギフトを見てみる
-        <b-icon class="q-icon" icon="menu-right" size="is-midium" />
+        アンケートに投票してみんなのギフトを参考にする
       </button>
       <button
         class="button is-small q-btn is-rounded sp-ver"
-        @click="changeIsActive()"
+        @click="changeIsActive(); gTmpEmail();"
       >
-        アンケートに投票してみんなのギフトを見てみる
-        <b-icon class="q-icon" icon="menu-right" size="is-small" />
+        アンケートに投票してみんなのギフトを参考にする
       </button>
       <div class="modal" :class="{ 'is-active': isActive }">
         <div class="modal-background" @click="changeIsActive()"></div>
         <div class="modal-content">
           <router-link to="/login">
-            <button class="button is-large q-btn is-rounded">
+            <p class="q-tx">自分のアカウントで</p>
+            <button class="button q-btn q-m-btn is-fullwidth is-rounded">
               ログインして投票する
-              <b-icon class="q-icon" icon="menu-right" size="is-small" />
             </button> </router-link
           ><br />
-          <button class="button is-large q-btn is-rounded" @click="gAccountToVote()">
-            アカウントを作成せず投票する
-            <b-icon class="q-icon" icon="menu-right" size="is-small" />
-          </button>
+          <br />
+          <br />
+          <p class="q-tx">一時的な投票用アカウントを</p>
+          <template v-if="!loginForVote">
+            <button class="button q-btn q-m-btn is-fullwidth is-rounded" disabled @click="register()">
+              ① 作成して
+            </button>
+          </template>
+          <template v-else>
+            <button class="button q-btn q-m-btn is-fullwidth is-rounded" @click="register()">
+              ① 作成して
+            </button>
+          </template>
+          <br />
+          <template v-if="!gAccountForVote">
+            <button class="button q-btn q-m-btn is-fullwidth is-rounded" disabled @click="login()">
+              ② ログインする
+            </button>
+          </template>
+          <template v-else>
+            <button class="button q-btn q-m-btn is-fullwidth is-rounded" @click="login()">
+              ② ログインする
+            </button>
+          </template>
         </div>
         <button
           class="modal-close is-large"
@@ -47,15 +64,12 @@
       <router-link to="/questionnaire_list">
         <button class="button is-large q-btn is-rounded pc-ver">
           アンケートに投票してみんなのギフトを見てみる
-          <b-icon class="q-icon" icon="menu-right" size="is-large" />
         </button>
         <button class="button is-midium q-btn is-rounded ip-ver">
           アンケートに投票してみんなのギフトを見てみる
-          <b-icon class="q-icon" icon="menu-right" size="is-midium" />
         </button>
         <button class="button is-small q-btn is-rounded sp-ver">
           アンケートに投票してみんなのギフトを見てみる
-          <b-icon class="q-icon" icon="menu-right" size="is-small" />
         </button>
       </router-link>
     </template>
@@ -69,8 +83,10 @@ export default {
   data() {
     return {
       isActive: false,
+      gAccountForVote: false,
+      loginForVote: true,
       user: {
-        name: "投票のための一時的なアカウント",
+        name: "投票用の一時的なアカウント",
         email: "",
         password: "password",
         password_confirmation: "password",
@@ -85,72 +101,59 @@ export default {
       this.isActive = !this.isActive;
     },
     ...mapActions("users", ["loginUser", "fetchUser"]),
-    async gAccountToVote() {
-      // const tmp_email = Math.floor(Math.random() * 100000000000000000).toString(36) + '@tmp.com';
-      // const tmp_password = "password";
 
+    gTmpEmail() {
+      this.user.email = Math.floor(Math.random() * 100000000000000000).toString(36) + '@tmp.com'
+    },
+
+    register() {
+      this.$axios
+        .post("/v1/users", { user: this.user })
+        .catch((error) => {
+          console.log(error);
+          this.errors = error.response.data.errors
+        });
+      this.gAccountForVote = true,
+      this.loginForVote = false
+    },
+
+    async login() {
       const user = {
-        name: "投票のための一時的なアカウント",
-        email: Math.floor(Math.random() * 100000000000000000).toString(36) + '@tmp.com',
+        email: this.user.email,
         password: "password",
-        password_confirmation: "password",
       }
-
-      // this.user.email = Math.floor(Math.random() * 100000000000000000).toString(36) + '@tmp.com';
-
-      const register = async function() {
-        try {
-        await axios.post("/v1/users", { user: this.user })
-        } catch(err) {
-          console.log(err)
-        }
-        // await axios.post("/v1/users", {
-        //   name: '投票のための一時的なアカウント',
-        //   email: tmp_email,
-        //   password: tmp_password,
-        //   password_confirmation: tmp_password,
-        // });
-      };
-
-      const login = async function() {
-        await this.loginUser(this.user);
-        this.$router.push("/questionnaire_list")
-      };
-
-      const tmpGenAccount = async function() {
-        await register();
-        await login();
-      };
-
-      tmpGenAccount()
-        .then((res) =>
-          this.$toasted.success('投票のための一時的なアカウントを作成しました。'),
-        )
-        .catch((err) =>
-          // this.$toasted.error(err.response.data.message)
-          this.$toasted.error(err.response)
-        );
+      try {
+        await this.loginUser(user);
+        this.$router.push({ name: "QuestionnaireListIndex" });
+        this.$toasted.success("投票用アカウントでログイン（お気に入り登録とアンケート投稿は保存されません）");
+      } catch (error) {
+        console.log(error);
+      }
     },
   },
 };
 </script>
 <style scoped>
 .q-btn {
-  background-color: #ffd3d4 !important;
-  border: 5px solid #ffd3d4 !important;
+  background-color: #77c7f7 !important;
+  border: 5px solid #77c7f7 !important;
   transition: 0.3s;
   color: white;
-  justify-content: center;
   margin-top: 1rem;
-  text-shadow: 0 0 0.3rem #333;
+}
+
+.q-m-btn {
+  width: 80% !important;
+  margin: 0 auto;
 }
 .q-btn:hover {
   background-color: white !important;
   color: #333333;
   text-shadow: 0 0 0 #333;
 }
-.q-icon {
-  margin-left: 0.5rem !important;
+.q-tx {
+  color: white;
+  text-align: center;
 }
 .ip-ver {
   display: none;
@@ -169,7 +172,7 @@ export default {
     display: block;
   }
   .q-btn {
-    margin: 0 auto;
+    margin: 0rem auto 0;
   }
   .q-icon {
     margin-left: 0.3rem !important;
