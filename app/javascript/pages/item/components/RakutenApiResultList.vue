@@ -17,8 +17,9 @@
         </div>
       <div>
         <b-button
-          type="is-link is-light"
+          type="is-danger"
           class="reset-btn"
+          expanded
           @click="reset()"
         >
           検索条件をリセットする

@@ -14,12 +14,12 @@
       </b-sidebar>
       <div class="container inner">
         <RakutenApiCall v-show="!loading" />
-        <RakutenApiError v-show="!loading" />
         <ResponsiveRelationshipSearch v-show="!loading" class="rps-rs-s" />
         <RakutenApiResultHit v-show="!loading" />
         <Loading v-show="loading" />
         <RakutenApiPagenation v-show="!loading" />
         <RakutenApiResultList v-show="!loading" />
+        <RakutenApiError v-show="!loading" />
         <RakutenApiPagenation
           v-show="!loading"
           style="margin-top:2rem"

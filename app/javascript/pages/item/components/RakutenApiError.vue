@@ -1,20 +1,23 @@
 <template>
   <article
     v-if="error"
-    class="message is-danger error-msg"
+    class="error-msg"
     aria-close-label="Close message"
   >
-    <div class="message-body">
+    <div>
       {{ errorMessage(error) }}
       <div>
         <b-button
-          type="is-text"
+          type="is-danger"
+          class="reset-btn"
+          expanded
           @click="reset()"
         >
           検索条件をリセットする
         </b-button>
       </div>
     </div>
+    <img src="../../../../assets/images/top_image_pink.JPG">
   </article>
 </template>
 
@@ -65,6 +68,10 @@ export default {
 
 <style scoped>
 .error-msg {
-  margin-top: 8rem !important;
+  margin-top: 3rem !important;
+  text-align: center;
+}
+.reset-btn {
+  margin-bottom: 2rem;
 }
 </style>

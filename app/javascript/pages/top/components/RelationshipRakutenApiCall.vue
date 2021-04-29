@@ -32,7 +32,7 @@
                 changeGenreId(friend_search_card.genreId);
                 changeMinPrice(10000);
                 changeMaxPrice(30000);
-                search();
+                genreSearch();
               "
             >
               <div class="card-image">
@@ -84,7 +84,7 @@
                 changeGenreId(relative_search_card.genreId);
                 changeMinPrice(30000);
                 changeMaxPrice(50000);
-                search();
+                genreSearch();
               "
             >
               <div class="card-image">
@@ -136,7 +136,7 @@
                 changeGenreId(colleague_search_card.genreId);
                 changeMinPrice(10000);
                 changeMaxPrice(20000);
-                search();
+                genreSearch();
               "
             >
               <div class="card-image">
@@ -188,7 +188,7 @@
                 changeGenreId(boss_search_card.genreId);
                 changeMinPrice(1000);
                 changeMaxPrice(5000);
-                search();
+                genreSearch();
               "
             >
               <div class="card-image">
@@ -219,6 +219,7 @@ import {
   changeMaxPrice,
   changeSort,
   search,
+  genreSearch,
 } from "../../../store/mutation-types";
 export default {
   name: "RelationshipRakutenApiCall",
@@ -373,6 +374,7 @@ export default {
       "changeMaxPrice",
       "changeSort",
       "search",
+      "genreSearch",
     ]),
   },
 };
@@ -462,5 +464,3 @@ export default {
 }
 }
 </style>
-
-// :src="require('../../../../assets/images/logo_light_pink.JPG')"
