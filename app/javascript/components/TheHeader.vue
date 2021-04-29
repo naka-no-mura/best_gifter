@@ -7,7 +7,11 @@
     <div class="navbar-brand">
       <p>
         <router-link to="/">
-          <img class="logo-img" src="../../assets/images/logo_dark_pink.JPG" @click="pageToTop()">
+          <img
+            class="logo-img"
+            src="../../assets/images/logo_dark_pink.JPG"
+            @click="pageToTop()"
+          />
         </router-link>
       </p>
       <a
@@ -37,11 +41,7 @@
           class="navbar-item nav-item"
           @click.native="pageToTop()"
         >
-          <b-icon
-            class="nav-icon"
-            icon="laptop"
-            size="is-small"
-          /><span
+          <b-icon class="nav-icon" icon="laptop" size="is-small" /><span
             >トップ</span
           >
         </router-link>
@@ -50,11 +50,7 @@
           class="navbar-item nav-item"
           @click.native="pageToTop()"
         >
-          <b-icon
-            class="nav-icon"
-            icon="magnify"
-            size="is-small"
-          /><span
+          <b-icon class="nav-icon" icon="magnify" size="is-small" /><span
             >検索</span
           >
         </router-link>
@@ -68,23 +64,14 @@
               class="nav-icon"
               icon="account-plus-outline"
               size="is-small"
-            /><span
-              @click="
-                changeIsActive()
-              "
-              >新規登録</span
-            >
+            /><span @click="changeIsActive()">新規登録</span>
           </router-link>
           <router-link
             to="/login"
             class="navbar-item nav-item"
             @click.native="pageToTop()"
           >
-            <b-icon
-              class="nav-icon"
-              icon="login"
-              size="is-small"
-            /><span
+            <b-icon class="nav-icon" icon="login" size="is-small" /><span
               >ログイン</span
             >
           </router-link>
@@ -105,29 +92,19 @@
                   class="nav-icon"
                   icon="comment-question-outline"
                   size="is-small"
-                /><span
-                  @click="
-                    changeIsActive()
-                  "
-                  >投稿する</span
-                >
+                /><span @click="changeIsActive()">投稿する</span>
               </router-link>
 
               <router-link
                 to="/questionnaire_list"
                 class="navbar-item responsive-nav-dropdown"
                 @click.native="pageToTop()"
-                >
+              >
                 <b-icon
                   class="nav-icon"
                   icon="vote-outline"
                   size="is-small"
-                /><span
-                  @click="
-                    changeIsActive()
-                  "
-                  >投票して結果をみる</span
-                >
+                /><span @click="changeIsActive()">投票して結果をみる</span>
               </router-link>
             </div>
           </div>
@@ -141,22 +118,18 @@
               class="nav-icon"
               icon="account-outline"
               size="is-small"
-            /><span
-              @click="
-                changeIsActive()
-              "
-              >マイページ</span
-            >
+            /><span @click="changeIsActive()">マイページ</span>
           </router-link>
           <router-link
             to=""
             class="nav-item navbar-item"
-            @click.native="handleLogout(); pageToTop();"
+            @click.native="
+              handleLogout();
+              pageToTop();
+            "
           >
             <b-icon class="nav-icon" icon="logout" size="is-small" /><span
-              @click="
-                changeIsActive()
-              "
+              @click="changeIsActive()"
               >ログアウト</span
             >
           </router-link>

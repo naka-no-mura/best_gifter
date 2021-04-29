@@ -1,36 +1,46 @@
 <template>
   <div class="tile is-parent">
-      <!-- pc ver -->
-      <div class="mask pc-ver">
-        <a target="_blank" :href="item.Item.itemUrl">
-          <button class="button i-btn is-rounded rakuten-btn">
-            楽天市場へ
-          </button>
-        </a>
-        <br />
-        <button class="button i-btn is-rounded favorite-btn" @click="favorite()">
+    <!-- pc ver -->
+    <div class="mask pc-ver">
+      <a target="_blank" :href="item.Item.itemUrl">
+        <button class="button i-btn is-rounded rakuten-btn">
+          楽天市場へ
+        </button>
+      </a>
+      <br />
+      <template v-if="authUser">
+        <button
+          class="button i-btn is-rounded favorite-btn"
+          @click="favorite()"
+        >
           お気に入り登録
         </button>
-      </div>
-      <!-- スマホ タブレット ver -->
-      <div class="mask sm-tb-ver" @click="changeIsActive()"></div>
+      </template>
+    </div>
+    <!-- スマホ タブレット ver -->
+    <div class="mask sm-tb-ver" @click="changeIsActive()"></div>
     <article class="tile is-child tile-image">
-    <!-- モーダル -->
+      <!-- モーダル -->
       <div class="modal i-modal" :class="{ 'is-active': isActive }">
         <div class="modal-background" @click="changeIsActive()"></div>
         <div class="modal-content" @click="changeIsActive()">
-        <a target="_blank" :href="item.Item.itemUrl">
-          <button class="button i-btn is-rounded rakuten-btn">
-            楽天市場へ
-          </button>
-        </a>
-        <br />
-        <br />
-        <br />
-        <br />
-        <button class="button i-btn is-rounded favorite-btn" @click="favorite()">
-          お気に入り登録
-        </button>
+          <a target="_blank" :href="item.Item.itemUrl">
+            <button class="button i-btn is-rounded rakuten-btn">
+              楽天市場へ
+            </button>
+          </a>
+          <br />
+          <br />
+          <br />
+          <br />
+          <template v-if="authUser">
+            <button
+              class="button i-btn is-rounded favorite-btn"
+              @click="favorite()"
+            >
+              お気に入り登録
+            </button>
+          </template>
         </div>
       </div>
       <figure class="image image-box">
@@ -39,7 +49,7 @@
           alt=""
           class="item-img"
           on:error="altImg()"
-        >
+        />
       </figure>
       <div class="content">
         <p>
@@ -51,16 +61,19 @@
           </big>
         </p>
         <div class="review-box">
-          <small><star-rating
-            v-model="item.Item.reviewAverage"
-            :increment="0.01"
-            read-only
-            :star-size="15"
-            class="review-average"
+          <small
+            ><star-rating
+              v-model="item.Item.reviewAverage"
+              :increment="0.01"
+              read-only
+              :star-size="15"
+              class="review-average"
           /></small>
-          <small><span
-            class="review-count"
-          >{{ item.Item.reviewCount.toLocaleString() }}件</span></small>
+          <small
+            ><span class="review-count"
+              >{{ item.Item.reviewCount.toLocaleString() }}件</span
+            ></small
+          >
         </div>
       </div>
     </article>
@@ -74,8 +87,8 @@ export default {
   props: {
     item: {
       type: Object,
-      required: true
-    }
+      required: true,
+    },
   },
   data() {
     return {
@@ -110,7 +123,7 @@ export default {
         })
         .then((res) => {
           console.log(res);
-          this.$toasted.success('お気に入りに登録しました');
+          this.$toasted.success("お気に入りに登録しました");
         })
         .catch((error) => {
           this.errors = error.response.data.message;
@@ -124,7 +137,7 @@ export default {
     },
     changeIsActive() {
       this.isActive = !this.isActive;
-    }
+    },
   },
 };
 </script>
@@ -134,8 +147,8 @@ export default {
   margin-top: 5rem;
 }
 .rakuten-btn {
-  background-color: #BF0000 !important;
-  border: 5px solid #BF0000 !important;
+  background-color: #bf0000 !important;
+  border: 5px solid #bf0000 !important;
   transition: 0.3s;
   color: white !important;
 }
