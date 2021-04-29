@@ -15,7 +15,7 @@
             id="pg-first"
             class="pagination-number"
             href="#"
-            @click.prevent="setPage(1)"
+            @click.prevent="setPage(1); pageToTop();"
           >&lt;&lt;</a>
         </li>
         <!-- 1ページ前に戻るリンク -->
@@ -24,7 +24,7 @@
             id="pg-previous"
             class="pagination-number"
             href="#"
-            @click.prevent="setPage(currentPage - 1)"
+            @click.prevent="setPage(currentPage - 1); pageToTop();"
           >&lt;</a>
         </li>
         <!-- ここからページ数分のリンクを生成 -->
@@ -42,7 +42,7 @@
             id="pg-number"
             class="pagination-number"
             href="#"
-            @click.prevent="setPage(numFix(num))"
+            @click.prevent="setPage(numFix(num)); pageToTop();"
           >{{ numFix(num) }}</a>
         </li>
         <!-- 1ページ次に進むリンク -->
@@ -51,7 +51,7 @@
             id="pg-next"
             class="pagination-number"
             href="#"
-            @click.prevent="setPage(currentPage + 1)"
+            @click.prevent="setPage(currentPage + 1); pageToTop();"
           >></a>
         </li>
         <!-- 最後のページに進むリンク -->
@@ -60,7 +60,7 @@
             id="pg-last"
             class="pagination-number"
             href="#"
-            @click.prevent="setPage(pageCount)"
+            @click.prevent="setPage(pageCount); pageToTop();"
           >>></a>
         </li>
       </ul>
@@ -132,6 +132,12 @@ export default {
         vm.$set(vm, "currentPageEdited", changePage);
       }
       vm.search(vm.changePage(page));
+    },
+    pageToTop() {
+      window.scrollTo({
+        top: 0,
+        behavior: "auto",
+      });
     },
   },
 };
