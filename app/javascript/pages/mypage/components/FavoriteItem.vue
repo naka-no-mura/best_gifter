@@ -130,4 +130,53 @@ export default {
 </script>
 
 <style scope>
+.is-parent {
+  background-color: white;
+  border-radius: 20px;
+  border: 5px solid white;
+  transition: 0.3s;
+  position: relative;
+}
+.is-parent:hover {
+  border: 5px solid #ffd3d4;
+  filter: #999999;
+}
+.mask {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  background-color: rgba(0, 0, 0, 0.2);
+  transition: 0.3s;
+  opacity: 0;
+  -webkit-transition: all 0.3s;
+  border-radius: 15px;
+  text-align: center;
+}
+.mask:hover {
+  opacity: 1;
+}
+.caption {
+  text-align: center;
+  color: white;
+  margin-top: 10rem;
+  font-size: 140%;
+}
+.favorite-mark {
+  position: absolute;
+  right: 0.5rem;
+  top: 0.5rem;
+  background-color: white;
+  border: #999;
+  border-radius: 3px;
+  z-index: 10;
+}
+.star {
+  color: #ff694b;
+}
+.star-outline {
+  color: #ff694b;
+}
 </style>

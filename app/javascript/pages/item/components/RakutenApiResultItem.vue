@@ -1,39 +1,38 @@
 <template>
   <div class="tile is-parent">
-    <a
-      target="_blank"
-      :href="item.Item.itemUrl"
-    >
-      <div class="mask">
-        <p class="caption"><b>READ MORE</b></p>
+      <!-- pc ver -->
+      <div class="mask pc-ver">
+        <a target="_blank" :href="item.Item.itemUrl">
+          <button class="button i-btn is-rounded rakuten-btn">
+            楽天市場へ
+          </button>
+        </a>
+        <br />
+        <button class="button i-btn is-rounded favorite-btn" @click="favorite()">
+          お気に入り登録
+        </button>
       </div>
-    </a>
+      <!-- スマホ タブレット ver -->
+      <div class="mask sm-tb-ver" @click="changeIsActive()"></div>
     <article class="tile is-child tile-image">
-      <!-- お気に入りマーク -->
-      <div
-        v-if="authUser"
-        class="favorite-mark"
-      >
-        <span
-          v-if="isLiked"
-          class="is-liked"
-          @click="favorite()"
-        ><b-icon
-          icon="star"
-          size="is-midium"
-          class="star"
-        /></span>
-        <span
-          v-else
-          class="is-not-liked"
-          @click="favorite()"
-        ><b-icon
-          icon="star-outline"
-          size="is-midium"
-          class="star-outline"
-        /></span>
+    <!-- モーダル -->
+      <div class="modal i-modal" :class="{ 'is-active': isActive }">
+        <div class="modal-background" @click="changeIsActive()"></div>
+        <div class="modal-content" @click="changeIsActive()">
+        <a target="_blank" :href="item.Item.itemUrl">
+          <button class="button i-btn is-rounded rakuten-btn">
+            楽天市場へ
+          </button>
+        </a>
+        <br />
+        <br />
+        <br />
+        <br />
+        <button class="button i-btn is-rounded favorite-btn" @click="favorite()">
+          お気に入り登録
+        </button>
+        </div>
       </div>
-      <!-- お気に入りマーク ここまで-->
       <figure class="image image-box">
         <img
           :src="item.Item.mediumImageUrls[0].imageUrl"
@@ -81,6 +80,7 @@ export default {
   data() {
     return {
       isLiked: false,
+      isActive: false,
     };
   },
   computed: {
@@ -122,10 +122,37 @@ export default {
       this.item.Item.mediumImageUrls[0].imageUrl =
         "../../../../assets/images/logo_light_pink.JPG";
     },
+    changeIsActive() {
+      this.isActive = !this.isActive;
+    }
   },
 };
 </script>
 <style scope>
+.i-btn {
+  width: 80%;
+  margin-top: 5rem;
+}
+.rakuten-btn {
+  background-color: #BF0000 !important;
+  border: 5px solid #BF0000 !important;
+  transition: 0.3s;
+  color: white !important;
+}
+.rakuten-btn:hover {
+  background-color: white !important;
+  color: #333333 !important;
+}
+.favorite-btn {
+  background-color: #ffd3d4 !important;
+  border: 5px solid #ffd3d4 !important;
+  transition: 0.3s;
+  color: #333333 !important;
+}
+.favorite-btn:hover {
+  background-color: white !important;
+  color: #333333 !important;
+}
 .is-parent {
   background-color: white;
   border-radius: 20px;
@@ -149,6 +176,7 @@ export default {
   opacity: 0;
   -webkit-transition: all 0.3s;
   border-radius: 15px;
+  text-align: center;
 }
 .mask:hover {
   opacity: 1;
@@ -158,15 +186,6 @@ export default {
   color: white;
   margin-top: 10rem;
   font-size: 140%;
-}
-.favorite-mark {
-  position: absolute;
-  right: 0.5rem;
-  top: 0.5rem;
-  background-color: white;
-  border: #999;
-  border-radius: 3px;
-  z-index: 10;
 }
 .content {
   margin: 0.5rem;
@@ -187,12 +206,6 @@ export default {
   padding: auto 0 !important;
   margin-left: 10px;
 }
-.star {
-  color: #ff694b;
-}
-.star-outline {
-  color: #ff694b;
-}
 .item-img {
   width: 16rem !important;
   height: 16rem !important;
@@ -202,6 +215,9 @@ export default {
 a {
   color: #333 !important;
 }
+.sm-tb-ver {
+  display: none;
+}
 @media screen and (max-width: 480px) {
   .is-parent {
     padding: 0;
@@ -209,6 +225,22 @@ a {
   .item-img {
     width: 10rem !important;
     height: 10rem !important;
+  }
+}
+@media screen and (max-width: 959px) {
+  .pc-ver {
+    display: none;
+  }
+  .sm-tb-ver {
+    display: block;
+  }
+  .i-btn {
+    width: 80%;
+    margin-top: 0;
+  }
+  .i-modal {
+    text-align: center;
+    z-index: 101 !important;
   }
 }
 </style>
