@@ -36,7 +36,7 @@
                 class="tag reset-tag"
                 @click="resetSearch()"
               >
-                検索条件の解除
+                検索条件のリセット
               </b-button>
             </b-taglist>
           </div>
@@ -116,7 +116,7 @@
           class="tag reset-tag"
           @click="resetSearch()"
         >
-          検索条件の解除
+          検索条件のリセット
         </b-button>
       </b-taglist>
     </div>
@@ -374,7 +374,7 @@ export default {
     display: flex;
   }
   .hit-count {
-    font-size: 0.5rem;
+    font-size: 0.7rem;
     line-height: 2rem;
     margin-left: 1rem;
   }
