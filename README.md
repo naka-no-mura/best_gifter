@@ -1,4 +1,5 @@
-# 💐Best Gifter Wedding（べストギフターウェディング）💐
+# 💐Best Gifter Wedding💐  
+### べストギフターウェディング
   
 ### 🌐 https://www.best-gifter.work  
   
@@ -41,7 +42,7 @@ Best Gifterで「第１次結婚ウェーブ渦中」の皆さんが、新郎新
 
 ## 使用技術
 
-### バックエンド
+### バックエンド#
 - Ruby 2.7.2
 - Rails 6.0.3.6
 - RSpec 3.10.1
