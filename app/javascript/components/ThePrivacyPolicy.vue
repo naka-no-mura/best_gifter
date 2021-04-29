@@ -168,7 +168,7 @@ export default {
 
 <style scoped>
 .privacy_policys {
-  padding-top: 5rem;
+  padding-top: 7rem;
   margin: 0 1.2rem;
 }
 h1 {
