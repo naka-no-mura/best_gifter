@@ -23,6 +23,10 @@
           @click="reset()"
         >
           検索条件をリセットする
+          <b-icon
+              icon="arrow-right-drop-circle-outline"
+              size="is-small"
+            />
         </b-button>
       </div>
         <img src="../../../../assets/images/top_image_pink.JPG">
