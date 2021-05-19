@@ -4,20 +4,17 @@
     class="error-msg"
     aria-close-label="Close message"
   >
-    <div>
+    <div class="message-body">
       {{ errorMessage(error) }}
       <div>
         <b-button
-          type="is-danger"
-          class="reset-btn"
-          expanded
+          type="is-text"
           @click="reset()"
         >
           検索条件をリセットする
         </b-button>
       </div>
     </div>
-    <img src="../../../../assets/images/top_image_pink.JPG">
   </article>
 </template>
 
@@ -68,10 +65,6 @@ export default {
 
 <style scoped>
 .error-msg {
-  margin-top: 3rem !important;
-  text-align: center;
-}
-.reset-btn {
-  margin-bottom: 2rem;
+  margin-top: 8rem !important;
 }
 </style>

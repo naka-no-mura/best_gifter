@@ -6,7 +6,6 @@
         <p class="control">
           <input
             id="search-item"
-            v-model="keywordBox"
             class="input call-keyword is-medium"
             type="search"
             placeholder="キーワード"
@@ -14,31 +13,29 @@
           >
         </p>
         <p class="control">
-          <input
-            id="search-min"
-            v-model="minPriceBox"
-            class="input call-min is-medium"
-            type="number"
-            min="0"
-            placeholder="いくらから"
-            @input="changeMinPrice($event.target.value)"
-          >
+        <div class="select is-medium">
+          <select v-model="min_price_selected.value" @input="changeMinPrice($event.target.value)" id="search-min">
+            <option disabled>いくらから</option>
+            <option v-for="price in min_prices" :key="price.id" :value="price.price">
+              {{ price.value }}
+            </option>
+          </select>
+        </div>
         </p>
         <p class="control">
-          <input
-            id="search-max"
-            v-model="maxPriceBox"
-            class="input call-max is-medium"
-            type="number"
-            min="0"
-            placeholder="いくらまで"
-            @input="changeMaxPrice($event.target.value)"
-          >
+        <div class="select is-medium">
+          <select v-model="max_price_selected.value" @input="changeMaxPrice($event.target.value)" id="search-max">
+            <option disabled>いくらまで</option>
+            <option v-for="price in max_prices" :key="price.id" :value="price.price">
+              {{ price.value }}
+            </option>
+          </select>
+        </div>
         </p>
         <p class="control">
           <b-button
             id="serch-btn"
-            class="is-medium"
+            class="is-medium search-btn"
             @keyup.enter="setPage(1); pageToTop();"
             @click="setPage(1); pageToTop()"
           >
@@ -48,15 +45,6 @@
             />
           </b-button>
         </p>
-        <p>
-          <b-button
-            class="is-medium"
-            type="is-text"
-            @click="formClear()"
-          >
-            クリア
-          </b-button>
-        </p>
       </div>
     </div>
     <!-- スマホバージョン -->
@@ -64,7 +52,6 @@
       <div class="field has-addons">
         <p class="control">
           <input
-            v-model="keywordBox"
             class="input call-keyword is-small"
             type="search"
             placeholder="キーワード"
@@ -72,28 +59,28 @@
           >
         </p>
         <p class="control">
-          <input
-            v-model="minPriceBox"
-            class="input call-min is-small"
-            type="number"
-            min="0"
-            placeholder="いくらから"
-            @input="changeMinPrice($event.target.value)"
-          >
+        <div class="select is-small">
+          <select v-model="min_price_selected.value" @change="changeMinPrice($event.target.value)" id="search-min">
+            <option disabled>いくらから</option>
+            <option v-for="price in min_prices" :key="price.id" :value="price.price">
+              {{ price.value }}
+            </option>
+          </select>
+        </div>
         </p>
         <p class="control">
-          <input
-            v-model="maxPriceBox"
-            class="input call-max is-small"
-            type="number"
-            min="0"
-            placeholder="いくらまで"
-            @input="changeMaxPrice($event.target.value)"
-          >
+        <div class="select is-small">
+          <select v-model="max_price_selected.value" @change="changeMaxPrice($event.target.value)" id="search-max">
+            <option disabled>いくらまで</option>
+            <option v-for="price in max_prices" :key="price.id" :value="price.price">
+              {{ price.value }}
+            </option>
+          </select>
+        </div>
         </p>
         <p class="control">
           <b-button
-            class="is-small"
+            class="is-small search-btn"
             @keyup.enter="setPage(1); pageToTop();"
             @click="setPage(1); pageToTop();"
           >
@@ -101,15 +88,6 @@
               icon="magnify"
               size="is-small"
             />
-          </b-button>
-        </p>
-        <p>
-          <b-button
-            class="is-small"
-            type="is-text"
-            @click="formClear()"
-          >
-            クリア
           </b-button>
         </p>
       </div>
@@ -131,19 +109,32 @@ export default {
   name: "RakutenApiCall",
   data() {
     return {
-      keywordBox: "",
-      minPriceBox: "",
-      maxPriceBox: "",
-      // フォーム部分(プルダウン)の並び替え用
-      sorts: [
-        { sort: "standard", name: "標準" },
-        { sort: "-reviewCount", name: "レビュー件数順" },
-        { sort: "-reviewAverage", name: "レビュー評価順" },
-        { sort: "-itemPrice", name: "価格が高い順" },
-        { sort: "+itemPrice", name: "価格が安い順" },
-        { sort: "+updateTimestamp", name: "新着順" },
+      min_prices: [
+        { value: "設定しない", price: "" },
+        { value: "1,000円〜", price: 1000 },
+        { value: "3,000円〜", price: 3000 },
+        { value: "5,000円〜", price: 5000 },
+        { value: "10,000円〜", price: 10000 },
+        { value: "15,000円〜", price: 15000 },
+        { value: "20,000円〜", price: 20000 },
+        { value: "30,000円〜", price: 30000 },
+        { value: "50,000円〜", price: 50000 },
+        { value: "100,000円〜", price: 100000 },
       ],
-      sort_selected: { sort: "standard", name: "標準" },
+      min_price_selected: { price: 1000, value: "いくらから" },
+      max_prices: [
+        { value: "設定しない", price: "" },
+        { value: "〜1,000円", price: 1000 },
+        { value: "〜3,000円", price: 3000 },
+        { value: "〜5,000円", price: 5000 },
+        { value: "〜10,000円", price: 10000 },
+        { value: "〜15,000円", price: 15000 },
+        { value: "〜20,000円", price: 20000 },
+        { value: "〜30,000円", price: 30000 },
+        { value: "〜50,000円", price: 50000 },
+        { value: "〜100,000円", price: 100000 },
+      ],
+      max_price_selected: { price: 1000, value: "いくらまで" },
     };
   },
   computed: {
@@ -165,11 +156,6 @@ export default {
     setPage(page) {
       var vm = this;
       vm.search(vm.changePage(page));
-    },
-    formClear() {
-      this.keywordBox = "";
-      this.minPriceBox = "";
-      this.maxPriceBox = "";
     },
     pageToTop() {
       window.scrollTo({
@@ -194,6 +180,9 @@ export default {
 }
 .responsive-call {
   display: none;
+}
+.search-btn {
+  background-color: #ffd3d4;
 }
 @media screen and (max-width: 959px) {
   .pc-call {
