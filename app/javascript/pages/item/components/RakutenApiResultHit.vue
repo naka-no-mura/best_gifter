@@ -36,7 +36,11 @@
                 class="tag reset-tag"
                 @click="resetSearch()"
               >
-                検索条件のリセット
+                検索条件をリセットする
+          <b-icon
+              icon="arrow-right-drop-circle-outline"
+              size="is-small"
+            />
               </b-button>
             </b-taglist>
           </div>
@@ -116,7 +120,11 @@
           class="tag reset-tag"
           @click="resetSearch()"
         >
-          検索条件のリセット
+          検索条件をリセットする
+          <b-icon
+              icon="arrow-right-drop-circle-outline"
+              size="is-small"
+            />
         </b-button>
       </b-taglist>
     </div>
@@ -317,9 +325,7 @@ export default {
   margin-right: 0.5rem;
 }
 .reset-tag {
-  text-decoration: underline;
-  background-color: white;
-  border: 2px solid #ffd3d4;
+  background-color: #77c7f7;
   transition: 0.3s;
 }
 .responsive-hit {
