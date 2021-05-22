@@ -18,7 +18,7 @@ Rails.application.routes.draw do
           get 'search'
         end
       end
-      resources :questionnaires, only: %i[index create destroy] do
+      resources :questionnaires, only: %i[index create destroy show] do
         collection do
           get 'my_questionnaires'
         end

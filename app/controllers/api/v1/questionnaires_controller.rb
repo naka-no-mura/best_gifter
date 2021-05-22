@@ -5,6 +5,12 @@ class Api::V1::QuestionnairesController < ApplicationController
     render json: @questionnaires.to_json(include: :questionnaire_choices)
   end
 
+  def show
+    @questionnaire = Questionnaire.find(params[:id])
+
+    render json: @questionnaire.to_json(include: :questionnaire_choices)
+  end
+
   def create
     questionnaire = Questionnaire.new(questionnaire_params)
 
@@ -29,6 +35,10 @@ class Api::V1::QuestionnairesController < ApplicationController
   end
 
   private
+
+  def set_questionnaire
+    @questionnaire = Questionnaire.find(params[:id])
+  end
 
   def questionnaire_params
     params.require(:questionnaire).permit(:user_id, :text, :relationship, :gender, :age)
