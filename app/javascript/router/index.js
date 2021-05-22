@@ -48,7 +48,7 @@ const router = new Router({
             id: Number(routes.params.id),
       }),
       name: "QuestionnaireShowIndex",
-      meta: { requiredAuth: true },
+      // meta: { requiredAuth: true },
     },
     {
       path: "/register",
