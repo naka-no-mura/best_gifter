@@ -84,7 +84,7 @@
       />
     </div>
     <div class="twitter_share">
-      <button @click="twitterShare">ツイッターでシェアする</button>
+      <button @click="twitterShare"><b-icon icon="twitter" size="is-medium"></b-icon>Twitterでシェアする</button>
     </div>
   </div>
 </template>
@@ -217,7 +217,7 @@ export default {
       //シェアする画面を設定
       var shareURL = 'https://twitter.com/intent/tweet?text=' + "【こんな新郎新婦へギフトを贈りたい💐】%0a間柄：" + `${this.questionnaire.relationship}` + "%0a性別：" + `${this.questionnaire.gender}` + "%0a年齢：" + `${this.questionnaire.age}` + "%0a内容：" + `${this.questionnaire.text}` + "%0a%20%23結婚祝い%0a" + "%0aどのギフトが最適そうでしょうか？" + "%0a▼投票にご協力下さい！%0a" + '&url=' + `https://www.best-gifter.work/questionnaire_list/${this.$route.params.id}`;
       //シェア用の画面へ移行
-      location.href = shareURL
+      window.open(shareURL, '_blank')
     },
 
     pageToTop() {
