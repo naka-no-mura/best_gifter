@@ -144,7 +144,8 @@ export default {
   methods: {
     getQuestionnaire() {
       this.$axios
-        .get(`http://localhost:3000/api/v1/questionnaires/${this.$route.params.id}`)
+        // .get(`http://localhost:3000/api/v1/questionnaires/${this.$route.params.id}`)
+        .get(`https://www.best-gifter.work/api/v1/questionnaires/${this.$route.params.id}`)
         .then((res) => {
           this.$data.questionnaire = res.data;
           this.$data.options.answers[0].value = res.data.questionnaire_choices[0].id;
@@ -168,7 +169,8 @@ export default {
     },
     addVote: function(obj) {
       return this.$axios
-        .post("http://localhost:3000/api/v1/answers", {
+        // .post("http://localhost:3000/api/v1/answers", {
+        .post("https://www.best-gifter.work/api/v1/answers", {
           user_id: this.authUser.id,
           questionnaire_choice_id: obj.value,
           questionnaire_id: this.questionnaire.id,
@@ -195,7 +197,8 @@ export default {
 
     register() {
       this.$axios
-        .post("http://localhost:3000/api/v1/users", { user: this.user })
+        // .post("http://localhost:3000/api/v1/users", { user: this.user })
+        .post("https://www.best-gifter.work/api/v1/users", { user: this.user })
         .catch((error) => {
           console.log(error);
           this.errors = error.response.data.errors
