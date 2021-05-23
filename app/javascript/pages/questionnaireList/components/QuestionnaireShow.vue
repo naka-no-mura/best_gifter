@@ -89,6 +89,7 @@
       <button class="button tw-btn" @click="twitterShare"><b-icon class="tw-icon" icon="twitter" size="is-medium"></b-icon>シェアする</button>
     </div>
     </div>
+    <button class="button is-text back-to-list" @click="pushQuestionnaireList()">みんなのアンケート結果一覧へ</button>
   </div>
   </div>
 </template>
@@ -230,6 +231,10 @@ export default {
         behavior: "auto",
       });
     },
+
+    pushQuestionnaireList() {
+      this.$router.push({ name: "QuestionnaireListIndex" });
+    }
   },
 }
 </script>
@@ -301,6 +306,9 @@ img {
 }
 .sp-ver {
   display: none;
+}
+.back-to-list {
+  margin-top: 1rem;
 }
 @media screen and (max-width: 959px) {
   .pc-ver {

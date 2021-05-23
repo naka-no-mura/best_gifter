@@ -46,7 +46,7 @@
     <router-link
       :to="`/questionnaire_list/${questionnaire.id}`"
       class="button"
-    >Twitterで共有する　<b-icon icon="menu-right" size="is-medium"></b-icon>
+    >Twitterでシェアする　<b-icon icon="menu-right" size="is-medium"></b-icon>
     </router-link>
       <b-button
         type="is-text"
