@@ -110,7 +110,7 @@ export default {
 };
 </script>
 
-<style  scoped>
+<style scoped>
 .questionnaire-item {
   -webkit-transition: 0.3s;
   transition: 0.3s;
