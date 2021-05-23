@@ -50,6 +50,20 @@ const actions = {
       return null;
     }
   },
+  // SNSシェアリンクからきた人用
+  async loginUserForVote({ commit }, user) {
+    // ログイン
+    // const sessionsResponse = await axios.post("http://localhost:3000/api/v1/sessions", user);
+    const sessionsResponse = await axios.post("https://www.best-gifter.work/api/v1/sessions", user);
+    localStorage.auth_token = sessionsResponse.data.token;
+    axios.defaults.headers.common[
+      "Authorization"
+    ] = `Bearer ${localStorage.auth_token}`;
+    // ログインユーザー情報の取得
+    // const userResponse = await axios.get("http://localhost:3000/api/v1/users/me");
+    const userResponse = await axios.get("https://www.best-gifter.work/api/v1/users/me");
+    commit("setUser", userResponse.data);
+  },
 };
 
 export default {

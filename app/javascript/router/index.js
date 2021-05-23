@@ -6,6 +6,7 @@ import TopIndex from '../pages/top/index.vue';
 import ItemIndex from '../pages/item/index.vue';
 import QuestionnaireFormIndex from "../pages/questionnaireForm/index.vue";
 import QuestionnaireListIndex from "../pages/questionnaireList/index.vue";
+import QuestionnaireShowIndex from "../pages/questionnaireList/components/QuestionnaireShow.vue";
 import RegisterIndex from "../pages/register/index.vue";
 import LoginIndex from "../pages/login/index.vue";
 import MypageIndex from "../pages/mypage/index.vue";
@@ -39,6 +40,14 @@ const router = new Router({
       component: QuestionnaireListIndex,
       name: "QuestionnaireListIndex",
       meta: { requiredAuth: true },
+    },
+    {
+      path: "/questionnaire_list/:id",
+      component: QuestionnaireShowIndex,
+      props: routes => ({
+            id: Number(routes.params.id),
+      }),
+      name: "QuestionnaireShowIndex",
     },
     {
       path: "/register",

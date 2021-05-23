@@ -1,8 +1,14 @@
 class Api::V1::QuestionnairesController < ApplicationController
+  before_action :set_questionnaire, only: %i[show destroy]
+
   def index
     @questionnaires = Questionnaire.all.includes(:user).order(created_at: :desc)
 
     render json: @questionnaires.to_json(include: :questionnaire_choices)
+  end
+
+  def show
+    render json: @questionnaire.to_json(include: :questionnaire_choices)
   end
 
   def create
@@ -16,7 +22,6 @@ class Api::V1::QuestionnairesController < ApplicationController
   end
 
   def destroy
-    @questionnaire = Questionnaire.find(params[:id])
     @questionnaire.destroy!
 
     render json: @qestionnaire
@@ -29,6 +34,10 @@ class Api::V1::QuestionnairesController < ApplicationController
   end
 
   private
+
+  def set_questionnaire
+    @questionnaire = Questionnaire.find(params[:id])
+  end
 
   def questionnaire_params
     params.require(:questionnaire).permit(:user_id, :text, :relationship, :gender, :age)

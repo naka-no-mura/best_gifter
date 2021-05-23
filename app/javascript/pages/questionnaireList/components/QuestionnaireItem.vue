@@ -40,6 +40,11 @@
         @addvote="addVote"
       />
     </div>
+    <router-link
+      :to="`/questionnaire_list/${questionnaire.id}`"
+      class="button tw-btn"
+    >Twitterでシェアする　<b-icon icon="menu-right" size="is-medium"></b-icon>
+    </router-link>
   </div>
 </template>
 
@@ -105,7 +110,7 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style  scoped>
 .questionnaire-item {
   -webkit-transition: 0.3s;
   transition: 0.3s;
@@ -123,5 +128,12 @@ export default {
 .gift-q-tl {
   border-bottom: 1px solid #ffd3d4;
   margin-bottom: 1rem;
+}
+.tw-btn {
+  transition: 0.3s;
+}
+.tw-btn:hover {
+  background-color: #77c7f7 !important;
+  color: white !important;
 }
 </style>
