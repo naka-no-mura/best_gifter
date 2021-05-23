@@ -40,15 +40,10 @@
         @addvote="addVote"
       />
     </div>
-    <!-- <router-link
-      :to="{name: 'QuestionnaireShowIndex', query: {id: questionnaire.id}}"
-      class="button"
-    >編集・詳細
-    </router-link> -->
     <router-link
       :to="`/questionnaire_list/${questionnaire.id}`"
       class="button"
-    >編集・詳細
+    >Twitterで共有する　<b-icon icon="menu-right" size="is-medium"></b-icon>
     </router-link>
   </div>
 </template>

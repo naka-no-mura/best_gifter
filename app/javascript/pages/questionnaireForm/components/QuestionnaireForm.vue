@@ -161,6 +161,7 @@
           >
             投稿したアンケートを確認する
           </b-button>
+          <p style="text-align: center"><small>マイページ・アンケート一覧からTwitterでシェアしてみましょう！</small></p>
         </form>
       </ValidationObserver>
     </div>

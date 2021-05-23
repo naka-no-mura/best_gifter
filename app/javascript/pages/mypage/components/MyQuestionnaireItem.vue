@@ -42,7 +42,12 @@
       v-bind="options"
       final-results
     />
-    <p class="delete-btn">
+    <p>
+    <router-link
+      :to="`/questionnaire_list/${questionnaire.id}`"
+      class="button"
+    >Twitterで共有する　<b-icon icon="menu-right" size="is-medium"></b-icon>
+    </router-link>
       <b-button
         type="is-text"
         @click="deleteQuestionnaire(questionnaire.id)"
@@ -125,9 +130,6 @@ export default {
 }
 .my-q-item:hover {
   border: 5px solid #ffd3d4;
-}
-.delete-btn {
-  text-align: right;
 }
 @media screen and (max-width: 480px) {
   .my-q-item {

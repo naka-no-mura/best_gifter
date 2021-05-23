@@ -44,6 +44,8 @@
     </template>
 
     <!-- アンケート情報 -->
+    <div class="q-item">
+    <div class="q-item-box">
     <div class="section">
       <p class="gift-q-tl">
         <b-icon
@@ -84,8 +86,10 @@
       />
     </div>
     <div class="twitter_share">
-      <button @click="twitterShare"><b-icon icon="twitter" size="is-medium"></b-icon>Twitterでシェアする</button>
+      <button class="button tw-btn" @click="twitterShare"><b-icon class="tw-icon" icon="twitter" size="is-medium"></b-icon>シェアする</button>
     </div>
+    </div>
+  </div>
   </div>
 </template>
 
@@ -238,6 +242,25 @@ img {
 .logo {
   text-align: center;
 }
+.tw-btn {
+  background-color: #1DA1F2;
+  color: white;
+  border: 5px solid #1DA1F2;
+  transition: 0.3s;
+}
+.tw-btn:hover {
+  border: 5px solid #1DA1F2 !important;
+  background-color: white;
+  color: #1DA1F2;
+}
+.tw-btn:hover .tw-icon {
+  color: #1DA1F2 !important;
+}
+.tw-icon {
+  color: white;
+  margin: 0 1rem 0 0.3rem !important;
+  transition: 0.3s;
+}
 .q-btn {
   background-color: #77c7f7 !important;
   border: 5px solid #77c7f7 !important;
@@ -245,7 +268,15 @@ img {
   color: white;
   margin-top: 1rem;
 }
-
+.q-item {
+  padding: 10rem;
+}
+.q-item-box {
+  background-color: white;
+  padding: 2rem;
+  border-radius: 1rem;
+  border: 5px solid #ffd3d4;
+}
 .q-m-btn {
   width: 80% !important;
   margin: 0 auto;
@@ -308,5 +339,14 @@ img {
   .q-icon {
     margin-left: 0.1rem !important;
   }
+.q-item {
+  padding: 7rem 1rem;
+}
+.q-item-box {
+  background-color: white;
+  padding: 2rem;
+  border-radius: 1rem;
+  border: 5px solid #ffd3d4;
+}
 }
 </style>
