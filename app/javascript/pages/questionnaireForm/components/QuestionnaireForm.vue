@@ -161,7 +161,7 @@
           >
             投稿したアンケートを確認する
           </b-button>
-          <p style="text-align: center"><small>マイページ・アンケート一覧からTwitterでシェアしてみましょう！</small></p>
+          <p style="text-align: center"><small>Twitterでシェアしてみましょう！</small></p>
         </form>
       </ValidationObserver>
     </div>
@@ -183,6 +183,7 @@ export default {
         choice_first: "",
         choice_second: "",
         choice_third: "",
+        id: "",
       },
       form: {},
       isPush : false,
@@ -205,6 +206,7 @@ export default {
         }
       );
       const response_questionnaire_id = createQuestionnaireResponse.data.id;
+      this.questionnaire.id = createQuestionnaireResponse.data.id;
       const choice_first = this.questionnaire.choice_first;
       const choice_second = this.questionnaire.choice_second;
       const choice_third = this.questionnaire.choice_third;
@@ -246,7 +248,7 @@ export default {
         );
     },
     pushQuestionnaireList() {
-      this.$router.push("/questionnaire_list");
+      this.$router.push(`/questionnaire_list/${this.questionnaire.id}`);
     },
     pageToTop() {
       window.scrollTo({
