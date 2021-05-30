@@ -91,7 +91,7 @@
               <b-input
                 id="q-text"
                 v-model="questionnaire.text"
-                maxlength="200"
+                maxlength="140"
                 type="textarea"
               />
             </b-field>
