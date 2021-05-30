@@ -1,7 +1,10 @@
 <template>
   <div>
     <!-- pcバージョン -->
-    <div v-if="count" class="block pc-hit">
+    <div
+      v-if="count"
+      class="block pc-hit"
+    >
       <nav class="level">
         <div class="level-left">
           <div class="level-item">
@@ -12,16 +15,32 @@
             </div>
             <span>検索条件：</span>
             <b-taglist>
-              <b-tag v-if="keyword" class="tag" rounded>
+              <b-tag
+                v-if="keyword"
+                class="tag"
+                rounded
+              >
                 {{ keyword }}
               </b-tag>
-              <b-tag v-if="genreId" class="tag" rounded>
+              <b-tag
+                v-if="genreId"
+                class="tag"
+                rounded
+              >
                 {{ genreIdToName(genreId) }}
               </b-tag>
-              <b-tag v-if="minPrice" class="tag" rounded>
+              <b-tag
+                v-if="minPrice"
+                class="tag"
+                rounded
+              >
                 {{ minPrice.toLocaleString() }}円〜
               </b-tag>
-              <b-tag v-if="maxPrice" class="tag" rounded>
+              <b-tag
+                v-if="maxPrice"
+                class="tag"
+                rounded
+              >
                 〜{{ maxPrice.toLocaleString() }}円
               </b-tag>
               <b-tag
@@ -45,7 +64,10 @@
         <div class="level-right" />
         <div class="level-right">
           <div class="level-item">
-            <label class="sort-btn" for="sort">並び替え</label>
+            <label
+              class="sort-btn"
+              for="sort"
+            >並び替え</label>
             <div class="select search-select">
               <select
                 v-if="count"
@@ -56,7 +78,11 @@
                   setPage(1);
                 "
               >
-                <option v-for="sort in sorts" :key="sort.id" :value="sort.sort">
+                <option
+                  v-for="sort in sorts"
+                  :key="sort.id"
+                  :value="sort.sort"
+                >
                   {{ sort.name }}
                 </option>
               </select>
@@ -66,7 +92,10 @@
       </nav>
     </div>
     <!-- スマホバージョン -->
-    <div v-if="count" class="block responsive-hit">
+    <div
+      v-if="count"
+      class="block responsive-hit"
+    >
       <div class="hit-sort">
         <div class="select is-small">
           <select
@@ -77,7 +106,11 @@
               setPage(1);
             "
           >
-            <option v-for="sort in sorts" :key="sort.id" :value="sort.sort">
+            <option
+              v-for="sort in sorts"
+              :key="sort.id"
+              :value="sort.sort"
+            >
               {{ sort.name }}
             </option>
           </select>
@@ -92,16 +125,32 @@
     <div class="conditions">
       <span>検索条件：</span>
       <b-taglist>
-        <b-tag v-if="keyword" class="tag" rounded>
+        <b-tag
+          v-if="keyword"
+          class="tag"
+          rounded
+        >
           {{ keyword }}
         </b-tag>
-        <b-tag v-if="genreId" class="tag" rounded>
+        <b-tag
+          v-if="genreId"
+          class="tag"
+          rounded
+        >
           {{ genreIdToName(genreId) }}
         </b-tag>
-        <b-tag v-if="minPrice" class="tag" rounded>
+        <b-tag
+          v-if="minPrice"
+          class="tag"
+          rounded
+        >
           {{ minPrice.toLocaleString() }}円〜
         </b-tag>
-        <b-tag v-if="maxPrice" class="tag" rounded>
+        <b-tag
+          v-if="maxPrice"
+          class="tag"
+          rounded
+        >
           〜{{ maxPrice.toLocaleString() }}円
         </b-tag>
         <b-tag

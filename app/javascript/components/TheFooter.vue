@@ -12,22 +12,33 @@
       </p>
       <p class="f-item">
         <router-link to="/terms">
-          <span id="terms" @click="pageToTop()">
+          <span
+            id="terms"
+            @click="pageToTop()"
+          >
             利用規約
           </span>
         </router-link>
       </p>
       <p class="f-item">
         <router-link to="/privacy_policys">
-          <span id="privacy_policys" @click="pageToTop()">
+          <span
+            id="privacy_policys"
+            @click="pageToTop()"
+          >
             プライバシーポリシー
           </span>
         </router-link>
       </p>
       <p class="f-item">
-        <a href="https://twitter.com/Best_Gifter" target="_blank"
-          ><span> <b-icon id="twitter" icon="twitter" size="is-middle"/></span
-        ></a>
+        <a
+          href="https://twitter.com/Best_Gifter"
+          target="_blank"
+        ><span> <b-icon
+          id="twitter"
+          icon="twitter"
+          size="is-middle"
+        /></span></a>
       </p>
     </div>
   </footer>

@@ -1,8 +1,8 @@
 # config valid for current version and patch releases of Capistrano
-lock "~> 3.16.0"
+lock '~> 3.16.0'
 
-set :application, "best_gifter"
-set :repo_url, "git@github.com:naka-no-mura/best_gifter.git"
+set :application, 'best_gifter'
+set :repo_url, 'git@github.com:naka-no-mura/best_gifter.git'
 
 set :branch, 'main'
 
@@ -21,7 +21,7 @@ set :keep_releases, 2
 # rubyのバージョン
 set :rbenv_ruby, '2.7.2'
 
-#出力するログのレベル。
+# 出力するログのレベル。
 set :log_level, :debug
 
 namespace :deploy do
@@ -34,7 +34,7 @@ namespace :deploy do
 
   desc 'Create database'
   task :db_create do
-    on roles(:db) do |host|
+    on roles(:db) do |_host|
       with rails_env: fetch(:rails_env) do
         within current_path do
           execute :bundle, :exec, :rake, 'db:create'

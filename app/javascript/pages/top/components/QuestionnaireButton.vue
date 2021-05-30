@@ -19,36 +19,63 @@
       >
         アンケートに投票してみんなのギフトを参考にする
       </button>
-      <div class="modal" :class="{ 'is-active': isActive }">
-        <div class="modal-background" @click="changeIsActive()"></div>
+      <div
+        class="modal"
+        :class="{ 'is-active': isActive }"
+      >
+        <div
+          class="modal-background"
+          @click="changeIsActive()"
+        />
         <div class="modal-content">
-          <router-link to="/login" @click.native="pageToTop()">
-            <p class="q-tx">自分のアカウントで</p>
+          <router-link
+            to="/login"
+            @click.native="pageToTop()"
+          >
+            <p class="q-tx">
+              自分のアカウントで
+            </p>
             <button class="button q-btn q-m-btn is-fullwidth is-rounded">
               ログインして投票する
-            </button> </router-link
-          ><br />
-          <br />
-          <br />
-          <p class="q-tx">一時的な投票用アカウントを</p>
+            </button>
+          </router-link><br>
+          <br>
+          <br>
+          <p class="q-tx">
+            一時的な投票用アカウントを
+          </p>
           <template v-if="!loginForVote">
-            <button class="button q-btn q-m-btn is-fullwidth is-rounded" disabled @click="register(); pageToTop();">
+            <button
+              class="button q-btn q-m-btn is-fullwidth is-rounded"
+              disabled
+              @click="register(); pageToTop();"
+            >
               ① 作成して
             </button>
           </template>
           <template v-else>
-            <button class="button q-btn q-m-btn is-fullwidth is-rounded" @click="register()">
+            <button
+              class="button q-btn q-m-btn is-fullwidth is-rounded"
+              @click="register()"
+            >
               ① 作成して
             </button>
           </template>
-          <br />
+          <br>
           <template v-if="!gAccountForVote">
-            <button class="button q-btn q-m-btn is-fullwidth is-rounded" disabled @click="login()">
+            <button
+              class="button q-btn q-m-btn is-fullwidth is-rounded"
+              disabled
+              @click="login()"
+            >
               ② ログインして投票する
             </button>
           </template>
           <template v-else>
-            <button class="button q-btn q-m-btn is-fullwidth is-rounded" @click="login(); pageToTop();">
+            <button
+              class="button q-btn q-m-btn is-fullwidth is-rounded"
+              @click="login(); pageToTop();"
+            >
               ② ログインして投票する
             </button>
           </template>
@@ -57,7 +84,7 @@
           class="modal-close is-large"
           aria-label="close"
           @click="changeIsActive()"
-        ></button>
+        />
       </div>
     </template>
     <template v-else>

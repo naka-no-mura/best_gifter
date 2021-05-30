@@ -3,7 +3,7 @@
     <div class="block">
       <p><img src="../../../assets/images/logo_medium_pink.JPG"></p>
       <p class="subtitle">
-        <b><big>{{ this.authUser.name }}</big></b>さんのマイページ
+        <b><big>{{ authUser.name }}</big></b>さんのマイページ
       </p>
     </div>
     <div class="my-page-box">

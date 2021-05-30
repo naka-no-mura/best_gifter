@@ -43,11 +43,15 @@
       final-results
     />
     <p>
-    <router-link
-      :to="`/questionnaire_list/${questionnaire.id}`"
-      class="button"
-    >Twitterでシェアする　<b-icon icon="menu-right" size="is-medium"></b-icon>
-    </router-link>
+      <router-link
+        :to="`/questionnaire_list/${questionnaire.id}`"
+        class="button"
+      >
+        Twitterでシェアする　<b-icon
+          icon="menu-right"
+          size="is-medium"
+        />
+      </router-link>
       <b-button
         type="is-text"
         @click="deleteQuestionnaire(questionnaire.id)"

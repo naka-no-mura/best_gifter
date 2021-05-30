@@ -1,8 +1,7 @@
 class Api::V1::AnswersController < ApplicationController
   def index
-    # @answers = Answer.all.includes(:questionnaire_choice, :questionnaire)
-
     @answer_counts = Answer.group(:questionnaire_choice_id).count
+
     render json: @answer_counts
   end
 

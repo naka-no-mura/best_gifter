@@ -43,7 +43,11 @@
     <router-link
       :to="`/questionnaire_list/${questionnaire.id}`"
       class="button tw-btn"
-    >Twitterでシェアする　<b-icon icon="menu-right" size="is-medium"></b-icon>
+    >
+      Twitterでシェアする　<b-icon
+        icon="menu-right"
+        size="is-medium"
+      />
     </router-link>
   </div>
 </template>

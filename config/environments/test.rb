@@ -52,5 +52,5 @@ Rails.application.configure do
 
   # Raises error for missing translations.
   # config.action_view.raise_on_missing_translations = true
-  WebMock.allow_net_connect!(:net_http_connect_on_start => true)
+  WebMock.allow_net_connect!(net_http_connect_on_start: true)
 end

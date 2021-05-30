@@ -30,7 +30,7 @@ gem 'bootsnap', '>= 1.4.2', require: false
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'byebug', platforms: %i[mri mingw x64_mingw]
 
   # RSpec
   gem 'factory_bot_rails'
@@ -41,7 +41,7 @@ group :development, :test do
   gem 'rubocop-rails'
   gem 'rails_best_practices'
   gem 'rubocop-rspec'
-  gem "rspec_junit_formatter"
+  gem 'rspec_junit_formatter'
 
   # Debugger
   gem 'pry-byebug'
@@ -85,16 +85,13 @@ group :test do
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
 # 楽天商品検索API
 gem 'rakuten_web_service'
 
 # 環境変数
 gem 'dotenv-rails'
-
-# Webpackerとrailsの起動
-gem 'foreman'
 
 # 外部APIを叩く
 gem 'httpclient'
@@ -113,7 +110,7 @@ gem 'counter_culture'
 gem 'rails-i18n'
 
 # N+1を検知
-gem "bullet"
+gem 'bullet'
 
-gem "mimemagic", "~> 0.3.10"
-gem "sassc", '2.4.0'
+gem 'mimemagic', '~> 0.3.10'
+gem 'sassc', '2.4.0'

@@ -11,7 +11,7 @@
             class="logo-img"
             src="../../assets/images/logo_dark_pink.JPG"
             @click="pageToTop()"
-          />
+          >
         </router-link>
       </p>
       <a
@@ -41,18 +41,22 @@
           class="navbar-item nav-item"
           @click.native="pageToTop()"
         >
-          <b-icon class="nav-icon" icon="laptop" size="is-small" /><span
-            >トップ</span
-          >
+          <b-icon
+            class="nav-icon"
+            icon="laptop"
+            size="is-small"
+          /><span>トップ</span>
         </router-link>
         <router-link
           to="/items"
           class="navbar-item nav-item"
           @click.native="pageToTop()"
         >
-          <b-icon class="nav-icon" icon="magnify" size="is-small" /><span
-            >検索</span
-          >
+          <b-icon
+            class="nav-icon"
+            icon="magnify"
+            size="is-small"
+          /><span>検索</span>
         </router-link>
         <template v-if="!authUser">
           <router-link
@@ -71,15 +75,22 @@
             class="navbar-item nav-item"
             @click.native="pageToTop()"
           >
-            <b-icon class="nav-icon" icon="login" size="is-small" /><span
-              >ログイン</span
-            >
+            <b-icon
+              class="nav-icon"
+              icon="login"
+              size="is-small"
+            /><span>ログイン</span>
           </router-link>
         </template>
         <template v-else>
           <div class="navbar-item has-dropdown is-hoverable nav-item">
-            <a class="navbar-link"
-              ><b-icon class="nav-icon" icon="forum" size="is-small" />
+            <a
+              class="navbar-link"
+            ><b-icon
+              class="nav-icon"
+              icon="forum"
+              size="is-small"
+            />
               アンケート
             </a>
             <div class="navbar-dropdown">
@@ -128,10 +139,13 @@
               pageToTop();
             "
           >
-            <b-icon class="nav-icon" icon="logout" size="is-small" /><span
+            <b-icon
+              class="nav-icon"
+              icon="logout"
+              size="is-small"
+            /><span
               @click="changeIsActive()"
-              >ログアウト</span
-            >
+            >ログアウト</span>
           </router-link>
         </template>
       </div>
