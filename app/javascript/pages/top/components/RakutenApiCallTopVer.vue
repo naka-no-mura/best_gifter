@@ -7,7 +7,7 @@
           type="search"
           placeholder="キーワード(例:結婚)"
           @input="changeKeyword($event.target.value)"
-        />
+        >
       </p>
       <p class="control">
         <div class="select is-medium top-call-min">
@@ -42,7 +42,10 @@
             search();
           "
         >
-          <b-icon icon="magnify" size="is-medium" />
+          <b-icon
+            icon="magnify"
+            size="is-medium"
+          />
         </b-button>
       </p>
     </div>

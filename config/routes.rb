@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   root 'home#index'
-  namespace :api, {format: 'json'} do
+  namespace :api, { format: 'json' } do
     namespace :v1 do
       resources :sessions, only: %i[create]
       resources :users, only: %i[create] do

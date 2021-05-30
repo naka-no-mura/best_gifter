@@ -2,12 +2,15 @@
   <div class="tile is-parent">
     <!-- pc ver -->
     <div class="mask pc-ver">
-      <a target="_blank" :href="item.Item.itemUrl">
+      <a
+        target="_blank"
+        :href="item.Item.itemUrl"
+      >
         <button class="button i-btn is-rounded rakuten-btn">
           楽天市場へ
         </button>
       </a>
-      <br />
+      <br>
       <template v-if="authUser">
         <button
           class="button i-btn is-rounded favorite-btn"
@@ -18,21 +21,36 @@
       </template>
     </div>
     <!-- スマホ タブレット ver -->
-    <div class="mask sm-tb-ver" @click="changeIsActive()"></div>
+    <div
+      class="mask sm-tb-ver"
+      @click="changeIsActive()"
+    />
     <article class="tile is-child tile-image">
       <!-- モーダル -->
-      <div class="modal i-modal" :class="{ 'is-active': isActive }">
-        <div class="modal-background" @click="changeIsActive()"></div>
-        <div class="modal-content" @click="changeIsActive()">
-          <a target="_blank" :href="item.Item.itemUrl">
+      <div
+        class="modal i-modal"
+        :class="{ 'is-active': isActive }"
+      >
+        <div
+          class="modal-background"
+          @click="changeIsActive()"
+        />
+        <div
+          class="modal-content"
+          @click="changeIsActive()"
+        >
+          <a
+            target="_blank"
+            :href="item.Item.itemUrl"
+          >
             <button class="button i-btn is-rounded rakuten-btn">
               楽天市場へ
             </button>
           </a>
-          <br />
-          <br />
-          <br />
-          <br />
+          <br>
+          <br>
+          <br>
+          <br>
           <template v-if="authUser">
             <button
               class="button i-btn is-rounded favorite-btn"
@@ -49,7 +67,7 @@
           alt=""
           class="item-img"
           on:error="altImg()"
-        />
+        >
       </figure>
       <div class="content">
         <p>
@@ -61,19 +79,16 @@
           </big>
         </p>
         <div class="review-box">
-          <small
-            ><star-rating
-              v-model="item.Item.reviewAverage"
-              :increment="0.01"
-              read-only
-              :star-size="15"
-              class="review-average"
+          <small><star-rating
+            v-model="item.Item.reviewAverage"
+            :increment="0.01"
+            read-only
+            :star-size="15"
+            class="review-average"
           /></small>
-          <small
-            ><span class="review-count"
-              >{{ item.Item.reviewCount.toLocaleString() }}件</span
-            ></small
-          >
+          <small><span
+            class="review-count"
+          >{{ item.Item.reviewCount.toLocaleString() }}件</span></small>
         </div>
       </div>
     </article>

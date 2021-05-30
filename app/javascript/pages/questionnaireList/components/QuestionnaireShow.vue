@@ -2,25 +2,33 @@
   <div class="container">
     <!-- モーダル（ログインの有無確認） -->
     <template v-if="!authUser">
-      <div class="modal" :class="{ 'is-active': isActive }">
-        <div class="modal-background"></div>
+      <div
+        class="modal"
+        :class="{ 'is-active': isActive }"
+      >
+        <div class="modal-background" />
         <div class="modal-content">
           <p class="q-tl">
-            アンケートに投票して結果を見てみましょう！<br />ギフト選びの参考になるかも？
+            アンケートに投票して結果を見てみましょう！<br>ギフト選びの参考になるかも？
           </p>
           <div class="block logo">
-            <p><img src="../../../../assets/images/logo_medium_pink.JPG" /></p>
+            <p><img src="../../../../assets/images/logo_medium_pink.JPG"></p>
           </div>
-          <router-link to="/login" @click.native="pageToTop()">
-            <p class="q-tx">アカウントをお持ちの方はこちらから▼</p>
+          <router-link
+            to="/login"
+            @click.native="pageToTop()"
+          >
+            <p class="q-tx">
+              アカウントをお持ちの方はこちらから▼
+            </p>
             <button class="button q-btn q-m-btn is-fullwidth is-rounded">
               ログインして投票する
-            </button> </router-link
-          ><br />
-          <br />
-          <br />
+            </button>
+          </router-link><br>
+          <br>
+          <br>
           <p class="q-tx">
-            アカウントをお持ちでない方も<br /><b><big>簡単2クリック！▼</big></b>
+            アカウントをお持ちでない方も<br><b><big>簡単2クリック！▼</big></b>
           </p>
           <template v-if="!loginForVote">
             <button
@@ -42,7 +50,7 @@
               ① 投票用アカウントを作成して
             </button>
           </template>
-          <br />
+          <br>
           <template v-if="!gAccountForVote">
             <button
               class="button q-btn q-m-btn is-fullwidth is-rounded"
@@ -82,35 +90,60 @@
     <div class="q-item">
       <div class="q-item-box">
         <div class="section">
-        <div class="twitter_share">
-          <button class="button tw-btn" @click="twitterShare">
-            <b-icon class="tw-icon" icon="twitter" size="is-medium"></b-icon
-            >シェアする
-          </button>
-        </div>
+          <div class="twitter_share">
+            <button
+              class="button tw-btn"
+              @click="twitterShare"
+            >
+              <b-icon
+                class="tw-icon"
+                icon="twitter"
+                size="is-medium"
+              />シェアする
+            </button>
+          </div>
           <p class="gift-q-tl">
-            <b-icon icon="gift-outline" size="is-middium" class="gift-icon" />
+            <b-icon
+              icon="gift-outline"
+              size="is-middium"
+              class="gift-icon"
+            />
             ギフトを贈りたいお相手について
           </p>
           <p>
-            <b-icon icon="arrow-right-drop-circle-outline" size="is-small" />
+            <b-icon
+              icon="arrow-right-drop-circle-outline"
+              size="is-small"
+            />
             間柄：{{ questionnaire.relationship }}
           </p>
           <p>
-            <b-icon icon="arrow-right-drop-circle-outline" size="is-small" />
+            <b-icon
+              icon="arrow-right-drop-circle-outline"
+              size="is-small"
+            />
             性別：{{ questionnaire.gender }}
           </p>
           <p>
-            <b-icon icon="arrow-right-drop-circle-outline" size="is-small" />
+            <b-icon
+              icon="arrow-right-drop-circle-outline"
+              size="is-small"
+            />
             年齢：{{ questionnaire.age }}
           </p>
           <p>
-            <b-icon icon="arrow-right-drop-circle-outline" size="is-small" />
+            <b-icon
+              icon="arrow-right-drop-circle-outline"
+              size="is-small"
+            />
             内容：{{ questionnaire.text }}
           </p>
         </div>
         <div class="answers">
-          <vue-poll v-bind="options" @addvote="addVote" />
+          <vue-poll
+            v-bind="options"
+            @addvote="addVote"
+          />
         </div>
       </div>
       <button
@@ -163,12 +196,12 @@ export default {
       },
     };
   },
+  computed: {
+    ...mapGetters("users", ["authUser"]),
+  },
   created() {
     this.getQuestionnaire();
     this.gTmpEmail();
-  },
-  computed: {
-    ...mapGetters("users", ["authUser"]),
   },
   methods: {
     getQuestionnaire() {
@@ -197,11 +230,6 @@ export default {
             res.data.questionnaire_choices[2].choice;
           this.$data.options.answers[2].votes =
             res.data.questionnaire_choices[2].answers_count;
-          // console.log(res);
-          // for (let key of Object.keys(res)) {
-          //   console.log(key);
-          //   console.log(res[key]);
-          // }
         })
         .catch((err) => {
           console.log(err);

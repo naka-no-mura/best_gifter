@@ -91,7 +91,7 @@
               <b-input
                 id="q-text"
                 v-model="questionnaire.text"
-                maxlength="200"
+                maxlength="140"
                 type="textarea"
               />
             </b-field>
@@ -151,7 +151,9 @@
           >
             投稿する
           </b-button>
-          <p style="text-align: center"><small>必須項目を入力すると投稿できます</small></p>
+          <p style="text-align: center">
+            <small>必須項目を入力すると投稿できます</small>
+          </p>
           <b-button
             id="q-post"
             class="button q-btn"
@@ -161,7 +163,9 @@
           >
             投稿したアンケートを確認する
           </b-button>
-          <p style="text-align: center"><small>Twitterでシェアしてみましょう！</small></p>
+          <p style="text-align: center">
+            <small>Twitterでシェアしてみましょう！</small>
+          </p>
         </form>
       </ValidationObserver>
     </div>

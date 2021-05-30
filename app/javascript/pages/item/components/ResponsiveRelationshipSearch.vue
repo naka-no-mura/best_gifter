@@ -4,8 +4,8 @@
     <!-- 友人 -->
     <div class="select is-small genre-select">
       <select
-        class="rs-genre"
         v-model="friend_genreIdSelected"
+        class="rs-genre"
         @change="
           changeGenreId(friend_genreIdSelected);
           friendSetPage(1);
@@ -14,20 +14,23 @@
           pageToTop();
         "
       >
-        <option disabled>友人</option>
+        <option disabled>
+          友人
+        </option>
         <option
           v-for="friend_search_card in friend_search_cards"
           :key="friend_search_card.id"
           :value="friend_search_card.genreId"
-          >{{ friend_search_card.name }}</option
         >
+          {{ friend_search_card.name }}
+        </option>
       </select>
-      </div>
-      <!-- 親族 -->
-      <div class="select is-small genre-select">
+    </div>
+    <!-- 親族 -->
+    <div class="select is-small genre-select">
       <select
-        class="rs-genre"
         v-model="relative_genreIdSelected"
+        class="rs-genre"
         @change="
           changeGenreId(relative_genreIdSelected);
           relativeSetPage(1);
@@ -36,20 +39,23 @@
           pageToTop();
         "
       >
-        <option disabled>親族</option>
+        <option disabled>
+          親族
+        </option>
         <option
           v-for="relative_search_card in relative_search_cards"
           :key="relative_search_card.id"
           :value="relative_search_card.genreId"
-          >{{ relative_search_card.name }}</option
         >
+          {{ relative_search_card.name }}
+        </option>
       </select>
-      </div>
-      <!-- 同僚 -->
-      <div class="select is-small genre-select">
+    </div>
+    <!-- 同僚 -->
+    <div class="select is-small genre-select">
       <select
-        class="rs-genre"
         v-model="colleague_genreIdSelected"
+        class="rs-genre"
         @change="
           changeGenreId(colleague_genreIdSelected);
           colleagueSetPage(1);
@@ -58,20 +64,23 @@
           pageToTop();
         "
       >
-        <option disabled>同僚</option>
+        <option disabled>
+          同僚
+        </option>
         <option
           v-for="colleague_search_card in colleague_search_cards"
           :key="colleague_search_card.id"
           :value="colleague_search_card.genreId"
-          >{{ colleague_search_card.name }}</option
         >
+          {{ colleague_search_card.name }}
+        </option>
       </select>
-      </div>
-      <!-- 上司 -->
-      <div class="select is-small genre-select">
+    </div>
+    <!-- 上司 -->
+    <div class="select is-small genre-select">
       <select
-        class="rs-genre"
         v-model="boss_genreIdSelected"
+        class="rs-genre"
         @change="
           changeGenreId(boss_genreIdSelected);
           bossSetPage(1);
@@ -80,15 +89,17 @@
           pageToTop();
         "
       >
-        <option disabled>上司</option>
+        <option disabled>
+          上司
+        </option>
         <option
           v-for="boss_search_card in boss_search_cards"
           :key="boss_search_card.id"
           :value="boss_search_card.genreId"
-          >{{ boss_search_card.name }}</option
         >
+          {{ boss_search_card.name }}
+        </option>
       </select>
-    </div>
     </div>
   </div>
 </template>
