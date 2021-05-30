@@ -52,7 +52,7 @@ ActiveRecord::Schema.define(version: 2021_05_30_091147) do
 
   create_table "questionnaires", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "user_id", null: false
-    t.text "text", size: :tiny, null: false
+    t.text "text", null: false
     t.string "relationship", limit: 30, null: false
     t.string "gender", null: false
     t.string "age", limit: 10, null: false
