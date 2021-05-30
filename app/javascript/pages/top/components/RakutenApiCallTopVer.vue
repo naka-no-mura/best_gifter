@@ -10,25 +10,28 @@
         >
       </p>
       <p class="control">
-        <input
-          class="input top-call-min is-medium"
-          type="number"
-          min="0"
-          placeholder="任意：いくらから"
-          @input="changeMinPrice($event.target.value)"
-        >
+        <div class="select is-medium top-call-min">
+          <select v-model="min_price_selected.value" @input="changeMinPrice($event.target.value)" id="search-min">
+            <option disabled>いくらから</option>
+            <option v-for="price in min_prices" :key="price.id" :value="price.price">
+              {{ price.value }}
+            </option>
+          </select>
+        </div>
       </p>
       <p class="control">
-        <input
-          class="input top-call-max is-medium"
-          type="number"
-          min="0"
-          placeholder="任意：いくらまで"
-          @input="changeMaxPrice($event.target.value)"
-        >
+        <div class="select is-medium top-call-max">
+          <select v-model="max_price_selected.value" @input="changeMaxPrice($event.target.value)" id="search-max">
+            <option disabled>いくらまで</option>
+            <option v-for="price in max_prices" :key="price.id" :value="price.price">
+              {{ price.value }}
+            </option>
+          </select>
+        </div>
       </p>
       <p class="control">
         <b-button
+          class="search-btn"
           type="submit is-medium"
           @keyup.enter="
             keywordSearch();
@@ -58,6 +61,36 @@ import {
 } from "../../../store/mutation-types";
 export default {
   name: "RakutenApiCallTopVer",
+  data() {
+    return {
+      min_prices: [
+        { value: "設定しない", price: "" },
+        { value: "1,000円〜", price: 1000 },
+        { value: "3,000円〜", price: 3000 },
+        { value: "5,000円〜", price: 5000 },
+        { value: "10,000円〜", price: 10000 },
+        { value: "15,000円〜", price: 15000 },
+        { value: "20,000円〜", price: 20000 },
+        { value: "30,000円〜", price: 30000 },
+        { value: "50,000円〜", price: 50000 },
+        { value: "100,000円〜", price: 100000 },
+      ],
+      min_price_selected: { price: 1000, value: "いくらから" },
+      max_prices: [
+        { value: "設定しない", price: "" },
+        { value: "〜1,000円", price: 1000 },
+        { value: "〜3,000円", price: 3000 },
+        { value: "〜5,000円", price: 5000 },
+        { value: "〜10,000円", price: 10000 },
+        { value: "〜15,000円", price: 15000 },
+        { value: "〜20,000円", price: 20000 },
+        { value: "〜30,000円", price: 30000 },
+        { value: "〜50,000円", price: 50000 },
+        { value: "〜100,000円", price: 100000 },
+      ],
+      max_price_selected: { price: 1000, value: "いくらまで" },
+    };
+  },
   methods: {
     ...mapActions("rakuten_api", [
       "changeKeyword",
@@ -78,6 +111,9 @@ export default {
 }
 .top-call-keyword {
   width: 30rem;
+}
+.search-btn {
+  background-color: #ffd3d4;
 }
 @media screen and (max-width: 959px) {
   .top-call-keyword {

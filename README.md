@@ -50,7 +50,7 @@ Best Gifterで「第１次結婚ウェーブ渦中」の皆さんが、新郎新
 
 ### 機能における主要なGem
 - counter_culture 2.7.0（投票数カウント）
-- sourcery 0.16.0（ログイン）
+- sorcery 0.16.0（ログイン）
 - JWT 2.2.2（トークン発行）
 - rakuten_web_service 1.13.0（楽天商品検索API）
 - httpclient 2.8.3（ネットワーク通信）

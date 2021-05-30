@@ -1,12 +1,10 @@
 <template>
   <article
     v-if="error"
-    class="error-msg"
-    aria-close-label="Close message"
   >
-    <div>
+    <div class="reset-box">
       {{ errorMessage(error) }}
-      <div>
+      <div class="block">
         <b-button
           type="is-danger"
           class="reset-btn"
@@ -14,10 +12,14 @@
           @click="reset()"
         >
           検索条件をリセットする
+          <b-icon
+              icon="arrow-right-drop-circle-outline"
+              size="is-small"
+            />
         </b-button>
+        <img src="../../../../assets/images/top_image_pink.JPG">
       </div>
     </div>
-    <img src="../../../../assets/images/top_image_pink.JPG">
   </article>
 </template>
 
@@ -67,11 +69,7 @@ export default {
 </script>
 
 <style scoped>
-.error-msg {
-  margin-top: 3rem !important;
+.reset-box {
   text-align: center;
-}
-.reset-btn {
-  margin-bottom: 2rem;
 }
 </style>
