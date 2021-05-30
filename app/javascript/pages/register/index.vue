@@ -38,6 +38,7 @@
                 id="register-name"
                 v-model="user.name"
                 type="text"
+                maxlength="30"
               />
             </b-field>
             <span
@@ -58,6 +59,7 @@
                 id="register-email"
                 v-model="user.email"
                 type="email"
+                maxlength="100"
               />
             </b-field>
             <span
@@ -78,6 +80,7 @@
                 id="register-password"
                 v-model="user.password"
                 type="password"
+                maxlength="30"
                 password-reveal
               />
             </b-field>
@@ -99,6 +102,7 @@
                 id="register-password-confirmation"
                 v-model="user.password_confirmation"
                 type="password"
+                maxlength="30"
                 password-reveal
               />
             </b-field>

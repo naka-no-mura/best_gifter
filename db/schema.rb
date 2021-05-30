@@ -1,4 +1,4 @@
-a# This file is auto-generated from the current state of the database. Instead
+# This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
 #
@@ -10,7 +10,7 @@ a# This file is auto-generated from the current state of the database. Instead
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_18_014428) do
+ActiveRecord::Schema.define(version: 2021_05_30_091147) do
 
   create_table "answers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "user_id", null: false
@@ -43,7 +43,7 @@ ActiveRecord::Schema.define(version: 2021_04_18_014428) do
 
   create_table "questionnaire_choices", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "questionnaire_id", null: false
-    t.string "choice", null: false
+    t.string "choice", limit: 30, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "answers_count", default: 0, null: false
@@ -52,10 +52,10 @@ ActiveRecord::Schema.define(version: 2021_04_18_014428) do
 
   create_table "questionnaires", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "user_id", null: false
-    t.text "text", null: false
-    t.string "relationship", null: false
+    t.text "text", size: :tiny, null: false
+    t.string "relationship", limit: 30, null: false
     t.string "gender", null: false
-    t.string "age", null: false
+    t.string "age", limit: 10, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_questionnaires_on_user_id"
