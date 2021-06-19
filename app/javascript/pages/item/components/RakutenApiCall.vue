@@ -14,7 +14,7 @@
         </p>
         <p class="control">
         <div class="select is-medium">
-          <select v-model="min_price_selected.value" @input="changeMinPrice($event.target.value)" id="search-min">
+          <select v-model="min_price_selected.value" @input="changeMinPrice($event.target.value)" name="search-min">
             <option disabled>いくらから</option>
             <option v-for="price in min_prices" :key="price.id" :value="price.price">
               {{ price.value }}
@@ -24,7 +24,7 @@
         </p>
         <p class="control">
         <div class="select is-medium">
-          <select v-model="max_price_selected.value" @input="changeMaxPrice($event.target.value)" id="search-max">
+          <select v-model="max_price_selected.value" @input="changeMaxPrice($event.target.value)" name="search-max">
             <option disabled>いくらまで</option>
             <option v-for="price in max_prices" :key="price.id" :value="price.price">
               {{ price.value }}
