@@ -11,7 +11,7 @@ RSpec.describe "Items", type: :system, js: true  do
     end
 
     context '全ての入力が正常なとき', js: true  do
-      it '投稿が成功する', js: true  do
+      xit '投稿が成功する', js: true  do
         fill_in 'q-relatinoship', with: '高校時代の同級生'
         select '男性', from: 'q-gender'
         fill_in 'q-age', with: '25歳'
@@ -28,7 +28,7 @@ RSpec.describe "Items", type: :system, js: true  do
     end
 
     context '全ての入力が正常だが３つ目の選択肢だけ空欄のとき', js: true  do
-      it '「結果だけ見る」という選択肢が３つ目に作成され、投稿が成功する', js: true  do
+      xit '「結果だけ見る」という選択肢が３つ目に作成され、投稿が成功する', js: true  do
         fill_in 'q-relatinoship', with: '高校時代の同級生'
         select '男性', from: 'q-gender'
         fill_in 'q-age', with: '25歳'

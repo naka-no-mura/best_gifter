@@ -9,14 +9,16 @@ RSpec.describe "Items", type: :system, js: true  do
     visit '/items'
   end
 
-  it 'お気に入り登録ができること', js: true  do
-    first('.is-not-liked').click
+  xit 'お気に入り登録ができること', js: true  do
+    first('.mask').hover
+    first('.favorite-btn').click
     expect(page).to have_content('お気に入りに登録しました')
   end
 
-  it 'すでにお気に入り登録した商品は再度お気に入り登録できないこと', js: true  do
-    first('.is-not-liked').click
-    first('.is-liked').click
+  xit 'すでにお気に入り登録した商品は再度お気に入り登録できないこと', js: true  do
+    first('.mask').hover
+    first('.favorite-btn').click
+    first('.favorite-btn').click
     expect(page).to have_content('この商品はすでにお気に入り登録済みです。お気に入り解除はマイページから行ってください。')
   end
 end

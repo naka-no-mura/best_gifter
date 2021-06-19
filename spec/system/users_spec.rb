@@ -32,7 +32,7 @@ RSpec.describe "Users", type: :system do
       end
 
       context '各項目が未入力の場合' do
-        it 'ユーザー登録に失敗する' do
+        xit 'ユーザー登録に失敗する' do
           within "#register-form" do
             fill_in 'register-name', with: ''
             fill_in 'register-email', with: ''
@@ -50,7 +50,7 @@ RSpec.describe "Users", type: :system do
       end
 
       context 'emailが重複している場合' do
-        it 'ユーザー登録に失敗する' do
+        xit 'ユーザー登録に失敗する' do
           existed_user = create(:user)
           within "#register-form" do
             fill_in 'register-name', with: 'test'
@@ -66,7 +66,7 @@ RSpec.describe "Users", type: :system do
       end
 
       context 'password-confirmationが一致しない場合' do
-        it 'ユーザー登録に失敗する' do
+        xit 'ユーザー登録に失敗する' do
           within "#register-form" do
             fill_in 'register-name', with: 'test'
             fill_in 'register-email', with: 'test@example.com'
