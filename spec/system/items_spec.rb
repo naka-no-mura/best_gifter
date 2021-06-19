@@ -1,41 +1,15 @@
 require 'rails_helper'
-require "webmock/rspec"
-WebMock.disable_net_connect!(allow_localhost: true)
 
-RSpec.describe "Items", type: :request, js: true  do
+RSpec.describe "Items", type: :system, js: true  do
   let!(:user) { create(:user) }
   let!(:item) { create(:item) }
 
-  # before do 
-  #   login_as(user)
-  #   visit '/items'
-  # end
+  before do 
+    login_as(user)
+    visit '/items'
+  end
 
   describe '検索機能' do
-    
-    context '全ての入力が正常なとき' do
-      it '検索が成功する' do
-        mock = double('Rakuten_mock')
-        allow(HTTPClient).to receive(:new).and_return(mock)
-        expect(mock).to receive(:get)
-        get :search, url = "https://app.rakuten.co.jp/services/api/IchibaItem/Search/20170706",
-          _params = {
-            applicationId: ENV['RAKUTEN_API_APPLICATION_ID'],
-            keyword: "タオル",
-            genreId: 100804,
-            minPrice: 3000,
-            maxPrice: 5000,
-            sort: 'standard',
-            giftFlag: 1,
-            imageFlag: 1,
-            page: 1,
-          }
-        expect(response).to have_http_status(200)
-        # allow(HTTPClient).to receive(:new).and_return(:body=> [{mediumImageUrls: [{imageUrl: "https://thumbnail.image.rakuten.co.jp/@0_mall/hanayoshi/cabinet/preserved/zp1004_main_be.jpg?_ex=128x128"}]}, {itemName: "ブリザードフラワー"}, {itemPrice: 3390}, {reviewCount: 27}, {reviewAverage: 4.7}], :status => 200, :headers => { 'Content-Length' => 7 })
-        # @rekutens = Rakutens.new
-        # allow(@rakutens).to receive(:search).and_return(rakuten_mock)
-      end
-    end
 
     context '全ての入力が正常なとき', js: true  do
       it '検索が成功する', js: true  do
