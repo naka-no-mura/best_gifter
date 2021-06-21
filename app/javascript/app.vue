@@ -17,8 +17,8 @@
 </template>
 
 <script>
-  import TheHeader from 'components/TheHeader.vue'
-  import TheFooter from 'components/TheFooter.vue'
+  import TheHeader from 'pages/common/TheHeader.vue'
+  import TheFooter from 'pages/common/TheFooter.vue'
 
   export default {
     components: {

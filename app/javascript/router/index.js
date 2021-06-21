@@ -10,9 +10,9 @@ import QuestionnaireShowIndex from "../pages/questionnaireList/components/Questi
 import RegisterIndex from "../pages/register/index.vue";
 import LoginIndex from "../pages/login/index.vue";
 import MypageIndex from "../pages/mypage/index.vue";
-import TheTermsIndex from "../components/TheTerms.vue";
-import ThePrivacyPolicyIndex from "../components/ThePrivacyPolicy.vue";
-import NotFoundIndex from "../components/errors/NotFound.vue";
+import TheTermsIndex from "../pages/common/TheTerms.vue";
+import ThePrivacyPolicyIndex from "../pages/common/ThePrivacyPolicy.vue";
+import NotFoundIndex from "../pages/common/errors/NotFound.vue";
 
 Vue.use(Router);
 

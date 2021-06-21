@@ -1,7 +1,7 @@
 <template>
   <div class="container error-box">
     <p class="error-logo">
-      <img src="../../../assets/images/logo_no_color.JPG">
+      <img src="../../../../assets/images/logo_no_color.JPG">
     </p>
     <div class="tx">
       <p>お探しのページが見つかりませんでした。</p>
