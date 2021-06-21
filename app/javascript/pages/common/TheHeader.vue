@@ -9,7 +9,7 @@
         <router-link to="/">
           <img
             class="logo-img"
-            src="../../assets/images/logo_dark_pink.JPG"
+            src="../../../assets/images/logo_dark_pink.JPG"
             @click="pageToTop()"
           >
         </router-link>
@@ -160,8 +160,8 @@ export default {
   data() {
     return {
       title: "Best Gifter",
-      logo_img: require("../../assets/images/logo_header.JPG"),
-      icon_img: require("../../assets/images/person-circle.svg"),
+      logo_img: require("../../../assets/images/logo_header.JPG"),
+      icon_img: require("../../../assets/images/person-circle.svg"),
       isActive: false,
     };
   },
