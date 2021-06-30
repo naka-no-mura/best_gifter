@@ -87,17 +87,11 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
-# 楽天商品検索API
-gem 'rakuten_web_service'
-
 # 環境変数
 gem 'dotenv-rails'
 
 # 外部APIを叩く
 gem 'httpclient'
-
-# Railsで設定した環境変数をVueで使えるように
-gem 'gon'
 
 # ログイン・新規登録機能
 gem 'sorcery'
